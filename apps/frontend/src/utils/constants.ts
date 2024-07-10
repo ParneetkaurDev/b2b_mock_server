@@ -233,6 +233,23 @@ export const INITIATE_FIELDS = {
 			},
 		},
 	],
+
+	rating: [
+		{
+			name: "transactionId",
+			placeholder: "Enter Your Transaction ID",
+			type: "text",
+		},
+		{
+			name: "scenario",
+			placeholder: "Select Scenario",
+			type: "select",
+			domainDepended: true,
+			options: {
+				// services: SERVICES_SCENARIOS["confirm"].map((each) => each.scenario),
+			},
+		},
+	],
 };
 
 export const SWAGGER_DOMAIN_FIELDS = {
