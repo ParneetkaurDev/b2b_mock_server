@@ -20,13 +20,7 @@ import { URL_MAPPING } from "../utils";
 import axios, { AxiosError } from "axios";
 import { UserGuide } from "./UserGuideSection";
 
-type SandboxRequestSectionProp = {
-	domain: string;
-};
-
-export const SandboxRequestSection = ({
-	domain,
-}: SandboxRequestSectionProp) => {
+export const SandboxRequestSection = () => {
 	const [authHeader, setAuthHeader] = useState<string>();
 	const [log, setLog] = useState<string>();
 	const [showCurl, setShowCurl] = useState(false);
@@ -34,7 +28,7 @@ export const SandboxRequestSection = ({
 		name: string;
 		scenario: string;
 	}>();
-	const { action, detectAction, logError, scenarios } = useAction(domain);
+	const { action, detectAction, domain, logError, scenarios } = useAction();
 
 	const { setSyncResponse } = useSandbox();
 	useEffect(() => {
@@ -43,6 +37,7 @@ export const SandboxRequestSection = ({
 		setSyncResponse(undefined);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+	
 	const [curl, setCurl] = useState<string>();
 
 	const handleLogChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -72,8 +67,6 @@ export const SandboxRequestSection = ({
 					authorization: authHeader,
 				},
 			});
-			console.log("RESPONSE RECEIVED", response);
-
 			if (response.data.error) {
 				setSyncResponse(response.data);
 			} else setSyncResponse(response.data.message);
@@ -93,7 +86,7 @@ export const SandboxRequestSection = ({
 					elevation={5}
 				>
 					<Stack spacing={2} justifyContent="center" alignItems="center">
-						<Typography variant="h5">Domain: {domain}</Typography>
+						<Typography variant="h5">Sandbox</Typography>
 						<Box
 							sx={{
 								width: "100%",
@@ -102,6 +95,7 @@ export const SandboxRequestSection = ({
 								alignItems: "center",
 							}}
 						></Box>
+						{/* Select box for domain */}
 						<Input
 							fullWidth
 							placeholder="Enter Your Auth Header..."
@@ -198,7 +192,7 @@ export const SandboxRequestSection = ({
 					</Stack>
 				</Paper>
 			</Fade>
-			<UserGuide domain={domain} />
+			<UserGuide />
 			<CurlDisplay slideIn={showCurl} curl={curl} />
 		</>
 	);

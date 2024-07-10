@@ -34,7 +34,7 @@ export const initiateSelectController = async (
     }
     // selecting the senarios
     let scenario = "selection";
-    if (checkIfCustomized(on_search.message.catalog.providers[0].items)) {
+    if (checkIfCustomized(on_search.message.catalog?.providers?.[0]?.items)) {
       scenario = "customization";
     }
 
@@ -73,22 +73,22 @@ const intializeRequest = async (
       },
     } = transaction;
     const { transaction_id } = context;
-    const { id, locations } = providers[0];
+    const { id, locations } = providers?.[0];
     //   const { location_ids } = providers[0].items[0];
     let items = [];
     let start;
     let endDate;
     if (scenario === "customization") {
       //getting parent item
-      const parent_obj = providers[0]?.items?.find((itm: Item) =>
+      const parent_obj =providers?.[0]?.items?.find((itm: Item) =>
         isEmpty(itm.parent_item_id)
       );
-      let startTime = parent_obj.time?.schedule?.times[0].split("T")[1];
+      let startTime = parent_obj.time?.schedule?.times?.[0]?.split("T")[1];
       // console.log("Start Time from parent_item::", startTime);
 
       // getting the required categories ids to look  for
       const { cat_ids, child_selected } = processCategories(
-        providers[0]?.categories
+        providers?.[0]?.categories
       );
       const required_categories = cat_ids;
       //Start Date for items
@@ -97,7 +97,7 @@ const intializeRequest = async (
       if (isEmpty(startTime) && !isEmpty(child_selected)) {
         const startCategory = providers?.[0]?.categories?.find(
           (cat: Category) => {
-            return cat.id === child_selected[0];
+            return cat.id === child_selected?.[0];
           }
         );
         const startSchedule = startCategory?.tags?.find(
@@ -109,7 +109,7 @@ const intializeRequest = async (
       }
 
       //else case is to be defined
-      const hour = Number(startTime?.split(":")[0]) || startDate.getUTCHours();
+      const hour = Number(startTime?.split(":")?.[0]) || startDate.getUTCHours();
       const minutes =
         Number(startTime?.split(":")[1]) || startDate.getUTCMinutes();
 
@@ -124,15 +124,15 @@ const intializeRequest = async (
         start = addDays(currentDate, 1);
       }
 
-      const scheduleobj = providers[0]?.categories
-        .find((itm: Category) => itm.id === child_selected[0]) //getting the schedule based on category
+      const scheduleobj = providers?.[0]?.categories
+        .find((itm: Category) => itm.id === child_selected?.[0]) //getting the schedule based on category
         ?.tags.find((tag: Tag) => tag.descriptor.code === "schedule");
 
       const endDateFrequency = scheduleobj?.list.find(
         (ele: TagItem) => ele.descriptor.code === "frequency"
       )?.value;
 
-      const frequency = parseInt(endDateFrequency?.match(/\d+/)[0]) || 1; //defaul value of frequency is set to 1
+      const frequency = parseInt(endDateFrequency?.match(/\d+/)?.[0]) || 1; //defaul value of frequency is set to 1
 
       //end date
       endDate = new Date(start);
@@ -149,7 +149,7 @@ const intializeRequest = async (
       });
 
       //get the parent item in customization
-      items = [...providers[0].items];
+      items = [...providers?.[0].items];
       const parent_item = items.find((itm: Item) =>
         _.isEmpty(itm.parent_item_id)
       );
@@ -236,7 +236,7 @@ const intializeRequest = async (
       ];
     } else {
       items = providers[0].items = [
-        providers[0]?.items.map(
+        providers?.[0]?.items.map(
           ({
             id,
             parent_item_id,
@@ -245,8 +245,8 @@ const intializeRequest = async (
             id: string;
             parent_item_id: string;
             location_ids: string[];
-          }) => ({ id, parent_item_id, location_ids: [location_ids[0]] })
-        )[0],
+          }) => ({ id, parent_item_id, location_ids: [location_ids?.[0]] })
+        )?.[0],
       ];
     }
     // console.log("Items::", items, "Senario::", scenario)
@@ -266,7 +266,7 @@ const intializeRequest = async (
             id,
             locations: [
               {
-                id: locations[0]?.id,
+                id: locations?.[0]?.id,
               },
             ],
           },
@@ -283,8 +283,8 @@ const intializeRequest = async (
           })),
           fulfillments: [
             {
-              ...fulfillments[0],
-              type: fulfillments[0].type,
+              ...fulfillments?.[0],
+              type: fulfillments?.[0].type,
               stops: [
                 {
                   type: "end",
@@ -297,9 +297,9 @@ const intializeRequest = async (
                     range: {
                       // should be dynamic on the basis of scehdule
                       start:
-                        providers[0]?.time?.schedule?.times?.[0] ?? new Date(),
+                        providers?.[0]?.time?.schedule?.times?.[0] ?? new Date(),
                       end:
-                        providers[0]?.time?.schedule?.times?.[1] ?? new Date(),
+                        providers?.[0]?.time?.schedule?.times?.[1] ?? new Date(),
                     },
                   },
                   days: scenario === "customization" ? "4" : undefined,
@@ -309,7 +309,7 @@ const intializeRequest = async (
               ],
             },
           ],
-          payments: [{ type: payments[0].type }],
+          payments: [{ type: payments?.[0].type }],
         },
       },
     };

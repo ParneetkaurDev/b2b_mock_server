@@ -389,6 +389,106 @@ export const AGRI_SERVICES_SCENARIOS = {
 	],
 };
 
+export const EQUIPMENT_HIRING_SERVICES_SCENARIOS = {
+	// select: [
+	// 	{
+	// 		name: "Selections",
+	// 		scenario: "selection",
+	// 	},
+	// 	{
+	// 		name: "Customization",
+	// 		scenario: "customization",
+	// 	},
+	// ],
+	on_select: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "No Equipment Avaliable",
+			scenario: "no_equipment_avaliable",
+		}
+	],
+	// init: [
+	// 	{
+	// 		name: "Service",
+	// 		scenario: "service",
+	// 	},
+	// ],
+	on_init: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "Availability Changes During The Transaction Journey",
+			scenario: "availability_changes_during_the_transaction_journey",
+		}
+	],
+	// confirm: [
+	// 	{
+	// 		name: "Service",
+	// 		scenario: "service",
+	// 	},
+	// ],
+	on_confirm: [
+		// {
+		// 	name: "Service",
+		// 	scenario: "service",
+		// },
+	],
+	on_status: [
+		{
+			name: "In Transit",
+			scenario: "IN_TRANSIT",
+		},
+		{
+			name: "Reached",
+			scenario: "AT_LOCATION",
+		},
+		{
+			name: "Collected By Agent",
+			scenario: "COLLECTED_BY_AGENT",
+		},
+		{
+			name: "Received At Lab",
+			scenario: "RECEIVED_AT_LAB",
+		},
+		{
+			name: "Completed",
+			scenario: "COMPLETED",
+		},
+	],
+
+	on_update: [
+		// {
+		// 	name: "Update Items",
+		// 	scenario: "items",
+		// },
+		// {
+		// 	name: "Reschedule",
+		// 	scenario: "fulfillments",
+		// },
+		{
+			name: "Requote(Payments)",
+			scenario: "payments",
+		},
+	],
+	
+	on_cancel: [
+		// {
+		// 	name: "ACK",
+		// 	scenario: "ack",
+		// },
+		// {
+		// 	name: "Merchant",
+		// 	scenario: "merchant",
+		// },
+	],
+};
+
+
 export const DOMAINS = {
 	b2b: "B2B",
 	services: "Services - Home Services",

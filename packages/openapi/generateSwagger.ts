@@ -14,6 +14,7 @@ import {
 	HEALTHCARE_SERVICES_SCENARIOS,
 	DOMAINS,
 	AGRI_SERVICES_SCENARIOS,
+	EQUIPMENT_HIRING_SERVICES_SCENARIOS
 } from "./constants";
 
 const swaggerParse = async (swaggerPath: string) => {
@@ -34,7 +35,7 @@ const swaggerParse = async (swaggerPath: string) => {
 const generateSwagger = async (
 	inputPath: string,
 	outputPath: string,
-	scenarios: typeof B2B_SCENARIOS | typeof SERVICES_SCENARIOS | typeof HEALTHCARE_SERVICES_SCENARIOS | typeof AGRI_SERVICES_SCENARIOS,
+	scenarios: typeof B2B_SCENARIOS | typeof SERVICES_SCENARIOS | typeof HEALTHCARE_SERVICES_SCENARIOS | typeof AGRI_SERVICES_SCENARIOS | typeof EQUIPMENT_HIRING_SERVICES_SCENARIOS,
 	servers: { url: string; description: string }[]
 ) => {
 	const schema: any = await swaggerParse(inputPath);

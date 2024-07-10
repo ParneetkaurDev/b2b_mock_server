@@ -16,6 +16,7 @@ export const searchController = (req: Request, res: Response, next: NextFunction
       )
     ); 
     const response = YAML.parse(file.toString());   
+    
     return responseBuilder(
       res,
       next,

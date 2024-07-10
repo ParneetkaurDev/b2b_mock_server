@@ -3,12 +3,8 @@ import {
   B2B_BAP_MOCKSERVER_URL,
   B2B_EXAMPLES_PATH,
   MOCKSERVER_ID,
-  send_response,
-  createAuthHeader,
-  logger,
-  redis,
+  send_response
 } from "../../../lib/utils";
-import axios from "axios";
 import fs from "fs";
 import path from "path";
 import YAML from "yaml";

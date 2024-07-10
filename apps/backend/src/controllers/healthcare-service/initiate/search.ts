@@ -42,6 +42,7 @@ export const initiateSearchController = async (req: Request, res: Response, next
 				message_id: uuidv4()
 			},
 		};
+		
 		search.bpp_uri = bpp_uri
 		await send_response(res, next, search, transaction_id, "search");
 	}catch(error){

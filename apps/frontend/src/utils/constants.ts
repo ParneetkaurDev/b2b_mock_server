@@ -1,9 +1,15 @@
-
 import { B2B_SCENARIOS } from "openapi-specs/constants";
 
-export const SUPPORTED_DOMAINS = ["B2B", "SERVICES","AGRI SERVICES","HEALTHCARE SERVICES"];
+export const SUPPORTED_DOMAINS = [
+	"B2B",
+	"SERVICES",
+	"AGRI SERVICES",
+	"HEALTHCARE SERVICES",
+	"EQUIPMENT HIRING SERVICES"
+];
 
-export const USER_GUIDE_LINK = "https://github.com/tanyamadaan/b2b_mock_server/blob/feat-monorepo/README.md";
+export const USER_GUIDE_LINK =
+	"https://github.com/tanyamadaan/b2b_mock_server/blob/feat-monorepo/README.md";
 
 export const SWAGGER_BUILD_LINK =
 	"https://raw.githubusercontent.com/abhik-wil/b2b_mock_server/feat-monorepo/apps/backend/src/openapi/build/swagger.yaml";
@@ -22,13 +28,20 @@ export const URL_MAPPING = {
 };
 
 export const ACTION_PRECENDENCE = [
-	'search', 'on_search',
-	'select', 'on_select',
-	'init', 'on_init',
-	'confirm', 'on_confirm',
-	'status', 'on_status',
-	'update', 'on_update',
-	'cancel', 'on_cancel'
+	"search",
+	"on_search",
+	"select",
+	"on_select",
+	"init",
+	"on_init",
+	"confirm",
+	"on_confirm",
+	"status",
+	"on_status",
+	"update",
+	"on_update",
+	"cancel",
+	"on_cancel",
 ];
 
 export const B2B_DOMAINS = [
@@ -39,24 +52,36 @@ export const B2B_DOMAINS = [
 	"ONDC:RET10",
 	"ONDC:RET12",
 	"ONDC:RET13",
-	"ONDC:RET14"
-]
+	"ONDC:RET14",
+];
 
-export const SERVICES_DOMAINS = [
-	"ONDC:SRV11",
-]
+export const ALL_SERVICE_DOMAINS_INITATE = ["ONDC:SRV11", "ONDC:SRV13", "ONDC:SRV14","ONDC:SRV15"]
+export const ALL_SERVICE_DOMAINS_INITATEs = [{"Services- ONDC:SRV11":"ONDC:SRV11", "Healthcare Services- ONDC:SRV13":"ONDC:SRV13", "Agri Services- ONDC:SRV14":"ONDC:SRV14","Agri Equipment Hiring- ONDC:SRV15":"ONDC:SRV15"}]
 
-export const AGRI_SERVICES_DOMAINS = [
-	"ONDC:SRV14",
-]
+export const SERVICES_DOMAINS = ["ONDC:SRV11"];
 
-export const HEALTHCARE_SERVICES_DOMAINS = [
-	"ONDC:SRV13",
-]
-export const CITY_CODE = [
-	"std:080",
-	"std:011"
-]
+export const AGRI_SERVICES_DOMAINS = ["ONDC:SRV14"];
+
+export const HEALTHCARE_SERVICES_DOMAINS = ["ONDC:SRV13"];
+
+export const EUIPMENT_HIRING_SERVICES_DOMAINS = ["ONDC:SRV15"];
+
+export const ALL_DOMAINS_FRONTEND = {
+	SERVICES_DOMAINS: "ONDC:SRV11",
+	AGRI_SERVICES_DOMAINS: "ONDC:SRV14",
+	HEALTHCARE_SERVICES_DOMAINS: "ONDC:SRV13",
+	EUIPMENT_HIRING_SERVICES_DOMAINS:"ONDC:SRV15"
+};
+
+export const ALL_DOMAINS_NAME = [
+	"b2b",
+	"services",
+	"agri-services",
+	"healthcare-services",
+	"agri-equipment-hiring"
+];
+
+export const CITY_CODE = ["std:080", "std:011"];
 
 export const INITIATE_FIELDS = {
 	search: [
@@ -66,17 +91,28 @@ export const INITIATE_FIELDS = {
 			type: "text",
 		},
 		{
+			name: "service_name",
+			placeholder: "Select Service...",
+			type: "select",
+			domainDepended: false,
+			options: ALL_DOMAINS_NAME,
+		},
+
+		//DEPEND ON SELECTED SERVICES
+		{
 			name: "domain",
-			placeholder: "Select domain...",
+			placeholder: "Select Domain...",
 			type: "select",
 			domainDepended: true,
 			options: {
-				"b2b": B2B_DOMAINS,
-				"services": SERVICES_DOMAINS,
-				"agri-services": AGRI_SERVICES_DOMAINS,
-				"healthcare-services": HEALTHCARE_SERVICES_DOMAINS,
+				b2b: B2B_DOMAINS,
+				services: SERVICES_DOMAINS,
+				"agri-services":AGRI_SERVICES_DOMAINS,
+				"healthcare-services":HEALTHCARE_SERVICES_DOMAINS,
+				"agri-equipment-hiring":EUIPMENT_HIRING_SERVICES_DOMAINS
 			},
 		},
+		
 		{
 			name: "city",
 			placeholder: "Select A City",
@@ -85,6 +121,7 @@ export const INITIATE_FIELDS = {
 			options: CITY_CODE,
 		},
 	],
+
 	select: [
 		{
 			name: "transactionId",
@@ -102,6 +139,7 @@ export const INITIATE_FIELDS = {
 			},
 		},
 	],
+
 	init: [
 		{
 			name: "transactionId",
@@ -119,6 +157,7 @@ export const INITIATE_FIELDS = {
 			},
 		},
 	],
+
 	confirm: [
 		{
 			name: "transactionId",
@@ -135,6 +174,7 @@ export const INITIATE_FIELDS = {
 			},
 		},
 	],
+
 	status: [
 		{
 			name: "transactionId",
@@ -151,6 +191,7 @@ export const INITIATE_FIELDS = {
 			},
 		},
 	],
+
 	update: [
 		{
 			name: "transactionId",
@@ -162,9 +203,10 @@ export const INITIATE_FIELDS = {
 			placeholder: "Update Target",
 			type: "select",
 			domainDepended: false,
-			options: ["payments","fulfillments","items"],
+			options: ["payments", "fulfillments", "items"],
 		},
 	],
+
 	cancel: [
 		{
 			name: "transactionId",
@@ -191,4 +233,12 @@ export const INITIATE_FIELDS = {
 			},
 		},
 	],
+};
+
+export const SWAGGER_DOMAIN_FIELDS = {
+	name: "service_name",
+	placeholder: "Select Service...",
+	type: "select",
+	domainDepended: false,
+	options: ALL_DOMAINS_NAME,
 };

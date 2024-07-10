@@ -77,7 +77,7 @@ const ONDCDocumentation = () => {
 					To use the sandbox you need to have an authorization header which is
 					to be passed in the header to make requests. For creating the
 					authorization header you can refer this{" "}
-					<a href="https:docs.google.com/document/d/1brvcltG_DagZ3kGr1ZZQk4hG4tze3zvcxmGV4NMTzr8/edit?pli=1#heading=h.hdylqyv4bn12">
+					<a href="https:docs.google.com/document/d/1brvcltG_DagZ3kGr1ZZQk4hG4tze3zvcxmGV4NMTzr8/edit?pli=1#heading=h.hdylqyv4bn12" target="_blank">
 						document
 					</a>{" "}
 				</p>
@@ -553,7 +553,7 @@ const ONDCDocumentation = () => {
 				<h3>Authentication Header</h3>
 				<p>
 					<strong>Purpose:</strong> To authenticate your requests to the BAP.<br />
-					<p>To obtain the authentication header, please follow the <a href="https://mock.ondc.org/api-docs/auth/#/Auth/post_signature">Swagger link </a>provided and create an authentication header for all requests (search, select, init, confirm, update, status, cancel). Paste the request body here and include your private key: "your private key", "subscriber_id": "your subscribe id", and "unique_key_id": "your unique key". Update the request for all action calls accordingly.</p>
+					<p>To obtain the authentication header, please follow the <a href="https://mock.ondc.org/api/api-docs/auth/#/Auth/post_signature">Swagger link </a>provided and create an authentication header for all requests (search, select, init, confirm, update, status, cancel). Paste the request body here and include your private key: "your private key", "subscriber_id": "your subscribe id", and "unique_key_id": "your unique key". Update the request for all action calls accordingly.</p>
 				</p>
 				<h3>Request Body</h3>
 				<p>

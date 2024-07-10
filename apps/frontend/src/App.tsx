@@ -93,16 +93,20 @@ const router = createBrowserRouter([
 				],
 			},
 			{
+				path: "/swagger/misc",
+				Component: MiscSwagger,
+			},
+			{
 				path: "/swagger",
 				Component: Swagger,
-				children: [
-					{ path: "b2b", Component: B2BSwagger },
-					{ path: "services", Component: ServicesSwagger },
-					{ path: "agri-services", Component: AgriServicesSwagger },
-					{ path: "healthcare-services", Component: HealthCareServicesSwagger },
-					{ path: "auth", Component: AuthSwagger },
-					{ path: "misc", Component: MiscSwagger },
-				],
+				// children: [
+				// 	{ path: "b2b", Component: B2BSwagger },
+				// 	{ path: "services", Component: ServicesSwagger },
+				// 	{ path: "agri-services", Component: AgriServicesSwagger },
+				// 	{ path: "healthcare-services", Component: HealthCareServicesSwagger },
+				// 	{ path: "auth", Component: AuthSwagger },
+				// 	{ path: "misc", Component: MiscSwagger },
+				// ],
 			},
 			{
 				path: "/analyse",

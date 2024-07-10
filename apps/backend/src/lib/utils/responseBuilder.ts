@@ -81,7 +81,6 @@ export const responseBuilder = async (
 		context: {},
 		message,
 	};
-
 	const bppURI =
 		domain === "b2b"
 			? B2B_BPP_MOCKSERVER_URL
@@ -278,6 +277,7 @@ export const responseBuilder = async (
 			transaction_id: (reqContext as any).transaction_id,
 			message: { sync: { message: { ack: { status: "ACK" } } } },
 		});
+
 		return res.json({
 			message: {
 				ack: {

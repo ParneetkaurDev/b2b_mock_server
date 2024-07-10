@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import useTheme from "@mui/material/styles/useTheme";
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Typography from "@mui/material/Typography";
@@ -24,48 +24,54 @@ const drawerWidth = 200;
 const NAV_LINKS = [
 	{
 		name: "Mock Server",
+		nested:false,
 		path: "/mock",
 	},
 	{
 		name: "Sandbox",
+		nested:false,
 		path: "/sandbox",
 	},
 	{
 		name: "Swagger",
+		nested:false,
 		path: "/swagger",
 	},
 ];
+
 const DOMAIN_NAVS = [
 	{
 		name: "Home",
 		nested: false,
 		path: "/",
 	},
-	{
-		name: "B2B",
-		nested: true,
-		path: "/b2b",
-		children: NAV_LINKS,
-	},
-	{
-		name: "Services",
-		nested: true,
-		path: "/services",
-		children: NAV_LINKS,
-	},
-	{
-		name: "Agriculture Services",
-		nested: true,
-		path: "/agri-services",
-		children: NAV_LINKS,
-	},
+	...NAV_LINKS,
+	// {
+	// 	name: "B2B",
+	// 	nested: true,
+	// 	path: "/b2b",
+	// 	children: NAV_LINKS,
+	// },
+	// {
+	// 	name: "Services",
+	// 	nested: true,
+	// 	path: "/services",
+	// 	children: NAV_LINKS,
+	// },
+	// {
+	// 	name: "Agriculture Services",
+	// 	nested: true,
+	// 	path: "/agri-services",
+	// 	children: NAV_LINKS,
+	// },
 
-	{
-		name: "Healthcare Services",
-		nested: true,
-		path: "/healthcare-services",
-		children: NAV_LINKS,
-	},
+	// {
+	// 	name: "Healthcare Services",
+	// 	nested: true,
+	// 	path: "/healthcare-services",
+	// 	children: NAV_LINKS,
+	// },
+	
 	{
 		name: "Sign Check",
 		nested: false,
@@ -186,7 +192,7 @@ export const CustomDrawer = ({ children }: CustomDrawerProps) => {
 			<List>
 				{DOMAIN_NAVS.map((link, index) => (
 					<>
-						{link.nested ? (
+						{/* {link.nested ? (
 							<NestedMenu
 								name={link.name}
 								childPath={link.children}
@@ -194,7 +200,7 @@ export const CustomDrawer = ({ children }: CustomDrawerProps) => {
 								id={"nav-nested-menu-" + index}
 								growIn={mobileOpen}
 							/>
-						) : (
+						) : ( */}
 							<Grow
 								in={mobileOpen}
 								timeout={1000}
@@ -219,7 +225,8 @@ export const CustomDrawer = ({ children }: CustomDrawerProps) => {
 									</ListItemButton>
 								</ListItem>
 							</Grow>
-						)}
+						{/* )
+						} */}
 						<Divider />
 					</>
 				))}

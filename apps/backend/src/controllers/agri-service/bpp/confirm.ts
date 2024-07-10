@@ -30,6 +30,7 @@ export const confirmConsultationController = (req: Request, res: Response, next:
 				}
 			}
 		}
+		
 		return responseBuilder(
 			res,
 			next,
