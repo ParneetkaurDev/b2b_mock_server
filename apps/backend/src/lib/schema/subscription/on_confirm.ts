@@ -103,7 +103,7 @@ export const onConfirmSchema = {
             },
             status: {
               type: "string",
-              enum: ["Created", "Accepted", "Cancelled","In-Progress"],
+              enum: ["Created", "Accepted", "Cancelled","In-Progress","Active"],
             },
             provider: {
               type: "object",
@@ -359,7 +359,7 @@ export const onConfirmSchema = {
                       },
                       if: { properties: { type: { const: "end" } } },
                       then: {
-                        required: ["type", "location", "contact", "time"]
+                        required: ["type", "location", "time"]
                       },
                       else: {
                         required: ["type"],

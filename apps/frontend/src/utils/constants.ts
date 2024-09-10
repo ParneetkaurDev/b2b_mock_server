@@ -195,8 +195,7 @@ export const INITIATE_FIELDS = {
 			domainDepended: true,
 			options: {
 				retail: B2B_SCENARIOS["init"].map((each) => each.scenario),
-				subscription:PRINT_MEDIA_SCENARIOS["init"].map((each) => each.scenario),
-
+				// subscription:PRINT_MEDIA_SCENARIOS["init"].map((each) => each.scenario),
 				// retail: B2B_SCENARIOS["init"].map((each) => each.scenario),
 				// services: SERVICES_SCENARIOS["init"].map((each) => each.scenario),
 			},

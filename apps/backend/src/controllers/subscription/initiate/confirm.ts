@@ -17,7 +17,8 @@ export const initiateConfirmController = async (
 	next: NextFunction
 ) => {
 	try{
-		const { scenario, transactionId } = req.body;
+		const { transactionId } = req.body;
+		const { scenario } = req?.query || "";
 		const on_search = await redisFetchToServer(ON_ACTION_KEY.ON_SEARCH, transactionId);
 		const providersItems = on_search?.message?.catalog?.providers[0]?.items;
 		const on_init = await redisFetchToServer(ON_ACTION_KEY.ON_INIT, transactionId)
@@ -35,7 +36,7 @@ const intializeRequest = async (
 	res: Response,
 	next: NextFunction,
 	transaction: any,
-	scenario: string,
+	scenario: any,
 	providersItems: any
 ) => {
 	try{

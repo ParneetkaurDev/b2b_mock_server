@@ -26,7 +26,8 @@ export const initiateInitController = async (
 	next: NextFunction
 ) => {
 	try {
-		const { scenario, transactionId } = req.body;
+		const { transactionId } = req.body;
+		const {scenario} = req.query;
 		const on_search = await redisFetchFromServer(
 			ON_ACTION_KEY.ON_SEARCH,
 			transactionId
@@ -58,7 +59,7 @@ const intializeRequest = async (
 	res: Response,
 	next: NextFunction,
 	transaction: any,
-	scenario: string
+	scenario: any
 ) => {
 	try {
 		const {
