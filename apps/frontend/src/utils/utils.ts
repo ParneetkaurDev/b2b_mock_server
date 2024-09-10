@@ -105,14 +105,8 @@ export const getNodesAndEdges = (formattedResponse: any, theme: Theme) => {
 
 			do {
 				_prevAction = prevAction;
-				console.log(
-					"prevActionprevActionprevActionprevActionprevActionprevAction",
-					prevAction
-				);
 				prevAction =
-					prevActionMapping[_prevAction as keyof typeof prevActionMapping];
-				console.log("prevActionnnnnnnnnnnnnnnnn", prevAction);
-        
+					prevActionMapping[_prevAction as keyof typeof prevActionMapping];        
 				previousActions = formattedResponse.filter(
 					(e: {
 						action: string;
@@ -120,10 +114,9 @@ export const getNodesAndEdges = (formattedResponse: any, theme: Theme) => {
 					}) => {
 						// console.log("eeeeeeeeeeeeeeee",e.action,e.request,prevAction)
 						if (e.action === prevAction) {
-							console.log("logs actionnnn",
+							console.log("logsactionnnn",
 								log.action,
 								e.action,
-								prevAction,
 								"eeeeeeeeee",e.request.context.message_id,
                 "loggggggggg",log.request.context.message_id
 							);
@@ -200,10 +193,7 @@ export const checker = (arr: string[], target: string[], domain?: string) => {
 };
 
 
-
 //new code utils
-
-
 // import { Edge, MarkerType, Node } from "reactflow";
 // import { CustomNodeData } from "../components";
 // import { Theme } from "@mui/material/styles";
