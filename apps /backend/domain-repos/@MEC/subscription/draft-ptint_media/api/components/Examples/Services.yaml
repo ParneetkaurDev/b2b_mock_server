@@ -1,0 +1,7 @@
+Media, Entertainment and Content:
+  summary: Media, Entertainment and Content
+  description: >-
+    This elaborates the model implementations for booking media, entertainment and content over the network.
+    The booking majorly happens in four phases of order processing flow, i.e. Discovery of available services and service providers based on serviceability, order, fulfillment and post-fulfillment.
+  example_set:
+    $ref: "./Print_Content_yaml/index.yaml"

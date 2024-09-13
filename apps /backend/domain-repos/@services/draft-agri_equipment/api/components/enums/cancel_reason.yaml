@@ -1,0 +1,8 @@
+reason:
+  - code: "01"
+    description: No longer required ordered equipment
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: "02"
+    description: Requisite documents not available during equipment delivery/ pickup
+    reference: <PR/Issue/Discussion Links md format text>
+ 

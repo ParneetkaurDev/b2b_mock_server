@@ -1,0 +1,27 @@
+breakup:
+  title:
+    - code: Equipment
+      description: Equipment
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Refundable Security
+      description: Refundable Security
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Surcharges
+      description: Surcharges
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: tax
+      description: tax
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: discount
+      description: discount
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Convenience Fee
+      description: Convenience Fee
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Pickup Charges
+      description: Pickup Charges
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Delivery Fee
+      description: Delivery Fee
+      reference: <PR/Issue/Discussion Links md format text>
+

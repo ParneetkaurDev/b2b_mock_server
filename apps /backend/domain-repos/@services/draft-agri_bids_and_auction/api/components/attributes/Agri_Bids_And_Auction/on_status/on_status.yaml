@@ -1,0 +1,36 @@
+message:
+  parent: true
+  order:
+    parent: true
+    state:
+      description: Status of the auction; Enum; Values can be "In-progress", "Cancelled"
+      required: mandatory
+      usage: if any
+      reference: if any
+    provider:
+      parent: true
+      locations:
+        description: Locations for fulfillments
+        required: required if mentioned in /confirm
+        usage: "-"
+        reference: if any
+    fulfillments:
+      parent: true
+      fulfillments:
+        description: contains the fulfillment details
+        required: required
+        usage: "-"
+        reference: if any
+      state:
+        descriptor:
+          code:
+            description: Denotes the state of the fulfillment; Enum; Values can be - "PLACED", "AWARDED", "NOT_AWARDED";
+            required: mandatory
+            usage: "-"
+            reference: if any
+      stops:
+        time:
+          timestamp:
+            description: timestamp of the fulfillment
+            required: required
+            usage: "2024-06-10T09:00:00.000Z"

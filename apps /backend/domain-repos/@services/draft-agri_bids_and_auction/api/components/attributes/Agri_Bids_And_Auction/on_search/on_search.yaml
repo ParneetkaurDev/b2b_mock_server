@@ -1,0 +1,371 @@
+message:
+  parent: true
+  catalog:
+    parent: true
+    payments:
+      parent: true
+      id:
+        description: Payment id for the available payment methods
+        required: required
+        usage: "PY1"
+        reference: if any
+      type:
+        description: Type of payment methods available
+        required: required
+        usage: "PRE-FULFILLMENT"
+        reference: if any
+    descriptor:
+      parent: true
+      name:
+        description: name of auction commodity provider, as applicable
+        required: required
+        usage: "ABC store"
+        reference: if any
+      short_desc:
+        description: description of auction commodity provider
+        required: required
+        usage: "bids and auction Providers"
+        reference: if any
+      long_desc:
+        description: long description of auction commodity provider
+        required: optional
+        usage: "bids and auction Providers"
+        reference: if any
+      images:
+        url:
+          description: images url of auction commodity provider
+          required: optional
+          usage: "-"
+          reference: if any
+    providers:
+      parent: true
+      id:
+        description: auction provider id
+        required: required
+        usage: "P1"
+        reference: if any
+      descriptor:
+        name:
+          description: name of auction commodity provider
+          required: required
+          usage: "ABC store"
+          reference: if any
+        code:
+          description: code of auction commodity provider
+          required: required
+          usage: "P001"
+          reference: if any
+        short_desc:
+          description: description of auction commodity provider
+          required: required
+          usage: "bids and auction Providers"
+          reference: if any
+        long_desc:
+          description: long description of auction commodity provider
+          required: optional
+          usage: "bids and auction Providers"
+          reference: if any
+        images:
+          url:
+            description: images url of auction commodity provider
+            required: optional
+            usage: "-"
+            reference: if any
+      rating:
+        description: rating of the auction provider
+        required: optional
+        usage: "4.4"
+        reference: if any
+      ttl:
+        description: ttl for catalog
+        required: optional
+        usage: "P1D"
+        reference: if any
+      locations:
+        description: auction provider locations
+        required: required
+        usage: "refer the on_search example json"
+        reference: if any
+      creds:
+        parent: true
+        creds:
+          description: credentials of the seller
+          required: optional
+          usage: "-"
+          reference: if any
+        id:
+          required: required 
+          description: Human readable id
+          reference: if any
+          usage: ESG-12345678
+        type:
+          required: required
+          description: Type of creds
+          reference: if any
+          usage: License
+        desc:
+          required: optional
+          description: Description of creds
+          reference: if any
+          usage: Export License No. ESG-12345678
+        url:
+          required: optional
+          description: Physical description
+          reference: if any
+          usage: https://abcd.cdn.com/images/license-img 
+      offers:
+        parent: true
+        offers: 
+          description: Offers can be defined for a provider. An offer can be - opt-in, auto-applied. An offer will include the following info - offer id, offer type, images - may be used as banners to promote the offer from a merchant. An offer applicability criteria can include one or more of the following - location(s), categories, item(s), time period validity.
+          required: optional
+          usage: "-"
+          reference: if any
+        id:
+          description: unique offer id from provider;
+          required: required
+          usage: 'FLAT150, DISCP60, DISCA150, BUY2GET3, FREEBIE'
+          reference: if any
+        descriptor:
+          description: description of the offer.
+          required: required
+          usage: '-'
+          reference: if any
+        descriptor.name:
+          description: description of the offer.
+          required: optional
+          usage: '60% off up to ₹120, for order value above ₹159'
+          reference: if any
+        descriptor.code:
+          description: offer type - disc_pct  (discount percent or amount applied to the cart value, with or without a cap, and may be based on minimum cart value) , disc_amt (flat discount amount applied to the cart value, and may be based on minimum cart value), buyXgetY ( for every "X" item count in the cart, total of "Y" items will be offered (i.e. "Y" - "X" additional items), at 0 additional value) , freebie (for a minimum order value, 1 or more free item(s) will be offered at 0 value)
+          required: required
+          usage: 'disc_pct'
+          reference: if any
+        descriptor.short_desc:
+          description: short description of the offer.
+          required: optional
+          usage: '60% off up to ₹120'
+          reference: if any
+        descriptor.long_desc:
+          description: long description of the offer.
+          required: optional
+          usage: 'for order value above ₹159'
+          reference: if any
+        descriptor.images:
+          description: banner image from seller
+          required: optional
+          usage: 'https://sellerNP.com/images/offer2-banner.png'
+          reference: if any
+        location_ids:
+          description: location ids of the stores where the offer is applicable.
+          required: required
+          usage: 'L1'
+          reference: if any
+        category_ids:
+          description: category ids for which the offer is applicable.
+          required: required
+          usage: 'SRV18-1001'
+          reference: if any
+        item_ids:
+          description: item ids for which the offer is applicable.
+          required: required
+          usage: 'I1'
+          reference: if any
+        time:
+          description: validity of the offer.
+          required: required
+          usage: '-'
+          reference: if any
+        time.label:
+          description: if the offer is valid
+          required: required
+          usage: 'valid'
+          reference: if any
+        time.range:
+          description: range of the validity of the offer
+          required: required
+          usage: '-'
+          reference: if any
+        tags:
+          description: Tags can be utilized to specify the minimum order value, discount value, and other metadata related to the offer and its application. 
+          required: required
+          usage: '-'
+          reference: if any
+      fulfillments:
+        contact:
+          phone:
+            description: contact number of the auction provider
+            required: optional
+            usage: "9886098860"
+            reference: if any
+          email:
+            description: email of the auction provider
+            required: optional
+            usage: "abc@xyz.com"
+            reference: if any
+      items:
+        parent: true
+        items:
+          description: Commodity details for auction
+          required: required
+          usage: "-"
+          reference: if any
+        id:
+          description: Item id
+          required: required
+          usage: "I1"
+          reference: if any
+        descriptor:
+          name:
+            description: name of the equipment provided by the auction provider
+            required: required
+            usage: "Tractor"
+            reference: if any
+          short_desc:
+            description: short description of the equipment provided by the auction provider
+            required: required
+            usage: "Mahindra YUVRAJ 215 NXT NT Tractor"
+            reference: if any
+          long_desc:
+            description: long description of the equipment provided by the auction provider
+            required: required
+            usage: "The Mahindra YUVRAJ 215 NXT NT Tractor is a powerful and efficient tractor"
+            reference: if any
+          images:
+            description: images of the equipment provided by the auction provider
+            required: optional
+            usage: "-"
+            reference: if any
+          media:
+            description: video of the equipment provided by the auction provider
+            required: optional
+            usage: "-"
+            reference: if any
+        creator:
+          descriptor.name:
+            description: Any Marketer if (applicable)
+            required: optional
+            usage: "Any Marketer if (applicable)"
+            reference: if any
+          descriptor.contact:
+            description: contact deatils of creator
+            required: optional
+            usage: "-"
+            reference: if any
+        price:
+          value:
+            description: The price of the commodity per unit applicable for auction for example ₹300 per lot.
+            required: required
+            usage: "300"
+            reference: if any
+          currency:
+            description: currency of the price value
+            required: required
+            usage: "INR"
+            reference: if any 
+        quantity:
+          unitized:
+            measure:
+              unit:
+                description: unit of the lot size of commodity
+                required: required
+                usage: "kg"
+                reference: if any
+              value:
+                description: actual weight/quantity/size of the commodity 
+                required: required
+                usage: "5000"
+                reference: if any
+          minimum:
+            measure:
+              unit:
+                description: unit of the commodity
+                required: required
+                usage: "kg"
+                reference: if any
+              value:
+                description: commodity unit size/weight
+                required: required
+                usage: "50"
+                reference: if any
+            count:
+                description: minimum quantity need to select for bid
+                required: required
+                usage: "100"
+                reference: if any
+          available:
+            measure:
+              unit:
+                description: unit of the commodity
+                required: required
+                usage: "kg"
+                reference: if any
+              value:
+                description: commodity unit size/weight 
+                required: required
+                usage: "50"
+                reference: if any
+            count:
+                description: quantity available for bid
+                required: required
+                usage: "100"
+                reference: if any
+        category_ids:
+          description: category id of the auction provided by the auction provider which was sent in /search call
+          required: required
+          usage: "SRV18-1001"
+          reference: if any
+        location_ids:
+          description: location ids of the auction provider
+          required: required
+          usage: "L1"
+          reference: if any
+        payment_ids:
+          description: payment ids of the auction provider
+          required: required
+          usage: "PY1"
+          reference: if any
+        time:
+          range:
+            start:
+              description: availability start date of the auction provider
+              required: required
+              usage: "2024-06-10T00:00:00.000Z"
+              reference: if any
+            end:
+              description: availability end date of the auction provider
+              required: required
+              usage: "2024-06-20T00:00:00.000Z"
+              reference: if any
+        cancellation_terms:
+          fulfillment_state:
+            descriptor:
+              code: 
+                description: fulfilment state code for cancellation terms
+                required: required
+                usage: "optional"
+                reference: if any
+          cancellation_fee:
+            percentage:
+              description: value that need to pay in case of cancelation as percentage for example 10%, it can be percentage of the order amount or any fixed amount as well, so in example if defined percentage = 10 then 10% of order amount need to pay but if defined amount = { currency = INR, value = 200 } then ₹200 need to pay as cancellation fee
+              required: optional
+              usage: "0"
+              reference: if any
+            amount:
+              description: fixed amount need to pay as cancellation fee for example ₹200
+              required: required
+              usage: "200"
+              reference: if any
+        tags: 
+          descriptor:
+            code: 
+              description: Required property need to add SERVICE_INFORMATION (Required), QUALITY_ASSESSMENT_REPORT (Optional), COMMODITY_SPECIFICATION (Required) and AUCTION_SPECIFICATION (Required), for detailed child key please refer tags section which have all child tags with required descriptions
+              required: required
+              usage: '-'
+              reference: if any 
+      tags: 
+        descriptor:
+          code: 
+            description: Details of seller_terms (any gst term), seller_id (like mmandi licence) and FSSAI_LICENSE_NO (fssai license details).
+            required: required
+            usage: '-'
+            reference: if any 

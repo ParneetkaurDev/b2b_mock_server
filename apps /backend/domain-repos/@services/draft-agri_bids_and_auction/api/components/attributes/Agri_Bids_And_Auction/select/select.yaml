@@ -1,0 +1,82 @@
+message:
+  parent: true
+  order:
+    parent: true
+    provider:
+      parent: true
+      id:
+        description: id of the provider chosen for the auction
+        required: required
+        usage: "P1"
+        reference: if any
+      locations:
+        - id:
+            description: location id of the provider
+            required: required
+            usage: "L1"
+            reference: if any
+    items:
+      parent: true
+      id:
+        description: item id i.e. the id of the auction
+        required: required
+        usage: "I1"
+        reference: if any
+      location_ids:
+        description: location ids related to the item
+        required: required
+        usage: "[L1]"
+        reference: if any
+      category_ids:
+        description: category ids related to the item
+        required: required
+        usage: "[SRV18-1001]"
+        reference: if any
+      quantity:
+        selected:
+          count:
+            description: number of items selected for bid
+            required: required
+            usage: "1"
+            reference: if any
+      tags:
+        description: tags associated with the item like auction details and commodity details which you have selected for bid
+        required: optional
+        usage: "[{\"descriptor\":{\"code\":\"COMMODITY_SPECIFICATION\"},\"list\":[{\"descriptor\":{\"code\":\"SHELF_LIFE\"},\"value\":\"P10M\"},{\"descriptor\":{\"code\":\"MOISTURE\"},\"value\":\"10%\"},{\"descriptor\":{\"code\":\"OIL_CONTENT\"},\"value\":\"2%\"},{\"descriptor\":{\"code\":\"DEFECTIVES\"},\"value\":\"7%\"}]}]"
+        reference: if any
+    fulfillments:
+      parent: true
+      fulfillments:
+        description: contains the fulfillment details
+        required: required
+        usage: "-"
+        reference: if any
+      stops:
+        time:
+          days:
+            description: day on which the auction needs to be provided
+            required: required
+            usage: "16"
+            reference: if any
+          range:
+            start:
+              description: start time of the time slot chosen for the auction
+              required: required
+              usage: "2024-06-10T09:30:00Z"
+              reference: if any
+        location:
+          gps:
+            description: GPS coordinates of the location
+            required: required
+            usage: "12.974002,77.613458"
+            reference: if any
+          area_code:
+            description: area code of the location
+            required: required
+            usage: "560001"
+            reference: if any
+    payments:
+      description: payment details
+      required: required
+      usage: "[{\"type\":\"PRE-FULFILLMENT\"}]"
+      reference: if any

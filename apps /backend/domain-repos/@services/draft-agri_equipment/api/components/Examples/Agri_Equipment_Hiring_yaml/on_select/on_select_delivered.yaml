@@ -1,0 +1,145 @@
+value:
+  context:
+    domain: ONDC:SRV17
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: on_select
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/services
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/services
+    transaction_id: T1
+    message_id: M2
+    timestamp: '2024-06-10T22:00:31.000Z'
+    ttl: PT30S
+  message:
+    order:
+      provider:
+        id: P1
+      items:
+        - fulfillment_ids:
+            - F1
+          id: I1
+          location_ids:
+            - L1
+          quantity:
+            selected:
+              measure:
+                unit: hours
+                value: '4'
+          tags:
+            - descriptor:
+                code: ATTRIBUTE
+              list:
+                - descriptor:
+                    code: TYPE
+                  value: item
+      fulfillments:
+        - id: F1
+          type: Buyer-Fulfilled
+          tracking: false
+          state:
+            descriptor:
+              code: Serviceable
+          stops:
+            - type: start
+              location:
+                gps: 12.974002,77.613458
+                area_code: '560001'
+              time:
+                label: confirmed
+                range:
+                  start: '2024-06-09T22:00:00.000Z'
+                  end: '2024-06-10T02:00:00.000Z'
+            - type: end
+              location:
+                gps: 12.956399,77.636803
+              range:
+                start: '2024-06-09T22:00:00.000Z'
+                end: '2024-06-10T02:00:00.000Z'
+      quote:
+        price:
+          currency: INR
+          value: '7140'
+        breakup:
+          - title: Tractor
+            price:
+              currency: INR
+              value: '2000'
+            item:
+              id: I1
+              quantity:
+                selected:
+                  count: 4
+              price:
+                currency: INR
+                value: '500'
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: item
+          - title: refundable_security
+            price:
+              currency: INR
+              value: '5000'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: refundable_security
+          - title: tax
+            price:
+              currency: INR
+              value: '50'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: tax
+          - title: discount
+            price:
+              currency: INR
+              value: '10'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: discount
+          - title: delivery_charge
+            price:
+              currency: INR
+              value: '100'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: misc
+        ttl: P1D
+      payments:
+        - type: PRE-FULFILLMENT
+          collected_by: BAP
+        - type: ON-FULFILLMENT
+          collected_by: BAP

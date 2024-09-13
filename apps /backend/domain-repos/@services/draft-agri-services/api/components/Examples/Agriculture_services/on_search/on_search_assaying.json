@@ -1,0 +1,1883 @@
+{
+  "context": {
+    "domain": "ONDC:SRV14",
+    "location": {
+      "city": {
+        "code": "std:080"
+      },
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_search",
+    "version": "2.0.0",
+    "bap_id": "buyerapp.com",
+    "bap_uri": "https://buyerapp.com/ondc",
+    "bpp_id": "sellerapp.com",
+    "bpp_uri": "https://sellerapp.com/ondc",
+    "transaction_id": "T1",
+    "message_id": "M1",
+    "timestamp": "2024-04-01T22:00:30.000Z",
+    "ttl": "PT30S"
+  },
+  "message": {
+    "catalog": {
+      "fulfillments": [
+        {
+          "id": "1",
+          "type": "Buyer-Fulfilled"
+        },
+        {
+          "id": "2",
+          "type": "Seller-Fulfilled"
+        }
+      ],
+      "payments": [
+        {
+          "id": "1",
+          "type": "PRE-FULFILLMENT"
+        },
+        {
+          "id": "2",
+          "type": "ON-FULFILLMENT"
+        },
+        {
+          "id": "3",
+          "type": "POST-FULFILLMENT"
+        }
+      ],
+      "descriptor": {
+        "name": "ABC Agri Assaying Provider",
+        "short_desc": "Agri Assaying Provider",
+        "long_desc": "Agri Assaying Provider",
+        "images": [
+          {
+            "url": "https://abc.com/images/1-shop-img"
+          }
+        ]
+      },
+      "providers": [
+        {
+          "id": "P1",
+          "descriptor": {
+            "name": "ABC Assaying Provider store",
+            "code": "P001",
+            "short_desc": "ABC Assaying Provider store",
+            "long_desc": "ABC Assaying Provider store",
+            "images": [
+              {
+                "url": "https://abc.com/images/1-shop-img"
+              }
+            ]
+          },
+          "rating": "4.2",
+          "ttl": "PT1D",
+          "locations": [
+            {
+              "id": "L1",
+              "gps": "12.956399,77.636803",
+              "address": "Jayanagar 4th Block",
+              "city": {
+                "code": "std:080",
+                "name": "Bengaluru"
+              },
+              "state": {
+                "code": "KA"
+              },
+              "country": {
+                "code": "IND"
+              },
+              "area_code": "560076"
+            }
+          ],
+          "creds": [
+            {
+              "id": "GHP-12345678",
+              "type": "Certificate",
+              "desc": "Good Hygienic Practices (GHP)",
+              "url": "https://abcd.cdn.com/images/bage-img"
+            }
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "serviceability"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "location"
+                  },
+                  "value": "L1"
+                },
+                {
+                  "descriptor": {
+                    "code": "category"
+                  },
+                  "value": "SRV14-*"
+                },
+                {
+                  "descriptor": {
+                    "code": "type"
+                  },
+                  "value": "13"
+                },
+                {
+                  "descriptor": {
+                    "code": "val"
+                  },
+                  "value": "{\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\", \"properties\": {}, \"geometry\": {\"coordinates\": [[[77.175571, 28.675927], [77.128737, 28.600972], [77.446934, 28.545325], [77.175571, 28.675927]]], \"type\": \"Polygon\"}}]}"
+                },
+                {
+                  "descriptor": {
+                    "code": "unit"
+                  },
+                  "value": "geojson"
+                }
+              ]
+            }
+          ],
+          "categories": [
+            {
+              "id": "C1",
+              "descriptor": {
+                "name": "Tradabale Parameters",
+                "code": "TRADABLE_PARAMETERS"
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "SELECTION"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "SEQ"
+                      },
+                      "value": "1"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY_SELECTION"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MIN_SELECTION"
+                      },
+                      "value": "1"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MAX_SELECTION"
+                      },
+                      "value": "9"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "id": "I1",
+              "descriptor": {
+                "name": "Quality testing for Arhar Whole",
+                "short_desc": "Assaying service for Arhar Whole",
+                "long_desc": "Assaying service for Arhar Whole",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  },
+                  {
+                    "mimetype": "application/pdf",
+                    "url": "https://abc.com/add-info.pdf"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "100.00",
+                "minimum_value": "100.00"
+              },
+              "category_ids": ["SRV14-xxxx"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "PENDING"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "0.00"
+                  }
+                },
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "IN_TRANSIT"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "10.00"
+                  }
+                }
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "SERVICE_INFORMATION"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "ACCURACY"
+                      },
+                      "value": "90%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "PICKUP_TAT"
+                      },
+                      "value": "PT2D"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "COMPLETION_TAT"
+                      },
+                      "value": "PT1D"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "RESCHEDULE_TERMS"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "FULFILLMENT_STATE"
+                      },
+                      "value": "Pending"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "RESCHEDULE_ELIGIBLE"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "RESCHEDULE_FEE"
+                      },
+                      "value": "0.00"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "RESCHEDULE_WITHIN"
+                      },
+                      "value": "PT1D"
+                    }
+                  ]
+                }
+              ],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-04-01T00:00:00.000Z",
+                  "end": "2024-04-10T00:00:00.000Z"
+                },
+                "days": "01,02,03,04,05",
+                "schedule": {
+                  "frequency": "PT1H",
+                  "holidays": ["2024-04-09", "2024-04-07"],
+                  "times": [
+                    "2024-04-04T22:00:00.000Z",
+                    "2024-04-06T22:00:00.000Z",
+                    "2024-04-08T22:00:00.000Z",
+                    "2024-04-10T22:00:00.000Z"
+                  ]
+                }
+              },
+              "matched": true,
+              "recommended": true
+            },
+            {
+              "id": "I1C1",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Moisture",
+                "code": "MOISTURE",
+                "short_desc": "Moisture Testing",
+                "long_desc": "Moisture Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C2",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Foreign Matter",
+                "code": "FOREIGN_MATTER",
+                "short_desc": "Foreign Matter Testing",
+                "long_desc": "Foreign Matter Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C3",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Other Edible Grains",
+                "code": "OTHER_EDIBLE_GRAINS",
+                "short_desc": "Other Edible Grains Testing",
+                "long_desc": "Other Edible Grains Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C4",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Damaged Grains",
+                "code": "DAMAGED_GRAINS",
+                "short_desc": "Other Edible Grains Testing",
+                "long_desc": "Other Edible Grains Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C5",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Weevilled Grains",
+                "code": "WEEVILLED_GRAINS",
+                "short_desc": "Weevilled Grains Testing",
+                "long_desc": "Weevilled Grains Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C6",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Admixture",
+                "code": "ADMIXTURE",
+                "short_desc": "Admixture Testing",
+                "long_desc": "Admixture Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C7",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Immature & Shriveled",
+                "code": "IMMATURE_AND_SHRIVELED",
+                "short_desc": "Immature & Shriveled Testing",
+                "long_desc": "Immature & Shriveled Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C8",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Uric Acid",
+                "code": "URIC_ACID",
+                "short_desc": "Uric Acid Testing",
+                "long_desc": "Uric Acid Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "false"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "false"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C9",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Alfatoxin",
+                "code": "ALFATOXIN",
+                "short_desc": "Alfatoxin Testing",
+                "long_desc": "Alfatoxin Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "false"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "false"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "offers": [
+            {
+              "id": "offer-1",
+              "descriptor": {
+                "name": "",
+                "code": "FREEBIE",
+                "short_desc": "Additional Tests",
+                "long_desc": "Additional Tests",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ]
+              },
+              "location_ids": [],
+              "category_ids": [],
+              "item_ids": ["I1"],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-04-01T00:00:00.000Z",
+                  "end": "2024-04-10T00:00:00.000Z"
+                },
+                "days": "04,05"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "contact": {
+                "phone": "9886098860",
+                "email": "abc@xyz.com"
+              }
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "descriptor": {
+            "name": "XYZ Assaying Service",
+            "code": "P002",
+            "short_desc": "XYZ Assaying Service",
+            "long_desc": "XYZ Assaying Service",
+            "images": [
+              {
+                "url": "https://xyz.com/images/1-shop-img"
+              }
+            ]
+          },
+          "rating": "4.2",
+          "ttl": "PT1D",
+          "locations": [
+            {
+              "id": "L2",
+              "gps": "12.956399,77.636803",
+              "address": "Jayanagar 5th Block",
+              "city": {
+                "code": "std:080",
+                "name": "Bengaluru"
+              },
+              "state": {
+                "code": "KA"
+              },
+              "country": {
+                "code": "IND"
+              },
+              "area_code": "560076"
+            }
+          ],
+          "creds": [
+            {
+              "id": "GHP-12345678",
+              "type": "Certificate",
+              "desc": "Good Hygienic Practices (GHP)",
+              "url": "https://abcd.cdn.com/images/bage-img"
+            }
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "serviceability"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "location"
+                  },
+                  "value": "L2"
+                },
+                {
+                  "descriptor": {
+                    "code": "category"
+                  },
+                  "value": "SRV14-*"
+                },
+                {
+                  "descriptor": {
+                    "code": "type"
+                  },
+                  "value": "13"
+                },
+                {
+                  "descriptor": {
+                    "code": "val"
+                  },
+                  "value": "{\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\", \"properties\": {}, \"geometry\": {\"coordinates\": [[[77.175571, 28.675927], [77.128737, 28.600972], [77.446934, 28.545325], [77.175571, 28.675927]]], \"type\": \"Polygon\"}}]}"
+                },
+                {
+                  "descriptor": {
+                    "code": "unit"
+                  },
+                  "value": "geojson"
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "id": "I1",
+              "descriptor": {
+                "name": "Quality testing for Arhar Whole",
+                "short_desc": "Assaying service for Arhar Whole",
+                "long_desc": "Assaying service for Arhar Whole",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  },
+                  {
+                    "mimetype": "application/pdf",
+                    "url": "https://abc.com/add-info.pdf"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "100.00",
+                "minimum_value": "100.00"
+              },
+              "category_ids": ["SRV14-xxxx"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "PENDING"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "0.00"
+                  }
+                },
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "IN_TRANSIT"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "10.00"
+                  }
+                }
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "SERVICE_INFORMATION"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "ACCURACY"
+                      },
+                      "value": "90%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "PICKUP_TAT"
+                      },
+                      "value": "PT2D"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "COMPLETION_TAT"
+                      },
+                      "value": "PT1D"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "RESCHEDULE_TERMS"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "FULFILLMENT_STATE"
+                      },
+                      "value": "Pending"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "RESCHEDULE_ELIGIBLE"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "RESCHEDULE_FEE"
+                      },
+                      "value": "0.00"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "RESCHEDULE_WITHIN"
+                      },
+                      "value": "PT1D"
+                    }
+                  ]
+                }
+              ],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-04-01T00:00:00.000Z",
+                  "end": "2024-04-10T00:00:00.000Z"
+                },
+                "days": "01,02,03,04,05",
+                "schedule": {
+                  "frequency": "PT1H",
+                  "holidays": ["2024-04-09", "2024-04-07"],
+                  "times": [
+                    "2024-04-04T22:00:00.000Z",
+                    "2024-04-06T22:00:00.000Z",
+                    "2024-04-08T22:00:00.000Z",
+                    "2024-04-10T22:00:00.000Z"
+                  ]
+                }
+              },
+              "matched": true,
+              "recommended": true
+            },
+            {
+              "id": "I1C1",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Moisture",
+                "code": "MOISTURE",
+                "short_desc": "Moisture Testing",
+                "long_desc": "Moisture Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C2",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Foreign Matter",
+                "code": "FOREIGN_MATTER",
+                "short_desc": "Foreign Matter Testing",
+                "long_desc": "Foreign Matter Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C3",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Other Edible Grains",
+                "code": "OTHER_EDIBLE_GRAINS",
+                "short_desc": "Other Edible Grains Testing",
+                "long_desc": "Other Edible Grains Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C4",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Damaged Grains",
+                "code": "DAMAGED_GRAINS",
+                "short_desc": "Other Edible Grains Testing",
+                "long_desc": "Other Edible Grains Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C5",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Weevilled Grains",
+                "code": "WEEVILLED_GRAINS",
+                "short_desc": "Weevilled Grains Testing",
+                "long_desc": "Weevilled Grains Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C6",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Admixture",
+                "code": "ADMIXTURE",
+                "short_desc": "Admixture Testing",
+                "long_desc": "Admixture Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "true"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C7",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Immature & Shriveled",
+                "code": "IMMATURE_AND_SHRIVELED",
+                "short_desc": "Immature & Shriveled Testing",
+                "long_desc": "Immature & Shriveled Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "false"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C8",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Uric Acid",
+                "code": "URIC_ACID",
+                "short_desc": "Uric Acid Testing",
+                "long_desc": "Uric Acid Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "false"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "false"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "I1C9",
+              "parent_item_id": "I1",
+              "descriptor": {
+                "name": "Alfatoxin",
+                "code": "ALFATOXIN",
+                "short_desc": "Alfatoxin Testing",
+                "long_desc": "Alfatoxin Testing",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "200.00",
+                "minimum_value": "200.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "parameter",
+                    "value": "1"
+                  }
+                },
+                "minimum": {
+                  "value": "1"
+                },
+                "maximum": {
+                  "value": "1"
+                }
+              },
+              "category_ids": ["C1"],
+              "fulfillment_ids": ["1"],
+              "location_ids": ["L1"],
+              "payment_ids": ["1"],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTE"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "TYPE"
+                      },
+                      "value": "customization"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MANDATORY"
+                      },
+                      "value": "false"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AUTO_SELECTED"
+                      },
+                      "value": "false"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "offers": [
+            {
+              "id": "offer-1",
+              "descriptor": {
+                "name": "",
+                "code": "FREEBIE",
+                "short_desc": "Additional Tests",
+                "long_desc": "Additional Tests",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ]
+              },
+              "location_ids": [],
+              "category_ids": [],
+              "item_ids": ["I2"],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-04-01T00:00:00.000Z",
+                  "end": "2024-04-10T00:00:00.000Z"
+                },
+                "days": "04,05"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "contact": {
+                "phone": "9886098860",
+                "email": "abc@xyz.com"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

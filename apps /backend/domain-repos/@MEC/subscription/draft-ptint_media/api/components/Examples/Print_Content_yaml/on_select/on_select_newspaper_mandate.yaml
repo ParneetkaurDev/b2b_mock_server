@@ -1,0 +1,109 @@
+summary: ''
+description: ''
+value:
+  context:
+    domain: ONDC:MEC10
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: on_select
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/services
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/services
+    transaction_id: T1
+    message_id: M2
+    timestamp: '2024-04-01T22:00:31.000Z'
+    ttl: PT30S
+  message:
+    order:
+      provider:
+        id: P1
+      items:
+        - id: I1
+          fulfillment_ids:
+            - F3
+      fulfillments:
+        - id: FI1
+          type: SUBSCRIPTION
+          stops:
+            - type: start
+              time:
+                label: confirmed
+                range:
+                  start: '2024-04-04T09:30:00.000Z'
+                  end: '2024-06-04T10:30:00.000Z'
+              duration: P8W
+              schedule:
+                frequency: P1W
+          tags:
+            - descriptor:
+                code: INFO
+              list:
+                - descriptor:
+                    code: PARENT_ID
+                  value: F1
+      quote:
+        price:
+          currency: INR
+          value: '1592'
+        breakup:
+          - title: India Today Newspaper
+            price:
+              currency: INR
+              value: '199'
+            item:
+              id: I1
+              quantity:
+                selected:
+                  count: 1
+              price:
+                currency: INR
+                value: '199'
+              fulfillment_ids:
+                - FII
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: item
+        ttl: P1D
+      payments:
+        - id: PG1
+          collected_by: BPP
+          type: PRE_FULFILLMENT
+          tags:
+            - descriptor:
+                name: Payment Method
+                code: PAYMENT_METHOD
+              list:
+                - descriptor:
+                    code: MODE
+                  value: MANDATE_REGISTRATION
+        - id: PG2
+          collected_by: bpp
+          type: PRE_FULFILLMENT
+          tags:
+            - descriptor:
+                name: Payment Method
+                code: PAYMENT_METHOD
+              list:
+                - descriptor:
+                    code: MODE
+                  value: MANUAL_EMI
+        - id: PG3
+          collected_by: bpp
+          type: PRE_FULFILLMENT
+          tags:
+            - descriptor:
+                name: Payment Method
+                code: PAYMENT_METHOD
+              list:
+                - descriptor:
+                    code: MODE
+                  value: FULL_PAYMENT

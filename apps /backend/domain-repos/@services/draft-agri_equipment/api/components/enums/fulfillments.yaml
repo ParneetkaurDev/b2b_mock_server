@@ -1,0 +1,23 @@
+fulfillments:
+  type:
+    - code: Seller-Fulfilled
+      description: Seller will deliver the equipement
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Buyer-Fulfilled
+      description: Buyer will pickup the equipement
+      reference: <PR/Issue/Discussion Links md format text>
+  state:
+    descriptor:
+      code:
+        - code: PENDING
+          description: When the fulfillment is still in pending state
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: IN_TRANSIT
+          description: When the agent has left for picking up
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: AT_LOCATION
+          description: When the agent is at the location with equipment
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: COMPLETED
+          description: When equipement task is completed
+          reference: <PR/Issue/Discussion Links md format text>

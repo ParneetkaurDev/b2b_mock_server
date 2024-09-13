@@ -1,0 +1,215 @@
+title:
+  - code: type
+    description: Depending upon the context, it can take the value of the discount, tax, misc, refundable security or item type value. (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+Payment_Details:
+  - code: Reason
+    description: Reason for payment request, check the possible enum from enum list (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+Settlement_Details:
+  - code: Counterparty
+    description: Counterparty involved; Can be BAP/BPP (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Mode
+    description: Mode of Payment. E.g. UPI, NEFT, RTGS (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Beneficiary_Name
+    description: Description of the Tag (Required in case of neft and rtgs)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Bank_Account_No
+    description: Bank Account of the counterpart (Required in case of neft and rtgs)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Ifsc_Code
+    description: IFSC Code for the Bank Account of the Counter party (Required in case of neft and rtgs)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_Address
+    description: Description of the Tag (Required in case of UPI mode)
+    reference: <PR/Issue/Discussion Links md format text>
+Buyer_Finder_Fee:
+  - code: FINDER_FEE_TYPE
+    description: Type of the finder fee. eg. "percent" (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FINDER_FEE_AMOUNT
+    description: Amount for the finder fee (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+schedule:
+  - code: ttl
+    description: ISO8601 type format for time to live of the fulfillment (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+serviceability:
+  - code: location
+    description: Location id (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: category
+    description: Category id for equipment (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: type
+    description: Serviceability type id (10 - hyperlocal, 11 - intercity, 12 - pan india, 13 - polygon) (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: val
+    description: Serviceability type values like radius, pincode or poligon co-ordinates (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: unit
+    description: Unit of serviceability type values like KM, geojson (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+qualifier:
+  - code: min_value
+    description: Minimum value which offer can apply (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+benefit:
+  - code: item_count
+    description: Benefit equipment count which offer can avail (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: item_id
+    description: Equipment id which offer can avail (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: item_value
+    description: Equipment Value which can avail (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+meta:
+  - code: additive
+    description: Offer additive (i.e yes, no) (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: auto
+    description: Offer auto applied (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+attributes:
+  - code: color
+    description: Hex Code for color (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+BAP_TERMS:
+  - code: FINDER_FEE_TYPE
+    description: Type of the finder fee. eg. "percent" (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FINDER_FEE_AMOUNT
+    description: Amount for the finder fee (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+SELECTION:
+  - code: SEQ
+    description: Sequence of the category (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MANDATORY_SELECTION
+    description: Whether it is a mandatory selection (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MIN_SELECTION
+    description: Number of minimum selections allowed for this category (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MAX_SELECTION
+    description: Number of maximum selections allowed for this category (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+SERVICE_INFORMATION:
+  - code: PICKUP_TAT
+    description: TAT for picking up the sample, only required if Seller-Fulfilled (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+ADDITIONAL_CHARGES:
+  - code: CURRENCY_UNIT
+    description: Currency of the aditional charges that may apply on item (Required in case of amount have in tags)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: REFUNDABLE_SECURITY
+    description: Refundable security amount that may applicable on item (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SURCHARGES
+    description: Applicable charges if buyer use the equipment for extra time (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SURCHARGES_FREQUENCY
+    description: Frequency how the surcharges going to apply on item like hourly, daily or weekly (Required if SURCHARGES selected)
+    reference: <PR/Issue/Discussion Links md format text>
+RESCHEDULE_TERMS:
+  - code: FULFILLMENT_STATE
+    description: Describing the fulfilment state for which reschdule will be applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_ELIGIBLE
+    description: Whether reschedule is available at this fulfillment state (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_FEE_TYPE
+    description: Fees type (i.e. percent, amount) that will be charged if rescheduled at this fulfillment state (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_FEE
+    description: Fees that will be charged if rescheduled at this fulfillment state (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_WITHIN
+    description: Time within which it should be rescheduled after the fulfilment has been changed (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+INSURANCE:
+  - code: INSURANCE_ID
+    description: Insurance  Id for equipment uses if applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: INSURANCE_MIME_TYPE
+    description: Insurance  mime type for equipment uses if applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: INSURANCE_COPY
+    description: Insurance  copy for equipment uses if applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+CHECKLIST_DOCUMENTS:
+  - code: TERMS_AND_CONDITION
+    description: Terms and condition for equipment uses if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: LEASE_POLICY
+    description: Lease policy for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: AGREEMENT_POLICY
+    description: Agreement policy for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ID_VERIFICATION_POLICY
+    description: Id verification policy for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: INSPECTION_REQUIREMENTS
+    description: Inspection requirements for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: OBLIGATIONS
+    description: Obligations for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TERMS_OF_USAGE
+    description: Terms of uses for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+EQUIPMENT_ATTRIBUTES:
+  - code: ALIAS
+    description: Item alias name or alternate name (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TYPE
+    description: Type of the item, mandatory only when the item is a customization (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: CONDITION
+    description: Equipment condition (it can be rating like 5) if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: OWNERSHIP
+    description: Ownership status for the equipment (1st owner, 2nd owner) if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RUNNING_HOURS
+    description: Running hours status for the equipment (Ex - 500) if applicable  (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RUNNING_HOURS
+    description: Running hours status for the equipment (500 hours) if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MODEL_YEAR
+    description: Equipment model year if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MODEL
+    description: Equipment model if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BRAND
+    description: Equipment brand name if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MISCELLANEOUS_INFO
+    description: Equipment miscellaneous value like airbag, bluetooth if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+SETTLEMENT_DETAILS:
+  - code: COUNTERPARTY
+    description: The counterparty to which the settlement needs to be done - BAP/BPP (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MODE
+    description: The settlement mode - RTGS, NEFT, UPI (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BENEFICIARY_NAME
+    description: Name of the beneficiary (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BANK_ACCOUNT_NO
+    description: Account number of the settlement party (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: IFSC_CODE
+    description: IFSC code of the bank (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_ADDRESS
+    description: UPI address where the settlement needs to be done (Required in case of UPI mode)
+    reference: <PR/Issue/Discussion Links md format text>
+

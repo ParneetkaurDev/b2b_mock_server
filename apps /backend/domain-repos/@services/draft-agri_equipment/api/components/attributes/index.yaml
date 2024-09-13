@@ -1,0 +1,4 @@
+Equipment Hiring Services:
+  attribute_set:
+    $ref: "./Agri_Equipment_Hiring/index.yaml"
+

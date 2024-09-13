@@ -1,0 +1,7 @@
+category_ids:
+  - code: MEC10-1001
+    description: Magazines
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MEC10-1002
+    description: Newspaper & Books
+    reference: <PR/Issue/Discussion Links md format text>

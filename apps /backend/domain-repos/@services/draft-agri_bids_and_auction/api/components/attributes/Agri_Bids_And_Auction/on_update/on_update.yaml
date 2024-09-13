@@ -1,0 +1,185 @@
+message:
+  parent: true
+  order:
+    parent: true
+    id:
+      description: Order ID
+      required: mandatory
+      usage: "O1"
+      reference: if any
+    status:
+      description: Status of the order
+      required: mandatory
+      usage: "In-Progress"
+      reference: if any
+    provider:
+      parent: true
+      id:
+        description: Provider ID
+        required: mandatory
+        usage: "P1"
+        reference: if any
+    items:
+      parent: true
+      id:
+        description: Item ID
+        required: mandatory
+        usage: "I1"
+        reference: if any
+      quantity:
+        unitized:
+          measure:
+            unit:
+              description: Unit of measure
+              required: mandatory
+              usage: "hours"
+              reference: if any
+            value:
+              description: Value of measure
+              required: mandatory
+              usage: "4"
+              reference: if any
+      payment_ids:
+        description: Payment IDs
+        required: mandatory
+        usage: "PY2"
+        reference: if any
+    payments:
+      parent: true
+      id:
+        description: Payment ID
+        required: mandatory
+        usage: "PY1"
+        reference: if any
+      collected_by:
+        description: Collected by
+        required: mandatory
+        usage: "BAP"
+        reference: if any
+      url:
+        description: Payment url to take payment 
+        required: optional
+        usage: https://abc.com/take_payment
+        reference: if any
+      params:
+        amount:
+          description: Payment amount
+          required: mandatory
+          usage: "7140"
+          reference: if any
+        currency:
+          description: Payment currency
+          required: mandatory
+          usage: "INR"
+          reference: if any
+        bank_account_number:
+          description: Bank account number
+          required: mandatory
+          usage: "xxxxxxxx"
+          reference: if any
+        virtual_payment_address:
+          description: Virtual payment address
+          required: mandatory
+          usage: "xxx@xxxx"
+          reference: if any
+      status:
+        description: Payment status
+        required: mandatory
+        usage: "PAID"
+        reference: if any
+      type:
+        description: Payment type
+        required: mandatory
+        usage: "PRE-FULFILLMENT"
+        reference: if any
+      tags:
+        descriptor:
+          code:
+            description: Tag descriptor code
+            required: mandatory
+            usage: "Settlement_Details"
+            reference: if any
+        list:
+          descriptor:
+            code:
+              description: List descriptor code
+              required: mandatory
+              usage: "Counterparty"
+              reference: if any
+            value:
+              description: List descriptor value
+              required: mandatory
+              usage: "BPP"
+              reference: if any
+    fulfillments:
+      parent: true
+      fulfillments:
+        id:
+          description: Fulfillment ID
+          required: mandatory
+          usage: "F1"
+          reference: if any
+        state:
+          descriptor:
+            code:
+              description: State descriptor code
+              required: mandatory
+              usage: "Placed"
+              reference: if any
+        stops:
+          type:
+            description: Type of the fulfillment stop
+            required: mandatory
+            usage: "start"
+            reference: if any
+          location:
+            id:
+              description: Location ID
+              required: mandatory
+              usage: "L1"
+              reference: if any
+            descriptor:
+              name:
+                description: Location name
+                required: mandatory
+                usage: "Equipment Provider store"
+                reference: if any
+            gps:
+              description: GPS coordinates
+              required: mandatory
+              usage: "12.956399,77.636803"
+              reference: if any
+          time:
+            range:
+              start:
+                description: Start time
+                required: mandatory
+                usage: "2024-06-09T22:00:00.000Z"
+                reference: if any
+              end:
+                description: End time
+                required: mandatory
+                usage: "2024-06-10T02:00:00.000Z"
+                reference: if any
+          contact:
+            phone:
+              description: Contact phone number
+              required: optional
+              usage: "9886098860"
+              reference: if any
+            email:
+              description: Contact email
+              required: optional
+              usage: "nobody@nomail.com"
+              reference: if any
+          person:
+            name:
+              description: Contact person name
+              required: optional
+              usage: "Kishan"
+              reference: if any
+        rateable:
+          description: Is rateable
+          required: mandatory
+          usage: true
+          reference: if any

@@ -1,0 +1,10 @@
+reason:
+  - code: "01"
+    description: The placed bid is no longer required.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: "02"
+    description: Your bid was not awarded due to a low bid price.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: "03"
+    description: Payment failure has resulted in you not being awarded bids.
+    reference: <PR/Issue/Discussion Links md format text>

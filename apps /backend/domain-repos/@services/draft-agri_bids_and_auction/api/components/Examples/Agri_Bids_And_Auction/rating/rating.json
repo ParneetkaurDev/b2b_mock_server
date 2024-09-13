@@ -1,0 +1,32 @@
+{
+    "context": {
+        "domain": "ONDC:SRV18",
+        "location": {
+            "city": {
+                "code": "std:080"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "rating",
+        "version": "2.0.0",
+        "bap_id": "buyerapp.com",
+        "bap_uri": "https://buyerapp.com/services",
+        "bpp_id": "sellerapp.com",
+        "bpp_uri": "https://sellerapp.com/services",
+        "transaction_id": "T1",
+        "message_id": "M7",
+        "timestamp": "2024-06-11T22:30:00.000Z",
+        "ttl": "P30S"
+    },
+    "message": {
+        "ratings": [
+            {
+                "rating_category": "Item",
+                "id": "I1",
+                "value": "4.4"
+            }
+        ]
+    }
+}

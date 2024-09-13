@@ -1,0 +1,14 @@
+breakup:
+  title:
+    - code: Weekly Magazine
+      description: Weekly Magazine
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: tax
+      description: tax
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: discount
+      description: discount
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: convenience_fee
+      description: convenience_fee
+      reference: <PR/Issue/Discussion Links md format text>

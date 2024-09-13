@@ -1,0 +1,45 @@
+value:
+  context:
+    domain: ONDC:SRV17
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: update
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/services
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/services
+    transaction_id: T1
+    message_id: M6
+    timestamp: '2024-06-10T22:01:20.000Z'
+    ttl: PT30S
+  message:
+    update_target: payment
+    order:
+      id: O1
+      fulfillments:
+        - id: F3
+          type: Cancel
+      payment:
+        tags:
+          - descriptor:
+              code: Refund_Settlement_Details
+            list:
+              - descriptor:
+                  code: Settlement_Counterparty
+                value: Buyer
+              - descriptor:
+                  code: Settlement_Phase
+                value: Refund
+              - descriptor:
+                  code: Settlement_Type
+                value: UPI
+              - descriptor:
+                  code: Settlement_Amount
+                value: '640'
+              - descriptor:
+                  code: Settlement_Timestamp
+                value: '2024-06-10T23:00:00.000Z'

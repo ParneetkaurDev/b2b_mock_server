@@ -1,0 +1,142 @@
+summary: ''
+description: ''
+value:
+  context:
+    domain: ONDC:MEC10
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: on_update
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/services
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/services
+    transaction_id: 65fe13c2-d306-4ef1-8c25-fa126c134b67
+    message_id: ea89883a-57ff-44de-87fa-66b07c8d25d9
+    timestamp: '2024-04-02T22:00:38.000Z'
+  message:
+    order:
+      id: O1
+      status: In-Progress
+      items:
+        - id: I1
+          fulfillment_ids:
+            - F3
+          quantity:
+            selected:
+              count: 1
+      payments:
+        - id: P1
+          collected_by: BPP
+          url: https://e-mandate-payment-gateway-url
+          params:
+            amount: '599'
+            currency: INR
+          status: PAID
+          type: PRE-FULFILLMENT
+          tags:
+            - descriptor:
+                code: SETTLEMENT_DETAILS
+              list:
+                - descriptor:
+                    code: COUNTERPARTY
+                  value: BAP
+                - descriptor:
+                    code: MODE
+                  value: UPI
+                - descriptor:
+                    code: BENEFICIARY_NAME
+                  value: xxxxx
+                - descriptor:
+                    code: BANK_ACCOUNT_NO
+                  value: xxxxx
+                - descriptor:
+                    code: IFSC_CODE
+                  value: xxxxxxx
+                - descriptor:
+                    code: UPI_ADDRESS
+                  value: xxxxxxx
+            - descriptor:
+                code: BUYER_FINDER_FEES
+              display: false
+              list:
+                - descriptor:
+                    code: BUYER_FINDER_FEE_TYPE
+                  value: percent
+                - descriptor:
+                    code: BUYER_FINDER_FEE_AMOUNT
+                  value: '0'
+        - id: P2
+          collected_by: BPP
+          url: https://e-mandate-payment-gateway-url/installment-2
+          params:
+            amount: '599'
+            currency: INR
+          status: PAID
+          type: PRE-FULFILLMENT
+      fulfillments:
+        - id: FI1
+          type: SUBSCRIPTION
+          state:
+            descriptor:
+              code: PENDING
+          stops:
+            - type: start
+              time:
+                label: confirmed
+                range:
+                  start: '2024-04-04T09:30:00.000Z'
+                  end: '2024-10-04T00:00:00.000Z'
+              duration: P6M
+              schedule:
+                frequency: P1M
+          tags:
+            - descriptor:
+                code: INFO
+              list:
+                - descriptor:
+                    code: PARENT_ID
+                  value: F1
+      quote:
+        price:
+          currency: INR
+          value: '3094'
+        breakup:
+          - title: Basic Membership
+            price:
+              currency: INR
+              value: '2994'
+            item:
+              id: I1
+              quantity:
+                selected:
+                  count: 1
+              price:
+                currency: INR
+                value: '499'
+              fulfillment_ids:
+                - FII
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: item
+          - title: tax
+            price:
+              currency: INR
+              value: '100'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: tax
+        ttl: P1D

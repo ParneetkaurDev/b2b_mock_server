@@ -1,0 +1,20 @@
+fulfillments:
+  type:
+    - code: Buyer-Fulfilled
+      description: Buyer will pickup the commodity
+      reference: <PR/Issue/Discussion Links md format text>
+  state:
+    descriptor:
+      code:
+        - code: Placed
+          description: When the bids fulfillment is Placed
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: Awarded
+          description: When the bids is awarded to winner
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: Not-Awarded
+          description: When buyer is not the highest winner
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: Cancelled
+          description: When bids is cancelled
+          reference: <PR/Issue/Discussion Links md format text>

@@ -1,0 +1,109 @@
+summary: Agricultural product - Bids and Auction for a Commodity (Pull and Push catalogs)
+description: The following is an illustrative flow to perform a transaction of a nature where a buyer would like to bids for agricultural commodity. Buyer can pull the current bids state for the changed catalog and seller can push (send) all the catalog which bids prices are modified.
+details:
+
+  - description: Sequence Diagram for Bids and Auction
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA1 as SellerApp1
+        participant SA2 as SellerApp2
+        
+        Note Over B,SA: **SEARCH FLOW**
+        B ->> BA: Buyer initiates an exploratory search for Bids and Auctions.
+        BA ->> G: **/search** - Search by city for a commodity and <br>additional parameters
+        Note left of BA: Additional params include: <br><br>
+        G ->> SA1: **/search** - Commodity bids request broadcasted based <br>on city and domain in context
+        G ->> SA2: **/search** - Commodity bids request broadcasted based <br>on city and domain in context
+        SA1 ->> BA: **/on_search** - Seller responds with /on_search, providing available auctions <br> with their details, including floor price, Start/End Time, Bid Increment
+        SA2 ->> BA: **/on_search** - Seller responds with /on_search, providing available auctions <br> with their details, including floor price, Start/End Time, Bid Increment
+        Note Over BA,SA1: Buyer now has the option to choose the <br>Commodity bids from either Seller 1 or Seller 2 or both
+        BA ->> B: Shows all the avilable bids <br>options from sellers
+
+  - description: Pull the catalogs by buyer app
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA1 as SellerApp1
+        participant SA2 as SellerApp2
+        
+        Note Over B,SA: **SEARCH FLOW**
+        B ->> BA: Buyer initiates an exploratory search for Bids and Auctions with incremental pull request
+        BA ->> G: **/search** - Search by city for a commodity <br> for modified calelogs
+        Note left of BA: Additional params include: <br><br>
+        G ->> SA1: **/search** - Commodity bids request broadcasted based <br>on city and domain in context
+        G ->> SA2: **/search** - Commodity bids request broadcasted based <br>on city and domain in context
+        SA1 ->> BA: **/on_search** - Seller responds with /on_search, providing available auctions <br> with changed details, including floor price, Start/End Time, Bid Increment
+        SA2 ->> BA: **/on_search** - Seller responds with /on_search, providing available auctions <br> with changed details, including floor price, Start/End Time, Bid Increment
+        Note Over BA,SA1: Buyer now have all the catalog which is either new added or modified
+        BA ->> B: Shows all the avilable modified/new bids <br>options from sellers
+
+  - description: Push the catalogs by seller app
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA1 as SellerApp1
+        participant SA2 as SellerApp2
+        
+        Note Over B,SA: **SEARCH FLOW**
+        B ->> BA: Buyer initiates an exploratory search for Bids and Auctions with incremental regular start
+        BA ->> G: **/search** - Search by city for a auction commodity
+        Note left of BA: Additional params include: <br><br>
+        G ->> SA1: **/search** - Commodity bids request broadcasted based <br>on city and domain in context
+        G ->> SA2: **/search** - Commodity bids request broadcasted based <br>on city and domain in context
+        SA1 ->> BA: **/on_search** - Commodity bids catalog returned <br>with pricing, seller statutory details, pricing changes by seller who has searched with incremental start
+        SA2 ->> BA: **/on_search** - Commodity bids catalog returned <br>with pricing, seller statutory details, pricing changes by seller who has searched with incremental start
+        Note Over BA,SA1: Buyer now have all the catalog which is either new added or modified
+        BA ->> B: Shows all the avilable modified/new bids <br>options from sellers
+
+reference: if any
+steps:
+  - summary: Buyer initiates an exploratory search for Bids and Auctions.
+    api: search
+    description: The buyer expresses interest in purchasing a commodity (such as wheat) from all currently available auctions
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Bids_And_Auction_yaml/search/search_by_category.yaml"
+  - summary: Returns the catalog specific to the search intent
+    api: on_search
+    description: Returns the catalog specific to the search intent
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Bids_And_Auction_yaml/on_search/on_search.yaml"
+  - summary: Pull intent into interval for bids and auction for a particular agricultural commodity 
+    api: search (interval pull)
+    description: The buyer expresses interest in purchasing a commodity (such as wheat) from all currently available auctions, with the incremental pull option with the provided range so seller will send the on search based on selected range
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Bids_And_Auction_yaml/search/search_interval_pull.yaml"
+  - summary: Returns the catalog specific to the search intent till the range selected
+    api: on_search (push by seller)
+    description: Returns the catalog specific to the search intent till the range selected when ever seller detact change in catalog
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Bids_And_Auction_yaml/on_search/on_search.yaml"
+  - summary: Start the mode to pull intent for bids and auction for a particular agricultural commodity
+    api: search (start)
+    description: The buyer expresses interest in purchasing a commodity (such as wheat) from all currently available auctions, with the incremental mode start option so seller will send the catalogs until stop it
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Bids_And_Auction_yaml/search/search_regular_push_start.yaml"
+  - summary: Start the mode to pull intent for bids and auction for a particular agricultural commodity
+    api: search (stop)
+    description: The buyer expresses interest in purchasing a commodity (such as wheat) from all currently available auctions, with the incremental mode stop option so seller will stop senidng catalogs
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Bids_And_Auction_yaml/search/search_regular_push_stop.yaml"
+  - summary: Returns the catalog specific to the search intent till the mode open
+    api: on_search (push by seller)
+    description: Returns the catalog specific to the search intent till the mode open when ever seller detact change in catalog
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Bids_And_Auction_yaml/on_search/on_search.yaml"
+  

@@ -1,0 +1,294 @@
+Package_Weight:
+  - code: Unit
+    description: Define unit of package weight
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+      - code: unit
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: gram
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: dozen
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: kilogram
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: tonne
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: litre
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: millilitre
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text> 
+  - code: Value
+    description: Define value of package weight
+    reference: <PR/Issue/Discussion Links md format text>
+Package_Dimensions:
+  - code: Unit
+    description: Define unit of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+      - code: centimeter
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: meter
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+  - code: Length
+    description: Define length of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Breadth
+    description: Define breadth of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Height
+    description: Define height of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+Package_Details:
+  - code: Category
+    description: Define category of package
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+      - code: Grocery
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: F&B
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: Fashion
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: BPC
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: Electronics
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: Appliances
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: Home & Kitchen
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text> 
+      - code: Health & Wellness
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text> 
+      - code: Pharma
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text> 
+  - code: Dangerous_Goods
+    description: State true if dangerous goods; If true, the logistics buyer would need to share MSDS certificate.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Stackable
+    description: State true if goods are stackable
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Shipment_Value
+    description: Define shipment value of package
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Package_Count
+    description: Define count of packages
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: HSN_Code
+    description: Valid for international logistics. Specify the HSN code of item.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Transit_Risk_Owner
+    description: defines the responsibility of risk that may occur during the transportation. enum- CARRIER,OWNER
+    reference: <PR/Issue/Discussion Links md format text>  
+Package_Dimensions_Diff:
+  - code: Unit
+    description: Define unit of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+      - code: centimeter
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: meter
+        description: about the enum
+        reference: <PR/Issue/Discussion Links md format text>
+  - code: Length
+    description: Define length of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Breadth
+    description: Define breadth of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Height
+    description: Define height of package dimensions
+    reference: <PR/Issue/Discussion Links md format text>
+Diff_Proof:
+  - code: type
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: url
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+Cold_Logistics:
+  - code: Temp_Control
+    description: State true if require cold logistics
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Temp_Unit
+    description: Define unit of temperature
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Temp_Min
+    description: Define min value of temperature
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Temp_Max
+    description: Define max value of temperature
+    reference: <PR/Issue/Discussion Links md format text>
+Settlement_Details:
+  - code: Counterparty
+    description: Settlement counterparty with which the payment collector will settle the payment (BAP,BPP)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Mode
+    description: The Payment Collector will use the selected method to remit the due payment to the counterparty Network Participant. To illustrate, if the Buyer App collects the payment and the Settlement Type is set to “rtgs”, when the settlement is due, the Buyer App will transfer the Seller App’s share of the Buyer Price to the Seller App’s account via RTGS. 
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Beneficiary_Name
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Bank_Account_No
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Ifsc_Code
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_Address
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+Collection_Details:
+  - code: Amount
+    description: Value of the collected amount
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Type
+    description: Information about the type of collection details(ON_FULLFILLMENT)
+    reference: <PR/Issue/Discussion Links md format text>
+BPP_Terms:
+  - code: Max_Liability
+    description: max_liability is the maximum aggregate liability of either party expressed as multiple of the total transaction value.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Max_Liability_Cap
+    description: max_liability_cap is the maximum aggregate liability expressed in Indian Rupees (INR). 
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Mandatory_Arbitration
+    description: If this attribute is set to true, that would mean both parties agree that in case of a dispute, both parties must resolve the dispute through arbitration.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Court_Jurisdiction
+    description: The name of the city whose courts will have exclusive jurisdiction over disputes related to this contract. The list of options will only contain Indian cities which have a High Court bench.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Delay_Interest
+    description: This is the annual rate of interest that the Payment Collector will be charged if they delay a payment to the counterparty Network Participant, calculated pro rata for each calendar day of delay.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Static_Terms
+    description: TLC and terms defined by the Logistics service provider
+    reference: <PR/Issue/Discussion Links md format text>
+BAP_Terms:
+  - code: Accept_BPP_Terms
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+    - code: 'Y'
+      description: Acceptance of the seller terms
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: 'N'
+      description: Rejection of the seller terms
+      reference: <PR/Issue/Discussion Links md format text>
+Delivery_Terms:
+  - code: Ready_To_Ship
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+    - code: 'yes'
+      description: The logistics buyer marks the order as ready to be shipped. It notifies the LSP that they can go and pickup the order.
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: 'no'
+      description: The order is currently not ready to shipped.
+      reference: <PR/Issue/Discussion Links md format text>
+  - code: AWB_No
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RTO_Action
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+    - code: 'yes'
+      description: It indicates that the shipment should be returned to the original starting point in case of RTO.
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: 'no'
+      description: It indicates that the shipment can be disposed off and need not be returned to the origin in case of RTO.
+      reference: <PR/Issue/Discussion Links md format text>
+  - code: Eway_Bill_No
+    description: Eway bill number to be provided by the seller NP in case the shipment value > 50K INR
+    reference: <PR/Issue/Discussion Links md format text>   
+  - code: LR_No
+    description: Lorry Number
+    reference: <PR/Issue/Discussion Links md format text> 
+  - code: Invoice_Number
+    description: Invoice number of the retail order provided by seller. It is optional. 
+    reference: <PR/Issue/Discussion Links md format text>   
+  - code: Doc_Way_Bill_No
+    description: about the tag
+    reference: <PR/Issue/Discussion Links md format text>  
+Delivery_terms_international:
+  - code: Incoterms
+    description: Incoterms (International Commercial Terms) present in International Logistics are the terms to clarify the responsibilities of buyers and sellers for the delivery of goods.
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+      - code: CIF
+        description: CIF (Cost, Insurance, and Freight) indicates that the seller has the responsibility to deliver the goods to the named port of destination, covering the cost of transportation, insurance, and freight charges.
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: EXW
+        description: EXW (Ex Works) represents the point at which the seller's responsibility for the goods ends and the buyer's responsibility begins in an international transaction.
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: FOB
+        description: FOB (Free On Board) terms define the point at which the seller fulfills their obligation to deliver the goods, and the buyer takes on the responsibility and costs associated with transporting the goods from the named port of shipment to the final destination
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: DAP
+        description: under DAP (Delivered at Place) terms, the seller takes on the responsibility and costs of delivering the goods to a named place at the buyer's destination. 
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: DDP
+        description: Under DDP (Delivered Duty Paid) terms, the seller assumes a high level of responsibility and covers all costs associated with delivering the goods to the buyer's destination. The buyer, on the other hand, is responsible for unloading the goods and any subsequent transportation from the named place to their final destination.
+        reference: <PR/Issue/Discussion Links md format text>
+  - code: Named_Place_Of_Delivery
+    description: If the delivery is on port based on incoterm, the port code should be sent as per UN standard.
+    reference: <PR/Issue/Discussion Links md format text>
+Quantity:
+  - code: count
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MEASURE_UNIT
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MEASURE_VALUE
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+static_terms:
+  - code: Static_Terms
+    description: TLC and terms defined by the Logistics service provider
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Static_Terms_New
+    description: To be used in case new terms are being defined or updated
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Effective_Date
+    description: Effective date from which the terms will be valid from
+    reference: <PR/Issue/Discussion Links md format text>
+KYC:
+  - code: url
+    description: eKYC url for dynamic onboarding of logistics buyers.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: required
+    description: required if value is true
+    reference: <PR/Issue/Discussion Links md format text>
+Cargo_Details:
+  - code: Delivery_Mode
+    description: mode of delivery(Road,Air)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Vehicle_Type
+    description: define type of vehicle(Truck)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Vehicle_Size
+    description: define size of the vehicle(21Ft)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Load_Type
+    description: define load type(FCL,FTL,LTL)
+    reference: <PR/Issue/Discussion Links md format text>

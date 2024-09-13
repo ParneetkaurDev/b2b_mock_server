@@ -1,0 +1,178 @@
+category_ids:
+  - code: SRV17-1000
+    description: Animal Drawn Machinery & Equipment
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1001
+    description: Backhoe Loader Dozer
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1002
+    description: Baler
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1003
+    description: Brush Cutter
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1004
+    description: Bund Former
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1005
+    description: Chaff Cutter and parts
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1006
+    description: Chain Saw
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1007
+    description: Combine Harvester
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1008
+    description: Crop Cover
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1009
+    description: Cultivator
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-100A
+    description: Digger
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-100B
+    description: Drip Kit
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-100C
+    description: Earth Auger
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-100D
+    description: Equipments for Residue management/Hay and Forage
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-100E
+    description: Fertilizer Spreader
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-100F
+    description: Furrow opener
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1010
+    description: Garden Tools
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1011
+    description: Groundnut pod stripper
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1012
+    description: Harvester
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1013
+    description: Hay rake
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1014
+    description: Horticulture Machinery Harvester/ Plucker/ Pruner
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1015
+    description: Infielder
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1016
+    description: Land Development, tillage and seed bed preparation equipment
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1017
+    description: Land Leveller and blade
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1018
+    description: Lantern/ Torch
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1019
+    description: Miscellaneous Equipment
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-101A
+    description: Mower shreder
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-101B
+    description: Mulch
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-101C
+    description: Nursery Inputs
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-101D
+    description: Pellet Machine
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-101E
+    description: Pipe
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-101F
+    description: Plant Protection Equipment
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1020
+    description: Plough/ Harrow
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1021
+    description: Post harvest and Agro Processing Machinery
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1022
+    description: Reaper
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1023
+    description: Power Sources
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1024
+    description: Power Tiller
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1025
+    description: Puddler
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1026
+    description: Rice Mill
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1027
+    description: Ridger
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1028
+    description: Rotavator
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1029
+    description: Safety Kit
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-102A
+    description: Seedcum fertilizer drill
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-102B
+    description: Seeder/ Transplanter/ Planter
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-102C
+    description: Shade Net
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-102D
+    description: Shrub master
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-102E
+    description: Solar Dryer
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-102F
+    description: Sprayer
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1030
+    description: Sprinkler
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1031
+    description: Cutter/Stripper/ thrash cutter
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1032
+    description: Sugarcane Machine
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1033
+    description: Thresher
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1034
+    description: Tirpal/ Tarpauline
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1035
+    description: Tractor
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1036
+    description: Trailer
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1037
+    description: Traps/ Lure
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1038
+    description: Water Pump
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-1039
+    description: Weeder/ Tiller
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SRV17-103A
+    description: Strip till drill
+    reference: <PR/Issue/Discussion Links md format text>

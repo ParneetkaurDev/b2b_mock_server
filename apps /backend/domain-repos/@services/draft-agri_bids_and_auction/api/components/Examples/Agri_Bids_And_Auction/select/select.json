@@ -1,0 +1,127 @@
+{
+  "context": {
+    "domain": "ONDC:SRV18",
+    "location": {
+      "city": {
+        "code": "std:080"
+      },
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "select",
+    "version": "2.0.0",
+    "bap_id": "buyerapp.com",
+    "bap_uri": "https://buyerapp.com/ondc",
+    "bpp_id": "sellerapp.com",
+    "bpp_uri": "https://sellerapp.com/services",
+    "transaction_id": "T1",
+    "message_id": "M2",
+    "timestamp": "2024-06-10T22:00:30.000Z",
+    "ttl": "PT30S"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "P1",
+        "locations": [
+          {
+            "id": "L1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "I1",
+          "location_ids": [
+            "L1"
+          ],
+          "category_ids": [
+            "SRV18-1001"
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "COMMODITY_SPECIFICATION"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "SHELF_LIFE"
+                  },
+                  "value": "P10M"
+                },
+                {
+                  "descriptor": {
+                    "code": "MOISTURE"
+                  },
+                  "value": "10%"
+                },
+                {
+                  "descriptor": {
+                    "code": "OIL_CONTENT"
+                  },
+                  "value": "2%"
+                },
+                {
+                  "descriptor": {
+                    "code": "DEFECTIVES"
+                  },
+                  "value": "7%"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "stops": [
+            {
+              "type": "end",
+              "time": {
+                "label": "selected",
+                "range": {
+                  "start": "2024-06-09T22:00:00.000Z"
+                }
+              },
+              "location": {
+                "gps": "12.974002,77.613458",
+                "area_code": "560001"
+              }
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "type": "PRE-FULFILLMENT"
+        },
+        {
+          "type": "ON-FULFILLMENT"
+        }
+      ],
+      "tags": [
+        {
+          "descriptor": {
+            "code": "BUYER_ID"
+          },
+          "list": [
+            {
+              "descriptor": {
+                "code": "BUYER_ID_CODE"
+              },
+              "value": "mandi_licence"
+            },
+            {
+              "descriptor": {
+                "code": "BUYER_ID_NO"
+              },
+              "value": "xxxxxxxxxxxxxxx"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

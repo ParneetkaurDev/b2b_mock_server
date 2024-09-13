@@ -1,0 +1,39 @@
+payment:
+  type:
+    - code: PRE-FULFILLMENT
+      description: about the enum
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: ON-FULFILLMENT
+      description: about the enum
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: POST-FULFILLMENT
+      description: about the enum
+      reference: <PR/Issue/Discussion Links md format text>
+  collected_by:
+    - code: BAP
+      description: Collected by BAP
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: BPP
+      description: Collected by BPP
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: SOR
+      description: Collected by Seller on Record
+      reference: <PR/Issue/Discussion Links md format text>
+  tags:
+    Payment_Details:
+      Reason:
+        - code: cancellation_charge
+          description: cancellation charge for equipment
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: damage_charge
+          description: damage charge for equipment
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: tandc_violation_charge
+          description: Terms and condition violation charge for equipment
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: extend_renting_charge
+          description: Extend the rending for equipment
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: surcharge
+          description: surcharge amount for extended period for equipment 
+          reference: <PR/Issue/Discussion Links md format text>

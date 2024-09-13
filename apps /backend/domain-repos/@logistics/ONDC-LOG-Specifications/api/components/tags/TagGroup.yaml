@@ -1,0 +1,145 @@
+intent:
+  fulfillments:
+    tags:
+      - code: Delivery_Terms
+        description: Define Incoterms for Delivery here for internation logistics
+        reference: <PR/Issue/Discussion Links md format text>
+        required: required for international logistics
+        list:
+          $ref: "./Tag.yaml#/Delivery_terms_international"
+  payment:
+    tags:
+      - code: Collection_Details
+        description: Collection Details needed if logistics seller needs to collect the payment from buyer at the time of delivery.
+        reference: <PR/Issue/Discussion Links md format text>
+        required: required for COD orders
+        list:
+          $ref: "./Tag.yaml#/Collection_Details"
+  tags:
+    - code: Package_Weight
+      description: Define package dead weight here
+      reference: <PR/Issue/Discussion Links md format text>
+      required: required
+      list:
+        $ref: "./Tag.yaml#/Package_Weight"
+    - code: Package_Dimensions
+      description: Define package LBH dimensions here
+      required: required
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/Package_Dimensions"
+    - code: Package_Details
+      description: Define further details of package
+      required: required
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/Package_Details"
+    - code: Cold_Logistics
+      description: Define terms if cold logistics is required
+      required: optional
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/Cold_Logistics"
+descriptor:
+  tags:
+    - code: BPP_Terms
+      description: Defines the mandatory arbitrations applicable for the LSP seller
+      reference: <PR/Issue/Discussion Links md format text>
+      required: required
+      list:
+        $ref: "./Tag.yaml#/static_terms"
+    - code: KYC
+      description: Defines the KYC details with a url
+      required: required
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/KYC"
+order:
+  payment:
+    tags:
+      - code: Settlement_Details
+        description: Define terms for Settlement Details Here
+        reference: <PR/Issue/Discussion Links md format text>
+        required: optional
+        list:
+          $ref: "./Tag.yaml#/Settlement_Details"
+      - code: Collection_Details
+        description: Define terms for Collection Details Here
+        required: required for COD orders
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Collection_Details"
+  fulfillments:
+    tags:
+      - code: Delivery_Terms
+        description: Define terms for Delivery here
+        reference: <PR/Issue/Discussion Links md format text>
+        required: required
+        list:
+          $ref: "./Tag.yaml#/Delivery_Terms"
+  seller_terms:
+    - code: BPP_Terms
+      description: Define BPP terms
+      reference: <PR/Issue/Discussion Links md format text>
+      required: required
+      list:
+        $ref: "./Tag.yaml#/BPP_Terms"
+  buyer_terms:
+    - code: BPP_Terms
+      description: BPP terms sent by the seller app
+      reference: <PR/Issue/Discussion Links md format text>
+      required: required
+      list:
+        $ref: "./Tag.yaml#/BPP_Terms"
+    - code: BAP_Terms
+      description: Acceptance to bpp terms 
+      reference: <PR/Issue/Discussion Links md format text>
+      required: required
+      list:
+        $ref: "./Tag.yaml#/BAP_Terms"
+  tags:
+    - code: Package_Weight
+      description: Define package dead weight here
+      reference: <PR/Issue/Discussion Links md format text>
+      required: required
+      list:
+        $ref: "./Tag.yaml#/Package_Weight"
+    - code: Package_Dimensions
+      description: Define package LBH dimensions here
+      required: required
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/Package_Dimensions"
+    - code: Package_Details
+      description: Define further details of package
+      required: required
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/Package_Details"
+    - code: Cold_Logistics
+      description: Define terms if cold logistics is required
+      required: optional
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/Cold_Logistics"
+    - code: Package_Dimensions_Diff
+      description: Difference in package dimesions identified
+      reference: <PR/Issue/Discussion Links md format text>
+      required: optional
+      list:
+        $ref: "./Tag.yaml#/Package_Dimensions_Diff"
+    - code: Diff_Proof
+      description: Proof of difference identified
+      reference: <PR/Issue/Discussion Links md format text>
+      required: optional
+      list:
+        $ref: "./Tag.yaml#/Diff_Proof"
+
+items:
+  tags:
+  - code: Cargo_Deatils
+    description: Define cargo details
+    reference: <PR/Issue/Discussion Links md format text>
+    required: required
+    list:
+      $ref: "./Tag.yaml#/Cargo_Details"

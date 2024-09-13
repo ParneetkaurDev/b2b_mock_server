@@ -1,0 +1,62 @@
+Package_Dimesions:
+  unit:
+  - code: centimeter
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: meter
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+Package_Weight:
+  unit:
+  - code: unit
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: gram
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: dozen
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: kilogram
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: tonne
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: litre
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: millilitre
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text> 
+Package_Details:
+  Category:
+  - code: Grocery
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: F&B
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Fashion
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BPC
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Electronics
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Appliances
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Home & Kitchen
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text> 
+  - code: Health & Wellness
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text> 
+  - code: Pharma
+    description: about the enum
+    reference: <PR/Issue/Discussion Links md format text> 
+
+    

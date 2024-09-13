@@ -1,0 +1,26 @@
+code:
+  - Code: '90001'
+    Reason: Auction schedule selected by buyer is not available
+    Who can use code?: BPP
+    Usage: Used in error object
+    Action: /on_select
+  - Code: '90002'
+    Reason: Auction schedule initialised by buyer is not available
+    Who can use code?: BPP
+    Usage: Used in error object
+    Action: /on_init
+  - Code: '90003'
+    Reason: Auction schedule is not provided by the buyer
+    Who can use code?: BPP
+    Usage: Used in NACK
+    Action: NACK on /select
+  - Code: '90004'
+    Reason: Bids quantity should be valid
+    Who can use code?: BPP
+    Usage: Used in NACK
+    Action: NACK on /init
+  - Code: '90005'
+    Reason: Only Invitees are allowed (Seller verifies the Buyer's ID whether he is allowed or not)
+    Who can use code?: BPP
+    Usage: Used in NACK
+    Action: NACK on /select

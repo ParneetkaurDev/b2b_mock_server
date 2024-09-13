@@ -1,0 +1,62 @@
+search:
+  examples:
+    - $ref: "./search/search_by_item.yaml"
+    - $ref: "./search/search_by_city.yaml"
+    - $ref: "./search/search_by_category.yaml"
+    - $ref: "./search/search_interval_pull.yaml"
+    - $ref: "./search/search_regular_push_start.yaml"
+    - $ref: "./search/search_regular_push_stop.yaml"
+select:
+  examples:
+    - $ref: "./select/select.yaml"
+init:
+  examples:
+    - $ref: "./init/init.yaml"
+    - $ref: "./init/init_bid_placement.yaml"
+confirm:
+  examples:
+    - $ref: "./confirm/confirm.yaml"
+status:
+  examples:
+    - $ref: "./status/status.yaml"
+cancel:
+  examples:
+    - $ref: "./cancel/cancel_buyer.yaml"
+update:
+  examples:
+    - $ref: "./update/update_requote.yaml"
+    - $ref: "./update/update_requote_lower.yaml"
+    - $ref: "./update/update_status.yaml"
+# rating:
+#   examples:
+#     - $ref: "./rating/rating.yaml"
+on_search:
+  examples:
+    - $ref: "./on_search/on_search.yaml"
+    - $ref: "./on_search/on_search_close_bid.yaml"
+on_select:
+  examples:
+    - $ref: "./on_select/on_select.yaml"
+on_init:
+  examples:
+    - $ref: "./on_init/on_init.yaml"
+    - $ref: "./on_init/on_init_bid_placement.yaml"
+on_confirm:
+  examples:
+    - $ref: "./on_confirm/on_confirm.yaml"
+on_status:
+  examples:
+    - $ref: "./on_status/on_status.yaml"
+on_cancel:
+  examples:
+    - $ref: "./on_cancel/on_cancel.yaml"
+    - $ref: "./on_cancel/on_cancel_merchant.yaml"
+    - $ref: "./on_cancel/on_cancel_merchant_payment_failure.yaml"
+on_update:
+  examples:
+    - $ref: "./on_update/on_update_requote.yaml"
+    - $ref: "./on_update/on_update_awarded.yaml"
+    - $ref: "./on_update/on_update_not_awarded.yaml"
+    - $ref: "./on_update/on_update_requote_lower.yaml"
+    - $ref: "./on_update/on_update_status.yaml"
+

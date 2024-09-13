@@ -1,0 +1,96 @@
+message:
+  parent: true
+  order:
+    parent: true
+    provider:
+      parent: true
+      id:
+        description: id of the provider chosen for the service
+        required: required
+        usage: "P1"
+        reference: if any
+      locations:
+        description: required if provider.locations was returned in /on_search
+        required: optional
+        usage: "-"
+        reference: if any
+    items:
+      parent: true
+      id:
+        description: item id i.e. the id of the selected service or customization
+        required: required
+        usage: "I2"
+        reference: if any
+      parent_item_id:
+        description: id of the parent item for selected service or customization
+        required: required for customizations
+        usage: "I1"
+        reference: if any
+      location_ids:
+        description: location id of the selected service provider location
+        required: required
+        usage: "L1"
+        reference: if any
+      category_ids:
+        description: category id for the item as per taxonomy or customization id (categories/id) for customizations
+        required: required for customizations
+        usage: "C1"
+        reference: if any
+      quantity:
+        selected:
+          count:
+            description: number of items selected e.g. number of sofas to be cleaned
+            required: required
+            usage: "1"
+            reference: if any
+      tags:
+        description: identifier tag for customizations
+        required: required for customizations
+        usage: "-"
+        reference: if any
+    fulfillments:
+      parent: true
+      fulfillemnts:
+        description: contains the fulfillment details
+        required: required
+        usage: "-"
+        reference: if any
+      type:
+        description: type of fulfillment mode selected from the catalog
+        required: required
+        usage: "Home-Service"
+        reference: if any
+      stops:
+        type:
+            description: The type of stop - end location
+            required: required
+            usage: "end"
+            reference: if any
+        time:
+          label:
+            description: indicates the selected time slot
+            required: required
+            usage: "selected"
+            reference: if any
+          days:
+            description: day on which the service needs to be provided
+            required: required
+            usage: "4"
+            reference: if any
+          range:
+            start:
+              description: start time of the time slot chosen for the service
+              required: required
+              usage: "2023-11-16T09:30:00.000Z"
+              reference: if any
+            end:  
+              description: end time of the time slot chosen for the service 
+              required: required
+              usage: "2023-11-16T10:30:00.000Z"
+              reference: if any
+    payments:
+      type:
+        description: selected payment mode by which buyer would like to pay, enum - 'PRE-FULFILLMENT',"ON-FULFILLMENT","POST-FULFILLMENT"
+        required: required
+        usage: "PRE-FULFILLMENT"
+        reference: if any

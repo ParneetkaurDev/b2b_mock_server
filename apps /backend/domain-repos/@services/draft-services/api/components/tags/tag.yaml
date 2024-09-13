@@ -1,0 +1,114 @@
+title:
+  type:
+      - code: item
+        description: item/service level 
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: tax
+        description: tax
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: discount
+        description: discount
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: convenience_fee
+        description: convenience_fee (fulfillment level)
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: refund
+        description: refund in case of cancellation
+        reference: <PR/Issue/Discussion Links md format text>
+Settlement_Details:
+  - code: Counterparty
+    description: Counterparty involved; Can be BAP/BPP
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Mode
+    description: Mode of Payment. E.g. UPI
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Beneficiary_Name
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Bank_Account_No
+    description: Bank Account of the counterpart
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Ifsc_Code
+    description: IFSC Code for the Bank Account of the Counter party.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_Address
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+Buyer_Finder_Fee:
+  - code: Buyer_Finder_Fee_Type
+    description: If set to “amount” it means Buyer App’s fee is a flat amount in INR. If set to “percent” it means the Buyer App’s fee is set as a percentage of the Total Order Value.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Buyer_Finder_Fee_Amount
+    description: The amount of the Buyer App’s fee, to be interpreted in conjunction with the “type” field. If the “type” is set to “Amount”, this value represents the fixed fee in INR. If the “type” is set to “percent”, this value represents the percentage of the Total Order Value.
+    reference: <PR/Issue/Discussion Links md format text>
+schedule:
+  - code: ttl
+    description: ISO8601 type format for time to live of the fulfillment
+    reference: <PR/Issue/Discussion Links md format text>
+serviceability:
+  - code: location
+    description: The location at which this provider is serviceable.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: category
+    description: The category serviceable by the provider.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: type
+    description: 'The type of serviceability, with values representing Hyperlocal (code: 10), Intercity (code: 11), Pan-India (code: 12) and and Geojson (code: 13).'
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+      - code: 10
+        description: Hyperlocal
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: 11
+        description: Intercity
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: 12
+        description: Pan-India
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: 13
+        description: Geojson
+        reference: <PR/Issue/Discussion Links md format text>
+  - code: val
+    description: The value associated with the serviceability type, i.e in how much radius it is serviceable, eg. for hyperlocal - within 60 km raidus from the store location.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: unit
+    description: The unit of measurement for the serviceability value, e.g. km.
+    reference: <PR/Issue/Discussion Links md format text>
+    value:
+      - code: 'km'
+        description: If type is 10 - Hyperlocal
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: pincode
+        description: If type is 11 - Intercity
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: country
+        description: If type is 12 - Pan-India
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: geojson
+        description: If type is 13 - geojson
+        reference: <PR/Issue/Discussion Links md format text>
+attributes:
+  - code: color
+    description: Hex Code for color
+    reference: <PR/Issue/Discussion Links md format text>
+BAP_Terms:
+  - code: finder_fee_type
+    description: If set to “amount” it means Buyer App’s fee is a flat amount in INR. If set to “percent” it means the Buyer App’s fee is set as a percentage of the Total Order Value.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: finder_fee_amount
+    description: The amount of the Buyer App’s fee, to be interpreted in conjunction with the “type” field. If the “type” is set to “Amount”, this value represents the fixed fee in INR. If the “type” is set to “percent”, this value represents the percentage of the Total Order Value.
+    reference: <PR/Issue/Discussion Links md format text>
+offers_details:
+  - code: qualifier_min_value
+    description: Minimum order value for the order to be applicable
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: max_benefit
+    description: Maximum discount value applicable
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: discount_unit
+    description: Unit of discount e.g. percent , amount
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: discount_value
+    description: Discount value applicable
+    reference: <PR/Issue/Discussion Links md format text>
+

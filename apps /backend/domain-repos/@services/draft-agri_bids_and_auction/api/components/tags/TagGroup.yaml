@@ -1,0 +1,91 @@
+intent:
+  tags:
+    - code: BAP_TERMS
+      description: Terms of BAP (Optional)
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/BAP_TERMS"
+    - code: BUYER_ID
+      description: Buyer Id (Optional)
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/BUYER_ID"
+    - code: CATALOG_INC
+      description: catalog incremental support for pull and push catalogs (send the on_search for modified catalogs based on this tags by seller) (Optional)
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/catalog_inc"
+catalog:
+  providers:
+    tags:
+      - code: serviceability
+        description: Serviceability Details (Required)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/serviceability"
+      - code: seller_terms
+        description: Seller Terms (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/seller_terms"
+      - code: seller_id
+        description: Seller Id (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/seller_id"
+      - code: FSSAI_LICENSE_NO
+        description: FSSAI License if applicable (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/FSSAI_LICENSE_NO"
+    items:
+      tags:
+        - code: SERVICE_INFORMATION
+          description: Information of the service (Optional)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/SERVICE_INFORMATION"
+        - code: AUCTION_SPECIFICATION
+          description: Auction specification for the commodity bid (Required)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/AUCTION_SPECIFICATION"
+        - code: COMMODITY_SPECIFICATION
+          description: Bids and auction specifications of a particular commodity (Required)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/COMMODITY_SPECIFICATION"
+        - code: QUALITY_ASSESSMENT_REPORT
+          description: Quality assessment report that need to verify for bids if applicable (Optional)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/QUALITY_ASSESSMENT_REPORT"
+
+order:
+  items:
+    tags:
+      - code: COMMODITY_SPECIFICATION
+        description: Commodity specification of a particular bids item (Required)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/COMMODITY_SPECIFICATION"
+  quote:
+    breakup:
+      tags: &ref2
+        - code: title
+          description: title tag (Required)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/title"
+  payments: &ref1
+    tags:
+      - code: SETTLEMENT_DETAILS
+        description: Define Payment Settlement Details here (Required)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Settlement_Details"
+      - code: Buyer_Finder_Fee
+        description: Define Finder's Fee for Buyer (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Buyer_Finder_Fee"

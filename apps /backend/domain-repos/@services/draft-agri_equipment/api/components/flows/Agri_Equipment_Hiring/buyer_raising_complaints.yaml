@@ -1,0 +1,166 @@
+summary: Agricultural Equipment Hiring (Buyer raising complaints)
+description: The following is an illustrative flow to perform a transaction of a nature where a buyer would like to hire agricultural equipment. The booking majorly happens in four phases of order processing flow, i.e. Discovery of available services and service providers based on serviceability, order, fulfillment and post-fulfillment after that
+  if the buyer faces any issues, the buyer may raise a complaint on the buyer app and the buyer app tries to analyse the complaints.
+details:
+
+  - description: Sequence Diagram for Agricultural Equipment Hiring (Buyer raising complaints)
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA1 as SellerApp1
+        participant SA2 as SellerApp2
+        
+        Note Over B,SA: **SEARCH FLOW**
+        B ->> BA: Search by city for a equipment
+        BA ->> G: **/search** - Search by city for a equipment and <br>additional parameters
+        Note left of BA: Additional params include: <br><br>
+        G ->> SA1: **/search** - Equipment request broadcasted based <br>on city and domain in context
+        G ->> SA2: **/search** - Equipment request broadcasted based <br>on city and domain in context
+        SA1 ->> BA: **/on_search** - Equipment catalog returned <br>with pricing, seller statutory details, pricing
+        SA2 ->> BA: **/on_search** - Equipment catalog returned <br>with pricing, seller statutory details, pricing
+        Note Over BA,SA1: Buyer now has the option to choose the <br>Equipment from either Seller 1 or Seller 2 or both
+        BA ->> B: Shows all the equipments <br>options from sellers
+
+  - description: Ordering
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA as SellerApp
+        Note Over B,SA: **SELECT FLOW**
+        B ->> BA: Selects one of the <br>providers for equipment
+        BA ->> SA: **/select** - A equipment is selected with a <br>TTL for receiving response
+        SA ->> BA: **/on_select** - Responds to the selection with <br>breakup, quote including logistics charges
+        BA ->> B: Shows response with price details
+
+  - description: Initializing the order
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA as SellerApp
+        Note Over B,SA: **INITIALIZATION FLOW**
+        B ->> BA: Proceeds with the Order
+        BA ->> SA: **/init** - Initializes the order and <br>sends billing details
+        SA ->> BA: **/on_init** - Order initialization with <br>fulfillment & settlement information <br>including UPI or NEFT/IMPS/Bank Transfer
+        BA ->> B: Confirms initialization
+
+  - description: Order Confirmation
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp
+        Note Over B,SA: **CONFIRMATION FLOW**
+        B ->> BA: Confirms the Order
+        BA ->> SA: **/confirm** - Creates order to create final digital contract
+        SA ->> BA: **/on_confirm** - Accepts the order 
+        BA ->> B: Confirms order and delivery 
+
+  - description: Fulfillment
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp 
+        Note Over B,SA: **ORDER STATUS FLOW**
+        B ->> BA: Checks the order status
+        BA ->> SA: **/status** - Enquire order status <br>or tracking information
+        SA ->> BA: **/on_status_in_transit** - Latest order and fulfillment status is sent
+        BA ->> B: Updates the latest order <br>and fulfillment information
+
+  - description: IGM - Buyer have issues
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp 
+        Note Over B,SA: **IGM FLOW**
+        B ->> BA: Raise the complaints
+        BA ->> SA: **/issue** - Raise the issue request
+        SA ->> BA: **/on_issue** - Acknowledge the requested issue
+        BA ->> B: Updates the latest status on issue 
+
+reference: if any
+steps:
+  - summary: Search based on the intent for hiring a particular agri equipment
+    api: search
+    description: The search intent from the buyer focuses on specific agricultural equipment needs, such as irrigation equipment (defined by category codes like SRV17-1035) which corresponds to equipment like the Tractor.
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/search/search_by_category.yaml"
+  - summary: Returns the catalog specific to the search intent
+    api: on_search
+    description: In response, the Seller has shared the catalog detailing all specifications and features of the equipment as per the search intent. Quantity is measured in hours and days, and one can find comprehensive information regarding serviceability and operational time within the catalog. <br> Note:- serviceability and time can be reffered from <a href="https://docs.google.com/document/d/1f4QbVstY5m-L_-Jut5jvbeiaBKLR1ttJL_am6GG2Fko/edit">[this document]</a> and to generate/about the GeoJSON (if required) need to refer <a href="https://docs.google.com/document/d/1R4tw3L5jjjqxHxP21sLlSO2YQqpwn3ln0I5Eo7kintM/edit">[this document]</a>
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_search/on_search.yaml"
+  - summary: Buyer selects the required agri equipment
+    api: select
+    description: Once all options are visible, the Buyer selects the desired agricultural equipment along with a suitable fulfillment type.
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/select/select.yaml"
+  - summary: Seller confirms the equipment item and returns the quote for equipment
+    api: on_select
+    description: The Seller confirms the selected equipment item and provides a quote for the equipment.
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_select/on_select.yaml"
+  - summary: Buyer initialises the order for equipment
+    api: init
+    description: Buyer initialises the order and provides billing details
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/init/init.yaml"
+  - summary: Seller provides the final quotation for the equipment
+    api: on_init
+    description: Seller provides the final quotation
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_init/on_init.yaml"
+  - summary: Buyer confirm the order for the equipment
+    api: confirm
+    description: Buyer makes the payment to confirm the order
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/confirm/confirm.yaml"
+  - summary: Seller accepts the order for equipment
+    api: on_confirm
+    description: Seller app sends an on_confirm call to the buyer app accepting the order
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_confirm/on_confirm.yaml"
+  - summary: Buyer requests for the status of the order
+    api: status
+    description: Buyer requests for the status of the order
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/status/status.yaml"
+  - summary: Seller app sends order status update (In-Transit)
+    api: on_status (In Transit)
+    description: Seller app sends order status update when equipment is on the way
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_status/on_status_transit.yaml"
+  - summary: Seller app sends the order status (At location)
+    api: on_status (At Location)
+    description: Seller app sends order status update when service provider has reached the buyer location with equipment
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_status/on_status_at_location.yaml"
+  - summary: Seller app sends the order status (Completed)
+    api: on_status (Completed)
+    description: Seller app sends order status update when service provider has completed
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_status/on_status_completed.yaml"
+  # - summary: Buyer app shares the ratings to seller app
+  #   api: rating
+  #   description: Buyer leaves a detailed review on the buyer, sharing both positive and negative aspects. Buyer app shares the same with the seller app following the rating framework
+  #   reference: if any
+  #   example:
+  #     $ref: "../../Examples/Agri_Equipment_Hiring_yaml/rating/rating.yaml"
+

@@ -1,0 +1,7 @@
+type:
+    - code: ON-FULFILLMENT
+      description: Payment will be done on delivery.
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: PRE-FULFILLMENT
+      description: Prepaid payment, i.e payment will be done during order confirmation.
+      reference: <PR/Issue/Discussion Links md format text>

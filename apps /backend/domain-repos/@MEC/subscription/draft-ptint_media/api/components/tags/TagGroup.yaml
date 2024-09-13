@@ -1,0 +1,72 @@
+intent:
+  tags:
+    - code: BAP_TERMS
+      description: Terms of BAP
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/BAP_TERMS"
+    - code: BUYER_DETAILS
+      description: Details of the buyer
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/BAP_DETAILS"
+catalog:
+  providers:
+    tags:
+      - code: serviceability
+        description: Serviceability Details
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/serviceability"
+    items:
+      tags:
+        - code: SERVICE_INFORMATION
+          description: Information of the service
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/SERVICE_INFORMATION"
+        - code: RESCHEDULE_TERMS
+          description: Reschedule terms for the item
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/RESCHEDULE_TERMS"
+        - code: ATTRIBUTE
+          description: Attribute of a particular item
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/ATTRIBUTE"
+  categories:
+    tags:
+      - code: SELECTION
+        description: Selection details for category
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/SELECTION"
+order:
+  items:
+    tags:
+      - code: REPORT_REQUIREMENT
+        description: Attribute of a particular item
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/REPORT_REQUIREMENT"
+  quote:
+    breakup:
+      tags: &ref2
+        - code: title
+          description: title tag
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/title"
+  payments: &ref1
+    tags:
+      - code: SETTLEMENT_DETAILS
+        description: Define Payment Settlement Details here
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Settlement_Details"
+      - code: Buyer_Finder_Fee
+        description: Define Finder's Fee for Buyer
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Buyer_Finder_Fee"

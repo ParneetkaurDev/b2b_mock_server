@@ -1,0 +1,47 @@
+summary: ''
+description: ''
+value:
+  context:
+    domain: ONDC:MEC10
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: select
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/ondc
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/ondc
+    transaction_id: T1
+    message_id: M2
+    timestamp: '2024-04-01T22:00:30.000Z'
+    ttl: PT30S
+  message:
+    order:
+      provider:
+        id: P1
+      items:
+        - id: I1
+          fulfillment_ids:
+            - F3
+          quantity:
+            selected:
+              count: 1
+      fulfillments:
+        - type: SUBSCRIPTION
+          stops:
+            - type: start
+              time:
+                label: selected
+                range:
+                  start: '2024-04-04T09:30:00.000Z'
+                duration: P6M
+          tags:
+            - descriptor:
+                code: INFO
+              list:
+                - descriptor:
+                    code: PARENT_ID
+                  value: F1

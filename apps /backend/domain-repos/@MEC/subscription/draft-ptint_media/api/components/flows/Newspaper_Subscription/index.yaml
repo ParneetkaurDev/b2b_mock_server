@@ -1,0 +1,158 @@
+summary: Newspaper - Subscription with EMandate
+description: The following is an illustrative flow to perform a transaction of a nature where a buyer would like to request for Newspaper in a subscription fashion. The booking majorly happens in four phases of order processing flow, i.e. Discovery of available services and service providers based on serviceability, order, fulfillment and post-fulfillment.
+details:
+  - description: Sequence Diagram for Purchasing Newspaper Subscription
+    explanation: A search request is sent by the buyer to the gateway and the gateway transmits it to all sellers on the network based on the search criteria. Once
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA1 as SellerApp1
+        participant SA2 as SellerApp2
+        Note Over B,SA2: **SEARCH FLOW**
+        B ->> BA: Search for Newspaper <br>based within the city
+        BA ->> G: **/search** - Search for Newspaper<br> based services within the city
+        G ->> SA1: **/search** - Newspaper request broadcasted <br>based on city/category and domain in context
+        G ->> SA2: **/search** - Newspaper request broadcasted <br>based on city/category and domain in context
+        SA1 ->> BA: **/on_search** - Services catalog returned <br>with seller statutory details, pricing,<br> and different subscription fulfillments
+        SA2 ->> BA: **/on_search** - Services catalog returned <br>with seller statutory details, pricing,<br> and different subscription fulfillments
+        Note Over BA,SA1: Buyer now has the option to choose the <br>services from either Seller 1 or Seller 2 or both
+        BA ->> B: Shows all service <br>options from sellers
+  - description: Ordering
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp
+        Note Over B,SA: **SELECT FLOW**
+        B ->> BA: Selects one of the <br>items with any fulfillment mode supported
+        BA ->> SA: **/select** - An item is selected with a <br>TTL for receiving response
+        SA ->> BA: **/on_select** - Responds to the selection with <br>breakup, quote including total duration charges and all the payment<br> methods available - EMandate, Manual EMI Payments, Full payment
+        BA ->> B: Shows response with price details
+  - description: Initializing the order
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp      
+        Note Over B,SA: **INITIALIZATION FLOW**
+        B ->> BA: Proceeds with the Order
+        BA ->> SA: **/init** - Initializes the order and <br>sends billing details
+        SA ->> BA: **/on_init** - Order initialization with <br>fulfillment & settlement information <br>including UPI or NEFT/IMPS/Bank Transfer/EMandate Link
+        BA ->> B: Confirms initialization
+  - description: Order Confirmation
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp
+        Note Over B,SA: **CONFIRMATION FLOW**
+        B ->> BA: Pays on the EMandate link
+        SA ->> BA: **/on_status** - Confirms and changes the payment status to "PAID"
+        BA ->> SA: **/confirm** - Creates order to create final digital contract
+        SA ->> BA: **/on_confirm** - Accepts the order and starts the susbcription
+        BA ->> B: Confirms order
+  - description: Child Order Placement & Parent Order Updating
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp
+        Note Over B,SA: **CHILD ORDER FLOW**
+        B ->> BA: Pays on the EMandate link
+        Note right of SA: Based on the frequency of subscription, a <br>child order is created by seller for fulfillment
+        SA ->> BA: **/on_confirm** - Creates a child order in reference to parent order id
+        SA ->> BA: **/on_update** - Updates the parent order with child order id
+        SA ->> BA: **/on_update** - Another update that updates the payment object based on mandate payment receival
+        BA ->> B: Shows the child order
+  - description: Fulfillment
+    explanation: Fullfillment is done for each child order once it is placed and you can get status for it
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant SA as SellerApp      
+        Note Over B,SA: **ORDER STATUS FLOW**
+        B ->> BA: Checks the parent order status
+        BA ->> SA: **/status** - Enquire order status <br>or tracking information based on parent order id
+        SA ->> BA: **/on_status** - Latest order and fulfillment status is sent
+        BA ->> B: Updates the latest order <br>and fulfillment information
+        B ->> BA: Checks the child order status
+        BA ->> SA: **/status** - Enquire order status <br>or tracking information based on child order id
+        SA ->> BA: **/on_status** - Latest order and fulfillment status is sent
+        BA ->> B: Updates the latest order <br>and fulfillment information
+
+reference: if any
+steps:
+  - summary: Search based on the intent for buying a particular subscription service
+    api: search
+    description: Search intent sent by the buyer based on the particular subscription service required - e.g. Magazines
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/search/search_newspaper.yaml"
+  - summary: Returns the catalog specific to the search intent
+    api: on_search
+    description: Returns the catalog specific to the search intent
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_search/on_search_newspaper.yaml"
+  - summary: Buyer selects the required media service
+    api: select
+    description: Buyer selects the required media service + suitable fulfillment type
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/select/select_newspaper_mandate.yaml"
+  - summary: Seller confirms the schedule and returns the quote for service
+    api: on_select
+    description: Seller confirms the schedule and returns the quote for service
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_select/on_select_newspaper_mandate.yaml"
+  - summary: Buyer initialises the order for service
+    api: init
+    description: Buyer initialises the order and provides billing details
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/init/init_newspaper_mandate.yaml"
+  - summary: Seller provides the final quotation + emandate
+    api: on_init
+    description: Seller provides the final quotation for the service with payment url link for e-mandate in the payments object
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_init/on_init_newspaper_mandate.yaml"
+  - summary: Seller accepts the order for service
+    api: on_status
+    description: Seller app confirms the payment received and sends an /on_status call for confirming payment received
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_status/on_status_payment_confirmation.yaml"
+  - summary: Buyer confirm the order for the service
+    api: confirm
+    description: Buyer makes the payment on the seller payment link that is rendered by the buyer app to confirm the order
+    example:
+      $ref: "../../Examples/Print_Content_yaml/confirm/confirm_newspaper_mandate.yaml"
+  - summary: Seller accepts the order for service
+    api: on_confirm
+    description: Seller app confirms the payment received and sends an /on_confirm call for confirming subscription
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_confirm/on_confirm_newspaper_mandate.yaml"
+  - summary: Seller creates child order
+    api: on_confirm (Child order)
+    description: Once the fulfillment day comes, the seller app generates a child order with the items that were subscribed by the user. Number of child orders will be determined by duration/frequency chosen at the time of placing subscription.
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_confirm/on_confirm_newspaper_mandate_order.yaml"
+  - summary: Seller links parent and child orders
+    api: on_update (Parent order linked to child order)
+    description: Seller links back the parent order to child order
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_update/on_update_newspaper_parent_update.yaml"
+  - summary: Seller confirms that the payment has been received
+    api: on_update (Payment confirmation)
+    description: Seller app sends an on_update with confirmation of receiving payment through each emandate
+    reference: if any
+    example:
+      $ref: "../../Examples/Print_Content_yaml/on_update/on_update_newspaper_mandate_paid.yaml"

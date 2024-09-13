@@ -1,0 +1,148 @@
+{
+  "context": {
+    "domain": "ONDC:MEC10",
+    "location": {
+      "city": {
+        "code": "std:080"
+      },
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_select",
+    "version": "2.0.0",
+    "bap_id": "buyerapp.com",
+    "bap_uri": "https://buyerapp.com/services",
+    "bpp_id": "sellerapp.com",
+    "bpp_uri": "https://sellerapp.com/services",
+    "transaction_id": "T1",
+    "message_id": "M2",
+    "timestamp": "2024-04-01T22:00:31.000Z",
+    "ttl": "PT30S"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "P1"
+      },
+      "items": [
+        {
+          "id": "I2",
+          "fulfillment_ids": ["F3"]
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "FI1",
+          "type": "SUBSCRIPTION",
+          "stops": [
+            {
+              "type": "start",
+              "time": {
+                "label": "confirmed",
+                "range": {
+                  "start": "2024-04-04T09:30:00.000Z",
+                  "end": "2024-10-04T00:00:00.000Z"
+                }
+              },
+              "duration": "P6M",
+              "schedule": {
+                "frequency": "P1M"
+              }
+            }
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "INFO"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "PARENT_ID"
+                  },
+                  "value": "F1"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "3094"
+        },
+        "breakup": [
+          {
+            "title": "Basic Membership",
+            "price": {
+              "currency": "INR",
+              "value": "2994"
+            },
+            "item": {
+              "id": "I1",
+              "quantity": {
+                "selected": {
+                  "count": 1
+                }
+              },
+              "price": {
+                "currency": "INR",
+                "value": "499"
+              },
+              "fulfillment_ids": ["FII"]
+            },
+            "tags": [
+              {
+                "descriptor": {
+                  "code": "title"
+                },
+                "list": [
+                  {
+                    "descriptor": {
+                      "code": "type"
+                    },
+                    "value": "item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "tax",
+            "price": {
+              "currency": "INR",
+              "value": "100"
+            },
+            "item": {
+              "id": "I1"
+            },
+            "tags": [
+              {
+                "descriptor": {
+                  "code": "title"
+                },
+                "list": [
+                  {
+                    "descriptor": {
+                      "code": "type"
+                    },
+                    "value": "tax"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "ttl": "P1D"
+      },
+      "payments": [
+        {
+          "type": "PRE-FULFILLMENT",
+          "collected_by": "BPP"
+        }
+      ]
+    }
+  }
+}

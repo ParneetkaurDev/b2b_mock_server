@@ -1,0 +1,104 @@
+intent:
+  tags:
+    - code: BAP_TERMS
+      description: Terms of BAP (Optional)
+      reference: <PR/Issue/Discussion Links md format text>
+      list:
+        $ref: "./Tag.yaml#/BAP_TERMS"
+catalog:
+  providers:
+    tags:
+      - code: serviceability
+        description: Serviceability Details (Required)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/serviceability"
+    items:
+      tags:
+        - code: SERVICE_INFORMATION
+          description: Information of the service (Required)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/SERVICE_INFORMATION"
+        - code: ADDITIONAL_CHARGES
+          description: Information of the additional charges (Optional)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/ADDITIONAL_CHARGES"
+        - code: RESCHEDULE_TERMS
+          description: Reschedule terms for the item (Optional)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/RESCHEDULE_TERMS"
+        - code: EQUIPMENT_ATTRIBUTES
+          description: Equipment attribute of a particular item (Required)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/EQUIPMENT_ATTRIBUTES"
+        - code: CHECKLIST_DOCUMENTS
+          description: Checklist documents that need to verify for equipement hiring (Required)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/CHECKLIST_DOCUMENTS"
+        - code: INSURANCE
+          description: Insurance that need to verify for equipement hiring (Optional)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/INSURANCE"
+  categories:
+    tags:
+      - code: SELECTION
+        description: Selection details for category (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/SELECTION"
+  offers:
+    tags:
+      - code: qualifier
+        description: Qualifier which offer can apply (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/qualifier"
+      - code: benefit
+        description: Benefit which offer can avail (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/benefit"
+      - code: meta
+        description: meta value for offer (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/meta"
+order:
+  items:
+    tags:
+      - code: EQUIPMENT_ATTRIBUTES
+        description: Attribute of a particular equipment item (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/EQUIPMENT_ATTRIBUTES"
+  quote:
+    breakup:
+      tags: &ref2
+        - code: title
+          description: title tag (Optional)
+          reference: <PR/Issue/Discussion Links md format text>
+          list:
+            $ref: "./Tag.yaml#/title"
+  payments: &ref1
+    tags:
+      - code: Settlement_Details
+        description: Define Payment Settlement Details here (Required)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Settlement_Details"
+      - code: Payment_Details
+        description: Define Payment Details here (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Payment_Details"
+      - code: Buyer_Finder_Fee
+        description: Define Finder's Fee for Buyer (Optional)
+        reference: <PR/Issue/Discussion Links md format text>
+        list:
+          $ref: "./Tag.yaml#/Buyer_Finder_Fee"

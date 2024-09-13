@@ -1,0 +1,69 @@
+search:
+  message:
+    intent:
+      $ref: "./TagGroup.yaml#/intent"
+on_search:
+  message:
+    catalog:
+      descriptor:
+        $ref: "./TagGroup.yaml#/descriptor"
+      providers:
+        items:
+          $ref: "./TagGroup.yaml#/items"
+init:
+  message:
+    order:
+      fulfillments:
+        $ref: "./TagGroup.yaml#/intent/fulfillments"
+      payments: &ref0
+        $ref: "./TagGroup.yaml#/order/payment"
+on_init:
+  message:
+    order:
+      fulfillments:
+        $ref: "./TagGroup.yaml#/intent/fulfillments"
+      payments: *ref0
+      tags:
+         $ref: "./TagGroup.yaml#/order/seller_terms"
+confirm: &ref1
+  message:
+    order: 
+      fulfillments:
+        $ref: "./TagGroup.yaml#/intent/fulfillments"
+      payments: *ref0
+      tags:
+        $ref: "./TagGroup.yaml#/order/buyer_terms"
+
+on_confirm: *ref1
+
+update:
+  message:
+    order:
+      fulfillments: &ref3
+        $ref: "./TagGroup.yaml#/order/fulfillments"
+      tags:
+         $ref: "./TagGroup.yaml#/intent/tags"  
+on_update: 
+  message:
+    order:
+      fulfillments: *ref3
+      payments: *ref0
+      tags:
+        $ref: "./TagGroup.yaml#/order/tags"
+on_cancel:
+  message:
+    order:
+      fulfillments: *ref3
+      payments: *ref0
+      tags:
+        $ref: "./TagGroup.yaml#/order/tags"
+
+on_status:
+  message:
+    order:
+      fulfillments: *ref3
+      payments: *ref0
+      tags:
+        $ref: "./TagGroup.yaml#/order/tags"
+
+        

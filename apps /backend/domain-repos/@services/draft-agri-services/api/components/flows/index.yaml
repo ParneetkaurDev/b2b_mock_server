@@ -1,0 +1,6 @@
+- $ref: "./Agriculture_Seller_Pickup/index.yaml"
+- $ref: "./Agriculture_Buyer_Delivered/index.yaml"
+- $ref: "./Agriculture_Assaying_Service/index.yaml"
+- $ref: "./Agriculture_Reschedule/index.yaml"
+- $ref: "./Agriculture_Buyer_Cancellation/index.yaml"
+- $ref: "./Agriculture_Merchant_Cancellation/index.yaml"

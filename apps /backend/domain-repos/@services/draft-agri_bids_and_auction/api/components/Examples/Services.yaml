@@ -1,0 +1,46 @@
+Agricultural product - Bids and Auction:
+  summary: Bids and Auction
+  description: >-
+    This elaborates the model implementations for agricultural product bids and auction over the network.
+    The bids and auction majorly happens in four phases of order processing flow, i.e. Discovery of available commodity for bids and auction, and service providers based on serviceability, order, fulfillment and post-fulfillment.
+  example_set:
+    $ref: "./Agri_Bids_And_Auction_yaml/index.yaml"
+Agricultural product - Bids and Auction (Close Bid):
+  summary: Bids and Auction (Close Bid)
+  description: >-
+    This elaborates the model implementations for agricultural product bids and auction over the network.
+    The bids and auction majorly happens in four phases of order processing flow, i.e. Discovery of available commodity for bids and auction, and service providers based on serviceability, order, fulfillment and post-fulfillment
+    but in Close Bid, the buyers places their bid which is encrypted (not made visible) for other buyers.
+  example_set:
+    $ref: "./Agri_Bids_And_Auction_yaml/index.yaml"
+Agricultural product - Bids and Auction (Buyer fails to make payment):
+  summary: Bids and Auction (Buyer fails to make payment)
+  description: >-
+    This elaborates the model implementations for agricultural product bids and auction over the network.
+    The bids and auction majorly happens in four phases of order processing flow, i.e. Discovery of available commodity for bids and auction, and service providers based on serviceability, order, fulfillment and post-fulfillment
+    but winning bidder fails to make payment within the specified timeframe, leading to a dispute resolution process involving the platform's customer support.
+  example_set:
+    $ref: "./Agri_Bids_And_Auction_yaml/index.yaml"
+Agricultural product - Bids and Auction (Buyer not satisfied with the quality):
+  summary: Bids and Auction (Buyer not satisfied with the quality)
+  description: >-
+    This elaborates the model implementations for agricultural product bids and auction over the network.
+    The bids and auction majorly happens in four phases of order processing flow, i.e. Discovery of available commodity for bids and auction, and service providers based on serviceability, order, fulfillment and post-fulfillment
+    but gricultural produce received by the buyer does not match the description provided by the seller, the buyer may raise a complaint on the buyer app and the buyer app tries to analyse the complaints.
+  example_set:
+    $ref: "./Agri_Bids_And_Auction_yaml/index.yaml"
+Agricultural product - Bids and Auction (Pull and Push catalogs):
+  summary: Bids and Auction - Buyer can pull the current bids state for the changed catalog and seller can push (send) all the catalog which bids prices are modified
+  description: >-
+    This elaborates the model implementations for agricultural product bids and auction over the network.
+    Buyer can pull the current bids state for the changed catalog and seller can push (send) all the catalog which bids prices are modified
+  example_set:
+    $ref: "./Agri_Bids_And_Auction_yaml/index.yaml"
+Agricultural product - Bids and Auction (Minimum Bid Quantity):
+  summary: Bids and Auction (Minimum Bid Quantity)
+  description: >-
+    This elaborates the model implementations for agricultural product bids and auction over the network.
+    The bids and auction majorly happens in four phases of order processing flow, i.e. Discovery of available commodity for bids and auction, and service providers based on serviceability, order, fulfillment and post-fulfillment and bids can be done with minimum quantity (If a Seller has 3 MT, and MBQ is (or can be) 1 MT).
+  example_set:
+    $ref: "./Agri_Bids_And_Auction_yaml/index.yaml"
+

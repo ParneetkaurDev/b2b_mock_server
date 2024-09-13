@@ -1,0 +1,153 @@
+ErrorCodes:
+  - Code: 66006
+    Type: KYC Failed - due to xx reason
+    Message: BPP
+    Description: Used in error object
+  - Code: 60001
+    Type: >-
+      Location Serviceability Error - Pickup location not serviceable by
+      Logistics Provider
+    Message: BPP
+    Description: Used in error object
+  - Code: 60002
+    Type: >-
+      Location Serviceability Error - Dropoff location not serviceable by
+      Logistics Provider
+    Message: BPP
+    Description: Used in error object
+  - Code: 60004
+    Type: Order Serviceability Error - Delivery Partners not available
+    Message: BPP
+    Description: Used in error object
+  - Code: 60005
+    Type: Invalid Signature - Cannot verify signature for request
+    Message: BPP
+    Description: Used in NACK
+  - Code: 60006
+    Type: Invalid request, not compliant with API contract
+    Message: BPP
+    Description: Used in NACK
+  - Code: 60007
+    Type: >-
+      Policy Error - Cancellation not possible because of Logistics Provider
+      policy
+    Message: BPP
+  - Code: 60008
+    Type: >-
+      Invalid Fulfillment TAT - Fulfillment TAT is different from what was
+      quoted earlier
+    Message: BPP
+  - Code: 60009
+    Type: Invalid cancellation request - Cancellation reason is invalid
+    Message: BPP
+  - Code: 60010
+    Type: >-
+      Cancellation unacceptable - Cancellation request is rejected as
+      fulfillment TAT is not breached
+    Message: BPP
+  - Code: 60011
+    Type: >-
+      Difference in packaging details - Weight and / or dimensions provided is
+      different from what was originally provided
+    Message: BPP
+  - Code: 60012
+    Type: >-
+      Tracking not enabled - Tracking not enabled for any fulfillment in the
+      order
+    Message: BPP
+  - Code: 61001
+    Type: Feature not supported
+    Message: BPP
+  - Code: 62501
+    Type: >-
+      Terms and Conditions unacceptable - Logistics Provider terms & conditions
+      not acceptable to Logistics Buyer
+    Message: BAP
+  - Code: 62502
+    Type: >-
+      Order terminated - Order terminated as Logistics Provider did not accept
+      terms proposed by Logistics Buyer
+    Message: BAP
+  - Code: 62503
+    Type: >-
+      RTO rejected - RTO request rejected as quote does not match the quote
+      provided in catalog
+    Message: BAP
+  - Code: 62504
+    Type: Weight differential cost rejected
+    Message: BAP
+  - Code: 62505
+    Type: >-
+      Cancellation terms unacceptable -  Logistics Provider cancellation terms
+      not acceptable to Logistics Buyer
+    Message: BAP
+  - Code: 62506
+    Type: >-
+      Invalid Fulfillment TAT - Fulfillment TAT is different from what was
+      quoted earlier
+    Message: BAP
+  - Code: 62507
+    Type: >-
+      Difference in packaging details - Weight and / or dimensions provided is
+      different from what was originally provided
+    Message: BAP
+  - Code: 62508
+    Type: >-
+      Quote difference - Total price is different from what was originally
+      provided
+    Message: BAP
+  - Code: 62509
+    Type: >-
+      Invalid Cancellation Terms - Cancellation terms are different from what
+      was quoted earlier
+    Message: BAP
+  - Code: 62510
+    Type: Expired authorization - Authorization code has expired
+    Message: BAP
+  - Code: 62511
+    Type: Invalid authorization - Authorization code is invalid
+    Message: BAP
+  - Code: 63001
+    Type: >-
+      Internal Error - Cannot process response due to internal error, please
+      retry
+    Message: BAP
+  - Code: 63002
+    Type: Order validation failure
+    Message: BAP
+  - Code: 64001
+    Type: Feature not supported
+    Message: BAP
+  - Code: 65001
+    Type: Order Confirm Error - Logistics Provider is unable to confirm the order
+    Message: BPP
+  - Code: 65002
+    Type: >-
+      Order terminated as Logistics Buyer did not accept terms proposed by
+      Logistics Provider
+    Message: BPP
+  - Code: 65003
+    Type: Stale Request - Cannot process stale request
+    Message: BPP
+  - Code: 65004
+    Type: >-
+      Terms unacceptable - Logistics Buyer terms not acceptable to Logistics
+      Provider
+    Message: BPP
+  - Code: 66001
+    Type: >-
+      Internal Error - Cannot process response due to internal error, please
+      retry
+    Message: BPP
+  - Code: 66002
+    Type: Order validation failure
+    Message: BPP
+  - Code: 66003
+    Type: Order processing in progress
+    Message: BPP
+  - Code: 66004
+    Type: Invalid Order - Order not found
+    Message: BPP
+  - Code: 66005
+    Type: Quote unavailable - Quote no longer available
+    Message: BPP

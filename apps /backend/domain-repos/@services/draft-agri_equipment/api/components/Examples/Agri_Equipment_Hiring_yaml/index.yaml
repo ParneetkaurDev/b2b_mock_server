@@ -1,0 +1,65 @@
+search:
+  examples:
+    - $ref: "./search/search_by_city.yaml"
+    - $ref: "./search/search_by_category.yaml"
+select:
+  examples:
+    - $ref: "./select/select.yaml"
+    - $ref: "./select/select_delivered.yaml"
+    - $ref: "./select/select_reschedule.yaml"
+    - $ref: "./select/select_availability.yaml"
+init:
+  examples:
+    - $ref: "./init/init.yaml"
+    - $ref: "./init/init_delivered.yaml"
+    - $ref: "./init/init_availability.yaml"
+confirm:
+  examples:
+    - $ref: "./confirm/confirm.yaml"
+    - $ref: "./confirm/confirm_delivered.yaml"
+status:
+  examples:
+    - $ref: "./status/status.yaml"
+cancel:
+  examples:
+    - $ref: "./cancel/cancel_buyer.yaml"
+update:
+  examples:
+    - $ref: "./update/update_requote_cancellation.yaml"
+    - $ref: "./update/update_requote_damage.yaml"
+    - $ref: "./update/update_requote_tandc.yaml"
+# rating:
+#   examples:
+#     - $ref: "./rating/rating.yaml"
+on_search:
+  examples:
+    - $ref: "./on_search/on_search.yaml"
+on_select:
+  examples:
+    - $ref: "./on_select/on_select.yaml"
+    - $ref: "./on_select/on_select_delivered.yaml"
+    - $ref: "./on_select/on_select_reschedule.yaml"
+    - $ref: "./on_select/on_select_availability.yaml"
+on_init:
+  examples:
+    - $ref: "./on_init/on_init.yaml"
+    - $ref: "./on_init/on_init_delivered.yaml"
+    - $ref: "./on_init/on_init_availability.yaml"
+on_confirm:
+  examples:
+    - $ref: "./on_confirm/on_confirm.yaml"
+    - $ref: "./on_confirm/on_confirm_delivered.yaml"
+on_status:
+  examples:
+    - $ref: "./on_status/on_status_transit.yaml"
+    - $ref: "./on_status/on_status_at_location.yaml"
+    - $ref: "./on_status/on_status_completed.yaml"
+on_cancel:
+  examples:
+    - $ref: "./on_cancel/on_cancel.yaml"
+    - $ref: "./on_cancel/on_cancel_no_documents.yaml"
+on_update:
+  examples:
+    - $ref: "./on_update/on_update_requote_cancellation.yaml"
+    - $ref: "./on_update/on_update_requote_damage.yaml"
+    - $ref: "./on_update/on_update_requote_tandc.yaml"

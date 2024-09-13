@@ -1,0 +1,78 @@
+summary: ''
+description: ''
+value:
+  context:
+    domain: ONDC:MEC10
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: init
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/services
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/services
+    transaction_id: T1
+    message_id: M3
+    timestamp: '2024-04-01T22:00:35.000Z'
+    ttl: P30S
+  message:
+    order:
+      provider:
+        id: P1
+      items:
+        - id: I1
+          fulfillment_ids:
+            - F3
+          quantity:
+            selected:
+              count: 1
+      billing:
+        name: ONDC buyer
+        address: >-
+          22, Mahatma Gandhi Rd, Craig Park Layout, Ashok Nagar, Bengaluru,
+          Karnataka 560001
+        state:
+          name: Karnataka
+        city:
+          name: Bengaluru
+        tax_id: XXXXXXXXXXXXXXX
+        email: nobody@nomail.com
+        phone: '9886098860'
+      fulfillments:
+        - id: FI1
+          type: SUBSCRIPTION
+          stops:
+            - type: start
+              contact:
+                phone: '9886098860'
+              time:
+                label: confirmed
+                range:
+                  start: '2024-04-04T22:00:00.000Z'
+                  end: '2024-04-04T23:00:00.000Z'
+                days: '4'
+          tags:
+            - descriptor:
+                code: INFO
+              list:
+                - descriptor:
+                    code: PARENT_ID
+                  value: F1
+      payments:
+        - id: PG1
+          collected_by: BPP
+          type: PRE_FULFILLMENT
+          params:
+            amount: '1592'
+            currency: INR
+          tags:
+            - descriptor:
+                name: Payment Method
+                code: PAYMENT_METHOD
+              list:
+                - descriptor:
+                    code: MODE
+                  value: MANDATE_REGISTRATION

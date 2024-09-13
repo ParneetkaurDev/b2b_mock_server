@@ -1,0 +1,93 @@
+summary: ''
+description: ''
+value:
+  context:
+    domain: ONDC:MEC10
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: on_select
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/services
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/services
+    transaction_id: T1
+    message_id: M2
+    timestamp: '2024-04-01T22:00:31.000Z'
+    ttl: PT30S
+  message:
+    order:
+      provider:
+        id: P1
+      items:
+        - id: I1
+          fulfillment_ids:
+            - F1
+      fulfillments:
+        - id: FI1
+          type: ONLINE
+          stops:
+            - type: end
+              time:
+                label: confirmed
+                range:
+                  start: '2024-04-04T22:00:00.000Z'
+                  end: '2024-04-04T23:00:00.000Z'
+                days: '4'
+              location:
+                gps: 12.974002,77.613458
+                area_code: '560001'
+      quote:
+        price:
+          currency: INR
+          value: '298'
+        breakup:
+          - title: Weekly India Today Magazine
+            price:
+              currency: INR
+              value: '199'
+            item:
+              id: I1
+              quantity:
+                selected:
+                  count: 1
+              price:
+                currency: INR
+                value: '199'
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: item
+          - title: tax
+            price:
+              currency: INR
+              value: '100'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: tax
+          - title: delivery_charge
+            price:
+              currency: INR
+              value: '99'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: misc
+        ttl: P1D

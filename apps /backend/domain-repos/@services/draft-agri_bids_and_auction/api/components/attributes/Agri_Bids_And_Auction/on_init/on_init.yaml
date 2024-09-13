@@ -1,0 +1,337 @@
+message:
+  parent: true
+  order:
+    parent: true
+    provider:
+      parent: true
+      id:
+        description: id of the provider chosen for the bid
+        required: required
+        usage: "P1"
+        reference: if any
+      locations:
+        - id:
+            description: location id of the provider
+            required: required
+            usage: "L1"
+            reference: if any
+    items:
+      parent: true
+      id:
+        description: item id i.e. the id of the bid
+        required: required
+        usage: "I1"
+        reference: if any
+      location_ids:
+        description: location ids related to the item
+        required: required
+        usage: "[L1]"
+        reference: if any
+      category_ids:
+        description: category ids related to the item
+        required: required
+        usage: "[SRV18-1001]"
+        reference: if any
+      quantity:
+        selected:
+          count:
+            description: number of items selected for bid
+            required: required
+            usage: "100"
+            reference: if any
+      tags:
+        description: tags associated with the item
+        required: optional
+        usage: "[{\"descriptor\":{\"code\":\"COMMODITY_SPECIFICATION\"},\"list\":[{\"descriptor\":{\"code\":\"SHELF_LIFE\"},\"value\":\"P10M\"},{\"descriptor\":{\"code\":\"MOISTURE\"},\"value\":\"10%\"},{\"descriptor\":{\"code\":\"OIL_CONTENT\"},\"value\":\"2%\"},{\"descriptor\":{\"code\":\"DEFECTIVES\"},\"value\":\"7%\"}]}]"
+        reference: if any
+    billing:
+      name:
+        description: name of the billing person or entity
+        required: required
+        usage: "ONDC buyer"
+        reference: if any
+      address:
+        description: billing address
+        required: required
+        usage: "22, Mahatma Gandhi Rd, Craig Park Layout, Ashok Nagar, Bengaluru, Karnataka 560001"
+        reference: if any
+      state:
+        name:
+          description: state name in the billing address
+          required: required
+          usage: "Karnataka"
+          reference: if any
+      city:
+        name:
+          description: city name in the billing address
+          required: required
+          usage: "Bengaluru"
+          reference: if any
+      tax_id:
+        description: tax identification number
+        required: required
+        usage: "XXXXXXXXXXXXXXX"
+        reference: if any
+      email:
+        description: email address for billing
+        required: required
+        usage: "nobody@nomail.com"
+        reference: if any
+      phone:
+        description: phone number for billing
+        required: required
+        usage: "9886098860"
+        reference: if any
+    fulfillments:
+      parent: true
+      fulfillments:
+        description: contains the fulfillment details
+        required: required
+        usage: "-"
+        reference: if any
+      id:
+        description: id of the fulfillment
+        required: required
+        usage: "F1"
+        reference: if any
+      stops:
+        type:
+          description: type of stop
+          required: required
+          usage: "end"
+          reference: if any
+        location:
+          gps:
+            description: GPS coordinates of the location
+            required: required
+            usage: "12.974002,77.613458"
+            reference: if any
+          address:
+            description: address of the location
+            required: required
+            usage: "Farm 14 Near Village"
+            reference: if any
+          city:
+            name:
+              description: city name of the location
+              required: required
+              usage: "Bengaluru"
+              reference: if any
+          country:
+            code:
+              description: country code of the location
+              required: required
+              usage: "IND"
+              reference: if any
+          area_code:
+            description: area code of the location
+            required: required
+            usage: "560001"
+            reference: if any
+          state:
+            name:
+              description: state name of the location
+              required: required
+              usage: "Karnataka"
+              reference: if any
+        contact:
+          phone:
+            description: phone number for the contact person
+            required: required
+            usage: "9886098860"
+            reference: if any
+        time:
+          label:
+            description: time label of the stop
+            required: required
+            usage: "confirmed"
+            reference: if any
+          range:
+            start:
+              description: start time of the time slot chosen for the bid
+              required: required
+              usage: "2024-06-10T22:00:00.000Z"
+              reference: if any
+            end:
+              description: end time of the time slot chosen for the bid
+              required: required
+              usage: "2024-06-10T23:00:00.000Z"
+              reference: if any
+    quote:
+      parent: true
+      quote:
+        description: quote of the bid
+        required: required
+        usage: "-"
+        reference: if any
+      price:
+        currency:
+          description: currency of the price
+          required: required
+          usage: "INR"
+          reference: if any
+        value:
+          description: value of the price
+          required: required
+          usage: "30050"
+          reference: if any
+      breakup:
+        - title:
+            description: title of the price component
+            required: required
+            usage: "Wheat (Auction)"
+            reference: if any
+          price:
+            currency:
+              description: currency of the price component
+              required: required
+              usage: "INR"
+              reference: if any
+            value:
+              description: value of the price component
+              required: required
+              usage: "25000"
+              reference: if any
+          item:
+            id:
+              description: id of the item
+              required: required
+              usage: "I1"
+              reference: if any
+            quantity:
+              selected:
+                count:
+                  description: number of items selected
+                  required: required
+                  usage: "100"
+                  reference: if any
+            price:
+              currency:
+                description: currency of the item price
+                required: required
+                usage: "INR"
+                reference: if any
+              value:
+                description: value of the item price
+                required: required
+                usage: "250"
+                reference: if any
+          tags:
+            description: tags associated with the price component
+            required: optional
+            usage: "[{\"descriptor\":{\"code\":\"title\"},\"list\":[{\"descriptor\":{\"code\":\"type\"},\"value\":\"item\"}]}]"
+            reference: if any
+        - title:
+            description: title of the price component
+            required: required
+            usage: "earnest_money_deposit"
+            reference: if any
+          price:
+            currency:
+              description: currency of the price component
+              required: required
+              usage: "INR"
+              reference: if any
+            value:
+              description: value of the price component
+              required: required
+              usage: "5000"
+              reference: if any
+          item:
+            id:
+              description: id of the item
+              required: required
+              usage: "I1"
+              reference: if any
+          tags:
+            description: tags associated with the price component
+            required: optional
+            usage: "[{\"descriptor\":{\"code\":\"title\"},\"list\":[{\"descriptor\":{\"code\":\"type\"},\"value\":\"refundable_security\"}]}]"
+            reference: if any
+        - title:
+            description: title of the price component
+            required: required
+            usage: "tax"
+            reference: if any
+          price:
+            currency:
+              description: currency of the price component
+              required: required
+              usage: "INR"
+              reference: if any
+            value:
+              description: value of the price component
+              required: required
+              usage: "50"
+              reference: if any
+          item:
+            id:
+              description: id of the item
+              required: required
+              usage: "I1"
+              reference: if any
+          tags:
+            description: tags associated with the price component
+            required: optional
+            usage: "[{\"descriptor\":{\"code\":\"title\"},\"list\":[{\"descriptor\":{\"code\":\"type\"},\"value\":\"tax\"}]}]"
+            reference: if any
+        - title:
+            description: title of the price component
+            required: required
+            usage: "discount"
+            reference: if any
+          price:
+            currency:
+              description: currency of the price component
+              required: required
+              usage: "INR"
+              reference: if any
+            value:
+              description: value of the price component
+              required: required
+              usage: "100"
+              reference: if any
+          item:
+            id:
+              description: id of the item
+              required: required
+              usage: "I1"
+              reference: if any
+          tags:
+            description: tags associated with the price component
+            required: optional
+            usage: "[{\"descriptor\":{\"code\":\"title\"},\"list\":[{\"descriptor\":{\"code\":\"type\"},\"value\":\"discount\"}]}]"
+            reference: if any
+        - title:
+            description: title of the price component
+            required: required
+            usage: "pickup_charge"
+            reference: if any
+          price:
+            currency:
+              description: currency of the price component
+              required: required
+              usage: "INR"
+              reference: if any
+            value:
+              description: value of the price component
+              required: required
+              usage: "100"
+              reference: if any
+          item:
+            id:
+              description: id of the item
+              required: required
+              usage: "I1"
+              reference: if any
+          tags:
+            description: tags associated with the price component
+            required: optional
+            usage: "[{\"descriptor\":{\"code\":\"title\"},\"list\":[{\"descriptor\":{\"code\":\"type\"},\"value\":\"misc\"}]}]"
+            reference: if any
+      ttl:
+        description: time-to-live for the quote
+        required: required
+        usage: "P1D"
+        reference: if any
+    

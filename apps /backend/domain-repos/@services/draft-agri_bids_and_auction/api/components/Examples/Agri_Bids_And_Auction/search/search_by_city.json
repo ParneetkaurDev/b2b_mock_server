@@ -1,0 +1,70 @@
+{
+    "context": {
+        "domain": "ONDC:SRV18",
+        "location": {
+            "city": {
+                "code": "std:080"
+            },
+            "country": {
+                "code": "IND"
+            }
+        },
+        "action": "search",
+        "version": "2.0.0",
+        "bap_id": "buyerapp.com",
+        "bap_uri": "https://buyerapp.com/ondc",
+        "transaction_id": "T1",
+        "message_id": "M1",
+        "timestamp": "2024-06-10T22:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "intent": {
+            "payment": {
+                "type": "ON-FULFILLMENT",
+                "collected_by": "BAP"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "BAP_TERMS"
+                    },
+                    "display": false,
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "FINDER_FEE_TYPE"
+                            },
+                            "value": "percent"
+                        },
+                        {
+                            "descriptor": {
+                                "code": "FINDER_FEE_AMOUNT"
+                            },
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "descriptor": {
+                        "code": "BUYER_ID"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "BUYER_ID_CODE"
+                            },
+                            "value": "mandi_licence"
+                        },
+                        {
+                            "descriptor": {
+                                "code": "BUYER_ID_NO"
+                            },
+                            "value": "xxxxxxxxxxxxxxx"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

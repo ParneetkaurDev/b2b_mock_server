@@ -1,0 +1,22 @@
+domain:
+  - code: ONDC:SRV18
+    description: Agriculture Bids and Auction
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ONDC:SRV10
+    description: Home Services - Appliance Repair Services
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ONDC:SRV11
+    description: Home Services - Infra Services
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ONDC:SRV12
+    description: Home Services - Personal Care Services
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ONDC:SRV13
+    description: Healthcare Services
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ONDC:SRV14
+    description: Agriculture Services
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ONDC:SRV17
+    description: Agriculture Equipment Hiring
+    reference: <PR/Issue/Discussion Links md format text>

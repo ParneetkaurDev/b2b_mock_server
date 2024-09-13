@@ -1,0 +1,794 @@
+{
+  "context": {
+    "domain": "ONDC:MEC10",
+    "location": {
+      "city": {
+        "code": "std:080"
+      },
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_search",
+    "version": "2.0.0",
+    "bap_id": "buyerapp.com",
+    "bap_uri": "https://buyerapp.com/ondc",
+    "bpp_id": "sellerapp.com",
+    "bpp_uri": "https://sellerapp.com/ondc",
+    "transaction_id": "T1",
+    "message_id": "M1",
+    "timestamp": "2024-04-01T22:00:30.000Z",
+    "ttl": "PT30S"
+  },
+  "message": {
+    "catalog": {
+      "payments": [
+        {
+          "id": "1",
+          "type": "PRE-FULFILLMENT"
+        },
+        {
+          "id": "2",
+          "type": "ON-FULFILLMENT"
+        },
+        {
+          "id": "3",
+          "type": "POST-FULFILLMENT"
+        }
+      ],
+      "descriptor": {
+        "name": "Video OTT Service Provider",
+        "short_desc": "Video OTT Service Provider",
+        "long_desc": "Video OTT Service Provider",
+        "images": [
+          {
+            "url": "https://abc.com/images/1-shop-img"
+          }
+        ]
+      },
+      "providers": [
+        {
+          "id": "P1",
+          "descriptor": {
+            "name": "Net Picture Video Provider",
+            "code": "N001",
+            "short_desc": "Net Picture Video Provider",
+            "long_desc": "Net Picture Video Provider",
+            "images": [
+              {
+                "url": "https://abc.com/images/1-shop-img"
+              }
+            ]
+          },
+          "rating": "4.4",
+          "ttl": "PT1D",
+          "locations": [
+            {
+              "id": "L1",
+              "gps": "12.967555,77.749666",
+              "address": "Jayanagar 4th Block",
+              "city": {
+                "code": "std:080",
+                "name": "Bengaluru"
+              },
+              "state": {
+                "code": "KA"
+              },
+              "country": {
+                "code": "IND"
+              },
+              "area_code": "560076"
+            }
+          ],
+          "creds": [
+            {
+              "id": "ESG-12345678",
+              "type": "Certificate",
+              "desc": "Certified OTT Provider Certificate",
+              "url": "https://abcd.cdn.com/images/bage-img"
+            }
+          ],
+          "categories": [
+            {
+              "id": "C1",
+              "descriptor": {
+                "name": "Membership Plans",
+                "code": "MEMBERSHIP_PLAN"
+              }
+            },
+            {
+              "id": "C2",
+              "descriptor": {
+                "name": "Rental Videos",
+                "code": "RENTAL_VIDEO"
+              }
+            }
+          ],
+
+          "fulfillments": [
+            {
+              "id": "F1",
+              "type": "ONLINE"
+            },
+            {
+              "id": "F2",
+              "type": "OFFLINE"
+            },
+            {
+              "id": "F3",
+              "type": "SUBSCRIPTION",
+              "stops": {
+                "time": {
+                  "schedule": {
+                    "frequency": "P1M"
+                  }
+                }
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "INFO"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "PARENT_ID"
+                      },
+                      "value": "F1,F2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "F4",
+              "type": "SUBSCRIPTION",
+              "stops": {
+                "time": {
+                  "schedule": {
+                    "frequency": "P7D"
+                  }
+                }
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "INFO"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "PARENT_ID"
+                      },
+                      "value": "F1,F2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "id": "I1",
+              "descriptor": {
+                "name": "Basic Membership",
+                "short_desc": "Access to 100+ movies",
+                "long_desc": "Access to 100+ movies",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_url"
+                  },
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_image"
+                  }
+                ]
+              },
+              "quantity": {
+                "maximum": {
+                  "count": 1
+                },
+                "minimum": {
+                  "count": 1
+                }
+              },
+              "price": {
+                "currency": "INR",
+                "value": "499.00",
+                "offered_value": "499.00",
+                "maximum_value": "599.00"
+              },
+              "category_ids": ["MEC10-1002", "C1"],
+              "fulfillment_ids": ["F1", "F3"],
+              "payment_ids": ["1"],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "PENDING"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "0.00"
+                  }
+                }
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTES"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "QUALITY"
+                      }
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SUPPORTED_DEVICES"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "QUALITY"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "SOUND_QUALITY"
+                      },
+                      "value": "Great"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_QUALITY"
+                      },
+                      "value": "Great"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_RESOLUTION"
+                      },
+                      "value": "720p"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "SUPPORTED_DEVICES",
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "DOWNLOAD_DEVICES"
+                        },
+                        "value": "2"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "MULTI_DEVICE_SUPPORT"
+                        },
+                        "value": "2"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "matched": true,
+              "recommended": true
+            },
+            {
+              "id": "I2",
+              "descriptor": {
+                "name": "Silver Membership",
+                "short_desc": "Access to 100+ movies",
+                "long_desc": "Access to 100+ movies",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_url"
+                  },
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_image"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "999.00",
+                "offered_value": "999.00",
+                "maximum_value": "1199.00"
+              },
+              "category_ids": ["MEC10-1002", "C1"],
+              "fulfillment_ids": ["F1", "F3"],
+              "payment_ids": ["1"],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "PENDING"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "0.00"
+                  }
+                }
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTES"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "QUALITY"
+                      }
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SUPPORTED_DEVICES"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "QUALITY"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "SOUND_QUALITY"
+                      },
+                      "value": "High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_QUALITY"
+                      },
+                      "value": "High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_RESOLUTION"
+                      },
+                      "value": "1080p"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "SUPPORTED_DEVICES",
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "DOWNLOAD_DEVICES"
+                        },
+                        "value": "3"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "MULTI_DEVICE_SUPPORT"
+                        },
+                        "value": "3"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "matched": true,
+              "recommended": true
+            },
+            {
+              "id": "I3",
+              "descriptor": {
+                "name": "Gold Membership",
+                "short_desc": "Access to 120+ movies",
+                "long_desc": "Access to 120+ movies",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_url"
+                  },
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_image"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "1399.00",
+                "offered_value": "1399.00",
+                "maximum_value": "1599.00"
+              },
+              "category_ids": ["MEC10-1002", "C1"],
+              "fulfillment_ids": ["F1", "F3"],
+              "payment_ids": ["1"],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "PENDING"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "0.00"
+                  }
+                }
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTES"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "QUALITY"
+                      }
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SUPPORTED_DEVICES"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "QUALITY"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "SOUND_QUALITY"
+                      },
+                      "value": "Very High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_QUALITY"
+                      },
+                      "value": "Very High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_RESOLUTION"
+                      },
+                      "value": "2160p"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "SUPPORTED_DEVICES",
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "DOWNLOAD_DEVICES"
+                        },
+                        "value": "4"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "MULTI_DEVICE_SUPPORT"
+                        },
+                        "value": "4"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "matched": true,
+              "recommended": true
+            },
+            {
+              "id": "I4",
+              "parent_item_id": "I3",
+              "descriptor": {
+                "name": "Gold Membership Trial",
+                "short_desc": "Access to 120+ movies",
+                "long_desc": "Access to 120+ movies",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_url"
+                  },
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_image"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "0.00",
+                "offered_value": "0.00",
+                "maximum_value": "0.00"
+              },
+              "category_ids": ["MEC10-1002", "C1"],
+              "fulfillment_ids": ["F1", "F3"],
+              "payment_ids": ["1"],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "PENDING"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "0.00"
+                  }
+                }
+              ],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-01-01T00:00:00.000Z",
+                  "end": "2025-01-01T23:59:59.000Z"
+                },
+                "schedule": {
+                  "frequency": "P1M"
+                }
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTES"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "QUALITY"
+                      }
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SUPPORTED_DEVICES"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "QUALITY"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "SOUND_QUALITY"
+                      },
+                      "value": "Very High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_QUALITY"
+                      },
+                      "value": "Very High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_RESOLUTION"
+                      },
+                      "value": "2160p"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "SUPPORTED_DEVICES",
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "DOWNLOAD_DEVICES"
+                        },
+                        "value": "4"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "MULTI_DEVICE_SUPPORT"
+                        },
+                        "value": "4"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "matched": true,
+              "recommended": true
+            },
+            {
+              "id": "I5",
+              "descriptor": {
+                "name": "Lion King",
+                "short_desc": "Lion King Movie",
+                "long_desc": "Animated movie about how a lion becomes the king of the jungle.",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "preview_video_url"
+                  }
+                ]
+              },
+              "price": {
+                "currency": "INR",
+                "value": "299.00",
+                "offered_value": "299.00",
+                "maximum_value": "299.00"
+              },
+              "category_ids": ["MEC10-1002", "C2"],
+              "fulfillment_ids": ["F1", "F3"],
+              "payment_ids": ["1"],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "PENDING"
+                    }
+                  },
+                  "cancellation_fee": {
+                    "percentage": "0.00"
+                  }
+                }
+              ],
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "ATTRIBUTES"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "QUALITY"
+                      }
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SUPPORTED_DEVICES"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "QUALITY"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "SOUND_QUALITY"
+                      },
+                      "value": "Very High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_QUALITY"
+                      },
+                      "value": "Very High"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VIDEO_RESOLUTION"
+                      },
+                      "value": "2160p"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "SUPPORTED_DEVICES",
+                    "list": [
+                      {
+                        "descriptor": {
+                          "code": "DOWNLOAD_DEVICES"
+                        },
+                        "value": "4"
+                      },
+                      {
+                        "descriptor": {
+                          "code": "MULTI_DEVICE_SUPPORT"
+                        },
+                        "value": "4"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "matched": true,
+              "recommended": true
+            }
+          ],
+          "offers": [
+            {
+              "id": "OFF1",
+              "descriptor": {
+                "name": "6 Month Subscription offer",
+                "code": "6MONTH",
+                "short_desc": "Additional Tests",
+                "long_desc": "Additional Tests",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ]
+              },
+              "category_ids": ["C1"],
+              "item_ids": ["I1", "I2", "I3"],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-04-01T00:00:00.000Z",
+                  "end": "2024-04-10T00:00:00.000Z"
+                },
+                "days": "01,02,03,04,05,06,07",
+                "tags": [
+                  {
+                    "code": "BENEFIT",
+                    "list": [
+                      {
+                        "code": "VALUE_TYPE",
+                        "value": "percentage"
+                      },
+                      {
+                        "code": "VALUE",
+                        "value": "50"
+                      },
+                      {
+                        "code": "VALUE_CAP",
+                        "value": "500.00"
+                      }
+                    ]
+                  },
+                  {
+                    "code": "META",
+                    "list": [
+                      {
+                        "code": "ADDITIVE",
+                        "value": "no"
+                      },
+                      {
+                        "code": "AUTO",
+                        "value": "yes"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

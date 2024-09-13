@@ -1,0 +1,69 @@
+context:
+  parent: true
+  domain:
+    description: domain code, enums - ONDC:SRV18 (Agriculture Bids and Auction)
+    required: mandatory
+    usage: "ONDC:SRV18"
+    reference: if any
+  city:
+    code:
+      description: city code for search where auction needs to be provided. List of city codes, with pincode mapping, are here - https://docs.google.com/spreadsheets/d/12A_B-nDtvxyFh_FWDfp85ss2qpb65kZ7/edit#gid=213574534
+      required: mandatory
+      usage: std:080
+      reference: if any
+  country:
+    code:
+      description: ISO standard 3 digit country code where auction needs to be provided
+      required: mandatory
+      usage: IND
+      reference: if any
+  bap_id:
+    description: subscriber id for buyer app
+    required: mandatory
+    usage: buyerapp.com
+    reference: if any
+  bap_uri:
+    description: subscriber URI for buyer app
+    required: mandatory
+    usage: https://buyerapp.com/ondc
+    reference: if any
+  timestamp:
+    description: RFC3339 compliant timestamp
+    required: mandatory
+    usage: "2024-06-10T21:10:00.000Z"
+    reference: if any
+  ttl:
+    description: validity of message
+    required: mandatory
+    usage: PT30S
+    reference: if any
+message:
+  parent: true
+  intent:
+    parent: true
+    item:
+      parent: true
+      category:
+        description: Category of the commodity
+        required: optional
+        usage: "SRV18-1001"
+        reference: if any
+    payment:
+      parent: true
+      collected_by:
+        description: Payment collected by, enum - "BAP" (Buyer App), "BPP" (Seller App)
+        required: optional
+        usage: "BPP"
+        reference: if any
+    tags:
+      parent: true
+      descriptor:
+        description: Terms and condition for Buyer App
+        required: optional
+        usage: "BAP_TERMS"
+        reference: if any
+      list:
+        description: Buyer App Terms list
+        required: optional
+        usage: "FINDER_FEE_AMOUNT"
+        reference: if any

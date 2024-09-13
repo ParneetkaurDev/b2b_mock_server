@@ -1,0 +1,20 @@
+order:
+  status:
+    - code: Created
+      description: When the order is initially created by the buyer
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Accepted
+      description: When the order is initially accepted by the seller
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: In-progress
+      description: When one or more fulfillments for the order are still pending
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Completed
+      description: When all the fulfillments are completed for the order
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Active
+      description: When the order is active
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Cancelled
+      description: When the order has been cancelled
+      reference: <PR/Issue/Discussion Links md format text>

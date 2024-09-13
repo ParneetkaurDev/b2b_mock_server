@@ -1,0 +1,114 @@
+search:
+  context: &context
+    domain: 
+      $ref: "./context.yaml#/context/domain"
+  message:
+    intent:
+     category:
+      id:
+        $ref: "./category.yaml#/category_ids"
+     payment: &payment
+        type: 
+          $ref: "./payment.yaml#/type"
+    fulfillment:
+        type:
+          $ref: "./fulfillments.yaml#/fulfillments/type"
+on_search:
+  message:
+    catalog:
+        providers:
+          items:
+            category_ids: 
+              $ref: "./category.yaml#/category_ids"
+            tags:
+              $ref: "./items.yaml#/tags"
+          tags:
+              $ref: "./provider.yaml#/tags"
+        fulfillment:
+            type:
+              $ref: "./fulfillments.yaml#/fulfillments/type"
+        offers:
+          $ref: "./offers.yaml#/offers"
+select:
+  context: *context
+  message:
+    order: &order
+      payments: *payment
+      fulfillments: 
+        type:
+          $ref: "./fulfillments.yaml#/fulfillments/type"
+on_select:
+  context: *context
+  message:
+    order:
+      fulfillment:
+        state:
+          $ref: "./fulfillments.yaml#/fulfillments/pre_order_state"
+      quote: 
+       breakup: 
+        "@ondc/org/title_type":
+           $ref: "./quote.yaml#/title_type"
+init:
+  context: *context
+  message:
+    order: 
+      payments: *payment
+      fulfillments: &fulfillment
+        type:
+          $ref: "./fulfillments.yaml#/fulfillments/type"
+        tags:
+          $ref: "./fulfillments.yaml#/fulfillments/tags"
+on_init:
+  context: *context
+  message:
+    order:
+      payments: *payment
+      fulfillments: *fulfillment
+      quote: 
+        breakup: 
+         "@ondc/org/title_type":
+            $ref: "./quote.yaml#/title_type"
+confirm:
+  context: *context
+  message:
+    order: 
+     payments: *payment
+     fulfillments: *fulfillment
+     state: 
+       $ref: "./orderstatus.yaml#/status"
+on_confirm:
+  context: *context
+  message:
+    order: 
+     payments: *payment
+     fulfillments:
+        type:
+          $ref: "./fulfillments.yaml#/fulfillments/type"
+        state: 
+           $ref: "./fulfillments.yaml#/fulfillments/state"
+     state: 
+       $ref: "./orderstatus.yaml#/status"
+status:
+  context: *context
+on_status:
+  context: *context
+  message:
+    order: 
+      payments: *payment
+      state: 
+       $ref: "./orderstatus.yaml#/status"
+      fulfillments:
+        state: 
+           $ref: "./fulfillments.yaml#/fulfillments/state"
+cancel:
+  context: *context
+on_cancel:
+  context: *context
+  message:
+    order: 
+      payments: *payment
+      state: 
+       $ref: "./orderstatus.yaml#/status"
+      fulfillments:
+        state: 
+           $ref: "./fulfillments.yaml#/fulfillments/state"

@@ -1,0 +1,17 @@
+breakup:
+  title:
+      - code: service name
+        description: service name e.g. Sofa Cleaning, can be customized
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: tax
+        description: tax
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: discount
+        description: discount
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: convenience_fee
+        description: convenience_fee (fulfillment level)
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: refund
+        description: refund in case of cancellation
+        reference: <PR/Issue/Discussion Links md format text>

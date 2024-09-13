@@ -1,0 +1,99 @@
+message:
+  parent: true
+  order:
+    parent: true
+    state:
+      description: status of the order, enum - "Created", "Accepted", "In-progress", "Completed", "Cancelled"
+      required: required
+      usage: "Created"
+      reference: if any
+    fulfillments:
+      parent: true
+      fulfillments:
+        description: contains the fulfillment details
+        required: required
+        usage: "-"
+        reference: if any
+      stops:
+        time:
+          range:
+            start:
+              description: start time of the service
+              required: required
+              usage: "2024-06-09T09:30:00Z"
+              reference: if any
+            end:
+              description: end time of the service
+              required: required
+              usage: "2024-06-10T10:30:00Z"
+              reference: if any  
+    payments:
+      parent: true
+      payments:
+        description: payments of the equipment renting
+        required: required
+        usage: "-"
+        reference: if any
+      id:
+        description: Payment ID
+        required: required
+        usage: PY1
+        reference: if any
+      collected_by:
+        description: Entity that collected the payment
+        required: required
+        usage: BAP
+        reference: if any
+      params:
+        parent: true
+        amount:
+          description: Amount of the payment
+          required: required
+          usage: "640"
+          reference: if any
+        currency:
+          description: Currency of the payment
+          required: required
+          usage: INR
+          reference: if any
+        bank_account_number:
+          description: Bank account number for the payment
+          required: required
+          usage: xxxxxxxx
+          reference: if any
+        virtual_payment_address:
+          description: Virtual payment address
+          required: required
+          usage: xxx@xxxx
+          reference: if any
+      status:
+        description: Payment status
+        required: required
+        usage: PAID
+        reference: if any
+      type:
+        description: Type of payment
+        required: required
+        usage: PRE-FULFILLMENT
+        reference: if any
+      tags:
+        parent: true
+        descriptor:
+          parent: true
+          code: 
+            description: Settlement Details
+            required: optional
+            usage: "Settlement_Details"
+            reference: if any
+          list:
+            descriptor:
+              code: 
+                description: Counterparty Details
+                required: optional
+                usage: "Counterparty"
+                reference: if any 
+            value:
+              description: Counterparty associated with the settlement
+              required: optional
+              usage: "BPP"
+              reference: if any

@@ -1,0 +1,386 @@
+value:
+  context:
+    domain: ONDC:SRV17
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: on_search
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/ondc
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/ondc
+    transaction_id: T1
+    message_id: M1
+    timestamp: '2024-06-10T22:00:20.000Z'
+    ttl: PT30S
+  message:
+    catalog:
+      fulfillments:
+        - id: F1
+          type: Buyer-Fulfilled
+        - id: F2
+          type: Seller-Fulfilled
+      payments:
+        - id: PY1
+          type: PRE-FULFILLMENT
+        - id: PY2
+          type: ON-FULFILLMENT
+        - id: PY3
+          type: POST-FULFILLMENT
+      descriptor:
+        name: Agri Equipment Provider
+        short_desc: Agri Equipment Provider
+        long_desc: Agri Equipment Provider
+        images:
+          - url: https://abc.com/images/1-shop-img
+      providers:
+        - id: P1
+          descriptor:
+            name: Equipment Provider store
+            code: P001
+            short_desc: Equipment Provider store
+            long_desc: Equipment Provider store
+            images:
+              - url: https://abc.com/images/1-shop-img
+          rating: '4.4'
+          ttl: PT1D
+          locations:
+            - id: L1
+              gps: 12.967555,77.749666
+              address: Jayanagar 4th Block
+              city:
+                code: std:080
+                name: Bengaluru
+              state:
+                code: KA
+              country:
+                code: IND
+              area_code: '560076'
+          creds:
+            - id: EQP-12345678
+              type: Certificate
+              desc: Certified Provider
+              url: https://abcd.cdn.com/images/bage-img
+          tags:
+            - descriptor:
+                code: serviceability
+              list:
+                - descriptor:
+                    code: location
+                  value: L1
+                - descriptor:
+                    code: category
+                  value: SRV17-1035
+                - descriptor:
+                    code: type
+                  value: '10'
+                - descriptor:
+                    code: val
+                  value: '5'
+                - descriptor:
+                    code: unit
+                  value: km
+            - descriptor:
+                code: serviceability
+              list:
+                - descriptor:
+                    code: location
+                  value: L1
+                - descriptor:
+                    code: category
+                  value: SRV17-1035
+                - descriptor:
+                    code: type
+                  value: '11'
+                - descriptor:
+                    code: val
+                  value: 560001-560076,560083
+                - descriptor:
+                    code: unit
+                  value: pincode
+            - descriptor:
+                code: serviceability
+              list:
+                - descriptor:
+                    code: location
+                  value: L1
+                - descriptor:
+                    code: category
+                  value: SRV17-1035
+                - descriptor:
+                    code: type
+                  value: '12'
+                - descriptor:
+                    code: val
+                  value: IND
+                - descriptor:
+                    code: unit
+                  value: country
+            - descriptor:
+                code: serviceability
+              list:
+                - descriptor:
+                    code: location
+                  value: L1
+                - descriptor:
+                    code: category
+                  value: SRV17-1035
+                - descriptor:
+                    code: type
+                  value: '13'
+                - descriptor:
+                    code: val
+                  value: >-
+                    {"type": "FeatureCollection", "features": [{"type":
+                    "Feature", "properties": {}, "geometry": {"coordinates":
+                    [[[77.175571, 28.675927], [77.128737, 28.600972],
+                    [77.446934, 28.545325], [77.175571, 28.675927]]], "type":
+                    "Polygon"}}]}
+                - descriptor:
+                    code: unit
+                  value: geojson
+          items:
+            - id: I1
+              descriptor:
+                name: Tractor
+                code: EQUIPMENT
+                short_desc: Mahindra YUVRAJ 215 NXT NT Tractor
+                long_desc: >-
+                  The Mahindra YUVRAJ 215 NXT NT Tractor is a powerful and
+                  efficient tractor that is ideal for intercultural operations
+                images:
+                  - url: https://abc.com/images/207.png
+                media:
+                  - mimetype: video/mp4
+                    url: video_url
+              price:
+                currency: INR
+                value: '500.00'
+              quantity:
+                unitized:
+                  measure:
+                    unit: hours
+                    value: '1'
+                minimum:
+                  value: '2'
+                maximum:
+                  value: '4'
+              category_ids:
+                - SRV17-1035
+              fulfillment_ids:
+                - F1
+                - F2
+              location_ids:
+                - L1
+              payment_ids:
+                - PY1
+                - PY2
+              add_ons:
+                - id: A1
+                  descriptor:
+                    name: Driver
+                    short_desc: Driver knows about farming
+                    long_desc: Driver knows about farming
+                  price:
+                    currency: INR
+                    value: '200.00'
+                  quantity:
+                    unitized:
+                      measure:
+                        unit: hours
+                        value: '1'
+              cancellation_terms:
+                - fulfillment_state:
+                    descriptor:
+                      code: PENDING
+                  cancellation_fee:
+                    percentage: '0.00'
+                - fulfillment_state:
+                    descriptor:
+                      code: IN_TRANSIT
+                  cancellation_fee:
+                    percentage: '10.00'
+              tags:
+                - descriptor:
+                    code: SERVICE_INFORMATION
+                  display: true
+                  list:
+                    - descriptor:
+                        code: PICKUP_TAT
+                      value: PT2D
+                - descriptor:
+                    code: ADDITIONAL_CHARGES
+                  display: true
+                  list:
+                    - descriptor:
+                        code: CURRENCY_UNIT
+                      value: INR
+                    - descriptor:
+                        code: REFUNDABLE_SECURITY
+                      value: '5000.00'
+                    - descriptor:
+                        code: SURCHARGES
+                      value: '500.00'
+                    - descriptor:
+                        code: SURCHARGES_FREQUENCY
+                      value: hourly
+                - descriptor:
+                    code: RESCHEDULE_TERMS
+                  list:
+                    - descriptor:
+                        code: FULFILLMENT_STATE
+                      value: Pending
+                    - descriptor:
+                        code: RESCHEDULE_ELIGIBLE
+                      value: 'true'
+                    - descriptor:
+                        code: RESCHEDULE_FEE_TYPE
+                      value: percent
+                    - descriptor:
+                        code: RESCHEDULE_FEE
+                      value: '10'
+                    - descriptor:
+                        code: RESCHEDULE_WITHIN
+                      value: PT1D
+                - descriptor:
+                    code: EQUIPMENT_ATTRIBUTES
+                  list:
+                    - descriptor:
+                        code: ALIAS
+                      value: Tractor, Green Machine, Farmatrac
+                    - descriptor:
+                        code: TYPE
+                      value: item
+                    - descriptor:
+                        code: CONDITION
+                      value: '5'
+                    - descriptor:
+                        code: OWNERSHIP
+                      value: 1st Owner
+                    - descriptor:
+                        code: RUNNING_HOURS
+                      value: '500'
+                    - descriptor:
+                        code: MODEL_YEAR
+                      value: '2024'
+                    - descriptor:
+                        code: BRAND
+                      value: Mahindra
+                    - descriptor:
+                        code: MODEL
+                      value: Yuvraj
+                    - descriptor:
+                        code: MISCELLANEOUS_INFO
+                      value: airbags,bluetooth
+                - descriptor:
+                    code: CHECKLIST_DOCUMENTS
+                  display: true
+                  list:
+                    - descriptor:
+                        code: TERMS_AND_CONDITION
+                      value: https://abc.com/tandc
+                    - descriptor:
+                        code: LEASE_POLICY
+                      value: https://abc.com/lease_policy
+                    - descriptor:
+                        code: AGREEMENT_POLICY
+                      value: https://abc.com/agreement_policy
+                    - descriptor:
+                        code: ID_VERIFICATION_POLICY
+                      value: https://abc.com/id_policy
+                    - descriptor:
+                        code: INSPECTION_REQUIREMENTS
+                      value: https://abc.com/inspection_requirement
+                    - descriptor:
+                        code: OBLIGATIONS
+                      value: https://abc.com/obligation
+                    - descriptor:
+                        code: TERMS_OF_USAGE
+                      value: https://abc.com/terms_of_uses
+                - descriptor:
+                    code: INSURANCE
+                  display: true
+                  list:
+                    - descriptor:
+                        code: INSURANCE_ID
+                      value: INC001
+                    - descriptor:
+                        code: INSURANCE_MIME_TYPE
+                      value: application/pdf
+                    - descriptor:
+                        code: INSURANCE_COPY
+                      value: https://abc.com/insurance
+              time:
+                label: validity
+                range:
+                  start: '2024-06-09T00:00:00.000Z'
+                  end: '2024-06-19T00:00:00.000Z'
+                days: 01,04,05
+                schedule:
+                  frequency: PT1H
+                  holidays:
+                    - '2024-06-14'
+                    - '2024-06-18'
+                  times:
+                    - '2024-06-09T22:00:00.000Z'
+                    - '2024-06-09T23:00:00.000Z'
+                    - '2024-06-10T00:00:00.000Z'
+                    - '2024-06-10T01:00:00.000Z'
+                    - '2024-06-10T02:00:00.000Z'
+              matched: true
+              recommended: true
+          offers:
+            - id: offer-1
+              descriptor:
+                name: ''
+                code: FREEBIE
+                short_desc: Additional Equipment (cage wheel)
+                long_desc: Additional Equipment (cage wheel)
+                images:
+                  - url: https://abc.com/images/207.png
+              location_ids:
+                - L1
+              category_ids:
+                - SRV17-1035
+              item_ids:
+                - I1
+              time:
+                label: validity
+                range:
+                  start: '2024-04-01T00:00:00.000Z'
+                  end: '2024-12-10T00:00:00.000Z'
+              tags:
+                - descriptor:
+                    code: qualifier
+                  list:
+                    - descriptor:
+                        code: min_value
+                      value: '5000'
+                - descriptor:
+                    code: benefit
+                  list:
+                    - descriptor:
+                        code: item_count
+                      value: '5'
+                    - descriptor:
+                        code: item_id
+                      value: I1
+                    - descriptor:
+                        code: item_value
+                      value: '200.00'
+                - descriptor:
+                    code: meta
+                  list:
+                    - descriptor:
+                        code: additive
+                      value: 'no'
+                    - descriptor:
+                        code: auto
+                      value: 'yes'
+          fulfillments:
+            - contact:
+                phone: '9886098860'
+                email: abc@xyz.com

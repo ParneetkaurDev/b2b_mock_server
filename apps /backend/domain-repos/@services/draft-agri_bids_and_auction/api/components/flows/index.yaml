@@ -1,0 +1,6 @@
+- $ref: "./Agri_Bids_And_Auction/index.yaml"
+- $ref: "./Agri_Bids_And_Auction/close_bid.yaml"
+- $ref: "./Agri_Bids_And_Auction/quality_issue.yaml"
+- $ref: "./Agri_Bids_And_Auction/payment_fails.yaml"
+- $ref: "./Agri_Bids_And_Auction/catalog_pull_push.yaml"
+- $ref: "./Agri_Bids_And_Auction/minimum_bid_quantity.yaml"

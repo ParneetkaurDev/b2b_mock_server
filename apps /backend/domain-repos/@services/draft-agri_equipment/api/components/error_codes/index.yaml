@@ -1,0 +1,16 @@
+code:
+  - Code: '90001'
+    Reason: Equipment schedule selected by buyer is not available
+    Who can use code?: BPP
+    Usage: Used in error object
+    Action: /on_select
+  - Code: '90002'
+    Reason: Equipment schedule initialised by buyer is not available
+    Who can use code?: BPP
+    Usage: Used in error object
+    Action: /on_init
+  - Code: '90003'
+    Reason: Equipment schedule is not provided by the buyer
+    Who can use code?: BPP
+    Usage: Used in NACK
+    Action: NACK on /select

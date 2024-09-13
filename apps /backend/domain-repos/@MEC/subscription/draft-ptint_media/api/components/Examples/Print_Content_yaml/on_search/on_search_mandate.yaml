@@ -1,0 +1,775 @@
+summary: ''
+description: ''
+value:
+  context:
+    domain: ONDC:MEC10
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: on_search
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/ondc
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/ondc
+    transaction_id: T1
+    message_id: M1
+    timestamp: '2024-04-01T22:00:30.000Z'
+    ttl: PT30S
+  message:
+    catalog:
+      payments:
+        - id: '1'
+          type: PRE-FULFILLMENT
+        - id: '2'
+          type: ON-FULFILLMENT
+        - id: '3'
+          type: POST-FULFILLMENT
+      descriptor:
+        name: Magazine Service Provider
+        short_desc: Magazine Service Provider
+        long_desc: Magazine Service Provider
+        images:
+          - url: https://abc.com/images/1-shop-img
+      providers:
+        - id: P1
+          descriptor:
+            name: Digital Magazine Provider
+            code: N001
+            short_desc: Digital Magazine Provider
+            long_desc: Digital Magazine Provider
+            images:
+              - url: https://abc.com/images/1-shop-img
+          rating: '4.4'
+          ttl: PT1D
+          locations:
+            - id: L1
+              gps: 12.967555,77.749666
+              address: Jayanagar 4th Block
+              city:
+                code: std:080
+                name: Bengaluru
+              state:
+                code: KA
+              country:
+                code: IND
+              area_code: '560076'
+          creds:
+            - id: MGZ-12345678
+              type: Certificate
+              desc: Certified Magazine Provider
+              url: https://abcd.cdn.com/images/bage-img
+          categories:
+            - id: C1
+              descriptor:
+                name: Paid
+                code: PAID
+            - id: C2
+              descriptor:
+                name: Free
+                code: FREE
+            - id: C3
+              descriptor:
+                name: Variant Group
+              tags:
+                - descriptor:
+                    code: TYPE
+                  list:
+                    - descriptor:
+                        code: TYPE
+                      value: variant_group
+                - descriptor:
+                    code: ATTR
+                  list:
+                    - descriptor:
+                        code: LANGUAGE
+                      value: item.tags.info.language
+                    - descriptor:
+                        code: SEQ
+                      value: '1'
+                - descriptor:
+                    code: ATTR
+                  list:
+                    - descriptor:
+                        code: EDITION
+                      value: item.tags.attributes.edition
+                    - descriptor:
+                        code: SEQ
+                      value: '2'
+          fulfillments:
+            - id: F1
+              type: ONLINE
+            - id: F2
+              type: OFFLINE
+            - id: F3
+              type: SUBSCRIPTION
+              stops:
+                time:
+                  schedule:
+                    frequency: P1W
+                  duration: P8W
+              tags:
+                - descriptor:
+                    code: INFO
+                  list:
+                    - descriptor:
+                        code: PARENT_ID
+                      value: F1,F2
+            - id: F4
+              type: SUBSCRIPTION
+              stops:
+                time:
+                  schedule:
+                    frequency: P1M
+              tags:
+                - descriptor:
+                    code: INFO
+                  list:
+                    - descriptor:
+                        code: PARENT_ID
+                      value: F1,F2
+          items:
+            - id: I1
+              parent_item_id: C3
+              descriptor:
+                name: Weekly India Today Magazine
+                short_desc: Features Fashion & Sports
+                long_desc: Features Fashion & Sports
+                images:
+                  - url: https://abc.com/images/207.png
+                media:
+                  - mimetype: video/mp4
+                    url: preview_video_url
+                  - mimetype: video/mp4
+                    url: preview_video_image
+                  - mimetype: image/jpeg
+                    url: preview_image_1
+              rating:
+                value: '4'
+              creator:
+                descriptor:
+                  name: India Today
+              quantity:
+                maximum:
+                  count: 2
+                minimum:
+                  count: 1
+              price:
+                currency: INR
+                value: '199.00'
+                offered_value: '199.00'
+                maximum_value: '299.00'
+              category_ids:
+                - MEC10-1001
+                - C1
+              fulfillment_ids:
+                - F1
+                - F2
+                - F3
+              payment_ids:
+                - '1'
+              cancellation_terms:
+                - fulfillment_state:
+                    descriptor:
+                      code: PENDING
+                  cancellation_fee:
+                    percentage: '0.00'
+              tags:
+                - descriptor:
+                    code: ATTRIBUTES
+                  list:
+                    - descriptor:
+                        code: PUBLICATION_DATE
+                        short_desc: Description
+                        long_desc: Description
+                      value: 27-01-2024
+                    - descriptor:
+                        code: EDITION
+                        short_desc: Description
+                        long_desc: Description
+                      value: Delhi
+                    - descriptor:
+                        code: READING_AGE_MIN
+                        short_desc: Description
+                        long_desc: Description
+                      value: '14'
+                    - descriptor:
+                        code: READING_AGE_MAX
+                        short_desc: Description
+                        long_desc: Description
+                      value: '60'
+                    - descriptor:
+                        code: FILE_SIZE
+                        short_desc: Description
+                        long_desc: Description
+                      value: '87343'
+                    - descriptor:
+                        code: FILE_SIZE_UNIT
+                        short_desc: Description
+                        long_desc: Description
+                      value: KB
+                    - descriptor:
+                        code: RNI
+                        short_desc: Description
+                        long_desc: Description
+                      value: 39847/81
+                    - descriptor:
+                        code: ISSN
+                        short_desc: Description
+                        long_desc: Description
+                      value: 0970819-7
+                    - descriptor:
+                        code: NUMBER_OF_ISSUES
+                        short_desc: Description
+                        long_desc: Description
+                      value: '100'
+                    - descriptor:
+                        code: NUMBER_OF_PAGES
+                        short_desc: Description
+                        long_desc: Description
+                      value: '70'
+                    - descriptor:
+                        code: COUNTRY_OF_ORIGIN
+                        short_desc: Description
+                        long_desc: Description
+                      value: India
+                    - descriptor:
+                        code: VOLUME_NUMBER
+                        short_desc: Description
+                        long_desc: Description
+                      value: '120'
+                    - descriptor:
+                        code: ISSUE_NUMBER
+                        short_desc: Description
+                        long_desc: Description
+                      value: '546'
+                    - descriptor:
+                        code: WEBSITE_URL
+                        short_desc: Description
+                        long_desc: Description
+                      value: https://demo-url.com
+                    - descriptor:
+                        code: NUMBER_OF_SECTIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: '10'
+                    - descriptor:
+                        code: LANGUAGE
+                        short_desc: Description
+                        long_desc: Description
+                      value: Hindi
+                    - descriptor:
+                        code: GENRE
+                        short_desc: Description
+                        long_desc: Description
+                      value: Health and Fitness,Lifestyle,Travel
+                    - descriptor:
+                        code: DOWNLOADABLE
+                        short_desc: Description
+                        long_desc: Description
+                      value: 'Y'
+                    - descriptor:
+                        code: FILE_FORMAT
+                        short_desc: Description
+                        long_desc: Description
+                      value: PDF
+                    - descriptor:
+                        code: INLCUSIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: Newspaper,Podcast
+                    - descriptor:
+                        code: EXCLUSIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: Newsletter
+                    - descriptor:
+                        code: CONCURRENT_ACCESS
+                        short_desc: Description
+                        long_desc: Description
+                      value: 'Y'
+                    - descriptor:
+                        code: CONCURRENT_NO_OF_ACCESS
+                        short_desc: Description
+                        long_desc: Description
+                      value: '5'
+              matched: true
+              recommended: true
+            - id: I2
+              parent_item_id: C3
+              descriptor:
+                name: Weekly India Today Magazine
+                short_desc: Features Fashion & Sports
+                long_desc: Features Fashion & Sports
+                images:
+                  - url: https://abc.com/images/207.png
+                media:
+                  - mimetype: video/mp4
+                    url: preview_video_url
+                  - mimetype: video/mp4
+                    url: preview_video_image
+                  - mimetype: image/jpeg
+                    url: preview_image_1
+              rating:
+                value: '4'
+              creator:
+                descriptor:
+                  name: India Today
+              quantity:
+                maximum:
+                  count: 2
+                minimum:
+                  count: 1
+              price:
+                currency: INR
+                value: '199.00'
+                offered_value: '199.00'
+                maximum_value: '299.00'
+              category_ids:
+                - MEC10-1001
+                - C1
+              fulfillment_ids:
+                - F1
+                - F2
+                - F3
+              payment_ids:
+                - '1'
+              cancellation_terms:
+                - fulfillment_state:
+                    descriptor:
+                      code: PENDING
+                  cancellation_fee:
+                    percentage: '0.00'
+              tags:
+                - descriptor:
+                    code: ATTRIBUTES
+                  list:
+                    - descriptor:
+                        code: PUBLICATION_DATE
+                        short_desc: Description
+                        long_desc: Description
+                      value: 27-01-2024
+                    - descriptor:
+                        code: EDITION
+                        short_desc: Description
+                        long_desc: Description
+                      value: Bangalore
+                    - descriptor:
+                        code: READING_AGE_MIN
+                        short_desc: Description
+                        long_desc: Description
+                      value: '14'
+                    - descriptor:
+                        code: READING_AGE_MAX
+                        short_desc: Description
+                        long_desc: Description
+                      value: '60'
+                    - descriptor:
+                        code: FILE_SIZE
+                        short_desc: Description
+                        long_desc: Description
+                      value: '87343'
+                    - descriptor:
+                        code: FILE_SIZE_UNIT
+                        short_desc: Description
+                        long_desc: Description
+                      value: KB
+                    - descriptor:
+                        code: RNI
+                        short_desc: Description
+                        long_desc: Description
+                      value: 39847/81
+                    - descriptor:
+                        code: ISSN
+                        short_desc: Description
+                        long_desc: Description
+                      value: 0970819-7
+                    - descriptor:
+                        code: NUMBER_OF_ISSUES
+                        short_desc: Description
+                        long_desc: Description
+                      value: '100'
+                    - descriptor:
+                        code: NUMBER_OF_PAGES
+                        short_desc: Description
+                        long_desc: Description
+                      value: '70'
+                    - descriptor:
+                        code: COUNTRY_OF_ORIGIN
+                        short_desc: Description
+                        long_desc: Description
+                      value: India
+                    - descriptor:
+                        code: VOLUME_NUMBER
+                        short_desc: Description
+                        long_desc: Description
+                      value: '120'
+                    - descriptor:
+                        code: ISSUE_NUMBER
+                        short_desc: Description
+                        long_desc: Description
+                      value: '546'
+                    - descriptor:
+                        code: WEBSITE_URL
+                        short_desc: Description
+                        long_desc: Description
+                      value: https://demo-url.com
+                    - descriptor:
+                        code: NUMBER_OF_SECTIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: '10'
+                    - descriptor:
+                        code: LANGUAGE
+                        short_desc: Description
+                        long_desc: Description
+                      value: English
+                    - descriptor:
+                        code: GENRE
+                        short_desc: Description
+                        long_desc: Description
+                      value: Health and Fitness,Lifestyle,Travel
+                    - descriptor:
+                        code: DOWNLOADABLE
+                        short_desc: Description
+                        long_desc: Description
+                      value: 'Y'
+                    - descriptor:
+                        code: FILE_FORMAT
+                        short_desc: Description
+                        long_desc: Description
+                      value: PDF
+                    - descriptor:
+                        code: INLCUSIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: Newspaper,Podcast
+                    - descriptor:
+                        code: EXCLUSIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: Newsletter
+                    - descriptor:
+                        code: CONCURRENT_ACCESS
+                        short_desc: Description
+                        long_desc: Description
+                      value: 'Y'
+                    - descriptor:
+                        code: CONCURRENT_NO_OF_ACCESS
+                        short_desc: Description
+                        long_desc: Description
+                      value: '5'
+              matched: true
+              recommended: true
+            - id: I3
+              descriptor:
+                name: Monthly India Today Magazine
+                short_desc: Features Fashion & Sports
+                long_desc: Features Fashion & Sports
+                images:
+                  - url: https://abc.com/images/207.png
+                media:
+                  - mimetype: video/mp4
+                    url: preview_video_url
+                  - mimetype: video/mp4
+                    url: preview_video_image
+                  - mimetype: image/jpeg
+                    url: preview_image_1
+              rating:
+                value: '4.5'
+              creator:
+                descriptor:
+                  name: India Today
+              quantity:
+                maximum:
+                  count: 2
+                minimum:
+                  count: 1
+              price:
+                currency: INR
+                value: '299.00'
+                offered_value: '299.00'
+                maximum_value: '399.00'
+              category_ids:
+                - MEC10-1001
+                - C1
+              fulfillment_ids:
+                - F2
+                - F4
+              payment_ids:
+                - '1'
+              add_ons:
+                - id: A1
+                  descriptor:
+                    name: Sports Newsletter
+                    short_desc: Sports newsletter of the month
+                    long_desc: Sports newsletter of the month with latest news
+                  price:
+                    currency: INR
+                    value: '50.00'
+                  quantity:
+                    unitized:
+                      measure:
+                        unit: unit
+                        value: '1'
+              cancellation_terms:
+                - fulfillment_state:
+                    descriptor:
+                      code: PENDING
+                  cancellation_fee:
+                    percentage: '0.00'
+              time:
+                label: validity
+                range:
+                  start: '2022-11-10T00:00:00.000Z'
+                  end: '2022-11-20T19:30:00.000Z'
+                days: 4,5
+                schedule:
+                  frequency: PT1H
+                  holidays:
+                    - '2023-11-13'
+                    - '2023-11-15'
+                  times:
+                    - '2023-11-16T09:30:00.000Z'
+                    - '2023-11-16T19:30:00.000Z'
+                    - '2023-11-14T19:30:00.000Z'
+                    - '2023-11-17T19:30:00.000Z'
+                    - '2023-11-17T09:30:00.000Z'
+              tags:
+                - descriptor:
+                    code: ATTRIBUTES
+                  list:
+                    - descriptor:
+                        code: PUBLICATION_DATE
+                        short_desc: Description
+                        long_desc: Description
+                      value: 27-01-2024
+                    - descriptor:
+                        code: EDITION
+                        short_desc: Description
+                        long_desc: Description
+                      value: Bangalore
+                    - descriptor:
+                        code: READING_AGE_MIN
+                        short_desc: Description
+                        long_desc: Description
+                      value: '14'
+                    - descriptor:
+                        code: READING_AGE_MAX
+                        short_desc: Description
+                        long_desc: Description
+                      value: '60'
+                    - descriptor:
+                        code: FILE_SIZE
+                        short_desc: Description
+                        long_desc: Description
+                      value: '87343'
+                    - descriptor:
+                        code: FILE_SIZE_UNIT
+                        short_desc: Description
+                        long_desc: Description
+                      value: KB
+                    - descriptor:
+                        code: RNI
+                        short_desc: Description
+                        long_desc: Description
+                      value: 39847/81
+                    - descriptor:
+                        code: ISSN
+                        short_desc: Description
+                        long_desc: Description
+                      value: 0970819-7
+                    - descriptor:
+                        code: NUMBER_OF_ISSUES
+                        short_desc: Description
+                        long_desc: Description
+                      value: '100'
+                    - descriptor:
+                        code: NUMBER_OF_PAGES
+                        short_desc: Description
+                        long_desc: Description
+                      value: '70'
+                    - descriptor:
+                        code: COUNTRY_OF_ORIGIN
+                        short_desc: Description
+                        long_desc: Description
+                      value: India
+                    - descriptor:
+                        code: VOLUME_NUMBER
+                        short_desc: Description
+                        long_desc: Description
+                      value: '120'
+                    - descriptor:
+                        code: ISSUE_NUMBER
+                        short_desc: Description
+                        long_desc: Description
+                      value: '546'
+                    - descriptor:
+                        code: WEBSITE_URL
+                        short_desc: Description
+                        long_desc: Description
+                      value: https://demo-url.com
+                    - descriptor:
+                        code: NUMBER_OF_SECTIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: '10'
+                    - descriptor:
+                        code: LANGUAGE
+                        short_desc: Description
+                        long_desc: Description
+                      value: Hindi
+                    - descriptor:
+                        code: GENRE
+                        short_desc: Description
+                        long_desc: Description
+                      value: Health and Fitness,Lifestyle,Travel
+                    - descriptor:
+                        code: DOWNLOADABLE
+                        short_desc: Description
+                        long_desc: Description
+                      value: 'Y'
+                    - descriptor:
+                        code: FILE_FORMAT
+                        short_desc: Description
+                        long_desc: Description
+                      value: PDF
+                    - descriptor:
+                        code: INLCUSIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: Newspaper,Podcast
+                    - descriptor:
+                        code: EXCLUSIONS
+                        short_desc: Description
+                        long_desc: Description
+                      value: Newsletter
+                    - descriptor:
+                        code: CONCURRENT_ACCESS
+                        short_desc: Description
+                        long_desc: Description
+                      value: 'Y'
+                    - descriptor:
+                        code: CONCURRENT_NO_OF_ACCESS
+                        short_desc: Description
+                        long_desc: Description
+                      value: '5'
+              matched: true
+              recommended: true
+          tags:
+            - descriptor:
+                code: SERVICEABILITY
+              list:
+                - descriptor:
+                    code: LOCATION
+                  value: L1
+                - descriptor:
+                    code: CATEGORY
+                  value: MEC10-1001
+                - descriptor:
+                    code: TYPE
+                  value: '13'
+                - descriptor:
+                    code: VAL
+                  value: >-
+                    {"type": "FeatureCollection", "features": [{"type":
+                    "Feature", "properties": {}, "geometry": {"coordinates":
+                    [[[77.175571, 28.675927], [77.128737, 28.600972],
+                    [77.446934, 28.545325], [77.175571, 28.675927]]], "type":
+                    "Polygon"}}]}
+                - descriptor:
+                    code: UNIT
+                  value: geojson
+            - descriptor:
+                code: SERVICEABILITY
+              list:
+                - descriptor:
+                    code: LOCATION
+                  value: L1
+                - descriptor:
+                    code: CATEGORY
+                  value: MEC10-1001
+                - descriptor:
+                    code: TYPE
+                  value: '10'
+                - descriptor:
+                    code: VAL
+                  value: '5'
+                - descriptor:
+                    code: UNIT
+                  value: km
+            - descriptor:
+                code: SERVICEABILITY
+              list:
+                - descriptor:
+                    code: LOCATION
+                  value: L1
+                - descriptor:
+                    code: CATEGORY
+                  value: MEC10-1001
+                - descriptor:
+                    code: TYPE
+                  value: '11'
+                - descriptor:
+                    code: VAL
+                  value: 560001,560002
+                - descriptor:
+                    code: UNIT
+                  value: pincode
+            - descriptor:
+                code: SERVICEABILITY
+              list:
+                - descriptor:
+                    code: LOCATION
+                  value: L1
+                - descriptor:
+                    code: CATEGORY
+                  value: MEC10-1001
+                - descriptor:
+                    code: TYPE
+                  value: '12'
+                - descriptor:
+                    code: VAL
+                  value: IND
+                - descriptor:
+                    code: UNIT
+                  value: country
+          offers:
+            - id: FREEBIE!
+              descriptor:
+                name: Free Newsletter
+                code: FREENEWS50
+                short_desc: Get a free newsletter
+                long_desc: Get a free newsletter
+                images:
+                  - url: https://abc.com/images/207.png
+              item_ids:
+                - I1
+                - I2
+                - I3
+              time:
+                label: validity
+                range:
+                  start: '2024-04-01T00:00:00.000Z'
+                  end: '2024-04-10T00:00:00.000Z'
+                tags:
+                  - code: QUALIFIER
+                    list:
+                      - code: ITEM_COUNT
+                        value: '2'
+                  - code: BENEFIT
+                    list:
+                      - code: ITEM_COUNT
+                        value: '1'
+                      - code: ITEM_ID
+                        value: SKU ITEM ID
+                      - code: ITEM_VALUE
+                        value: '200.00'
+                  - code: META
+                    list:
+                      - code: ADDITIVE
+                        value: 'no'
+                      - code: AUTO
+                        value: 'yes'

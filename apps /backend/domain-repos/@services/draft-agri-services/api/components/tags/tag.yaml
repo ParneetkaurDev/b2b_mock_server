@@ -1,0 +1,137 @@
+title:
+  - code: type
+    description: Depending upon the context, it can take the value of the discount, tax, misc or item type value.
+    reference: <PR/Issue/Discussion Links md format text>
+Settlement_Details:
+  - code: Counterparty
+    description: Counterparty involved; Can be BAP/BPP
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Mode
+    description: Mode of Payment. E.g. UPI
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Beneficiary_Name
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Bank_Account_No
+    description: Bank Account of the counterpart
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Ifsc_Code
+    description: IFSC Code for the Bank Account of the Counter party.
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_Address
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+Buyer_Finder_Fee:
+  - code: FINDER_FEE_TYPE
+    description: Type of the finder fee. eg. "percent"
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FINDER_FEE_AMOUNT
+    description: Amount for the finder fee
+    reference: <PR/Issue/Discussion Links md format text>
+schedule:
+  - code: ttl
+    description: ISO8601 type format for time to live of the fulfillment
+    reference: <PR/Issue/Discussion Links md format text>
+serviceability:
+  - code: location
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: category
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: type
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: val
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: unit
+    description: Description of the Tag
+    reference: <PR/Issue/Discussion Links md format text>
+attributes:
+  - code: color
+    description: Hex Code for color
+    reference: <PR/Issue/Discussion Links md format text>
+BAP_TERMS:
+  - code: FINDER_FEE_TYPE
+    description: Type of the finder fee. eg. "percent"
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FINDER_FEE_AMOUNT
+    description: Amount for the finder fee
+    reference: <PR/Issue/Discussion Links md format text>
+BAP_DETAILS:
+  - code: BUYER_TYPE
+    description: Type of buyer - FARMER, TRADER or FPO
+    reference: <PR/Issue/Discussion Links md format text>
+SELECTION:
+  - code: SEQ
+    description: Sequence of the category
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MANDATORY_SELECTION
+    description: Whether it is a mandatory selection
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MIN_SELECTION
+    description: Number of minimum selections allowed for this category
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MAX_SELECTION
+    description: Number of maximum selections allowed for this category
+    reference: <PR/Issue/Discussion Links md format text>
+SERVICE_INFORMATION:
+  - code: PICKUP_TAT
+    description: TAT for picking up the sample, only required if Seller-Fulfilled
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: COMPLETION_TAT
+    description: TAT for completing the whole test including pickup TAT, if applicable
+    reference: <PR/Issue/Discussion Links md format text>
+RESCHEDULE_TERMS:
+  - code: FULFILLMENT_STATE
+    description: Describing the fulfilment state for which reschdule will be applicable
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_ELIGIBLE
+    description: Whether reschedule is available at this fulfillment state
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_FEE
+    description: Fees that will be charged if rescheduled at this fulfillment state
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_WITHIN
+    description: Time within which it should be rescheduled after the fulfilment has been changed
+    reference: <PR/Issue/Discussion Links md format text>
+ATTRIBUTE:
+  - code: TYPE
+    description: Type of the item, mandatory only when the item is a customization
+    reference: <PR/Issue/Discussion Links md format text>
+SETTLEMENT_DETAILS:
+  - code: COUNTERPARTY
+    description: The counterparty to which the settlement needs to be done - BAP/BPP
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MODE
+    description: The settlement mode - RTGS, NEFT, UPI
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BENEFICIARY_NAME
+    description: Name of the beneficiary
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BANK_ACCOUNT_NO
+    description: Account number of the settlement party
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: IFSC_CODE
+    description: IFSC code of the bank
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_ADDRESS
+    description: UPI address where the settlement needs to be done
+    reference: <PR/Issue/Discussion Links md format text>
+REPORT_REQUIREMENT:
+  - code: REPORT_DEADLINE
+    description: The deadline within which report is required
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: CROP
+    description: The crop for which the service is required, optional
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: DATE_OF_SOWING
+    description: The sowing date of the crop, optional
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FARM_STATUS
+    description: Status of the farm - Eg. RAIN_FED, optional
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ACRAGE
+    description: Acrage of the farm, optional
+    reference: <PR/Issue/Discussion Links md format text>

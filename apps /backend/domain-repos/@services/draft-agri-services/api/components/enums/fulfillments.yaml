@@ -1,0 +1,35 @@
+fulfillments:
+  type:
+    - code: Seller-Fulfilled
+      description: Services for which seller is able to pickup samples from buyer location
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Buyer-Fulfilled
+      description: When the buyer sends out the sample/or goes to the seller location for availing a service
+      reference: <PR/Issue/Discussion Links md format text>
+  state:
+    descriptor:
+      code:
+        - code: PENDING
+          description: When the fulfillment is still in pending state
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: IN_TRANSIT
+          description: When the agent has left for picking up the sample
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: AT_LOCATION
+          description: When the agent is at the location for pickup
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: COLLECTED_BY_AGENT
+          description: When the sample is collected by the agent
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: RECEIVED_AT_LAB
+          description: When the same is first received at the lab
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: TEST_COMPLETED
+          description: When the test has been completed but report is not generated
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: REPORT_GENERATED
+          description: When the report is generated
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: REPORT_SHARED
+          description: When the fulfillment is marked as completed and report has been shared
+          reference: <PR/Issue/Discussion Links md format text>

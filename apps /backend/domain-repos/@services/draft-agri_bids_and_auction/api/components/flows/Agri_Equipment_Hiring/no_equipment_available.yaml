@@ -1,0 +1,65 @@
+summary: Agriculture Equipment Hiring (No equipments available)
+description: The following is an illustrative flow to perform a transaction of a nature where a buyer would like to hire agricultural equipment but Seller responds with no equipments available for the requested duration
+
+details:
+
+  - description: Sequence Diagram for Agriculture Equipment Hiring
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA1 as SellerApp1
+        participant SA2 as SellerApp2
+        
+        Note Over B,SA: **SEARCH FLOW**
+        B ->> BA: Search by city for a equipment
+        BA ->> G: **/search** - Search by city for a equipment and <br>additional parameters
+        Note left of BA: Additional params include: <br><br>
+        G ->> SA1: **/search** - Equipment request broadcasted based <br>on city and domain in context
+        G ->> SA2: **/search** - Equipment request broadcasted based <br>on city and domain in context
+        SA1 ->> BA: **/on_search** - Equipment catalog returned <br>with pricing, seller statutory details, pricing
+        SA2 ->> BA: **/on_search** - Equipment catalog returned <br>with pricing, seller statutory details, pricing
+        Note Over BA,SA1: Buyer now has the option to choose the <br>Equipment from either Seller 1 or Seller 2 or both
+        BA ->> B: Shows all the equipments <br>options from sellers
+
+  - description: Ordering
+    mermaidGraph: >-
+      sequenceDiagram
+        participant B as Buyer
+        participant BA as BuyerApp
+        participant G as Gateway
+        participant SA as SellerApp
+        Note Over B,SA: **SELECT FLOW**
+        B ->> BA: Selects one of the <br>providers for equipment
+        BA ->> SA: **/select** - A equipment is selected with a <br>TTL for receiving response
+        SA ->> BA: **/on_select** - Responds with no equipments available for the requested duration
+        BA ->> B: Shows response as equipment not available
+
+reference: if any
+steps:
+  - summary: Search based on the intent for hiring a particular agri equipment
+    api: search
+    description: Search intent sent by the buyer based on the particular agri equipment required - e.g. Irrigation Equipment
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/search/search_by_category.yaml"
+  - summary: Returns the catalog specific to the search intent
+    api: on_search
+    description: Returns the catalog specific to the search intent
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_search/on_search.yaml"
+  - summary: Buyer selects the required agri equipment
+    api: select
+    description: Buyer selects the required agri equipment + suitable fulfillment type
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/select/select.yaml"
+  - summary: Seller confirms the equipment item and returns the quote for equipment
+    api: on_select
+    description: Seller confirms the equipment item and returns the quote for equipment
+    reference: if any
+    example:
+      $ref: "../../Examples/Agri_Equipment_Hiring_yaml/on_select/on_select.yaml"
+  

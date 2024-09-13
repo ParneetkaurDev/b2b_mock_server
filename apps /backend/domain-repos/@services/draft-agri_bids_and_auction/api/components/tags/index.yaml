@@ -1,0 +1,51 @@
+search:
+  message:
+    intent:
+      $ref: "./TagGroup.yaml#/intent"
+on_search:
+  message:
+    catalog:
+      $ref: "./TagGroup.yaml#/catalog"
+
+on_select:
+  message:
+    order:
+      quote:
+        breakup:
+          $ref: "./TagGroup.yaml#/order/quote/breakup"
+
+init:
+  message:
+    order:
+      items:
+        $ref: "./TagGroup.yaml#/order/items"
+
+on_init:
+  message: &ref1
+    order:
+      $ref: "./TagGroup.yaml#/order"
+
+confirm:
+  message: *ref1
+
+on_status:
+  message: *ref1
+
+update:
+  message: &ref2
+    order:
+      payments:
+        $ref: "./TagGroup.yaml#/order/payments"
+      quote:
+        breakup:
+          tags:
+            $ref: "./TagGroup.yaml#/order/quote/breakup/tags"
+        item:
+          tags:
+            - code: COMMODITY_SPECIFICATION
+              description: Update parameter for commodity specifications (Required)
+              reference: <PR/Issue/Discussion Links md format text>
+              list:
+                $ref: "./Tag.yaml#/COMMODITY_SPECIFICATION"
+on_update:
+  message: *ref2

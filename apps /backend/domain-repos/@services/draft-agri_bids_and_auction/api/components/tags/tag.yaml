@@ -1,0 +1,323 @@
+title:
+  - code: type
+    description: Depending upon the context, it can take the value of the discount, tax, misc, refundable security or item type value. (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+Settlement_Details:
+  - code: Counterparty
+    description: Counterparty involved; Can be BAP/BPP (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Mode
+    description: Mode of Payment. E.g. UPI (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Beneficiary_Name
+    description: Description of the Tag (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Bank_Account_No
+    description: Bank Account of the counterpart (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: Ifsc_Code
+    description: IFSC Code for the Bank Account of the Counter party. (Required in case of bank transfer) 
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_Address
+    description: Description of the Tag (Required in case of UPI mode)
+    reference: <PR/Issue/Discussion Links md format text>
+Buyer_Finder_Fee:
+  - code: FINDER_FEE_TYPE
+    description: Type of the finder fee. eg. "percent" (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FINDER_FEE_AMOUNT
+    description: Amount for the finder fee (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+schedule:
+  - code: ttl
+    description: ISO8601 type format for time to live of the fulfillment (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+serviceability:
+  - code: location
+    description: Location id (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: category
+    description: Category id for commodity (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: type
+    description: Serviceability type id (10 - hyperlocal, 11 - intercity, 12 - pan india, 13 - polygon) (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: val
+    description: Serviceability type values like radius, pincode or poligon co-ordinates (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: unit
+    description: Unit of serviceability type values like KM, geojson (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+seller_terms:
+  - code: gst_credit_invoice
+    description: gst invoice if applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+seller_id:
+  - code: seller_id_code
+    description: Seller id code i.e. mandi_licence (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: seller_id_no
+    description: Seller unique mandi licence number (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+FSSAI_LICENSE_NO:
+  - code: BRAND_OWNER
+    description: Brand owner name (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: LICENSE_NUMBER
+    description: Brand license number details (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TYPE_OF_BUSINESS
+    description: Type of business of commodity (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+BAP_TERMS:
+  - code: FINDER_FEE_TYPE
+    description: Type of the finder fee. eg. "percent" (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FINDER_FEE_AMOUNT
+    description: Amount for the finder fee (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+BUYER_ID:
+  - code: BUYER_ID_CODE
+    description: Buyer id code. eg. "mandi_licence" (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BUYER_ID_NO
+    description: Buyer id (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+catalog_inc:
+  - code: START_TIME
+    description: Start time when start to pull the catalog (Required - if mode is not defined)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: END_TIME
+    description: End time when stop to pull the catalog (Required - if mode is not defined)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MODE
+    description: Mode to get the catalogs update like start, stop and based on it seller will send the updated catalogs (Required - If start and end time not defined)
+    reference: <PR/Issue/Discussion Links md format text>
+SELECTION:
+  - code: SEQ
+    description: Sequence of the category (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MANDATORY_SELECTION
+    description: Whether it is a mandatory selection (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MIN_SELECTION
+    description: Number of minimum selections allowed for this category (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MAX_SELECTION
+    description: Number of maximum selections allowed for this category (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+SERVICE_INFORMATION:
+  - code: PICKUP_TAT
+    description: TAT for picking up the sample, only required if Seller-Fulfilled (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: CANCELLABLE
+    description: Allow that commodity bid is cancellable or not (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+AUCTION_SPECIFICATION:
+  - code: CURRENCY_UNIT
+    description: Currency of the applied charges on bids (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FLOOR_PRICE
+    description: Bids floor (Minimum) price for commodity (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MIN_BIDDER_REQUIRED
+    description: Minimum number of Bidders required (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TYPE_OF_AUCTION
+    description: Type of Bids - OPEN, CLOSE (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: EARNEST_MONEY_DEPOSIT
+    description: Earnest Money Deposit (Participation Fee refundable) (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TICK_SIZE
+    description: Minimum amount by which a bid can be increased (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MAXIMUM_TARGET_PRICE
+    description: Maximum Target Price for the bids (may or may not be defined by the Seller) (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BIDS_LIMITATION
+    description: Limitation on Number of Bids - A seller may only accept 5 Bids (Optional) 
+    reference: <PR/Issue/Discussion Links md format text>
+RESCHEDULE_TERMS:
+  - code: FULFILLMENT_STATE
+    description: Describing the fulfilment state for which reschdule will be applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_ELIGIBLE
+    description: Whether reschedule is available at this fulfillment state (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_FEE
+    description: Fees that will be charged if rescheduled at this fulfillment state (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: RESCHEDULE_WITHIN
+    description: Time within which it should be rescheduled after the fulfilment has been changed (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+QUALITY_ASSESSMENT_REPORT:
+  - code: NAME
+    description: Certificate name if applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MIME_TYPE
+    description:  mime type of certificates if applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: COPY
+    description: Copy of the certificates if applicable (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+CHECKLIST_DOCUMENTS:
+  - code: TERMS_AND_CONDITION
+    description: Terms and condition for equipment uses if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: LEASE_POLICY
+    description: Lease policy for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: AGREEMENT_POLICY
+    description: Agreement policy for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ID_VERIFICATION_POLICY
+    description: Id verification policy for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: INSPECTION_REQUIREMENTS
+    description: Inspection requirements for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: OBLIGATIONS
+    description: Obligations for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TERMS_OF_USAGE
+    description: Terms of uses for equipment hiring if applicable (Optional)
+    reference: <PR/Issue/Discussion Links md format text>
+COMMODITY_SPECIFICATION:
+  - code: REFERENCE_DOCS_MIME_TYPE
+    description: Reference docs mime type of the commodity specification if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: REFERENCE_DOCS_COPY
+    description: Reference docs link of the commodity specification if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SHELF_LIFE
+    description: Self life of the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MOISTURE
+    description: Moisture of the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FOREIGN_MATTER
+    description: foreign matter in the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: OIL_CONTENT
+    description: Oil Content in the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: DEFECTIVES
+    description: Defectives into the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: OTHER_EDIBLE_GRAINS
+    description: Other edible grains into the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: URIC_ACID
+    description: Uric Acid into the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: AFLATOXIN
+    description: Aflatoxin into the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ARGEMONE_SEEDS
+    description: Is Argemone seeds if applicable - Yes, No (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SIZE_RANGE_MEASURE
+    description: Size and Range measure for the commodity if applicable i.e. Diameter, Length (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SIZE_RANGE
+    description: Size (Diameter, Length) Range (mm) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: PERCENTAGE_OF_DEFECTS
+    description: '% of Defects (Cuts, Cracks, Discoloured, mis-shape,Bruising Marks, Black/Brown Spots, Soft patches, mech. Damage, insect eaten, bird eaten, immature, dry/old look, shriveleld, under/over ripe, twins, fresh rooting,hail damage, latex marks/burns  sprouted,holes, wilting, chipped, puffy, without stem/calyx, slanky, nodes on surace, loose jacket, improper colour, Ricenous, long stem,Chitty, smut, sun burn, hard seed stem, open neck, yellow diseased leaves, foreign matter, watery berries etc for the commodity if applicable (Optional - depends on commodity)'
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: PERCENTAGE_OF_WASTAGE
+    description: '% of Wastage Not fit for Human Consumption (Rotten, Fungal infected, Diseased, Totally Damaged) for the commodity if applicable (Optional - depends on commodity)'
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BUNCH_SIZE
+    description: Bunch size for leafy vegetables weight (gm) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BUNCH_SIZE_UNIT
+    description: Bunch size unit for leafy vegetables weight (gm) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: VISIBLE_COLOUR
+    description: Visible Colour for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: COLOUR_PERCENTAGE
+    description: Colour % (Characteristic true to the variety) Scale (1 to 100*) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TOTAL_SOLUBLE_SOLIDS
+    description: Total soluble solids (TSS) % (MInimum) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TRACES_OF_SOIL
+    description: Traces of Soil for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: VOLATILE_OIL_PERCENTAGE
+    description: Volatile oil % for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TOTAL_ASH_PERCENTAGE
+    description: Total Ash, % (m/m) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: CORIANDER_SPLIT_SEEDS_PERCENTAGE
+    description: Damaged /Coriander Split seeds(% by weight) Max for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MIN_FLOWER_PER_STEM
+    description: Min. flower per stem for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: GIRTH_AT_THIN_END
+    description: Girth at thin end for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BLOOMING_AND_SHAPE
+    description: Blooming and Shape for the commodity if applicable like - Reasonable bloomed and conical shape More than 85 %, Slightly bloomed and conical shape More than 90 %, Perfect bloomed and conical shape More than 95 % (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FLOWER_DIAMETER_IN_CM
+    description: Flower Diameter in cm for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: STAPLE_LENGTH_OF_COTTON_IN_MM
+    description: Staple Length of cotton (in mm) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: TRASH_PERCENTAGE
+    description: Trash (% by wt) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BUNDLE_STRENGTH
+    description: Bundle Strength for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MICRONAIRE
+    description: Micronaire for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: PERCENTAGE_OF_MATURED_FIBERS
+    description: Percentage of Matured fibers (mm) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: SIEVE_ANALYSIS
+    description: Sieve analysis (% passing through 75 µm IS Sieve) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: NUMBER_OF_NUTS_PER_KG
+    description: Number of nuts per kg for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: VOID_NUTS_PERCENTAGE
+    description: Void nuts (% by Weight) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: IMMATURE_NUTS_PERCENTAGE
+    description: Immature nuts (% by Weight) for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: STRENGTH
+    description: Strength for the commodity if applicable (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: FINENESS
+    description: Fineness for the commodity if applicable like Fine (10), Very Fine (15), Coarse (05) (Optional - depends on commodity)
+    reference: <PR/Issue/Discussion Links md format text>
+SETTLEMENT_DETAILS:
+  - code: COUNTERPARTY
+    description: The counterparty to which the settlement needs to be done - BAP/BPP (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: MODE
+    description: The settlement mode - RTGS, NEFT, UPI (Required)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BENEFICIARY_NAME
+    description: Name of the beneficiary (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: BANK_ACCOUNT_NO
+    description: Account number of the settlement party (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: IFSC_CODE
+    description: IFSC code of the bank (Required in case of bank transfer)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: UPI_ADDRESS
+    description: UPI address where the settlement needs to be done (Required in case of UPI mode)
+    reference: <PR/Issue/Discussion Links md format text>
+

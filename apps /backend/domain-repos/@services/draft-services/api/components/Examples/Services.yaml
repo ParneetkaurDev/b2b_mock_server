@@ -1,0 +1,7 @@
+Services - Home Services:
+  summary: Booking Home Services
+  description: >-
+    This elaborates the model implementations for booking home services over the network.
+    The booking majorly happens in four phases of order processing flow, i.e. Discovery of available services and service providers based on serviceability, order, fulfillment and post-fulfillment.
+  example_set:
+    $ref: "./Services_home_service_yaml/index.yaml"

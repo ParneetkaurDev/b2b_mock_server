@@ -1,0 +1,29 @@
+search:
+  message:
+    intent:
+      $ref: "./TagGroup.yaml#/intent"
+on_search:
+  message:
+    catalog:
+      providers:
+        $ref: "./TagGroup.yaml#/providers"
+        items:
+          $ref: "./TagGroup.yaml#/catalog/items"
+on_init: 
+  message:
+    order:
+      tags:
+        $ref: "./TagGroup.yaml#/order/on_init"
+      payments:
+        $ref: "./TagGroup.yaml#/payments"
+confirm: &ref1
+  message:
+    order:
+      tags:
+        $ref: "./TagGroup.yaml#/order/confirm"
+      payments:
+        $ref: "./TagGroup.yaml#/payments"
+on_confirm: *ref1
+on_status: *ref1
+on_cancel: *ref1
+on_update: *ref1

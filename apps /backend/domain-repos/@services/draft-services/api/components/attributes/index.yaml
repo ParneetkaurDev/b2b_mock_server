@@ -1,0 +1,3 @@
+Home Services:
+  attribute_set:
+    $ref: './Home_Services/index.yaml'

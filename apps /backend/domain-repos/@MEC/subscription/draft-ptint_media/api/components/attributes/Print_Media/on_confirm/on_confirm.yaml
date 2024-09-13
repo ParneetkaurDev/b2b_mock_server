@@ -1,0 +1,34 @@
+message:
+  parent: true
+  order:
+    parent: true
+    state:
+      description: status of the order, enum - "Created", "Accepted", "In-progress", "Completed", "Cancelled", "Active"
+      required: required
+      usage: "Created"
+      reference: if any
+    ref_order_ids:
+      description: Orders that are currently linked to this order
+      required: not-required
+      usage: "[1001203, 1001204]"
+      reference: if any
+    fulfillments:
+      parent: true
+      fulfillments:
+        description: contains the fulfillment details
+        required: required
+        usage: "-"
+        reference: if any
+      stops:
+        time:
+          range:
+            start:
+              description: start time of the service
+              required: required
+              usage: "2023-11-16T09:30:00Z"
+              reference: if any
+            end:
+              description: end time of the service
+              required: required
+              usage: "2023-11-16T10:30:00Z"
+              reference: if any

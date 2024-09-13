@@ -1,0 +1,20 @@
+fulfillments:
+  type:
+    - code: Home-Service
+      description: Home Service
+      reference: <PR/Issue/Discussion Links md format text>
+  state:
+    descriptor:
+      code:
+      - code: Pending
+        description: The initial state of the fulfillment.
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: In-Transit
+        description: The service provider is on the way.
+        reference: <PR/Issue/Discussion Links md format text>  
+      - code: At-Location
+        description: The service provider has reached the location.
+        reference: <PR/Issue/Discussion Links md format text>
+      - code: Completed
+        description: The service has been completed.
+        reference: <PR/Issue/Discussion Links md format text>

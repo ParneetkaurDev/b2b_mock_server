@@ -1,0 +1,77 @@
+search:
+  examples:
+    - $ref: "./search/search_print.yaml"
+    - $ref: "./search/search_mandate.yaml"
+select:
+  examples:
+    - $ref: "./select/select_print.yaml"
+    - $ref: "./select/select_single.yaml"
+    - $ref: "./select/select_single_online.yaml"
+    - $ref: "./select/select_mandate.yaml"
+init:
+  examples:
+    - $ref: "./init/init_full.yaml"
+    - $ref: "./init/init_mandate.yaml"
+    - $ref: "./init/init_manual.yaml"
+    - $ref: "./init/init_print.yaml"
+    - $ref: "./init/init_single.yaml"
+confirm:
+  examples:
+    - $ref: "./confirm/confirm_single.yaml"
+    - $ref: "./confirm/confirm_manual.yaml"
+    - $ref: "./confirm/confirm_mandate.yaml"
+    - $ref: "./confirm/confirm_full.yaml"
+    - $ref: "./confirm/confirm_print_mandate.yaml"
+    - $ref: "./confirm/confirm_print.yaml"
+update:
+  examples:
+    - $ref: "./update/update.yaml"
+status:
+  examples:
+    - $ref: "./status/status.yaml"
+on_search:
+  examples:
+    - $ref: "./on_search/on_search_print.yaml"
+    - $ref: "./on_search/on_search_newspaper.yaml"
+    - $ref: "./on_search/on_search_mandate.yaml"
+on_select:
+  examples:
+    - $ref: "./on_select/on_select_mandate.yaml"
+    - $ref: "./on_select/on_select_print.yaml"
+    - $ref: "./on_select/on_select_single_online.yaml"
+    - $ref: "./on_select/on_select_single.yaml"
+on_init:
+  examples:
+    - $ref: "./on_init/on_init_full.yaml"
+    - $ref: "./on_init/on_init_mandate.yaml"
+    - $ref: "./on_init/on_init_manual.yaml"
+    - $ref: "./on_init/on_init_print.yaml"
+    - $ref: "./on_init/on_init_single.yaml"
+on_confirm:
+  examples:
+    - $ref: "./on_confirm/on_confirm_full.yaml"
+    - $ref: "./on_confirm/on_confirm_mandate_order.yaml"
+    - $ref: "./on_confirm/on_confirm_mandate.yaml"
+    - $ref: "./on_confirm/on_confirm_manual_order.yaml"
+    - $ref: "./on_confirm/on_confirm_order.yaml"
+    - $ref: "./on_confirm/on_confirm_print_order.yaml"
+    - $ref: "./on_confirm/on_confirm_print.yaml"
+    - $ref: "./on_confirm/on_confirm_single.yaml"
+    - $ref: "./on_confirm/on_confirm_manual.yaml"
+on_status:
+  examples:
+    - $ref: "./on_status/on_status_agent_assigned.yaml"
+    - $ref: "./on_status/on_status_completed.yaml"
+    - $ref: "./on_status/on_status_order_picked_up.yaml"
+    - $ref: "./on_status/on_status_out_for_delivery.yaml"
+    - $ref: "./on_status/on_status_packed.yaml"
+    - $ref: "./on_status/on_status_payment_confirmation.yaml"
+    - $ref: "./on_status/on_status_pending.yaml"
+on_update:
+  examples:
+    - $ref: "./on_update/on_update_paid.yaml"
+    - $ref: "./on_update/on_update_parent_update.yaml"
+    - $ref: "./on_update/on_update_paused.yaml"
+    - $ref: "./on_update/on_update_print_paid.yaml"
+    - $ref: "./on_update/on_update_transferred.yaml"
+    - $ref: "./on_update/on_update_mandate_paid.yaml"

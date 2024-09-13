@@ -1,0 +1,6 @@
+B2B Domestic Logistics: 
+  enum_set:
+    $ref: './Domestic/index.yaml'
+B2B International Logistics: 
+  enum_set:
+    $ref: './International/index.yaml' 

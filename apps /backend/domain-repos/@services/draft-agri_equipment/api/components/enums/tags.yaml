@@ -1,0 +1,21 @@
+reschedule_fee_type:
+  - code: percent
+    description: Fee type value applied as percent
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: amount
+    description: Fee type value applied as percent
+    reference: <PR/Issue/Discussion Links md format text>
+serviceability:
+  type:
+    - code: 10
+      description: Hyperlocal (radius) 
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: 11
+      description: Intercity (pincodes)
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: 12
+      description: Pan-India
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: 13
+      description: Polygon (Selected co-ordinates)
+      reference: <PR/Issue/Discussion Links md format text>

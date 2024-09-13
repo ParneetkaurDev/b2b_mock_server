@@ -1,0 +1,32 @@
+fulfillments:
+  type:
+    - code: ONLINE
+      description: For services/products that can be fulfilled digitally
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: OFFLINE
+      description: For services/products that needs to be fulfilled physically
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: SUBSCRIPTION
+      description: For services/products that can be periodically delivered at a specific interval in both online and offline mode
+      reference: <PR/Issue/Discussion Links md format text>
+  state:
+    descriptor:
+      code:
+        - code: PENDING
+          description: When the fulfillment is still in pending state
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: PACKED
+          description: When the item(s) has been packed by the seller
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: AGENT-ASSIGNED
+          description: When an agent has been assigned for the fulfillment
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: ORDER-PICKED-UP
+          description: When the item(s) have been picked up by the agent
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: OUT-FOR-DELIVERY
+          description: When the item(s) are out for delivery
+          reference: <PR/Issue/Discussion Links md format text>
+        - code: COMPLETED
+          description: When the item(s) are successfully delivered/fulfilled
+          reference: <PR/Issue/Discussion Links md format text>

@@ -1,0 +1,376 @@
+context:
+  parent: true
+  domain:
+    description: domain code, enums - ONDC:SRV10 ( Home Services - Appliance Repair Services ), ONDC:SRV11 ( Home Services - Infra Services ), ONDC:SRV12 ( Home Services - Personal Care Services )
+    required: required
+    usage: "ONDC:SRV10"
+    reference: if any
+  city:
+    code:
+      description: city code for search where service needs to be provided. List of city codes, with pincode mapping, are here - https://docs.google.com/spreadsheets/d/12A_B-nDtvxyFh_FWDfp85ss2qpb65kZ7/edit#gid=213574534
+      required: required
+      usage: std:080
+      reference: if any
+  country:
+    code:
+      description: ISO standard 3 digit country code where service needs to be provided
+      required: required
+      usage: IND
+      reference: if any  
+  bap_id:
+    description: subscriber id for buyer app
+    required: required
+    usage: buyerapp.com
+    reference: if any
+  bap_uri:
+    description: subscriber URI for buyer app
+    required: required
+    usage: https://buyerapp.com/ondc
+  bpp_id:
+    description: subscriber id for seller app
+    required: required
+    usage: sellerapp.com
+    reference: if any
+  bpp_uri:
+    description: subscriber URI for seller app
+    required: required
+    usage: https://sellerapp.com/ondc
+    reference: if any
+  timestamp:
+    description: RFC3339 compliant timestamp
+    required: required
+    usage: '2023-10-17T21:10:00.000Z'
+    reference: if any
+  ttl:
+    description: validity of message
+    required: required
+    usage: PT30S
+    reference: if any
+message:
+  parent: true
+  catalog:
+    parent: true
+    fulfillments:
+      parent: true
+      id:
+        description: id for the fulfillment modes available
+        required: required
+        usage: "1"
+        reference: if any
+      type:
+        description: type of modes available for fulfilling the service , enum - "Home-Service"
+        required: required
+        usage: "Home-Service"
+        reference: if any  
+    payments:
+      parent: true
+      id:
+        description: Payment id for the available payment methods
+        required: required
+        usage: "1"
+        reference: if any 
+      type:
+        description: Type of payment methods available
+        required: required
+        usage: "PRE-FULFILLMENT"
+        reference: if any        
+    descriptor:
+      parent: true
+      name:
+        description: name of seller NP, as applicable
+        required: required
+        usage: "ABC store"
+        reference: if any
+      short_desc:
+        description: description of seller NP
+        required: required
+        usage: "At home Service Providers"
+        reference: if any
+    providers:
+      parent: true
+      id:
+        description: service provider id
+        required: required
+        usage: "P1"
+        reference: if any
+      descriptor:
+        description: details of the service provider
+        required: required
+        usage: "ABC store"
+        reference: if any  
+      locations:
+        description: service provider locations
+        required: optional
+        usage: "-"
+        reference: if any
+      time:
+        parent: true
+        time:
+          description: To define schedule at provider level, if same schedule is available for all items. If time is defined at item level, item level time will take precedence.
+          required: required
+          usage: "-"
+          reference: if any
+        label:
+          description: This is used to indicate the validity of the provider's schedule.
+          required: required
+          usage: "validity"
+          reference:  if any
+        range:
+          description: It specifies the time range (start and end) within which the provider is providing the schedule for.
+          required: required
+          usage: "-"
+          reference:  if any
+        range.start:
+          description: availability start date of the provider schedule
+          required: required
+          usage: "2022-11-10T00:00:00.000Z"
+          reference: if any
+        range.end:
+          description: availability end date of the provider schedule
+          required: required
+          usage: "2022-11-20T00:00:00.000Z"
+          reference: if any
+        days:  
+          description: Comma separated values representing days of the week when the provider is available, 1 - Monday, 7 - Sunday
+          required: optional
+          usage: "1,2,3,4,5"
+          reference:  if any
+        schedule:
+          description: It is the timeframe and availability during which the provider offers the services or operates.
+          required: required
+          usage: "-"
+          reference:  if any
+        schedule.times:
+          description: These timestamps indicate the slots during which the provider chooses to offer available slots exclusively.
+          required: optional
+          usage: "[2022-11-20T00:00:00.000Z]"
+          reference: if any
+        schedule.frequency:
+          description: The available slot frequency, for example, if the provider is available every 2 hours, would be represented as 'PT2H'.
+          required: required
+          usage: "PT2H"
+          reference: if any
+        schedule.holidays:
+          description: future dated days within the range provided on which service is not available
+          required: optional
+          usage: "[2024-11-13, 2024-11-15]"
+          reference: if any
+      categories:
+        parent: true
+        categories:
+          description: Customizations (like number of people, meals, etc) may be used to create customized services (e.g. Cook On-Demand), by defining the base product and the required & optional customizations for the service.
+          required: optional
+          usage: "-"
+          reference: if any
+        categories.id:
+          description: id of the customization, it will be mapped to an actual item in items array
+          required: required
+          usage: "-"
+          reference: if any
+        categories.descriptor:
+          description: description of the customization
+          required: required
+          usage: "-"
+          reference: if any
+        categories.tags:
+          description: Metadata regarding the customization and its application includes details such as whether it's a required selection, the sequence for selection, maximum/minimum number of customizations that can be selected, scheduling, and more.
+          required: optional
+          usage: "-"
+          reference: if any
+      items:
+        parent: true
+        id: 
+          description: identifier for a service or customization
+          required: required
+          usage: I1
+          reference: if any
+        parent_item_id:
+          description: id of the parent item for a service or customization
+          required: required
+          usage: PI1
+          reference: if any
+        descriptor.code:
+            description: unique code for item which will be in this format - "type:code" where type is 1 - EAN, 2 - ISBN, 3 - GTIN, 4 - HSN, 5 - others
+            required: optional
+            usage: '5:other code'
+            reference: if any
+        descriptor.images:
+          description: while item images ensures better discoverability & enhances user experience, if no image is available, seller NPs shouldn’t send image (instead of sending placeholder image)
+          required: required
+          usage: "-"
+          reference: if any      
+        quantity.unitized.measure.unit:
+          description: enum - "unit", "dozen", "kilogram", "tonne", "litre", "millilitre" (https://github.com/ONDC-Official/protocol-network-extension/blob/main/enums/retail/grocery/RET10-UOM.json)
+          required: required
+          usage: unit
+          reference: if any
+        tags.code:
+          description: code = 'reschedule_terms', applicable in case service is rescheduled
+          required: required
+          usage: "-"
+          reference: if any
+        cancellation_terms:
+          description: cancellation terms applicable on cancellation of the service
+          required: required
+          usage: "-"
+          reference: if any
+        category_ids:
+          description: category id for the item as per taxonomy or customization id (categories/id) for customizations
+          required: required
+          usage: "SRV10-1000"
+          reference: if any  
+        fulfillment_ids:
+          description: ids of the different fulfillment modes (provided in fulfillments array) by which this item (service) can be fulfilled
+          required: required
+          usage: "1"
+          reference: if any  
+        location_ids:
+          description: location ids of the service provider where this service is available
+          required: required
+          usage: "L1"
+          reference: if any  
+        time:
+          range:
+            start:
+              description: availability start date of the service
+              required: required
+              usage: "2022-11-10T00:00:00.000Z"
+              reference: if any
+            end:
+              description: availability end date of the service 
+              required: required
+              usage: "2022-11-20T00:00:00.000Z"
+              reference: if any
+          schedule:
+            frequency:
+              description: service slot frequency
+              required: required
+              usage: "PT1H"
+              reference: if any
+            holidays:
+              description: days on which service is not available
+              required: required
+              usage: "[2023-11-13, 2023-11-15]"
+              reference: if any
+            times:
+              description: Available time slots for the service. If time slots for the service are not specified within the items, the schedule of the service provider will be prioritized.
+              required: optional
+              usage: "[2022-11-20T00:00:00.000Z]"
+              reference: if any
+      creds:
+        parent: true
+        creds:
+          description: credentials of the seller
+          required: optional
+          usage: "-"
+          reference: if any
+        id:
+          required: required 
+          description: Human readable id
+          reference: if any
+          usage: ESG-12345678
+        type:
+          required: required
+          description: Type of creds
+          reference: if any
+          usage: License
+        desc:
+          required: optional
+          description: Description of creds
+          reference: if any
+          usage: Export License No. ESG-12345678
+        url:
+          required: optional
+          description: Physical description
+          reference: if any
+          usage: https://abcd.cdn.com/images/license-img 
+      offers:
+        parent: true
+        offers: 
+            description: Offers can be defined for a provider, An offer can be for - retail, logistics. An offer can be - opt-in, auto-applied. An offer will include the following info - offer id, offer type, images - may be used as banners to promote the offer from a merchant. An offer applicability criteria can include one or more of the following - location(s), categories, item(s), time period validity.
+            required: optional
+            usage: "-"
+            reference: if any
+        id:
+            description: unique offer id from provider;
+            required: required
+            usage: 'FLAT150, DISCP60, DISCA150, BUY2GET3, FREEBIE '
+            reference: if any
+        descriptor:
+            description: description of the offer.
+            required: required
+            usage: '-'
+            reference: if any
+        descriptor.name:
+            description: description of the offer.
+            required: optional
+            usage: '60% off up to ₹120, for order value above ₹159'
+            reference: if any
+        descriptor.code:
+            description: offer type - disc_pct  (discount percent or amount applied to the cart value, with or without a cap, and may be based on minimum cart value) , disc_amt (flat discount amount applied to the cart value, and may be based on minimum cart value), buyXgetY ( for every "X" item count in the cart, total of "Y" items will be offered (i.e. "Y" - "X" additional items), at 0 additional value) , freebie (for a minimum order value, 1 or more free item(s) will be offered at 0 value)
+            required: required
+            usage: 'disc_pct'
+            reference: if any
+        descriptor.short_desc:
+            description: short description of the offer.
+            required: optional
+            usage: '60% off up to ₹120'
+            reference: if any
+        descriptor.long_desc:
+            description: long description of the offer.
+            required: optional
+            usage: 'for order value above ₹159'
+            reference: if any
+        descriptor.images:
+            description: banner image from seller
+            required: optional
+            usage: 'https://sellerNP.com/images/offer2-banner.png'
+            reference: if any
+        location_ids:
+            description: location ids of the stores where the offer is applicable.
+            required: required
+            usage: 'L1'
+            reference: if any
+        category_ids:
+            description: category ids for which the offer is applicable.
+            required: required
+            usage: 'RET10-1034'
+            reference: if any
+        item_ids:
+            description: item ids for which the offer is applicable.
+            required: required
+            usage: 'I1'
+            reference: if any
+        time:
+            description: validity of the offer.
+            required: required
+            usage: '-'
+            reference: if any
+        time.label:
+            description: if the offer is valid
+            required: required
+            usage: 'valid'
+            reference: if any
+        time.range:
+            description: range of the validity of the offer
+            required: required
+            usage: '-'
+            reference: if any
+        tags:
+            description: Tags can be utilized to specify the minimum order value, discount value, and other metadata related to the offer and its application. 
+            required: required
+            usage: '-'
+            reference: if any
+      fulfillments:
+          contact:
+            phone:
+              description: contact number of the service provider
+              required: optional
+              usage: "9886098860"
+              reference: if any  
+      tags: 
+        description: serviceability construct for providers is defined here. Refer to this document (https://docs.google.com/document/d/1f4QbVstY5m-L_-Jut5jvbeiaBKLR1ttJL_am6GG2Fko/edit) for serviceability construct.
+        required: required
+        usage: '-'
+        reference: if any 
+

@@ -1,0 +1,72 @@
+summary: Search based on the intent for buying a particular health service
+description: >-
+  Search intent sent by the buyer based on the particular health service
+  required - e.g. CBC
+value:
+  context:
+    domain: ONDC:SRV13
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: search
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/ondc
+    transaction_id: T1
+    message_id: M1
+    timestamp: '2024-04-01T22:00:00.000Z'
+    ttl: PT30S
+  message:
+    intent:
+      item:
+        descriptor:
+          name: LFT
+      fulfillment:
+        type: Home-Location
+        customer:
+          person:
+            name: XYZ
+          contact:
+            phone: '9999999999'
+        stops:
+          - type: end
+            time:
+              range:
+                start: '2024-04-04T22:00:00.000Z'
+            location:
+              gps: 12.974002,77.613458
+              area_code: '560001'
+      payment:
+        type: PRE-FULFILLMENT
+        collected_by: BAP
+      tags:
+        - descriptor:
+            code: BUYER_FINDER_FEES
+          display: false
+          list:
+            - descriptor:
+                code: BUYER_FINDER_FEE_TYPE
+              value: percent
+            - descriptor:
+                code: BUYER_FINDER_FEE_AMOUNT
+              value: '0'
+        - descriptor:
+            code: BAP_PREFERENCES
+          list:
+            - descriptor:
+                code: TEST_PREFERENCE
+              value: SINGLE_TEST
+            - descriptor:
+                code: TEST_PREFERENCE
+              value: TEST_PACKAGE
+            - descriptor:
+                code: TEST_PREFERENCE
+              value: SINGLE_TEST+TEST_PACKAGE
+        - descriptor:
+            code: REPORT_REQUIREMENT
+          list:
+            - descriptor:
+                code: REPORT_DEADLINE
+              value: '2024-04-04T22:00:00.000Z'

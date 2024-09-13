@@ -1,0 +1,241 @@
+value:
+  context:
+    domain: ONDC:SRV17
+    location:
+      city:
+        code: std:080
+      country:
+        code: IND
+    action: confirm
+    version: 2.0.0
+    bap_id: buyerapp.com
+    bap_uri: https://buyerapp.com/services
+    bpp_id: sellerapp.com
+    bpp_uri: https://sellerapp.com/services
+    transaction_id: T1
+    message_id: M4
+    timestamp: '2024-06-10T22:00:46.000Z'
+    ttl: PT30S
+  message:
+    order:
+      id: O1
+      status: Created
+      provider:
+        id: P1
+        locations:
+          - id: L1
+      items:
+        - id: I1
+          fulfillment_ids:
+            - F1
+          location_ids:
+            - L1
+          category_ids:
+            - SRV17-1035
+          quantity:
+            selected:
+              measure:
+                unit: hours
+                value: '4'
+          tags:
+            - descriptor:
+                code: ATTRIBUTE
+              list:
+                - descriptor:
+                    code: TYPE
+                  value: item
+      billing:
+        name: ONDC buyer
+        address: >-
+          22, Mahatma Gandhi Rd, Craig Park Layout, Ashok Nagar, Bengaluru,
+          Karnataka 560001
+        state:
+          name: Karnataka
+        city:
+          name: Bengaluru
+        tax_id: XXXXXXXXXXXXXXX
+        email: nobody@nomail.com
+        phone: '9886098860'
+      fulfillments:
+        - id: F1
+          type: Buyer-Fulfilled
+          tracking: false
+          stops:
+            - type: start
+              location:
+                gps: 12.974002,77.613458
+                address: Farm 14 Near Village
+                city:
+                  name: Bengaluru
+                country:
+                  code: IND
+                area_code: '560001'
+                state:
+                  name: Karnataka
+              contact:
+                phone: '9886098860'
+              time:
+                label: confirmed
+                range:
+                  start: '2024-06-09T22:00:00.000Z'
+                  end: '2024-06-10T02:00:00.000Z'
+              customer:
+                person:
+                  name: Ramu
+            - type: end
+              location:
+                id: L1
+                descriptor:
+                  name: ABC Agri Service Provider
+                gps: 12.956399,77.636803
+              time:
+                range:
+                  start: '2024-06-09T22:00:00.000Z'
+                  end: '2024-06-10T02:00:00.000Z'
+              contact:
+                phone: '9886098860'
+                email: nobody@nomail.com
+              person:
+                name: Kishan
+      quote:
+        price:
+          currency: INR
+          value: '7140'
+        breakup:
+          - title: Tractor
+            price:
+              currency: INR
+              value: '2000'
+            item:
+              id: I1
+              quantity:
+                selected:
+                  count: 4
+              price:
+                currency: INR
+                value: '500'
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: item
+          - title: refundable_security
+            price:
+              currency: INR
+              value: '5000'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: refundable_security
+          - title: tax
+            price:
+              currency: INR
+              value: '50'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: tax
+          - title: discount
+            price:
+              currency: INR
+              value: '10'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: discount
+          - title: pickup_charge
+            price:
+              currency: INR
+              value: '100'
+            item:
+              id: I1
+            tags:
+              - descriptor:
+                  code: title
+                list:
+                  - descriptor:
+                      code: type
+                    value: misc
+        ttl: P1D
+      payments:
+        - id: PY1
+          collected_by: BAP
+          params:
+            amount: '5000'
+            currency: INR
+            bank_account_number: xxxxxxxx
+            virtual_payment_address: xxx@xxxx
+          status: PAID
+          type: PRE-FULFILLMENT
+          tags:
+            - descriptor:
+                code: Settlement_Details
+              list:
+                - descriptor:
+                    code: Counterparty
+                  value: BPP
+                - descriptor:
+                    code: Mode
+                  value: UPI
+                - descriptor:
+                    code: Beneficiary_Name
+                  value: xxxxx
+                - descriptor:
+                    code: Bank_Account_No
+                  value: xxxxx
+                - descriptor:
+                    code: Ifsc_Code
+                  value: xxxxxxx
+                - descriptor:
+                    code: UPI_Address
+                  value: xxxxxxx
+        - id: PY2
+          collected_by: BAP
+          params:
+            amount: '2140'
+            currency: INR
+            bank_account_number: xxxxxxxx
+            virtual_payment_address: xxx@xxxx
+          status: NOT-PAID
+          type: ON-FULFILLMENT
+          tags:
+            - descriptor:
+                code: Settlement_Details
+              list:
+                - descriptor:
+                    code: Counterparty
+                  value: BPP
+                - descriptor:
+                    code: Mode
+                  value: UPI
+                - descriptor:
+                    code: Beneficiary_Name
+                  value: xxxxx
+                - descriptor:
+                    code: Bank_Account_No
+                  value: xxxxx
+                - descriptor:
+                    code: Ifsc_Code
+                  value: xxxxxxx
+                - descriptor:
+                    code: UPI_Address
+                  value: xxxxxxx
+      created_at: '2024-06-10T22:00:46.000Z'
+      updated_at: '2024-06-10T22:00:46.000Z'

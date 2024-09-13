@@ -1,0 +1,34 @@
+AUCTION_SPECIFICATION:
+  TYPE_OF_AUCTION:
+    - code: OPEN
+      description: Open Bid - Where the Bids are disclosed to everyone  
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: CLOSE
+      description: Close Bid - Bids are in the sealed envelope 
+      reference: <PR/Issue/Discussion Links md format text>
+FSSAI_LICENSE_NO:
+  TYPE_OF_BUSINESS:
+    - code: Manufacturer
+      description: Manufacturer of commodity
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Importer
+      description: Importer of commodity
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Wholesaler
+      description: Wholesaler of commodity
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Distributor
+      description: Distributor of commodity
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Supplier
+      description: Supplier of commodity
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Transporter
+      description: Transporter of commodity
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Storage
+      description: Storage/Warehouse of commodity
+      reference: <PR/Issue/Discussion Links md format text>
+    - code: Online Food Business Operator
+      description: Online Food Business Operator of commodity
+      reference: <PR/Issue/Discussion Links md format text>

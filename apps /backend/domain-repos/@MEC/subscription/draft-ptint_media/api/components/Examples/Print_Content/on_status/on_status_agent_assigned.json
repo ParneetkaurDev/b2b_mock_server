@@ -1,0 +1,342 @@
+{
+  "context": {
+    "domain": "ONDC:MEC10",
+    "location": {
+      "city": {
+        "code": "std:080"
+      },
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_confirm",
+    "version": "2.0.0",
+    "bap_id": "buyerapp.com",
+    "bap_uri": "https://buyerapp.com/services",
+    "bpp_id": "sellerapp.com",
+    "bpp_uri": "https://sellerapp.com/services",
+    "transaction_id": "T1",
+    "message_id": "M7",
+    "timestamp": "2024-04-01T22:00:46.000Z",
+    "ttl": "PT30S"
+  },
+  "message": {
+    "order": {
+      "id": "O1",
+      "status": "In-Progress",
+      "provider": {
+        "id": "P1",
+        "rateable": true
+      },
+      "items": [
+        {
+          "id": "I1",
+          "fulfillment_ids": ["F2"],
+          "quantity": {
+            "selected": {
+              "count": 1
+            }
+          },
+          "tags": [
+            {
+              "descriptor": {
+                "code": "RESCHEDULE_TERMS"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "FULFILLMENT_STATE"
+                  },
+                  "value": "Pending"
+                },
+                {
+                  "descriptor": {
+                    "code": "RESCHEDULE_ELIGIBLE"
+                  },
+                  "value": "true"
+                },
+                {
+                  "descriptor": {
+                    "code": "RESCHEDULE_FEE"
+                  },
+                  "value": "0.00"
+                },
+                {
+                  "descriptor": {
+                    "code": "RESCHEDULE_WITHIN"
+                  },
+                  "value": "PT1D"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "billing": {
+        "name": "ONDC buyer",
+        "address": "22, Mahatma Gandhi Rd, Craig Park Layout, Ashok Nagar, Bengaluru, Karnataka 560001",
+        "state": {
+          "name": "Karnataka"
+        },
+        "city": {
+          "name": "Bengaluru"
+        },
+        "tax_id": "XXXXXXXXXXXXXXX",
+        "email": "nobody@nomail.com",
+        "phone": "9886098860"
+      },
+      "fulfillments": [
+        {
+          "id": "FI1",
+          "type": "OFFLINE",
+          "state": {
+            "descriptor": {
+              "code": "AGENT-ASSIGNED"
+            }
+          },
+          "customer": {
+            "person": {
+              "name": "Ramu"
+            }
+          },
+          "stops": [
+            {
+              "type": "start",
+              "location": {
+                "gps": "12.9716,77.5946",
+                "address": "Plot No. 1987",
+                "city": {
+                  "name": "Bengaluru"
+                },
+                "country": {
+                  "code": "IND"
+                },
+                "area_code": "560001",
+                "state": {
+                  "name": "Karnataka"
+                }
+              },
+              "time": {
+                "range": {
+                  "start": "2024-04-04T09:30:00.000Z",
+                  "end": "2024-06-04T10:30:00.000Z"
+                }
+              },
+              "contact": {
+                "phone": "9886098860",
+                "email": "nobody@nomail.com"
+              },
+              "person": {
+                "name": "Kishan"
+              }
+            },
+            {
+              "type": "end",
+              "location": {
+                "gps": "12.974002,77.613458",
+                "address": "My House #, My buildin",
+                "city": {
+                  "name": "Bengaluru"
+                },
+                "country": {
+                  "code": "IND"
+                },
+                "area_code": "560001",
+                "state": {
+                  "name": "Karnataka"
+                }
+              },
+              "time": {
+                "label": "confirmed",
+                "range": {
+                  "start": "2024-04-04T09:30:00.000Z",
+                  "end": "2024-06-04T10:30:00.000Z"
+                }
+              },
+              "contact": {
+                "phone": "9886098860",
+                "email": "nobody@nomail.com"
+              },
+              "instructions": {
+                "name": "Special Instructions",
+                "short_desc": "Customer Special Instructions"
+              }
+            }
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "INFO"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "PARENT_ID"
+                  },
+                  "value": "F1"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "298"
+        },
+        "breakup": [
+          {
+            "title": "Weekly India Today Magazine",
+            "price": {
+              "currency": "INR",
+              "value": "199"
+            },
+            "item": {
+              "id": "I1",
+              "quantity": {
+                "selected": {
+                  "count": 1
+                }
+              },
+              "price": {
+                "currency": "INR",
+                "value": "199"
+              },
+              "fulfillment_ids": ["FII"]
+            },
+            "tags": [
+              {
+                "descriptor": {
+                  "code": "title"
+                },
+                "list": [
+                  {
+                    "descriptor": {
+                      "code": "type"
+                    },
+                    "value": "item"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "ttl": "P1D"
+      },
+      "payments": [
+        {
+          "id": "PG",
+          "collected_by": "BAP",
+          "params": {
+            "amount": "298",
+            "currency": "INR"
+          },
+          "status": "PAID",
+          "type": "PRE-FULFILLMENT",
+          "tags": [
+            {
+              "descriptor": {
+                "code": "BUYER_FINDER_FEES"
+              },
+              "display": false,
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "BUYER_FINDER_FEE_TYPE"
+                  },
+                  "value": "percent"
+                },
+                {
+                  "descriptor": {
+                    "code": "BUYER_FINDER_FEE_AMOUNT"
+                  },
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "fulfillment_state": {
+            "descriptor": {
+              "code": "PENDING",
+              "short_desc": "002"
+            }
+          },
+          "cancellation_fee": {
+            "percentage": "0.00",
+            "amount": {
+              "currency": "INR",
+              "value": "0.00"
+            }
+          }
+        },
+        {
+          "fulfillment_state": {
+            "descriptor": {
+              "code": "PACKED",
+              "short_desc": "002"
+            }
+          },
+          "cancellation_fee": {
+            "percentage": "0.00",
+            "amount": {
+              "currency": "INR",
+              "value": "0.00"
+            }
+          }
+        },
+        {
+          "fulfillment_state": {
+            "descriptor": {
+              "code": "AGENT-ASSIGNED",
+              "short_desc": "002"
+            }
+          },
+          "cancellation_fee": {
+            "percentage": "0.00",
+            "amount": {
+              "currency": "INR",
+              "value": "0.00"
+            }
+          }
+        },
+        {
+          "fulfillment_state": {
+            "descriptor": {
+              "code": "ORDER-PICKED-UP",
+              "short_desc": "002"
+            }
+          },
+          "cancellation_fee": {
+            "percentage": "0.00",
+            "amount": {
+              "currency": "INR",
+              "value": "0.00"
+            }
+          }
+        },
+        {
+          "fulfillment_state": {
+            "descriptor": {
+              "code": "OUT-FOR-DELIVERY",
+              "short_desc": "002"
+            }
+          },
+          "cancellation_fee": {
+            "percentage": "0.00",
+            "amount": {
+              "currency": "INR",
+              "value": "0.00"
+            }
+          }
+        }
+      ],
+      "created_at": "2024-04-01T22:00:38.000Z",
+      "updated_at": "2024-04-01T22:00:46.000Z"
+    }
+  }
+}

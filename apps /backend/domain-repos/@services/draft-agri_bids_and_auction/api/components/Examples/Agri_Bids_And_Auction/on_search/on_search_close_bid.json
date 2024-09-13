@@ -1,0 +1,712 @@
+{
+  "context": {
+    "domain": "ONDC:SRV18",
+    "location": {
+      "city": {
+        "code": "std:080"
+      },
+      "country": {
+        "code": "IND"
+      }
+    },
+    "action": "on_search",
+    "version": "2.0.0",
+    "bap_id": "buyerapp.com",
+    "bap_uri": "https://buyerapp.com/ondc",
+    "bpp_id": "sellerapp.com",
+    "bpp_uri": "https://sellerapp.com/ondc",
+    "transaction_id": "T1",
+    "message_id": "M1",
+    "timestamp": "2024-06-10T22:00:20.000Z",
+    "ttl": "PT30S"
+  },
+  "message": {
+    "catalog": {
+      "payments": [
+        {
+          "id": "PY1",
+          "type": "PRE-FULFILLMENT"
+        },
+        {
+          "id": "PY2",
+          "type": "ON-FULFILLMENT"
+        },
+        {
+          "id": "PY3",
+          "type": "POST-FULFILLMENT"
+        }
+      ],
+      "descriptor": {
+        "name": "Wheat Farm Store",
+        "short_desc": "Wheat Farm Store",
+        "long_desc": "Wheat Farm Store",
+        "images": [
+          {
+            "url": "https://abc.com/images/1-shop-img"
+          }
+        ]
+      },
+      "providers": [
+        {
+          "id": "P1",
+          "descriptor": {
+            "name": "Wheat Farm Store",
+            "code": "P001",
+            "short_desc": "Wheat Farm Store",
+            "long_desc": "Wheat Farm Store",
+            "additional_desc": {
+              "url": "chat link",
+              "content_type": "text/html"
+            },
+            "images": [
+              {
+                "url": "https://abc.com/images/1-shop-img"
+              }
+            ]
+          },
+          "rating": "4.4",
+          "ttl": "P1D",
+          "locations": [
+            {
+              "id": "L1",
+              "gps": "12.967555,77.749666",
+              "address": "Jayanagar 4th Block",
+              "city": {
+                "code": "std:080",
+                "name": "Bengaluru"
+              },
+              "state": {
+                "code": "KA"
+              },
+              "country": {
+                "code": "IND"
+              },
+              "area_code": "560076"
+            }
+          ],
+          "creds": [
+            {
+              "id": "EQP-12345678",
+              "type": "Certificate",
+              "desc": "Certified Provider",
+              "url": "https://abcd.cdn.com/images/bage-img"
+            }
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "code": "seller_terms"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "gst_credit_invoice"
+                  },
+                  "value": "Y"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "seller_id"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "seller_id_code"
+                  },
+                  "value": "mandi_licence"
+                },
+                {
+                  "descriptor": {
+                    "code": "seller_id_no"
+                  },
+                  "value": "xxxxxxxxxxxxxxx"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "code": "FSSAI_LICENSE_NO"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "BRAND_OWNER"
+                  },
+                  "value": "ABC Foods Pvt. Ltd."
+                },
+                {
+                  "descriptor": {
+                    "code": "LICENSE_NUMBER"
+                  },
+                  "value": "10012345000001"
+                },
+                {
+                  "descriptor": {
+                    "code": "TYPE_OF_BUSINESS"
+                  },
+                  "value": "Importer"
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "id": "I1",
+              "descriptor": {
+                "name": "Wheat (Auction)",
+                "short_desc": "High-quality grain",
+                "long_desc": "High-quality grain",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ],
+                "media": [
+                  {
+                    "mimetype": "video/mp4",
+                    "url": "https://abc.com/images/207.mp4"
+                  }
+                ]
+              },
+              "creator": {
+                "descriptor": {
+                  "name": "Any Marketer if (applicable)",
+                  "contact": {
+                    "name": "Any Marketer",
+                    "address": {
+                      "full": "Wheat Pvt Ltd, A-3, NDDB House, Sector-1, Chandigarh, 140301"
+                    },
+                    "phone": "18000000000",
+                    "email": "abc@xyz.com"
+                  }
+                }
+              },
+              "price": {
+                "currency": "INR",
+                "value": "300.00"
+              },
+              "quantity": {
+                "unitized": {
+                  "measure": {
+                    "unit": "kg",
+                    "value": "5000"
+                  }
+                },
+                "available": {
+                  "measure": {
+                    "unit": "kg",
+                    "value": "50"
+                  },
+                  "count": 100
+                },
+                "minimum": {
+                  "measure": {
+                    "unit": "kg",
+                    "value": "50"
+                  },
+                  "count": 100
+                }
+              },
+              "category_ids": [
+                "SRV18-1001"
+              ],
+              "location_ids": [
+                "L1"
+              ],
+              "payment_ids": [
+                "PY2"
+              ],
+              "cancellation_terms": [
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "Pending"
+                    }
+                  },
+                  "reason_required": false,
+                  "cancellation_fee": {
+                    "percentage": "0",
+                    "amount": {
+                      "currency": "IND",
+                      "value": "0"
+                    }
+                  }
+                },
+                {
+                  "fulfillment_state": {
+                    "descriptor": {
+                      "code": "Awarded"
+                    }
+                  },
+                  "reason_required": false,
+                  "cancellation_fee": {
+                    "percentage": "10",
+                    "amount": {
+                      "currency": "IND",
+                      "value": "100"
+                    }
+                  }
+                }
+              ],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-06-10T00:00:00.000Z",
+                  "end": "2024-06-30T00:00:00.000Z"
+                }
+              },
+              "matched": true,
+              "recommended": true,
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "SERVICE_INFORMATION"
+                  },
+                  "display": true,
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "PICKUP_TAT"
+                      },
+                      "value": "PT2D"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "CANCELLABLE"
+                      },
+                      "value": "true"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "QUALITY_ASSESSMENT_REPORT"
+                  },
+                  "display": true,
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "NAME"
+                      },
+                      "value": "CER-001"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MIME_TYPE"
+                      },
+                      "value": "application/pdf"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "COPY"
+                      },
+                      "value": "https://abc.com/certificates"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "COMMODITY_SPECIFICATION"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "REFERENCE_DOCS_MIME_TYPE"
+                      },
+                      "value": "application/pdf"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "REFERENCE_DOCS_COPY"
+                      },
+                      "value": "https://abc.com/commodity_specification.pdf"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SHELF_LIFE"
+                      },
+                      "value": "P10M"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MOISTURE"
+                      },
+                      "value": "10%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "FOREIGN_MATTER"
+                      },
+                      "value": "3%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "OIL_CONTENT"
+                      },
+                      "value": "2%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "DEFECTIVES"
+                      },
+                      "value": "7%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "OTHER_EDIBLE_GRAINS"
+                      },
+                      "value": "1%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "URIC_ACID"
+                      },
+                      "value": "101"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "AFLATOXIN"
+                      },
+                      "value": "15"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "ARGEMONE_SEEDS"
+                      },
+                      "value": "Yes"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SIZE_RANGE_MEASURE"
+                      },
+                      "value": "Diameter"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SIZE_RANGE"
+                      },
+                      "value": "15-18"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "PERCENTAGE_OF_DEFECTS"
+                      },
+                      "value": "1.5%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "PERCENTAGE_OF_WASTAGE"
+                      },
+                      "value": "3%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "BUNCH_SIZE"
+                      },
+                      "value": "50"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "BUNCH_SIZE_UNIT"
+                      },
+                      "value": "gm"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VISIBLE_COLOUR"
+                      },
+                      "value": "Brown"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "COLOUR_PERCENTAGE"
+                      },
+                      "value": "More than 70"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "TOTAL_SOLUBLE_SOLIDS"
+                      },
+                      "value": "16 degree Brix"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "TRACES_OF_SOIL"
+                      },
+                      "value": "Sight traces"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VOLATILE_OIL_PERCENTAGE"
+                      },
+                      "value": "Up to 2.5"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "TOTAL_ASH_PERCENTAGE"
+                      },
+                      "value": "Not more than 7.0"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "CORIANDER_SPLIT_SEEDS_PERCENTAGE"
+                      },
+                      "value": "5%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MIN_FLOWER_PER_STEM"
+                      },
+                      "value": "1"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "GIRTH_AT_THIN_END"
+                      },
+                      "value": "less than 6 cm"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "BLOOMING_AND_SHAPE"
+                      },
+                      "value": "Reasonable bloomed and conical shape More than 85 %"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "FLOWER_DIAMETER_IN_CM"
+                      },
+                      "value": "3.45 cm"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "STAPLE_LENGTH_OF_COTTON_IN_MM"
+                      },
+                      "value": "28 ‑ 30 mm"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "TRASH_PERCENTAGE"
+                      },
+                      "value": "3%"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "BUNDLE_STRENGTH"
+                      },
+                      "value": "24.0 and above"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MICRONAIRE"
+                      },
+                      "value": "2.8 to 3.0"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "PERCENTAGE_OF_MATURED_FIBERS"
+                      },
+                      "value": "Above 70.0-75.0 mm"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "SIEVE_ANALYSIS"
+                      },
+                      "value": "98"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "NUMBER_OF_NUTS_PER_KG"
+                      },
+                      "value": "210"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "VOID_NUTS_PERCENTAGE"
+                      },
+                      "value": "1"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "IMMATURE_NUTS_PERCENTAGE"
+                      },
+                      "value": "2"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "STRENGTH"
+                      },
+                      "value": "Need strength to break the fiber and sharp audible sound at thetime of breakage (Excellent 30)"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "FINENESS"
+                      },
+                      "value": "Fine (10)"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "AUCTION_SPECIFICATION"
+                  },
+                  "display": true,
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "CURRENCY_UNIT"
+                      },
+                      "value": "INR"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "FLOOR_PRICE"
+                      },
+                      "value": "250.00"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MIN_BIDDER_REQUIRED"
+                      },
+                      "value": "5"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "TYPE_OF_AUCTION"
+                      },
+                      "value": "CLOSE"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "EARNEST_MONEY_DEPOSIT"
+                      },
+                      "value": "5000.00"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "TICK_SIZE"
+                      },
+                      "value": "50.00"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "MAXIMUM_TARGET_PRICE"
+                      },
+                      "value": "350.00"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "BIDS_LIMITATION"
+                      },
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "offers": [
+            {
+              "id": "offer-1",
+              "descriptor": {
+                "name": "",
+                "code": "FREEBIE",
+                "short_desc": "Containers",
+                "long_desc": "Containers",
+                "images": [
+                  {
+                    "url": "https://abc.com/images/207.png"
+                  }
+                ]
+              },
+              "location_ids": [
+                "L1"
+              ],
+              "category_ids": [
+                "SRV18-1001"
+              ],
+              "item_ids": [
+                "I1"
+              ],
+              "time": {
+                "label": "validity",
+                "range": {
+                  "start": "2024-04-01T00:00:00.000Z",
+                  "end": "2024-12-10T00:00:00.000Z"
+                }
+              },
+              "tags": [
+                {
+                  "descriptor": {
+                    "code": "qualifier"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "min_value"
+                      },
+                      "value": "5000"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "benefit"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "item_count"
+                      },
+                      "value": "5"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "item_id"
+                      },
+                      "value": "I1"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "item_value"
+                      },
+                      "value": "200.00"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "code": "meta"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "code": "additive"
+                      },
+                      "value": "no"
+                    },
+                    {
+                      "descriptor": {
+                        "code": "auto"
+                      },
+                      "value": "yes"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "fulfillments": [
+            {
+              "contact": {
+                "phone": "9886098860",
+                "email": "abc@xyz.com"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

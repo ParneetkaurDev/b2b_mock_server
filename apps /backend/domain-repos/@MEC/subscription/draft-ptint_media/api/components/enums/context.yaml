@@ -1,0 +1,7 @@
+domain:
+  - code: ONDC:MEC10
+    description: Print (Newspaper, Magazine, Books)
+    reference: <PR/Issue/Discussion Links md format text>
+  - code: ONDC:MEC11
+    description: Audio & Video
+    reference: <PR/Issue/Discussion Links md format text>
