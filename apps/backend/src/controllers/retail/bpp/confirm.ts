@@ -14,7 +14,9 @@ export const confirmController = (
   next: NextFunction
 ) => {
   try {
+
     const { scenario } = req.query;
+    console.log("scenariooooooooo",scenario)
     switch (scenario) {
       case "cancelled":
         confirmDomesticRejected(req, res, next);
