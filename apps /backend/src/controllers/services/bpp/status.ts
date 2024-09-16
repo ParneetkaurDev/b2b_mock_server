@@ -158,7 +158,7 @@ const statusRequest = async (
 				payments:message.order.payments,
 		}
 	}
-
+	console.log("updateRequest")
 
 		const responseMessage: any = {
 			order: {
