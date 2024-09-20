@@ -103,7 +103,7 @@ export const ALL_DOMAINS = {
 	Retail: RETAIL_DOMAINS,
 	Services: SERVICE_DOMAINS,
 	Subscription: SUBSCRIPTION_DOMAINS,
-	// Logistics: LOGISTICS_DOMAINS,
+	Logistics: LOGISTICS_DOMAINS,
 };
 
 export const CITY_CODE = ["std:080", "std:011"];
@@ -120,13 +120,11 @@ export const INITIATE_FIELDS = {
 		//DEPEND ON SERVICES AND RETAILS
 		{
 			name: "version",
-			placeholder: "Select Version...",
+			placeholder: "Select Use case...",
 			type: "select",
 			domainDepended: true,
 			options: {
-				retail: RETAIL_DOMAINS,
-				b2b: RETAIL_DOMAINS,
-				b2c: RETAIL_DOMAINS
+				retail: RETAIL_DOMAINS
 			},
 		},
 

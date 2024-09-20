@@ -36,6 +36,7 @@ export const initiateSearchController = async (
 ) => {
 	try {
 		const { bpp_uri, city, domain } = req.body;
+		console.log("ssssssssssss",bpp_uri, city, domain ,)
 		var search;
 		switch (domain) {
 			case "ONDC:LOG10":
@@ -127,7 +128,7 @@ export const initiateSearchController = async (
 				},
 			},
 		};
-		await send_response(res, next, search, transaction_id, "search", "", bpp_uri);
+		await send_response(res, next, search, transaction_id, "search", "","", bpp_uri);
 	} catch (error) {
 		return next(error);
 	}

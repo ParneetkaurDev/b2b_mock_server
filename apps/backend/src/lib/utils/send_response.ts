@@ -57,6 +57,7 @@ async function send_response(
 
     }
 
+    console.log("uriiiiiiiiiiiiiii",uri)
     try{
       const response = await axios.post(uri, res_obj, {
         headers: { ...headers },
@@ -72,8 +73,9 @@ async function send_response(
         })
       );
     } catch(err: any) {
-      if(err.response.status == 400) {
-        res.status(err.response.status).json(err.response.data)
+      console.log("err?.response?.status ",err )
+      if(err?.response?.status == 400) {
+        res.status(err?.response?.status).json(err?.response?.data)
         return;
       }
       throw err

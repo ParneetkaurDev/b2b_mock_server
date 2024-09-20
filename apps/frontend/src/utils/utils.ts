@@ -288,9 +288,14 @@ export const copyToClipboard = (body: object, callback?: CopyCallbackFn) => {
 		});
 };
 
-export const checker = (arr: string[], target: string[], domain?: string) => {
+export const checker = (arr: string[], target: string[], domain?: string,version?:string) => {
 	if (domain !== "reatil") {
 		target = target.filter((item) => item !== "version");
+	}
+
+	if(version === "b2c"){
+		target = target.filter((item) => item !== "scenario");
+
 	}
 	return target.every((v) => arr.includes(v));
 };
