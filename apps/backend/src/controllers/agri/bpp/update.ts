@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
 import {
     AGRI_EXAMPLES_PATH,
+	AGRI_OUTPUT_EXAMPLES_PATH,
 	quoteCreatorHealthCareService,
 	quoteCreatorService,
 	redisFetchToServer,
@@ -46,8 +47,16 @@ export const updateController = async (
 			return send_nack(res, ERROR_MESSAGES.ON_SEARCH_DOES_NOT_EXISTED);
 		}
 
-		const providersItems = on_search?.message?.catalog?.['bpp/providers'][0];
-		req.body.providersItems = providersItems;
+		let providersItems;
+		if (req.body.context.domain === SERVICES_DOMAINS.AGRI_INPUT) {
+			providersItems =
+				on_search?.message?.catalog["bpp/providers"][0]?.items;
+			req.body.providersItems = providersItems;
+		}
+		else {
+			 providersItems = on_search?.message?.catalog?.providers;
+			req.body.providersItems = providersItems;
+		}
 
 		//UPDATE FULFILLMENTS HERE BECAUSE It IS SAME FOR ALL SACENRIOS
 		const updatedFulfillments = updateFulfillments(
@@ -56,18 +65,23 @@ export const updateController = async (
 		);
 		req.body.message.order.fulfillments = updatedFulfillments;
 		req.body.on_confirm = on_confirm;
-		console.log("scenario",scenario)
-		switch (scenario) {
-			case "liquidate":
-				updateliquidateController(req, res, next);
-				break;
-			case "reject":
-				updateRejectController(req, res, next);
-				break;
-			default:
-				updateRequoteController(req, res, next);
-				break;
+		if(req.body.context.domain=== SERVICES_DOMAINS.AGRI_OUTPUT){
+			updateAgriController(req,res,next)
 		}
+		else{
+			switch (scenario) {
+				case "liquidate":
+					updateliquidateController(req, res, next);
+					break;
+				case "reject":
+					updateRejectController(req, res, next);
+					break;
+				default:
+					updateRequoteController(req, res, next);
+					break;
+			}
+		}
+		
 	} catch (error) {
 		return next(error);
 	}
@@ -194,4 +208,44 @@ export const updateliquidateController = (
 		next(error);
 	}
 
+};
+
+export const updateAgriController = (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	try {
+		const { context, message, on_confirm } = req.body;
+		//CREATED COMMON RESPONSE MESSAGE FOR ALL SCENRIO AND UPDATE ACCORDENGLY IN FUNCTIONS
+		const file = fs.readFileSync(
+			path.join(
+				AGRI_OUTPUT_EXAMPLES_PATH,
+				"on_update/on_update_status.yaml"
+			)
+		);
+		const response = YAML.parse(file.toString());
+		
+		const responseMessages = {
+			order: {
+				...response.value.message.order			
+			},
+		};
+		console.log("responseatUpdateBpp",JSON.stringify(responseMessages))
+		return responseBuilder(
+			res,
+			next,
+			context,
+			responseMessages,
+			`${req.body.context.bap_uri}${
+				req.body.context.bap_uri.endsWith("/")
+					? ON_ACTION_KEY.ON_UPDATE
+					: `/${ON_ACTION_KEY.ON_UPDATE}`
+			}`,
+			`${ON_ACTION_KEY.ON_UPDATE}`,
+			"agri"
+		);
+	} catch (error) {
+		next(error);
+	}
 };

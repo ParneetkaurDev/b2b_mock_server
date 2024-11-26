@@ -52,6 +52,10 @@ export const statusController = async (
 		if (on_cancel_exist) {
 			scenario = "cancel";
 		}
+		if (req.body.context.domain === SERVICES_DOMAINS.AGRI_OUTPUT) {
+			return statusAgriOutputRequest(req, res, next, on_confirm_data, scenario)
+		}
+
 		return statusRequest(req, res, next, on_confirm_data, scenario);
 	} catch (error) {
 		return next(error);
@@ -474,7 +478,7 @@ const statusRequest = async (
 				// );
 
 				// Second request (onStatusPacked)
-				 // Increment for the next request
+				// Increment for the next request
 				await childOrderResponseBuilder(
 					i,
 					res,
@@ -486,7 +490,7 @@ const statusRequest = async (
 				);
 
 				// Third request (onStatusAgent_Assigned)
-				 // Increment for the next request
+				// Increment for the next request
 				await childOrderResponseBuilder(
 					i,
 					res,
@@ -498,7 +502,7 @@ const statusRequest = async (
 				);
 
 				// Fourth request (onStatusOrderPickedUp)
-				 // Increment for the next request
+				// Increment for the next request
 				await childOrderResponseBuilder(
 					i,
 					res,
@@ -510,7 +514,7 @@ const statusRequest = async (
 				);
 
 				// Fifth request (onStatusOrderOutForDelivery)
-				 // Increment for the next request
+				// Increment for the next request
 				await childOrderResponseBuilder(
 					i,
 					res,
@@ -675,3 +679,148 @@ export const childOrderResponseBuilder = async (
 		return;
 	}
 };
+
+export const statusAgriOutputRequest = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+	transaction: any,
+	scenario: string
+) => {
+	try {
+		const { context, message } = transaction;
+		context.action = ON_ACTION_KEY.ON_STATUS;
+		const domain = context?.domain;
+		const on_status = await redisFetchFromServer(
+			ON_ACTION_KEY.ON_STATUS,
+			req.body.context.transaction_id
+		);
+
+		const responseMessage: any = {
+			order: {
+				id: message.order.id,
+				status: "In-Progress",
+				provider: {
+					...message.order.provider,
+				},
+				items: [{
+					...message.order.items[0], price: {
+						currency: "INR",
+						maximum_value: "280.00",
+						offered_value: "250.00"
+					}
+				}],
+				billing: { ...message.order.billing, tax_id: "XXXXXXXXXXXXXXX" },
+				fulfillments: message.order.fulfillments.map(
+					(fulfillment: Fulfillment) => ({
+						...fulfillment,
+						id: fulfillment.id,
+						state: {
+							descriptor: {
+								code: "Placed",
+							},
+						},
+						stops: [fulfillment.stops[0]],
+						rateable: true
+					})
+				),
+				quote: message.order.quote,
+				payments: message.order.payments,
+				documents: [
+					{
+						"url": "https://invoice_url",
+						"label": "INVOICE"
+					}
+				],
+				created_at: message.order.created_at,
+				updated_at: message.order.updated_at,
+			},
+		};
+
+		// switch (scenario) {
+		// 	case AGRI_STATUS_OBJECT.CREATED:
+		// 		responseMessage.order.fulfillments.forEach(
+		// 			(fulfillment: Fulfillment) => {
+		// 				fulfillment.state.descriptor.code = "Pending";
+		// 				// fulfillment.stops.forEach((stop: Stop) =>
+		// 				// 	stop?.authorization ? (stop.authorization = undefined) : undefined
+		// 				// );
+		// 			}
+		// 		);
+		// 		break;
+		// 	case AGRI_STATUS_OBJECT.PACKED:
+		// 		responseMessage.order.fulfillments.forEach(
+		// 			(fulfillment: Fulfillment) => {
+		// 				fulfillment.state.descriptor.code =
+		// 					AGRI_STATUS_OBJECT.PACKED;
+		// 				// fulfillment.stops.forEach((stop: Stop) =>
+		// 				// 	stop?.authorization
+		// 				// 		? (stop.authorization = {
+		// 				// 				...stop.authorization,
+		// 				// 				status: "valid",
+		// 				// 		  })
+		// 				// 		: undefined
+		// 				// );
+		// 			}
+		// 		);
+		// 		break;
+		// 	case AGRI_STATUS_OBJECT.AGENT_ASSIGNED:
+		// 		responseMessage.order.fulfillments.forEach(
+		// 			(fulfillment: Fulfillment) => {
+		// 				fulfillment.state.descriptor.code =
+		// 					AGRI_STATUS_OBJECT.AGENT_ASSIGNED;
+		// 			}
+		// 		);
+		// 		break;
+		// 	case AGRI_STATUS_OBJECT.ORDER_PICKED_UP:
+		// 		responseMessage.order.fulfillments.forEach(
+		// 			(fulfillment: Fulfillment) => {
+		// 				fulfillment.state.descriptor.code =
+		// 					AGRI_STATUS_OBJECT.ORDER_PICKED_UP;
+		// 			}
+		// 		);
+		// 		break;
+		// 	case AGRI_STATUS_OBJECT.OUT_FOR_DELIVERY:
+		// 		responseMessage.order.fulfillments.forEach(
+		// 			(fulfillment: Fulfillment) => {
+		// 				fulfillment.state.descriptor.code =
+		// 					AGRI_STATUS_OBJECT.OUT_FOR_DELIVERY;
+		// 				// fulfillment.stops.forEach((stop: Stop) =>
+		// 				// 	stop?.authorization ? (stop.authorization = undefined) : undefined
+		// 				// );
+		// 			}
+		// 		);
+		// 		break;
+		// 	case AGRI_STATUS_OBJECT.DELIVERED:
+		// 		responseMessage.order.fulfillments.forEach(
+		// 			(fulfillment: Fulfillment) => {
+		// 				fulfillment.state.descriptor.code =
+		// 					AGRI_STATUS_OBJECT.DELIVERED;
+		// 			}
+		// 		);
+		// 		break;
+		// 		responseMessage.order.status = "Cancelled";
+		// 		break;
+		// 	default: //service started is the default case
+		// 		break;
+		// }
+		console.log("on_Status", JSON.stringify(responseMessage.order))
+
+		responseBuilder(
+			res,
+			next,
+			req.body.context,
+			responseMessage,
+			`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/")
+				? ON_ACTION_KEY.ON_STATUS
+				: `/${ON_ACTION_KEY.ON_STATUS}`
+			}`,
+			`${ON_ACTION_KEY.ON_STATUS}`,
+			"agri"
+		);
+
+	}
+	catch (error) {
+		return next(error)
+	}
+}

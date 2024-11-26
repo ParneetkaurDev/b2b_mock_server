@@ -10,6 +10,7 @@ import {
 	AGRI_BAP_MOCKSERVER_URL,
 	logger,
 	redis,
+	AGRI_OUTPUT_EXAMPLES_PATH,
 } from "../../../lib/utils";
 import { ACTTION_KEY } from "../../../lib/utils/actionOnActionKeys";
 import { SERVICES_DOMAINS } from "../../../lib/utils/apiConstants";
@@ -23,19 +24,26 @@ export const initiateSearchController = async (
 		const { bpp_uri, city, domain } = req.body;
 		const {scenario}=req.query
 		let onSearch, file;
-		// const scenario="incremental"
+		logger.info(`domain ${domain}`)
 		switch (domain) {
 			case SERVICES_DOMAINS.AGRI_INPUT:
 				file = fs.readFileSync(
 					path.join(AGRI_EXAMPLES_PATH, "search/search.yaml")
 				);
-				onSearch = YAML.parse(file.toString());
+				// onSearch = YAML.parse(file.toString());
+				break;
+			case SERVICES_DOMAINS.AGRI_OUTPUT:
+				logger.info("heheh")
+				file = fs.readFileSync(
+					path.join(AGRI_OUTPUT_EXAMPLES_PATH, "search/search_by_category.yaml")
+				);
+				// onSearch = YAML.parse(file.toString());
 				break;
 			default:
 				file = fs.readFileSync(
 					path.join(AGRI_EXAMPLES_PATH, "search/search.yaml")
 				);
-				onSearch = YAML.parse(file.toString());
+				// onSearch = YAML.parse(file.toString());
 				break;
 		}
 		let search = YAML.parse(file.toString());
@@ -43,7 +51,7 @@ export const initiateSearchController = async (
 		const transaction_id = uuidv4();
 		const timestamp = new Date().toISOString();
 
-		
+		// logger.info(`search ${JSON.stringify(search)}`)
 
 
 		search = {

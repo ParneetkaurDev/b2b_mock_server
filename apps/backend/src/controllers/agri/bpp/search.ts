@@ -6,6 +6,7 @@ import {
 	responseBuilder,
 	AGRI_EXAMPLES_PATH,
 	logger,
+	AGRI_OUTPUT_EXAMPLES_PATH,
 } from "../../../lib/utils";
 import { ON_ACTION_KEY } from "../../../lib/utils/actionOnActionKeys";
 import { SERVICES_DOMAINS } from "../../../lib/utils/apiConstants";
@@ -17,6 +18,7 @@ export const searchController = (
 ) => {
 	try {
 		const domain = req?.body?.context?.domain;
+		logger.info(`domian ${domain}`)
 		const {scenario}=req.query
 		logger.info(`scenario is ${scenario}`)
 		let onSearch, file;
@@ -34,6 +36,14 @@ export const searchController = (
 					)
 				);
 				break;
+			case SERVICES_DOMAINS.AGRI_OUTPUT:
+				file = fs.readFileSync(
+					path.join(
+						AGRI_OUTPUT_EXAMPLES_PATH,
+						`on_search/${"on_search.yaml"}`
+					)
+				);
+				break;
 			default:
 				file = fs.readFileSync(
 					path.join(AGRI_EXAMPLES_PATH, "on_search/on_search.yaml")
@@ -41,6 +51,7 @@ export const searchController = (
 				break;
 		}
 		const response = YAML.parse(file.toString());
+		logger.info
 		switch(scenario){
 			case "incremental-pull":
 				response.value.message = {
@@ -55,11 +66,11 @@ export const searchController = (
 				}
 				break;
 			default:
-				response.value={...response.value}
+				response.value.message=response.value.message
 		}
 		
 
-		logger.info(`${JSON.stringify(response.value.message.catalog)}`)
+		console.log(JSON.stringify(response.value.message))
 		return responseBuilder(
 			res,
 			next,

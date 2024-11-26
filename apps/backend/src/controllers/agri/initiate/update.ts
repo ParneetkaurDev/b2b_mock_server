@@ -20,6 +20,7 @@ import {
 	ACTTION_KEY,
 	ON_ACTION_KEY,
 } from "../../../lib/utils/actionOnActionKeys";
+import { SERVICES_DOMAINS } from "../../../lib/utils/apiConstants";
 
 export const initiateUpdateController = async (
 	req: Request,
@@ -46,6 +47,10 @@ export const initiateUpdateController = async (
 		let responseMessage: any;
 		// Need to reconstruct this logic
 
+		if (on_confirm.context.domain === SERVICES_DOMAINS.AGRI_OUTPUT) {
+			responseMessage= agriOutputIntializeUpdateRequest(context,message)
+		}
+		else{
 		scenario = update_target ? update_target : "reject";
 		console.log("scenario", scenario);
 
@@ -57,7 +62,7 @@ export const initiateUpdateController = async (
 				responseMessage = updateReject(message, update_target);
 				break;
 		}
-
+	}
 		const update = {
 			context,
 			message: responseMessage,
@@ -113,4 +118,29 @@ function updateliquidateController(message: any, update_target: string) {
 	return responseMessage;
 }
 
-
+function agriOutputIntializeUpdateRequest(context:any,message:any){
+	console.log("messss",JSON.stringify(message))
+	const responseMessage={
+		update_target:"fulfillment",
+		order:{
+			...message.order,
+			provider:{
+				id:message.order.provider.id
+			},
+			items:[
+				{
+					...message.order.items[0],
+					price:{
+						 currency: "INR",
+            offered_value: "300.00"
+					},
+					payment_ids:[
+						"PY2"
+					]
+				}
+			]
+		}
+	}
+	console.log("updateMessage",JSON.stringify(responseMessage))
+	return responseMessage;
+}

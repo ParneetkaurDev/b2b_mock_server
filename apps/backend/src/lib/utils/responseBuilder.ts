@@ -32,6 +32,7 @@ import {
 } from "./apiConstants";
 import { calculateQuotePrice } from "./getISODuration";
 import { values } from "lodash";
+import { title } from "process";
 
 interface TagDescriptor {
 	code: string;
@@ -607,7 +608,7 @@ export const quoteCreatorB2c = (items: Item[], providersItems?: any) => {
 
 //AGRI DOMAIN QUOTE CREATORS
 export const quoteCreatorAgri = (items: Item[], providersItems?: any) => {
-	// console.log("itemssssssssssss", items, providersItems);
+	 console.log("itemssssssssssss", providersItems);
 	//get price from on_search
 	let breakup: any[] = [];
 	const chargesOnFulfillment = [
@@ -664,7 +665,7 @@ export const quoteCreatorAgri = (items: Item[], providersItems?: any) => {
 	});
 	items.forEach((item) => {
 		// console.log("itemsbreakup",item)
-		console.log("itemmsmsss",item)
+		// console.log("itemmsmsss",item)
 		breakup = [...breakup,
 			{
 				title: item.title,
@@ -740,6 +741,233 @@ export const quoteCreatorAgri = (items: Item[], providersItems?: any) => {
 	// console.log("resultttttttttt", JSON.stringify(result));
 	return result;
 };
+
+export const quoteCreatorAgriOutput = (items: Item[], providersItems?: any) => {
+	 console.log("itemssssssssssss", items, JSON.stringify(providersItems));
+	   const providersItem=[providersItems[0].items[0]]
+	//get price from on_search
+	let breakup: any[] = [];
+	// const chargesOnFulfillment = [
+	// 	{
+	// 		"@ondc/org/item_id": "5009-Delivery",
+	// 		"@ondc/org/title_type": "delivery",
+	// 		price: {
+	// 			currency: "INR",
+	// 			value: "10",
+	// 		},
+	// 		title: "Delivery charges",
+	// 	},
+	// 	{
+	// 		"@ondc/org/item_id": "5009-Delivery",
+	// 		"@ondc/org/title_type": "packing",
+	// 		price: {
+	// 			currency: "INR",
+	// 			value: "0",
+	// 		},
+	// 		title: "Packing charges",
+	// 	},
+	// 	{
+	// 		"@ondc/org/item_id": "5009-Delivery",
+	// 		"@ondc/org/title_type": "misc",
+	// 		price: {
+	// 			currency: "INR",
+	// 			value: "0",
+	// 		},
+	// 		title: "Convenience Fee",
+	// 	},
+	// ];
+
+	// console.log("itemssssssssssssEachhhhhhhhhhhh", items);
+	items.forEach((item) => {
+		// Find the corresponding item in the second array
+		if (providersItems) {
+			const matchingItem = providersItem.find(
+				(secondItem: { id: string }) => secondItem?.id === item?.id
+			);
+			// If a matching item is found, update the price in the items array
+			console.log("matchhing",matchingItem)
+			if (matchingItem) {
+				item.title = matchingItem?.descriptor?.name;
+				// item.price = matchingItem?.price;
+				item.available_quantity = {
+					available:matchingItem?.quantity?.available,
+					maximum:matchingItem?.quantity?.maximum
+				};
+				item.price = {
+					currency: matchingItem.price.currency,
+					value: matchingItem.price.value,
+				};
+			}
+		}
+	});
+	items.forEach((item) => {
+		// console.log("itemsbreakup",item)
+		// console.log("itemmsmsss",item)
+		breakup = [
+			{
+				title:item.title,
+				price:item.price,
+				item:{
+					id:item.id,
+					quantity:{
+						selected:{
+							count:100
+						}
+					}
+				},
+				tags: [
+              {
+                "descriptor": {
+                  "code": "TITLE"
+                },
+                "list": [
+                  {
+                    "descriptor": {
+                      "code": "type"
+                    },
+                    "value": "item"
+                  }
+                ]
+              }
+            ]
+			}
+		];
+	});
+	breakup.push(          {
+		"title": "earnest_money_deposit",
+		"price": {
+			"currency": "INR",
+			"value": "5000.00"
+		},
+		"item": {
+			"id": "I1"
+		},
+		"tags": [
+			{
+				"descriptor": {
+					"code": "TITLE"
+				},
+				"list": [
+					{
+						"descriptor": {
+							"code": "type"
+						},
+						"value": "earnest_money_deposit"
+					}
+				]
+			}
+		]
+	})
+	breakup.push({
+		"title": "tax",
+		"price": {
+			"currency": "INR",
+			"value": "50"
+		},
+		"item": {
+			"id": "I1"
+		},
+		"tags": [
+			{
+				"descriptor": {
+					"code": "title"
+				},
+				"list": [
+					{
+						"descriptor": {
+							"code": "type"
+						},
+						"value": "tax"
+					}
+				]
+			}
+		]
+	})
+	breakup.push({
+		"title": "discount",
+		"price": {
+			"currency": "INR",
+			"value": "100"
+		},
+		"item": {
+			"id": "I1"
+		},
+		"tags": [
+			{
+				"descriptor": {
+					"code": "title"
+				},
+				"list": [
+					{
+						"descriptor": {
+							"code": "type"
+						},
+						"value": "discount"
+					}
+				]
+			}
+		]
+	})
+	breakup.push({
+		"title": "pickup_charge",
+		"price": {
+			"currency": "INR",
+			"value": "100"
+		},
+		"item": {
+			"id": "I1"
+		},
+		"tags": [
+			{
+				"descriptor": {
+					"code": "title"
+				},
+				"list": [
+					{
+						"descriptor": {
+							"code": "type"
+						},
+						"value": "misc"
+					}
+				]
+			}
+		]
+	})
+	console.log("breakuppp",breakup)
+
+	//MAKE DYNAMIC BREACKUP USING THE DYANMIC ITEMS
+	let totalPrice = 0;
+	breakup.forEach((entry) => {
+		console.log("entryyy",entry)
+		const priceValue = parseFloat(entry.price.value);
+		if (!isNaN(priceValue)) {
+			totalPrice += priceValue;
+		}
+	});
+	// chargesOnFulfillment.forEach((entry) => {
+	// 	const priceValue = parseFloat(entry.price.value);
+	// 	if (!isNaN(priceValue)) {
+	// 		totalPrice += priceValue;
+	// 	}
+	// });
+
+	
+	const result = {
+		breakup:[
+			...breakup,
+			// ...chargesOnFulfillment
+		],
+		price: {
+			currency: "INR",
+			value: totalPrice.toFixed(2),
+		},
+		ttl: "P1D",
+	};
+
+	// console.log("resultttttttttt", JSON.stringify(result));
+	return result;
+};
+
 
 export const quoteCreatorAgriService = (
 	items: Item[],
@@ -1542,7 +1770,7 @@ export const checkSelectedItems = async (data: any) => {
 		const items = message?.order?.items;
 		const providersItem = providersItems?.items;
 		let matchingItem: any = null;
-
+		console.log("providersItem",JSON.stringify(providersItem),"items",JSON.stringify(items))
 		items.forEach((item: any) => {
 			if (item) {
 				const selectedItem = item?.id;
@@ -1573,7 +1801,7 @@ export const updateFulfillments = (
 		const rangeEnd = new Date().setHours(new Date().getHours() + 3).toString();
 
 		let updatedFulfillments: any = [];
-
+		logger.info(`daomain ${JSON.stringify(fulfillments)}`)
 		if (!fulfillments || fulfillments.length === 0) {
 			return updatedFulfillments; // Return empty if fulfillments is not provided or empty
 		}
@@ -1610,7 +1838,6 @@ export const updateFulfillments = (
 				},
 			};
 		}
-
 		if (domain !== "subscription" && domain !== "agri_input") {
 			fulfillmentObj.tracking = false;
 			fulfillmentObj.state = {
@@ -1646,6 +1873,27 @@ export const updateFulfillments = (
 				...fulfillmentObj,
 				type: FULFILLMENT_TYPES.SELLER_FULFILLED,
 			};
+		}
+		if(domain==="agri_output"){
+			fulfillmentObj={
+				id:fulfillments[0].id || "F1",
+				stops: [
+            {
+              "type": "end",
+              "location": {
+                "gps": "12.974002,77.613458",
+                "area_code": "560001"
+              },
+              "time": {
+                "label": "confirmed",
+                "range": {
+                  "start": "2024-06-09T22:00:00.000Z",
+                  "end": "2024-06-10T02:00:00.000Z"
+                }
+              }
+            }
+          ]
+			}
 		}
 		switch (action) {
 			case ON_ACTION_KEY.ON_SELECT:

@@ -10,6 +10,7 @@ import { ON_ACTION_KEY } from "../../../lib/utils/actionOnActionKeys";
 import {
 	ORDER_CACELLED_BY,
 	ORDER_STATUS,
+	SERVICES_DOMAINS,
 } from "../../../lib/utils/apiConstants";
 
 export const cancelController = async (
@@ -36,7 +37,12 @@ export const cancelController = async (
 			transaction_id
 		);
 
-		const item_measure_ids =
+		
+		if(req.body.context.domain===SERVICES_DOMAINS.AGRI_OUTPUT){
+			cancelAgriOutputRequest(req, res, next, on_confirm_data, scenario)
+		}
+		else{
+			const item_measure_ids =
 			on_search_data.message.catalog['bpp/providers'][0].items.reduce(
 				(accumulator: any, currentItem: any) => {
 					accumulator[currentItem.id] = currentItem.quantity
@@ -47,7 +53,9 @@ export const cancelController = async (
 				{}
 			);
 		req.body.item_measure_ids = item_measure_ids;
-		cancelRequest(req, res, next, on_confirm_data, scenario);
+			cancelRequest(req, res, next, on_confirm_data, scenario);
+		}
+	
 	} catch (error) {
 		return next(error);
 	}
@@ -66,7 +74,7 @@ const cancelRequest = async (
 			transaction.message.order.fulfillments,
 			ON_ACTION_KEY?.ON_CANCEL,'',"agri_input"
 		);
-		console.log("transaction",JSON.stringify(updatedFulfillments))
+		console.log("transaction",JSON.stringify(updatedFulfillments),"messagee",req.body.message)
 		const responseMessage = {
 			order: {
 				id: req.body.message.order_id,
@@ -81,7 +89,7 @@ const cancelRequest = async (
 				},
 				provider: {
 					...transaction.message.order.provider,
-					rateable: undefined,
+					 rateable: undefined,
 				},
 				items: transaction.message.order.items.map((itm: any) => ({
 					...itm,
@@ -102,6 +110,76 @@ const cancelRequest = async (
 				// 	),
 				// })),
 				payments:transaction.message.order.payment,
+				updated_at: new Date().toISOString(),
+			},
+		};
+
+		return responseBuilder(
+			res,
+			next,
+			context,
+			responseMessage,
+			`${req.body.context.bap_uri}${
+				req.body.context.bap_uri.endsWith("/")
+					? ON_ACTION_KEY.ON_CANCEL
+					: `/${ON_ACTION_KEY.ON_CANCEL}`
+			}`,
+			`${ON_ACTION_KEY.ON_CANCEL}`,
+			"agri"
+		);
+	} catch (error) {
+		next(error);
+	}
+};
+const cancelAgriOutputRequest = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+	transaction: any,
+	scenario: any
+) => {
+	try {
+		const { context } = req.body;
+		const updatedFulfillments = updateFulfillments(
+			transaction.message.order.fulfillments,
+			ON_ACTION_KEY?.ON_CANCEL,'',"agri_input"
+		);
+		console.log("transaction",JSON.stringify(updatedFulfillments),"messagee",req.body.message)
+		const responseMessage = {
+			order: {
+				id: req.body.message.order_id,
+				status: ORDER_STATUS.CANCELLED.toUpperCase(),
+				cancellation: {
+					cancelled_by: ORDER_CACELLED_BY.CONSUMER,
+					reason: {
+						descriptor: {
+							code: req.body.message.cancellation_reason_id,
+						},
+					},
+				},
+				provider: {
+					...transaction.message.order.provider,
+					// rateable: undefined,
+				},
+				items: transaction.message.order.items.map((itm: any) => ({
+					...itm,
+					quantity: {
+						...itm.quantity,
+						// measure: req.body.item_measure_ids[itm.id]
+						// 	? req.body.item_measure_ids[itm.id]
+						// 	: { unit: "", value: "" },
+					},
+				})),			
+				quote: transaction.message.order.quote,
+				fulfillments: updatedFulfillments,
+				billing: transaction.message.order.billing,
+				// payments: transaction.message.order.payment.map((itm: any) => ({
+				// 	...itm,
+				// 	tags: itm.tags.filter(
+				// 		(tag: any) => tag.descriptor.code !== "Settlement_Counterparty"
+				// 	),
+				// })),
+				payments:transaction.message.order.payments,
 				updated_at: new Date().toISOString(),
 			},
 		};

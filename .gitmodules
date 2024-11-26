@@ -87,14 +87,6 @@
 	path = apps/backend/domain-repos/@mec/draft-print_media
 	url = https://github.com/ONDC-Official/ONDC-MEC-Specifications
 	branch = draft-print_media
-[submodule "apps/backend/domain-repos/@logistics/draft-2.x"]
-	path = apps/backend/domain-repos/@logistics/draft-2.x
-	url = https://github.com/ONDC-Official/ONDC-LOG-Specifications.git
-	branch = draft-2.x
-[submodule "packages/openapi/domain-repos/@logistics/draft-2.x"]
-	path = packages/openapi/domain-repos/@logistics/draft-2.x
-	url = https://github.com/ONDC-Official/ONDC-LOG-Specifications.git
-	branch = draft-2.x
 [submodule "apps/backend/domain-repos/@agri/draft-agri_input"]
 	path = apps/backend/domain-repos/@agri/draft-agri_input
 	url = https://github.com/ONDC-Official/ONDC-AGR-Specifications
@@ -103,3 +95,7 @@
 	path = packages/openapi/domain-repos/@agri/draft-agri_input
 	url = https://github.com/ONDC-Official/ONDC-AGR-Specifications
 	branch = draft-agri_input
+[submodule "packages/openapi/domain-repos/@agri/draft-agri_output"]
+	path = packages/openapi/domain-repos/@agri/draft-agri_output
+	url = https://github.com/ONDC-Official/ONDC-AGR-Specifications
+	branch = draft-agri_output

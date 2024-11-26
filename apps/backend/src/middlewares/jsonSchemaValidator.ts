@@ -6,6 +6,7 @@ import { b2cSchemaValidator } from "../lib/schema/b2c";
 import { l2Validator, redis } from "../lib/utils";
 import { NextFunction, Request, Response } from "express";
 import { agriSchemaValidator } from "../lib/schema/agri";
+import { agriOutputSchemaValidator } from "../lib/schema/agri_output";
 
 type AllActions =
 	| "search"
@@ -82,7 +83,14 @@ export const jsonSchemaValidator = <T extends Domain>({
         case "logistics":
           return logisticsSchemaValidator(action as LogisticsActions)(req, res, next);
         case "agri":
-          return agriSchemaValidator(action as AllActions)(req, res, next);
+          if(req.body.context.domain==="ONDC:AGR11"){
+            console.log(action,req.body)
+            return agriOutputSchemaValidator(action as AllActions)(req, res, next);
+          }
+          else{
+            console.log(action,JSON.stringify(req.body))
+            return agriSchemaValidator(action as AllActions)(req, res, next);
+          }
         default:
           throw new Error(`Unsupported domain: ${domain}`);
       }

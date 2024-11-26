@@ -7,6 +7,7 @@ import {
 } from "../../../lib/utils";
 import { ACTTION_KEY, ON_ACTION_KEY } from "../../../lib/utils/actionOnActionKeys";
 import { ERROR_MESSAGES } from "../../../lib/utils/responseMessages";
+import { SERVICES_DOMAINS } from "../../../lib/utils/apiConstants";
 
 
 export const initiateCancelController = async (
@@ -36,6 +37,10 @@ const intializeRequest = async (
 ) => {
 	try{
 		const { context } = transaction;
+		cancellation_reason_id="01"
+		if(context.domain===SERVICES_DOMAINS.AGRI_INPUT){
+			cancellation_reason_id="010"
+		}
 
 		let scenario = "ack"
 		const cancel = {

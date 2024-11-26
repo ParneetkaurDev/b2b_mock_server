@@ -35,6 +35,9 @@ export const SUBSCRIPTION_EXAMPLES_PATH =
 export const AGRI_EXAMPLES_PATH =
 	"./domain-repos/@agri/draft-agri_input/api/components/Examples/Agri_Products_yaml";
 
+export const AGRI_OUTPUT_EXAMPLES_PATH =
+	"./domain-repos/@agri/draft-agri_output/api/components/Examples/Agri_Bids_And_Auction_yaml";
+	
 export const MOCKSERVER_ID = "mock.ondc.org/api";
 // export const B2B_BPP_MOCKSERVER_URL = `https://${MOCKSERVER_ID}/b2b/bpp`;
 // export const B2B_BAP_MOCKSERVER_URL = `https://${MOCKSERVER_ID}/b2b/bap`;

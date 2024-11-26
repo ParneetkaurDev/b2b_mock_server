@@ -16,7 +16,7 @@ import { updateSchema } from "./update";
 import { cancelSchema } from "./cancel";
 import { onCancelSchema } from "./on_cancel";
 
-export const agriSchemaValidator =
+export const agriOutputSchemaValidator =
 	(
 		schema:
 			| "search"
@@ -51,7 +51,6 @@ export const agriSchemaValidator =
 				[x: string]: {};
 			}>,
 			isValid: boolean;
-
 		switch (schema) {
 			case "search":
 				validate = ajv.compile(searchSchema);

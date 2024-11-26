@@ -34,8 +34,18 @@ export const selectController = async (
 		if (!on_search) {
 			return send_nack(res, ERROR_MESSAGES.ON_SEARCH_DOES_NOT_EXISTED);
 		}
-		const providersItems = on_search?.message?.catalog["bpp/providers"][0];
-		req.body.providersItems = providersItems;
+		if(req.body.context.domain===SERVICES_DOMAINS.AGRI_INPUT){
+			const providersItems = on_search?.message?.catalog["bpp/providers"][0];
+			// console.log("InprovidersItems",providersItems)
+			req.body.providersItems = providersItems;
+		}
+		else{
+			const providersItems = on_search?.message?.catalog?.providers[0];
+			// console.log("outprovidersItems",providersItems)
+			req.body.providersItems = providersItems;
+		}
+		
+		
 
 		const checkItemExistInSearch = await checkSelectedItems(req.body);
 		if (!checkItemExistInSearch) {
@@ -44,16 +54,19 @@ export const selectController = async (
 
 
 
-
-		const { scenario } = req.query;
+		if(req.body.context.domain===SERVICES_DOMAINS.AGRI_INPUT){
+			const { scenario } = req.query;
 		switch (scenario) {
-
 			case "multi-items-successfull-order":
 				return onSelectMultiSuccessfullorder(req, res, next)
 			case "item-out-of-stock":
 				return onSelectItemoutofStock(req, res, next);
 			default:
 				return selectConsultationConfirmController(req, res, next);
+		}
+		}
+		else{
+			onSelectAGR11(req,res,next)
 		}
 
 
@@ -265,7 +278,7 @@ const selectConsultationConfirmController = (
 				},
 				items: message.order.items.map(({ id }: { id: any }) => ({
 					id,
-					fulfillment_id: "5009-Delivery",
+					fulfillment_id: "5009-Delivery"
 				})),
 				fulfillments: updatedFulfillments,
 				quote: quoteCreatorAgri(
@@ -291,7 +304,7 @@ const selectConsultationConfirmController = (
 	}
 };
 
-const onSelectNoEquipmentAvaliable = (
+const onSelectAGR11 = (
 	req: Request,
 	res: Response,
 	next: NextFunction
@@ -299,23 +312,12 @@ const onSelectNoEquipmentAvaliable = (
 	try {
 		const { context, message, providersItems } = req.body;
 
-		//Set available schedule time of items
-		message?.order?.items.forEach((item: any) => {
-			// Find the corresponding item in the second array
-			if (providersItems?.items) {
-				const matchingItem = providersItems?.items.find(
-					(secondItem: { id: string }) => secondItem.id === item.id
-				);
-				// If a matching item is found, update the price in the items array
-				if (matchingItem) {
-					item.time = matchingItem?.time;
-				}
-			}
-		});
 
 		const updatedFulfillments = updateFulfillments(
 			req.body?.message?.order?.fulfillments,
-			ON_ACTION_KEY?.ON_SELECT
+			ON_ACTION_KEY?.ON_SELECT,
+			"",
+			"agri_output"
 		);
 
 		const { locations, ...provider } = message.order.provider;
@@ -329,22 +331,16 @@ const onSelectNoEquipmentAvaliable = (
 						collected_by: "BAP",
 					})
 				),
-
 				items: message?.order?.items.map(
 					({ ...remaining }: { location_ids: any; remaining: any }) => ({
 						...remaining,
 					})
 				),
-
 				fulfillments: updatedFulfillments,
 			},
 		};
 
-		const error = {
-			code: "90001",
-			message: ERROR_MESSAGES.EQUIPMENT_NOT_AVALIABLE,
-		};
-
+		console.log("responseMessage",JSON.stringify(responseMessage))
 		return responseBuilder(
 			res,
 			next,
@@ -352,7 +348,7 @@ const onSelectNoEquipmentAvaliable = (
 			responseMessage,
 			`${context.bap_uri}/${ON_ACTION_KEY.ON_SELECT}`,
 			`${ON_ACTION_KEY.ON_SELECT}`,
-			"services",
+			"agri",
 			error
 		);
 	} catch (error) {
