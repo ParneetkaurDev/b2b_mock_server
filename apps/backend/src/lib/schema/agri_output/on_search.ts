@@ -556,7 +556,7 @@ export const onSearchSchema = {
                                                                             type: "string"
                                                                         }
                                                                     },
-                                                                    required: ["descriptor", "value"]
+                                                                    required: ["descriptor"]
                                                                 }
                                                             }
                                                         },

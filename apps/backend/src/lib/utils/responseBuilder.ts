@@ -742,8 +742,15 @@ export const quoteCreatorAgri = (items: Item[], providersItems?: any) => {
 	return result;
 };
 
+function ensureArray(item:any) {
+	return Array.isArray(item) ? item : [item];
+}
+
 export const quoteCreatorAgriOutput = (items: Item[], providersItems?: any) => {
 	 console.log("itemssssssssssss", items, JSON.stringify(providersItems));
+	 if(!Array.isArray(items)){
+		items=ensureArray(items)
+	 }
 	   const providersItem=[providersItems[0].items[0]]
 	//get price from on_search
 	let breakup: any[] = [];
@@ -966,6 +973,243 @@ export const quoteCreatorAgriOutput = (items: Item[], providersItems?: any) => {
 
 	// console.log("resultttttttttt", JSON.stringify(result));
 	return result;
+};
+
+export const quoteCreatorNegotiationAgriOutput = (items: Item[], providersItems?: any) => {
+	console.log("itemssssssssssss", items, JSON.stringify(providersItems));
+	// if(!Array.isArray(items)){
+	//  items=ensureArray(items)
+	// }
+		const providersItem=[providersItems[0].items[0]]
+ //get price from on_search
+ let breakup: any[] = [];
+ // const chargesOnFulfillment = [
+ // 	{
+ // 		"@ondc/org/item_id": "5009-Delivery",
+ // 		"@ondc/org/title_type": "delivery",
+ // 		price: {
+ // 			currency: "INR",
+ // 			value: "10",
+ // 		},
+ // 		title: "Delivery charges",
+ // 	},
+ // 	{
+ // 		"@ondc/org/item_id": "5009-Delivery",
+ // 		"@ondc/org/title_type": "packing",
+ // 		price: {
+ // 			currency: "INR",
+ // 			value: "0",
+ // 		},
+ // 		title: "Packing charges",
+ // 	},
+ // 	{
+ // 		"@ondc/org/item_id": "5009-Delivery",
+ // 		"@ondc/org/title_type": "misc",
+ // 		price: {
+ // 			currency: "INR",
+ // 			value: "0",
+ // 		},
+ // 		title: "Convenience Fee",
+ // 	},
+ // ];
+
+ // console.log("itemssssssssssssEachhhhhhhhhhhh", items);
+ items.forEach((item) => {
+	 // Find the corresponding item in the second array
+	 if (providersItems) {
+		 const matchingItem = providersItem.find(
+			 (secondItem: { id: string }) => secondItem?.id === item?.id
+		 );
+		 // If a matching item is found, update the price in the items array
+		 console.log("matchhing",matchingItem)
+		 if (matchingItem) {
+			 item.title = matchingItem?.descriptor?.name;
+			 // item.price = matchingItem?.price;
+			 item.available_quantity = {
+				 available:matchingItem?.quantity?.available,
+				 maximum:matchingItem?.quantity?.maximum
+			 };
+			 item.price = {
+				 currency: matchingItem.price.currency,
+				 value: matchingItem.price.value,
+			 };
+		 }
+	 }
+ });
+ items.forEach((item) => {
+	 // console.log("itemsbreakup",item)
+	 // console.log("itemmsmsss",item)
+	 breakup = [
+		 {
+			 title:item.title,
+			 price: {
+				currency: "INR",
+				value: (
+					Number(item?.price?.value) * item?.quantity?.selected?.count
+				).toString(),
+			},
+			 item:{
+				 id:item.id,
+				 quantity:item?.quantity
+			 },
+			 tags: [
+						 {
+							 "descriptor": {
+								 "code": "TITLE"
+							 },
+							 "list": [
+								 {
+									 "descriptor": {
+										 "code": "type"
+									 },
+									 "value": "item"
+								 }
+							 ]
+						 }
+					 ]
+		 }
+	 ];
+ });
+//  breakup.push(          {
+// 	 "title": "earnest_money_deposit",
+// 	 "price": {
+// 		 "currency": "INR",
+// 		 "value": "5000.00"
+// 	 },
+// 	 "item": {
+// 		 "id": "I1"
+// 	 },
+// 	 "tags": [
+// 		 {
+// 			 "descriptor": {
+// 				 "code": "TITLE"
+// 			 },
+// 			 "list": [
+// 				 {
+// 					 "descriptor": {
+// 						 "code": "type"
+// 					 },
+// 					 "value": "earnest_money_deposit"
+// 				 }
+// 			 ]
+// 		 }
+// 	 ]
+//  })
+ breakup.push({
+	 "title": "tax",
+	 "price": {
+		 "currency": "INR",
+		 "value": "50"
+	 },
+	 "item": {
+		 "id": "I1"
+	 },
+	 "tags": [
+		 {
+			 "descriptor": {
+				 "code": "title"
+			 },
+			 "list": [
+				 {
+					 "descriptor": {
+						 "code": "type"
+					 },
+					 "value": "tax"
+				 }
+			 ]
+		 }
+	 ]
+ })
+ breakup.push({
+	 "title": "discount",
+	 "price": {
+		 "currency": "INR",
+		 "value": "100"
+	 },
+	 "item": {
+		 "id": "I1"
+	 },
+	 "tags": [
+		 {
+			 "descriptor": {
+				 "code": "title"
+			 },
+			 "list": [
+				 {
+					 "descriptor": {
+						 "code": "type"
+					 },
+					 "value": "discount"
+				 }
+			 ]
+		 }
+	 ]
+ })
+ breakup.push({
+	 "title": "pickup_charge",
+	 "price": {
+		 "currency": "INR",
+		 "value": "100"
+	 },
+	 "item": {
+		 "id": "I1"
+	 },
+	 "tags": [
+		 {
+			 "descriptor": {
+				 "code": "title"
+			 },
+			 "list": [
+				 {
+					 "descriptor": {
+						 "code": "type"
+					 },
+					 "value": "misc"
+				 }
+			 ]
+		 }
+	 ]
+ })
+ console.log("breakuppp",breakup)
+
+ //MAKE DYNAMIC BREACKUP USING THE DYANMIC ITEMS
+ let totalPrice = 0;
+ breakup.forEach((entry) => {
+	 console.log("entryyy",entry)
+	 if(entry.title==="discount"){
+		const priceValue = parseFloat(entry.price.value);
+		if (!isNaN(priceValue)) {
+			totalPrice -= priceValue;
+		}
+	 }
+	 else{
+	 const priceValue = parseFloat(entry.price.value);
+	 if (!isNaN(priceValue)) {
+		 totalPrice += priceValue;
+	 }}
+ });
+ // chargesOnFulfillment.forEach((entry) => {
+ // 	const priceValue = parseFloat(entry.price.value);
+ // 	if (!isNaN(priceValue)) {
+ // 		totalPrice += priceValue;
+ // 	}
+ // });
+
+ 
+ const result = {
+	 breakup:[
+		 ...breakup,
+		 // ...chargesOnFulfillment
+	 ],
+	 price: {
+		 currency: "INR",
+		 value: totalPrice.toFixed(2),
+	 },
+	 ttl: "P1D",
+ };
+
+ // console.log("resultttttttttt", JSON.stringify(result));
+ return result;
 };
 
 
@@ -1768,9 +2012,12 @@ export const checkSelectedItems = async (data: any) => {
 	try {
 		const { message, providersItems } = data;
 		const items = message?.order?.items;
-		const providersItem = providersItems?.items;
+		let providersItem = providersItems?.items;
+		if(!providersItem){
+			providersItem=providersItems[0]?.items;
+		}
 		let matchingItem: any = null;
-		console.log("providersItem",JSON.stringify(providersItem),"items",JSON.stringify(items))
+		console.log("providersItem",JSON.stringify(providersItems),JSON.stringify(providersItem),"items",JSON.stringify(items))
 		items.forEach((item: any) => {
 			if (item) {
 				const selectedItem = item?.id;
@@ -1801,7 +2048,7 @@ export const updateFulfillments = (
 		const rangeEnd = new Date().setHours(new Date().getHours() + 3).toString();
 
 		let updatedFulfillments: any = [];
-		logger.info(`daomain ${JSON.stringify(fulfillments)}`)
+		// logger.info(`daomain ${JSON.stringify(fulfillments)}`)
 		if (!fulfillments || fulfillments.length === 0) {
 			return updatedFulfillments; // Return empty if fulfillments is not provided or empty
 		}

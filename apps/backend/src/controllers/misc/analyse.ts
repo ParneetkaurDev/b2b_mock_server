@@ -80,6 +80,11 @@ export const analyseController = async (req: Request, res: Response) => {
 				const withResponse = group.filter((obj:any) => obj.response);
 				prioritized.push(...withResponse);
 			  } 
+			  else if (action === 'select' || action ==='on_select') {
+				// Keep all sorted objects for on_status
+				const withResponse = group.filter((obj:any) => obj.response);
+				prioritized.push(...withResponse);
+			  } 
 			  else
 			  {// Find object with response
 			  const withResponse = group.find((item:any) => item.response);

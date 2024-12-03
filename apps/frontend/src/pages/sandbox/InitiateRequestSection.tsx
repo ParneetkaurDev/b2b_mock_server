@@ -74,7 +74,8 @@ export const InitiateRequestSection = () => {
 	const [showCatalogSelect, setShowCatalogSelect] = useState<boolean>(false);
 	const [matchingItems, setMatchingItems] = useState<any[]>([]);
 	const [selectedItemId, setSelectedItemId] = useState<string>("");
-	const [flow,setflow]=useState<string>("1")
+	const [choice,setchoice]=useState<string>("agri")
+
 
 	useEffect(() => {
 		// setRenderActionFields(true);
@@ -162,14 +163,21 @@ export const InitiateRequestSection = () => {
 			setSelectedScenario(value as string);
 			/****Write the logic for changes the domain options based on version selection */
 		}
-		if(fieldName ==="flow"){
-			setflow(value)
-		}
+	
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		setFormState((prev: any) => ({ ...prev, [fieldName]: value }));
 	};
 	useEffect(() => {
 		if (action) {
+			if (domain==="agri" && formState.domain){
+				if(formState.domain==="ONDC:AGR11"){
+					setchoice("agrioutput")
+				}
+				else{
+					setchoice("agri")
+				}
+				
+			}
 			const keys = Object.keys(formState || {});
 			const formKeys = INITIATE_FIELDS[
 				action as keyof typeof INITIATE_FIELDS
@@ -479,6 +487,41 @@ export const InitiateRequestSection = () => {
 															console.log("options",options)
 															// Special case for scenario field
 															if (field.name === "scenario") {
+																if(domain==="agri" && options && choice in options &&
+																	Array.isArray(options[choice]) &&
+																	options[choice].length > 0 ){
+																		console.log("choice",choice,options[choice]);
+																		
+																		return (
+																			//   version ==="b2c" && domain==="retail"? (<></>) :
+																			<Select
+																				placeholder={field.placeholder}
+																				onChange={(
+																					_event: React.SyntheticEvent | null,
+																					newValue: string | null
+																				) =>
+																					handleFieldChange(
+																						field.name,
+																						newValue as string
+																					)
+																				}
+																			>
+																				{options[choice].map(
+																					(
+																						option: string,
+																						optionIndex: number
+																					) => (
+																						<Option
+																							value={option}
+																							key={`${option}-${optionIndex}`}
+																						>
+																							{option}
+																						</Option>
+																					)
+																				)}
+																			</Select>
+																		);
+																	}
 																if (
 																	options &&
 																	domain in options &&

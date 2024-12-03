@@ -70,7 +70,6 @@ async function send_response(
       uri = `${bpp_uri}/${action}${scenario ? `?scenario=${scenario}` : ""}`;
 
     }
-
     try{
       const response = await axios.post(uri, res_obj, {
         headers: { ...headers },

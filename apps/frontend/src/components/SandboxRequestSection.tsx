@@ -16,7 +16,7 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Button from "@mui/joy/Button";
 import Option from "@mui/joy/Option";
 import { useAction, useDomain, useSandbox } from "../utils/hooks";
-import { URL_MAPPING } from "../utils";
+import { AGRI_OUTPUT_SCENARIOS, URL_MAPPING } from "../utils";
 import axios, { AxiosError } from "axios";
 import { UserGuide } from "./UserGuideSection";
 
@@ -53,6 +53,7 @@ export const SandboxRequestSection = () => {
 		detectAction(e.target.value, version);
 	};
 
+	const scenarioaction :(keyof typeof AGRI_OUTPUT_SCENARIOS)=action? action:"search"
 	const handleVersion = (
 		event: React.MouseEvent<Element> | React.KeyboardEvent<Element> | React.FocusEvent<Element> | null,
 		value: {} | null
@@ -62,7 +63,12 @@ export const SandboxRequestSection = () => {
 			setVersion(value as string); // Ensure value is a string and set the version
 		}
 	};
-	
+	function handleScenario(event:any,value:any){
+		console.log("scenario",value)
+		if (value) {
+			setActiveScenario(value); // Ensure value is a string and set the version
+		}
+	};
 
 	const handleSubmit = async () => {
 		let url = `${[
@@ -130,7 +136,18 @@ export const SandboxRequestSection = () => {
 								<Option value="b2c">B2c</Option>
 							</Select>
 						)}
-						{/* Select box for domain */}
+						{domain=== "agri" && (<Select
+								placeholder="Select a scenario"
+								sx={{ width: "100%" }}
+								 // eslint-disable-next-line no-mixed-spaces-and-tabs
+								 onChange={(event, value) => handleScenario(event, value)} 
+							>	
+								{AGRI_OUTPUT_SCENARIOS[scenarioaction].map((each, index) => (
+          <Option key={index} value={each}>
+            {each.name}
+          </Option>
+        ))}
+							</Select>)}
 						<Input
 							fullWidth
 							placeholder="Enter Your Auth Header..."

@@ -219,6 +219,77 @@ const intializeRequest = async (
 					},
 				},
 			};
+			switch(scenario){
+				case "bidplacement":
+					init={
+						...init,
+						message:{
+							order:{
+								...init.message.order,
+								items:[{
+									...init.message.order.items[0],
+									quantity:{
+										selected: {
+											    count: 100
+											  }
+									}
+								}]
+							}
+						}
+					}
+					break;
+				case "negotiation":
+					init={
+						...init,
+						message:{
+							order:{
+								...init.message.order,
+								items:[{
+									...init.message.order.items[0],
+									quantity:{
+										selected: {
+											    count: 100
+											  }
+									},
+									tags:[
+										{
+											descriptor: {
+												code: "NEGOTIATION_BAP"
+											},
+											list: [
+												{
+													descriptor: {
+														code: "items.price.value"
+													},
+													value: "270.00"
+												}
+											]
+										}
+									]
+								}]
+							}
+						}
+					}
+					break;
+				default:
+					init={...init}
+					// init.message.order.items[0].push({ "tags": [
+          //   {
+          //     descriptor: {
+          //       code: "NEGOTIATION_BAP"
+          //     },
+          //     list: [
+          //       {
+          //         descriptor: {
+          //           code: "items.price.value"
+          //         },
+          //         value: "270.00"
+          //       }
+          //     ]
+          //   }
+          // ]})
+			}
+
 		}
 
 		await send_response(

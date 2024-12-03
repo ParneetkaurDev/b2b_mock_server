@@ -209,6 +209,177 @@ export const AGRI_SCENARIOS = {
 		},
 	],
 };
+export const AGRI_OUTPUT_SCENARIOS = {
+	search: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "Interval Pull",
+			scenario: "intervalpull", 
+		},
+		{
+			name: "Start",
+			scenario: "start", 
+		},
+		{
+			name: "Stop",
+			scenario: "stop", 
+		},
+		{
+			name:"Negotiation",
+			scenario:"negotiation"
+		}
+	],
+	on_search: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: " Push By Seller",
+			scenario: "pushbyseller", // Select Domestic
+		},
+		
+	],
+	select: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "Accepts",
+			scenario: "accepts",
+		},
+		{
+			name: "Counter Offers",
+			scenario: "counter-offers",
+		},
+		{
+			name:"Negotiation Start",
+			scenario:"negaotiationstart"
+		}
+	],
+	on_select: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "Accepts",
+			scenario: "accepts",
+		},
+		{
+			name: "Counter Offers",
+			scenario: "counter-offers",
+		},
+	],
+	init:[
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name:"Participation Fee",
+			scenario:"participationfee"
+		},
+		{
+			name:"Bid Placement",
+			scenario:"bidplacement"
+		},
+		{
+			name:"Negotiation",
+			scenario:"negotiation"
+		}
+	],
+	on_init:[
+		{
+			name:"Participation Fee",
+			scenario:"participationfee"
+		},
+		{
+			name:"Bid Placement",
+			scenario:"bidplacement"
+		}
+	],
+	on_status: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "Accepted",
+			scenario: "accepted",
+		},
+		{
+			name: "Packed",
+			scenario: "packed",
+		},
+		{
+			name: "Agent Assigned",
+			scenario: "agent-assigned",
+		},
+		{
+			name: "Order Picked Up",
+			scenario: "order-picked-up",
+		},
+		{
+			name: "Out for Delivery",
+			scenario: "out-for-delivery",
+		},
+		{
+			name: "Delivery",
+			scenario: "delivery",
+		},
+	],
+	update: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "Re Negotiate",
+			scenario: "renegotiate",
+		},
+		{
+			name: "Reject",
+			scenario: "reject",
+		},
+		{
+			name:"Increase bids price",
+			scenario:"increasebidsprice"
+		}
+	],
+	on_update: [
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name: "Awarded",
+			scenario: "awarded", 
+		},
+		{
+			name: "Not Awarded",
+			scenario: "notawarded", 
+		},
+		{
+			name:"Increase bids price",
+			scenario:"increasebidsprice"
+		}
+	],
+	cancel:[
+		{
+			name: "Default",
+			scenario: "default",
+		},
+		{
+			name:"Not satisfied",
+			sceanrio:"notsatisfied"
+		}
+	]
+};
 export const B2C_CITY_CODE = ["UN:SIN"];
 export const INITIATE_FIELDS = {
 	search: [
@@ -282,6 +453,7 @@ export const INITIATE_FIELDS = {
 			domainDepended: true,
 			options: {
 				agri: AGRI_SCENARIOS["search"].map((each) => each.scenario),
+				agrioutput:AGRI_OUTPUT_SCENARIOS["search"].map((each) => each.scenario)
 
 			},
 		},
@@ -303,6 +475,7 @@ export const INITIATE_FIELDS = {
 				subscription: PRINT_MEDIA_SCENARIOS["select"].map((each) => each.scenario),
 				b2b: B2B_SCENARIOS["select"].map((each) => each.scenario),
 				agri: AGRI_SCENARIOS["select"].map((each) => each.scenario),
+				agrioutput:AGRI_OUTPUT_SCENARIOS["select"].map((each) => each.scenario)
 
 			},
 		},
@@ -323,6 +496,7 @@ export const INITIATE_FIELDS = {
 				retail: B2B_SCENARIOS["init"].map((each) => each.scenario),
 				// subscription:PRINT_MEDIA_SCENARIOS["init"].map((each) => each.scenario),
 				b2b: B2B_SCENARIOS["init"].map((each) => each.scenario),
+				agrioutput:AGRI_OUTPUT_SCENARIOS["init"].map((each) => each.scenario)
 				// retail: B2B_SCENARIOS["init"].map((each) => each.scenario),
 				// services: SERVICES_SCENARIOS["init"].map((each) => each.scenario),
 			},
@@ -379,7 +553,8 @@ export const INITIATE_FIELDS = {
 				b2b: ["payments", "fulfillments", "items"],
 				b2c: ["payments", "fulfillments", "items"],
 				logistics: ["fulfillments"],
-				agri: AGRI_SCENARIOS["update"].map((each) => each.scenario)
+				agri: AGRI_SCENARIOS["update"].map((each) => each.scenario),
+				agrioutput:AGRI_OUTPUT_SCENARIOS["update"].map((each) => each.scenario)
 			},
 		},
 	],
@@ -416,6 +591,7 @@ export const INITIATE_FIELDS = {
 			type: "select",
 			domainDepended: true,
 			options: {
+				agrioutput:AGRI_OUTPUT_SCENARIOS["cancel"].map((each) => each.scenario)
 				// services: SERVICES_SCENARIOS["confirm"].map((each) => each.scenario),
 			},
 		},

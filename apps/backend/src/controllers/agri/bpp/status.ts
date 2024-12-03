@@ -717,7 +717,7 @@ export const statusAgriOutputRequest = async (
 						id: fulfillment.id,
 						state: {
 							descriptor: {
-								code: "Placed",
+								code: "Accepted",
 							},
 						},
 						stops: [fulfillment.stops[0]],
@@ -805,6 +805,1643 @@ export const statusAgriOutputRequest = async (
 		// 		break;
 		// }
 		console.log("on_Status", JSON.stringify(responseMessage.order))
+		// const onStatusAccepted = {
+		// 	...responseMessage, // spread the entire response
+		// 	order: {
+		// 		...responseMessage.order, // spread message to retain its content
+		// 		fulfillments: responseMessage.order.fulfillments.map((fulfillment: any) => ({
+		// 			...fulfillment, // spread the fulfillment object
+		// 			state: {
+		// 				...fulfillment.state, // spread state to retain other state details
+		// 				descriptor: {
+		// 					...fulfillment.state.descriptor, // spread descriptor to modify only the code
+		// 					code: "ACCEPTED" // modify the code to "created"
+		// 				}
+		// 			}
+		// 		})),
+		// 		items:responseMessage.order.items.map((itm:any)=>(
+		// 			{
+		// 				...itm,
+		// 				tags: [
+        //     {
+        //       descriptor: {
+        //         code: "NEGOTIATION_BAP"
+        //       },
+        //       list: [
+        //         {
+        //           descriptor: {
+        //             code: "items.price.value"
+        //           },
+        //           value: "270.00"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "items.tags.commodity_specification.moisture"
+        //           },
+        //           value: "4%"
+        //         }
+        //       ]
+        //     },
+        //     {
+        //       descriptor: {
+        //         code: "NEGOTIATION_BPP"
+        //       },
+        //       list: [
+        //         {
+        //           descriptor: {
+        //             code: "items.price.value"
+        //           },
+        //           value: "270.00"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "items.tags.commodity_specification.moisture"
+        //           },
+        //           value: "4%"
+        //         }
+        //       ]
+        //     },
+        //     {
+        //       descriptor: {
+        //         code: "COMMODITY_SPECIFICATION"
+        //       },
+        //       list: [
+        //         {
+        //           descriptor: {
+        //             code: "REFERENCE_DOCS_MIME_TYPE"
+        //           },
+        //           value: "application/pdf"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "REFERENCE_DOCS_COPY"
+        //           },
+        //           value: "https://abc.com/commodity_specification.pdf"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "SHELF_LIFE"
+        //           },
+        //           value: "P10M"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "MOISTURE"
+        //           },
+        //           value: "10%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "FOREIGN_MATTER"
+        //           },
+        //           value: "3%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "OIL_CONTENT"
+        //           },
+        //           value: "2%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "DEFECTIVES"
+        //           },
+        //           value: "7%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "OTHER_EDIBLE_GRAINS"
+        //           },
+        //           value: "1%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "URIC_ACID"
+        //           },
+        //           value: "101"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "AFLATOXIN"
+        //           },
+        //           value: "15"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "ARGEMONE_SEEDS"
+        //           },
+        //           value: "Yes"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "SIZE_RANGE_MEASURE"
+        //           },
+        //           value: "Diameter"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "SIZE_RANGE"
+        //           },
+        //           value: "15-18"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "PERCENTAGE_OF_DEFECTS"
+        //           },
+        //           value: "1.5%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "PERCENTAGE_OF_WASTAGE"
+        //           },
+        //           value: "3%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "BUNCH_SIZE_VALUE"
+        //           },
+        //           value: "50"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "BUNCH_SIZE_UNIT"
+        //           },
+        //           value: "gm"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "VISIBLE_COLOUR"
+        //           },
+        //           value: "Brown"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "COLOUR_PERCENTAGE"
+        //           },
+        //           value: ">=70%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "TOTAL_SOLUBLE_SOLIDS"
+        //           },
+        //           value: "16 degree Brix"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "TRACES_OF_SOIL"
+        //           },
+        //           value: "Sight traces"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "VOLATILE_OIL"
+        //           },
+        //           value: "<=2.5%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "TOTAL_ASH"
+        //           },
+        //           value: "<=7%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "CORIANDER_SPLIT_SEEDS_PERCENTAGE"
+        //           },
+        //           value: "5%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "MIN_FLOWER_PER_STEM"
+        //           },
+        //           value: "1"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "GIRTH_AT_THIN_END_VALUE"
+        //           },
+        //           value: "<=6"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "GIRTH_AT_THIN_END_UNIT"
+        //           },
+        //           value: "cm"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "BLOOMING_AND_SHAPE"
+        //           },
+        //           value: ">=85%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "FLOWER_DIAMETER_VALUE"
+        //           },
+        //           value: "3.45"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "FLOWER_DIAMETER_UNIT"
+        //           },
+        //           value: "cm"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "STAPLE_LENGTH_OF_COTTON_VALUE"
+        //           },
+        //           value: "28‑30"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "STAPLE_LENGTH_OF_COTTON_UNIT"
+        //           },
+        //           value: "mm"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "TRASH_PERCENTAGE"
+        //           },
+        //           value: "3%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "BUNDLE_STRENGTH"
+        //           },
+        //           value: ">=24.0"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "MICRONAIRE"
+        //           },
+        //           value: "2.8-3.0"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "PERCENTAGE_OF_MATURED_FIBERS"
+        //           },
+        //           value: ">=70.0"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "SIEVE_ANALYSIS"
+        //           },
+        //           value: "98"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "NUMBER_OF_NUTS_VALUE"
+        //           },
+        //           value: "210"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "NUMBER_OF_NUTS_UNIT"
+        //           },
+        //           value: "kg"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "VOID_NUTS"
+        //           },
+        //           value: "1%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "IMMATURE_NUTS"
+        //           },
+        //           value: "2%"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "STRENGTH"
+        //           },
+        //           value: "Excellent"
+        //         },
+        //         {
+        //           descriptor: {
+        //             code: "FINENESS"
+        //           },
+        //           value: "10"
+        //         }
+        //       ]
+        //     }
+        //   ]
+		// 			}
+		// 		)
+		// 		)
+		// 	}
+		// };
+		const onStatusPacked = {
+			...responseMessage, // spread the entire response
+			order: {
+				...responseMessage.order, // spread message to retain its content
+				fulfillments: responseMessage.order.fulfillments.map((fulfillment: any) => ({
+					...fulfillment, // spread the fulfillment object
+					state: {
+						...fulfillment.state, // spread state to retain other state details
+						descriptor: {
+							...fulfillment.state.descriptor, // spread descriptor to modify only the code
+							code: "PACKED" // modify the code to "created"
+						}
+					}
+				})),
+				items:responseMessage.order.items.map((itm:any)=>(
+					{
+						...itm,
+						tags: [
+            {
+              descriptor: {
+                code: "NEGOTIATION_BAP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "NEGOTIATION_BPP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "COMMODITY_SPECIFICATION"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_MIME_TYPE"
+                  },
+                  value: "application/pdf"
+                },
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_COPY"
+                  },
+                  value: "https://abc.com/commodity_specification.pdf"
+                },
+                {
+                  descriptor: {
+                    code: "SHELF_LIFE"
+                  },
+                  value: "P10M"
+                },
+                {
+                  descriptor: {
+                    code: "MOISTURE"
+                  },
+                  value: "10%"
+                },
+                {
+                  descriptor: {
+                    code: "FOREIGN_MATTER"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "OIL_CONTENT"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "DEFECTIVES"
+                  },
+                  value: "7%"
+                },
+                {
+                  descriptor: {
+                    code: "OTHER_EDIBLE_GRAINS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "URIC_ACID"
+                  },
+                  value: "101"
+                },
+                {
+                  descriptor: {
+                    code: "AFLATOXIN"
+                  },
+                  value: "15"
+                },
+                {
+                  descriptor: {
+                    code: "ARGEMONE_SEEDS"
+                  },
+                  value: "Yes"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE_MEASURE"
+                  },
+                  value: "Diameter"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE"
+                  },
+                  value: "15-18"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_DEFECTS"
+                  },
+                  value: "1.5%"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_WASTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_VALUE"
+                  },
+                  value: "50"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_UNIT"
+                  },
+                  value: "gm"
+                },
+                {
+                  descriptor: {
+                    code: "VISIBLE_COLOUR"
+                  },
+                  value: "Brown"
+                },
+                {
+                  descriptor: {
+                    code: "COLOUR_PERCENTAGE"
+                  },
+                  value: ">=70%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_SOLUBLE_SOLIDS"
+                  },
+                  value: "16 degree Brix"
+                },
+                {
+                  descriptor: {
+                    code: "TRACES_OF_SOIL"
+                  },
+                  value: "Sight traces"
+                },
+                {
+                  descriptor: {
+                    code: "VOLATILE_OIL"
+                  },
+                  value: "<=2.5%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_ASH"
+                  },
+                  value: "<=7%"
+                },
+                {
+                  descriptor: {
+                    code: "CORIANDER_SPLIT_SEEDS_PERCENTAGE"
+                  },
+                  value: "5%"
+                },
+                {
+                  descriptor: {
+                    code: "MIN_FLOWER_PER_STEM"
+                  },
+                  value: "1"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_VALUE"
+                  },
+                  value: "<=6"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "BLOOMING_AND_SHAPE"
+                  },
+                  value: ">=85%"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_VALUE"
+                  },
+                  value: "3.45"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_VALUE"
+                  },
+                  value: "28‑30"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_UNIT"
+                  },
+                  value: "mm"
+                },
+                {
+                  descriptor: {
+                    code: "TRASH_PERCENTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNDLE_STRENGTH"
+                  },
+                  value: ">=24.0"
+                },
+                {
+                  descriptor: {
+                    code: "MICRONAIRE"
+                  },
+                  value: "2.8-3.0"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_MATURED_FIBERS"
+                  },
+                  value: ">=70.0"
+                },
+                {
+                  descriptor: {
+                    code: "SIEVE_ANALYSIS"
+                  },
+                  value: "98"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_VALUE"
+                  },
+                  value: "210"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_UNIT"
+                  },
+                  value: "kg"
+                },
+                {
+                  descriptor: {
+                    code: "VOID_NUTS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "IMMATURE_NUTS"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "STRENGTH"
+                  },
+                  value: "Excellent"
+                },
+                {
+                  descriptor: {
+                    code: "FINENESS"
+                  },
+                  value: "10"
+                }
+              ]
+            }
+          ]
+					}
+				)
+				)
+			}
+		}
+		const onStatusOrderPickedUp = {
+			...responseMessage, // spread the entire response
+			order: {
+				...responseMessage.order, // spread message to retain its content
+				fulfillments: responseMessage.order.fulfillments.map((fulfillment: any) => ({
+					...fulfillment, // spread the fulfillment object
+					state: {
+						...fulfillment.state, // spread state to retain other state details
+						descriptor: {
+							...fulfillment.state.descriptor, // spread descriptor to modify only the code
+							code: "ORDER_PICKED_UP" // modify the code to "created"
+						}
+					}
+				})),
+				items:responseMessage.order.items.map((itm:any)=>(
+					{
+						...itm,
+						tags: [
+            {
+              descriptor: {
+                code: "NEGOTIATION_BAP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "NEGOTIATION_BPP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "COMMODITY_SPECIFICATION"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_MIME_TYPE"
+                  },
+                  value: "application/pdf"
+                },
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_COPY"
+                  },
+                  value: "https://abc.com/commodity_specification.pdf"
+                },
+                {
+                  descriptor: {
+                    code: "SHELF_LIFE"
+                  },
+                  value: "P10M"
+                },
+                {
+                  descriptor: {
+                    code: "MOISTURE"
+                  },
+                  value: "10%"
+                },
+                {
+                  descriptor: {
+                    code: "FOREIGN_MATTER"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "OIL_CONTENT"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "DEFECTIVES"
+                  },
+                  value: "7%"
+                },
+                {
+                  descriptor: {
+                    code: "OTHER_EDIBLE_GRAINS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "URIC_ACID"
+                  },
+                  value: "101"
+                },
+                {
+                  descriptor: {
+                    code: "AFLATOXIN"
+                  },
+                  value: "15"
+                },
+                {
+                  descriptor: {
+                    code: "ARGEMONE_SEEDS"
+                  },
+                  value: "Yes"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE_MEASURE"
+                  },
+                  value: "Diameter"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE"
+                  },
+                  value: "15-18"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_DEFECTS"
+                  },
+                  value: "1.5%"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_WASTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_VALUE"
+                  },
+                  value: "50"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_UNIT"
+                  },
+                  value: "gm"
+                },
+                {
+                  descriptor: {
+                    code: "VISIBLE_COLOUR"
+                  },
+                  value: "Brown"
+                },
+                {
+                  descriptor: {
+                    code: "COLOUR_PERCENTAGE"
+                  },
+                  value: ">=70%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_SOLUBLE_SOLIDS"
+                  },
+                  value: "16 degree Brix"
+                },
+                {
+                  descriptor: {
+                    code: "TRACES_OF_SOIL"
+                  },
+                  value: "Sight traces"
+                },
+                {
+                  descriptor: {
+                    code: "VOLATILE_OIL"
+                  },
+                  value: "<=2.5%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_ASH"
+                  },
+                  value: "<=7%"
+                },
+                {
+                  descriptor: {
+                    code: "CORIANDER_SPLIT_SEEDS_PERCENTAGE"
+                  },
+                  value: "5%"
+                },
+                {
+                  descriptor: {
+                    code: "MIN_FLOWER_PER_STEM"
+                  },
+                  value: "1"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_VALUE"
+                  },
+                  value: "<=6"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "BLOOMING_AND_SHAPE"
+                  },
+                  value: ">=85%"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_VALUE"
+                  },
+                  value: "3.45"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_VALUE"
+                  },
+                  value: "28‑30"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_UNIT"
+                  },
+                  value: "mm"
+                },
+                {
+                  descriptor: {
+                    code: "TRASH_PERCENTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNDLE_STRENGTH"
+                  },
+                  value: ">=24.0"
+                },
+                {
+                  descriptor: {
+                    code: "MICRONAIRE"
+                  },
+                  value: "2.8-3.0"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_MATURED_FIBERS"
+                  },
+                  value: ">=70.0"
+                },
+                {
+                  descriptor: {
+                    code: "SIEVE_ANALYSIS"
+                  },
+                  value: "98"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_VALUE"
+                  },
+                  value: "210"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_UNIT"
+                  },
+                  value: "kg"
+                },
+                {
+                  descriptor: {
+                    code: "VOID_NUTS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "IMMATURE_NUTS"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "STRENGTH"
+                  },
+                  value: "Excellent"
+                },
+                {
+                  descriptor: {
+                    code: "FINENESS"
+                  },
+                  value: "10"
+                }
+              ]
+            }
+          ]
+					}
+				)
+				)
+			}
+		}
+		const onStatusInTransit = {
+			...responseMessage, // spread the entire response
+			order: {
+				...responseMessage.order, // spread message to retain its content
+				fulfillments: responseMessage.order.fulfillments.map((fulfillment: any) => ({
+					...fulfillment, // spread the fulfillment object
+					state: {
+						...fulfillment.state, // spread state to retain other state details
+						descriptor: {
+							...fulfillment.state.descriptor, // spread descriptor to modify only the code
+							code: "ORDER_OUT_FOR_DELIVERY" // modify the code to "created"
+						}
+					}
+				})),
+				items:responseMessage.order.items.map((itm:any)=>(
+					{
+						...itm,
+						tags: [
+            {
+              descriptor: {
+                code: "NEGOTIATION_BAP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "NEGOTIATION_BPP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "COMMODITY_SPECIFICATION"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_MIME_TYPE"
+                  },
+                  value: "application/pdf"
+                },
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_COPY"
+                  },
+                  value: "https://abc.com/commodity_specification.pdf"
+                },
+                {
+                  descriptor: {
+                    code: "SHELF_LIFE"
+                  },
+                  value: "P10M"
+                },
+                {
+                  descriptor: {
+                    code: "MOISTURE"
+                  },
+                  value: "10%"
+                },
+                {
+                  descriptor: {
+                    code: "FOREIGN_MATTER"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "OIL_CONTENT"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "DEFECTIVES"
+                  },
+                  value: "7%"
+                },
+                {
+                  descriptor: {
+                    code: "OTHER_EDIBLE_GRAINS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "URIC_ACID"
+                  },
+                  value: "101"
+                },
+                {
+                  descriptor: {
+                    code: "AFLATOXIN"
+                  },
+                  value: "15"
+                },
+                {
+                  descriptor: {
+                    code: "ARGEMONE_SEEDS"
+                  },
+                  value: "Yes"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE_MEASURE"
+                  },
+                  value: "Diameter"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE"
+                  },
+                  value: "15-18"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_DEFECTS"
+                  },
+                  value: "1.5%"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_WASTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_VALUE"
+                  },
+                  value: "50"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_UNIT"
+                  },
+                  value: "gm"
+                },
+                {
+                  descriptor: {
+                    code: "VISIBLE_COLOUR"
+                  },
+                  value: "Brown"
+                },
+                {
+                  descriptor: {
+                    code: "COLOUR_PERCENTAGE"
+                  },
+                  value: ">=70%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_SOLUBLE_SOLIDS"
+                  },
+                  value: "16 degree Brix"
+                },
+                {
+                  descriptor: {
+                    code: "TRACES_OF_SOIL"
+                  },
+                  value: "Sight traces"
+                },
+                {
+                  descriptor: {
+                    code: "VOLATILE_OIL"
+                  },
+                  value: "<=2.5%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_ASH"
+                  },
+                  value: "<=7%"
+                },
+                {
+                  descriptor: {
+                    code: "CORIANDER_SPLIT_SEEDS_PERCENTAGE"
+                  },
+                  value: "5%"
+                },
+                {
+                  descriptor: {
+                    code: "MIN_FLOWER_PER_STEM"
+                  },
+                  value: "1"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_VALUE"
+                  },
+                  value: "<=6"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "BLOOMING_AND_SHAPE"
+                  },
+                  value: ">=85%"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_VALUE"
+                  },
+                  value: "3.45"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_VALUE"
+                  },
+                  value: "28‑30"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_UNIT"
+                  },
+                  value: "mm"
+                },
+                {
+                  descriptor: {
+                    code: "TRASH_PERCENTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNDLE_STRENGTH"
+                  },
+                  value: ">=24.0"
+                },
+                {
+                  descriptor: {
+                    code: "MICRONAIRE"
+                  },
+                  value: "2.8-3.0"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_MATURED_FIBERS"
+                  },
+                  value: ">=70.0"
+                },
+                {
+                  descriptor: {
+                    code: "SIEVE_ANALYSIS"
+                  },
+                  value: "98"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_VALUE"
+                  },
+                  value: "210"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_UNIT"
+                  },
+                  value: "kg"
+                },
+                {
+                  descriptor: {
+                    code: "VOID_NUTS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "IMMATURE_NUTS"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "STRENGTH"
+                  },
+                  value: "Excellent"
+                },
+                {
+                  descriptor: {
+                    code: "FINENESS"
+                  },
+                  value: "10"
+                }
+              ]
+            }
+          ]
+					}
+				)
+				)
+				
+			}
+		}
+		const onStatusCompleted = {
+			...responseMessage, // spread the entire response
+			order: {
+				...responseMessage.order, // spread message to retain its content
+				fulfillments: responseMessage.order.fulfillments.map((fulfillment: any) => ({
+					...fulfillment, // spread the fulfillment object
+					state: {
+						...fulfillment.state, // spread state to retain other state details
+						descriptor: {
+							...fulfillment.state.descriptor, // spread descriptor to modify only the code
+							code: "DELIVERED" // modify the code to "created"
+						}
+					}
+				})),
+				items:responseMessage.order.items.map((itm:any)=>(
+					{
+						...itm,
+						tags: [
+            {
+              descriptor: {
+                code: "NEGOTIATION_BAP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "NEGOTIATION_BPP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                },
+                {
+                  descriptor: {
+                    code: "items.tags.commodity_specification.moisture"
+                  },
+                  value: "4%"
+                }
+              ]
+            },
+            {
+              descriptor: {
+                code: "COMMODITY_SPECIFICATION"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_MIME_TYPE"
+                  },
+                  value: "application/pdf"
+                },
+                {
+                  descriptor: {
+                    code: "REFERENCE_DOCS_COPY"
+                  },
+                  value: "https://abc.com/commodity_specification.pdf"
+                },
+                {
+                  descriptor: {
+                    code: "SHELF_LIFE"
+                  },
+                  value: "P10M"
+                },
+                {
+                  descriptor: {
+                    code: "MOISTURE"
+                  },
+                  value: "10%"
+                },
+                {
+                  descriptor: {
+                    code: "FOREIGN_MATTER"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "OIL_CONTENT"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "DEFECTIVES"
+                  },
+                  value: "7%"
+                },
+                {
+                  descriptor: {
+                    code: "OTHER_EDIBLE_GRAINS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "URIC_ACID"
+                  },
+                  value: "101"
+                },
+                {
+                  descriptor: {
+                    code: "AFLATOXIN"
+                  },
+                  value: "15"
+                },
+                {
+                  descriptor: {
+                    code: "ARGEMONE_SEEDS"
+                  },
+                  value: "Yes"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE_MEASURE"
+                  },
+                  value: "Diameter"
+                },
+                {
+                  descriptor: {
+                    code: "SIZE_RANGE"
+                  },
+                  value: "15-18"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_DEFECTS"
+                  },
+                  value: "1.5%"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_WASTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_VALUE"
+                  },
+                  value: "50"
+                },
+                {
+                  descriptor: {
+                    code: "BUNCH_SIZE_UNIT"
+                  },
+                  value: "gm"
+                },
+                {
+                  descriptor: {
+                    code: "VISIBLE_COLOUR"
+                  },
+                  value: "Brown"
+                },
+                {
+                  descriptor: {
+                    code: "COLOUR_PERCENTAGE"
+                  },
+                  value: ">=70%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_SOLUBLE_SOLIDS"
+                  },
+                  value: "16 degree Brix"
+                },
+                {
+                  descriptor: {
+                    code: "TRACES_OF_SOIL"
+                  },
+                  value: "Sight traces"
+                },
+                {
+                  descriptor: {
+                    code: "VOLATILE_OIL"
+                  },
+                  value: "<=2.5%"
+                },
+                {
+                  descriptor: {
+                    code: "TOTAL_ASH"
+                  },
+                  value: "<=7%"
+                },
+                {
+                  descriptor: {
+                    code: "CORIANDER_SPLIT_SEEDS_PERCENTAGE"
+                  },
+                  value: "5%"
+                },
+                {
+                  descriptor: {
+                    code: "MIN_FLOWER_PER_STEM"
+                  },
+                  value: "1"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_VALUE"
+                  },
+                  value: "<=6"
+                },
+                {
+                  descriptor: {
+                    code: "GIRTH_AT_THIN_END_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "BLOOMING_AND_SHAPE"
+                  },
+                  value: ">=85%"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_VALUE"
+                  },
+                  value: "3.45"
+                },
+                {
+                  descriptor: {
+                    code: "FLOWER_DIAMETER_UNIT"
+                  },
+                  value: "cm"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_VALUE"
+                  },
+                  value: "28‑30"
+                },
+                {
+                  descriptor: {
+                    code: "STAPLE_LENGTH_OF_COTTON_UNIT"
+                  },
+                  value: "mm"
+                },
+                {
+                  descriptor: {
+                    code: "TRASH_PERCENTAGE"
+                  },
+                  value: "3%"
+                },
+                {
+                  descriptor: {
+                    code: "BUNDLE_STRENGTH"
+                  },
+                  value: ">=24.0"
+                },
+                {
+                  descriptor: {
+                    code: "MICRONAIRE"
+                  },
+                  value: "2.8-3.0"
+                },
+                {
+                  descriptor: {
+                    code: "PERCENTAGE_OF_MATURED_FIBERS"
+                  },
+                  value: ">=70.0"
+                },
+                {
+                  descriptor: {
+                    code: "SIEVE_ANALYSIS"
+                  },
+                  value: "98"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_VALUE"
+                  },
+                  value: "210"
+                },
+                {
+                  descriptor: {
+                    code: "NUMBER_OF_NUTS_UNIT"
+                  },
+                  value: "kg"
+                },
+                {
+                  descriptor: {
+                    code: "VOID_NUTS"
+                  },
+                  value: "1%"
+                },
+                {
+                  descriptor: {
+                    code: "IMMATURE_NUTS"
+                  },
+                  value: "2%"
+                },
+                {
+                  descriptor: {
+                    code: "STRENGTH"
+                  },
+                  value: "Excellent"
+                },
+                {
+                  descriptor: {
+                    code: "FINENESS"
+                  },
+                  value: "10"
+                }
+              ]
+            }
+          ]
+					}
+				)
+				)
+			}
+		}
+
 
 		responseBuilder(
 			res,
@@ -818,6 +2455,89 @@ export const statusAgriOutputRequest = async (
 			`${ON_ACTION_KEY.ON_STATUS}`,
 			"agri"
 		);
+		let i = 0; 
+		async function sendRequests() {
+			// Send the requests one after another
+			try {
+				// First request (onStatusCreated)
+				// await childOrderResponseBuilder(
+				// 	i,
+				// 	res,
+				// 	context,
+				// 	onStatusCreated,
+				// 	`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/") ? "on_status" : "/on_status"
+				// 	}`,
+				// 	"on_status"
+				// );
+
+				// Second request (onStatusPacked)
+				// Increment for the next request
+				// await childOrderResponseBuilder(
+				// 	i,
+				// 	res,
+				// 	context,
+				// 	onStatusAccepted,
+				// 	`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/") ? "on_status" : "/on_status"
+				// 	}`,
+				// 	"on_status"
+				// );
+
+				// Third request (onStatusAgent_Assigned)
+				// Increment for the next request
+				await childOrderResponseBuilder(
+					i,
+					res,
+					context,
+					onStatusPacked,
+					`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/") ? "on_status" : "/on_status"
+					}`,
+					"on_status"
+				);
+
+				// Fourth request (onStatusOrderPickedUp)
+				// Increment for the next request
+				await childOrderResponseBuilder(
+					i,
+					res,
+					context,
+					onStatusOrderPickedUp,
+					`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/") ? "on_status" : "/on_status"
+					}`,
+					"on_status"
+				);
+
+				// Fifth request (onStatusOrderOutForDelivery)
+				// Increment for the next request
+				await childOrderResponseBuilder(
+					i,
+					res,
+					context,
+					onStatusInTransit,
+					`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/") ? "on_status" : "/on_status"
+					}`,
+					"on_status"
+				);
+
+				// Sixth request (onStatusOrderDelivered)
+				// Increment for the next request
+				await childOrderResponseBuilder(
+					i,
+					res,
+					context,
+					onStatusCompleted,
+					`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/") ? "on_status" : "/on_status"
+					}`,
+					"on_status"
+				);
+
+			} catch (error) {
+				// If any request fails, catch the error and log it
+				console.error("Error occurred while sending requests:", error);
+			}
+		}
+
+		// Call the function once to send all the requests
+		sendRequests();
 
 	}
 	catch (error) {

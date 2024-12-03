@@ -11,6 +11,7 @@ import {
 	quoteCreatorAgri,
 	AGRI_OUTPUT_EXAMPLES_PATH,
 	quoteCreatorAgriOutput,
+	quoteCreatorNegotiationAgriOutput,
 } from "../../../lib/utils";
 import { ON_ACTION_KEY } from "../../../lib/utils/actionOnActionKeys";
 import { ERROR_MESSAGES } from "../../../lib/utils/responseMessages";
@@ -185,8 +186,8 @@ const initAgriOutputController=(
 
 		const response = YAML.parse(file.toString());
 
-		const quoteData = quoteCreatorAgriOutput(items, providersItems);
-		const responseMessage = {
+		let  quoteData = quoteCreatorAgriOutput(items, providersItems);
+		let responseMessage = {
 			order: {
 				provider,
 				locations,
@@ -213,6 +214,38 @@ const initAgriOutputController=(
 			},
 		};
 		delete req.body?.providersItems;
+		const {scenario}=req.query
+		switch(scenario){
+			case "negotiation":
+				quoteData=quoteCreatorNegotiationAgriOutput(items,providersItems)
+				 responseMessage = {
+					order: {
+						provider,
+						locations,
+						items,
+						billing,
+						fulfillments: updatedFulfillments,
+						quote: quoteData,
+						cancellation_terms: response?.value?.message?.order?.cancellation_terms,
+						payments: [{
+							...response?.value?.message?.order?.payments[0],
+							params:{
+								...response?.value?.message?.order?.payments[0].params,
+								amount:quoteData.price.value,
+							}
+						}]
+					},
+				};
+				 delete responseMessage.order.cancellation_terms
+			
+				break;
+			case "bid-placement":
+				break;
+			default:
+				responseMessage={...responseMessage}
+				break;
+		}
+
 		console.log("initresponseeMess",JSON.stringify(responseMessage.order.payments[0].tags))
 		return responseBuilder(
 			res,

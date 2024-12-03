@@ -246,7 +246,9 @@ export const confirmAgriOutputController=async (
 			return send_nack(res, ERROR_MESSAGES.ON_INIT_DOES_NOT_EXISTED);
 		}
 
-		const { fulfillments,billing,cancellation_terms,quote,payments,items} = order;
+		const { fulfillments,billing,cancellation_terms,payments,items} = order;
+		const {quote}=on_init.message.order
+		console.log("quottee",quote,on_init)
 		const responseMessage = {
 			order: {
 				...order,

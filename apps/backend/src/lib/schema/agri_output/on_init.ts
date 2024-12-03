@@ -351,7 +351,7 @@ export const onInitSchema={
             },
             required: [
               "provider", "locations", "items", "billing", "fulfillments", "quote",
-              "payments", "cancellation_terms"
+              "payments"
             ]
           }
         },

@@ -56,31 +56,6 @@ const intializeRequest = async (
 			},
 			message: {
 				order: {
-					// provider: {
-					// 	id,
-					// 	locations: [
-					// 		{
-					// 			id: locations?.[0]?.id,
-					// 		},
-					// 	],
-					// },
-					// items: items.map((itm: any) => ({
-					// 	...itm,
-					// 	quantity: { count: 1 }
-					// })),
-					// fulfillments: [
-					// 	{
-					// 		end: {
-					// 			location: {
-					// 				gps: "12.974002,77.613458",
-					// 				address: {
-					// 					area_code: "560001",
-					// 				},
-					// 			},
-					// 		},
-					// 	},
-					// ],
-					// payment: { type: "ON-FULFILLMENT" },
 				},
 			},
 		};
@@ -127,7 +102,7 @@ const intializeRequest = async (
 				)
 			switch (scenario) {
 				case "multi-items-successfull-order":
-					select.message = {					
+					select.message = {
 						order: {
 							...select.message.order,
 							items: items.map((itm: any) => (
@@ -227,11 +202,59 @@ const intializeRequest = async (
 					}
 				}
 			}
+			// console.log("items-....>", JSON.stringify(select.message))
+			switch (scenario) {
+				case "negaotiationstart":
+					select = {
+						...select,
+						message: {
+							order: {
+								...select.message.order,
+								items: [{
+									...message?.catalog?.providers[0].items[0],
+									quantity: {
+										selected: {
+											count: 100
+										}
+									},
+									price: {
+										currency: "INR",
+										value: "300.00"
+									},
+									tags: [
+										{
+											descriptor: {
+												code: "NEGOTIATION_BAP"
+											},
+											list: [
+												{
+													descriptor: {
+														code: "items.price.value"
+													},
+													value: "250.00"
+												}
+											]
+										}
+									]
+								}],
+								payments: [
+									{
+										type: "PRE-FULFILLMENT"
+									}
+								],
+							}
+						}
+					}
+					break;
+				default:
+					select={...select}
+					break;
+			}
 		}
 
 
-		console.log("items", JSON.stringify(select.message))
-		await send_response(res, next, select, transaction_id, "select");
+		// console.log("items", JSON.stringify(select.message))
+		await send_response(res, next, select, transaction_id, "select",scenario);
 	} catch (error) {
 		return next(error);
 	}

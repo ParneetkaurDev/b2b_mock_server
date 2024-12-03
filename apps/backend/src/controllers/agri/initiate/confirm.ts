@@ -206,6 +206,22 @@ const agriOutputIntializeRequest = async (res: Response,
 									count: 100
 								}
 							},
+							price:itm.price,
+							tags: [
+            {
+              descriptor: {
+                code: "NEGOTIATION_BAP"
+              },
+              list: [
+                {
+                  descriptor: {
+                    code: "items.price.value"
+                  },
+                  value: "270.00"
+                }
+              ]
+            }
+          ]
 						}
 					)),
 					quote:quotedata,
@@ -218,7 +234,15 @@ const agriOutputIntializeRequest = async (res: Response,
 			},
 		};
 
+		
 		console.log("cnfmmessage", JSON.stringify(confirm.message))
+
+		switch(scenario){
+			case "negotiation":
+				 break;
+			default:
+				delete confirm.message.order.items[0].tags
+		}
 
 		await send_response(
 			res,
