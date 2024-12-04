@@ -25,17 +25,17 @@ const onInitConsultationController = (req: Request, res: Response, next: NextFun
 		const { context, message: { order: { provider, locations, items, billing, fulfillments, payments,quote } } } = req.body;
 		const { stops, ...remainingfulfillments } = fulfillments[0]
 	
-		const file = fs.readFileSync(
-			path.join(AGRI_EQUIPMENT_HIRING_EXAMPLES_PATH, "confirm/confirm.yaml")
-		);
+		// const file = fs.readFileSync(
+		// 	path.join(AGRI_EQUIPMENT_HIRING_EXAMPLES_PATH, "confirm/confirm.yaml")
+		// );
 		
-		const response = YAML.parse(file.toString());
+		// const response = YAML.parse(file.toString());
 		const timestamp = new Date().toISOString();
 	console.log("yyyyyyyyy")
 		const responseMessage = {
 			order: {
 				id: uuidv4(),
-				status: response.value.message.order.status,
+				// status: response.value.message.order.status,
 				provider: {
 					...provider,
 					...locations

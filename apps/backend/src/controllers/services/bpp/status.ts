@@ -148,7 +148,7 @@ const statusRequest = async (
 											status: FULFILLMENT_LABELS.CONFIRMED,
 									  }
 									: undefined,
-								person: stop.person ? stop.person : stop.customer?.person,
+								person: (domain===SERVICES_DOMAINS.ASTRO_SERVICE)?{name:"Rahul"}:stop.person ? stop.person : stop.customer?.person,
 							};
 							if (stop.type === "start") {
 								return {
@@ -276,6 +276,32 @@ const statusRequest = async (
 			default: //service started is the default case
 				break;
 		}
+
+		if(domain===SERVICES_DOMAINS.ASTRO_SERVICE){
+			responseMessage.order.fulfillments[0].stops[1].location.descriptor={
+				name:"Temple"
+			}
+			responseMessage.order.fulfillments[0].customer={
+				"person": {
+              "name": "Ramu"
+            }
+			}
+			responseMessage.order.fulfillments[0].agent={
+				"person": {
+              "name": "Pujari Name"
+            },
+            "contact": {
+              "phone": "9XXXXXXXXX"
+            }
+			}
+			delete responseMessage.order.documents
+			delete responseMessage.order.fulfillments[0].stops[0]?.locations?.address
+			delete responseMessage.order.fulfillments[0].stops[0]?.locations?.city
+			delete responseMessage.order.fulfillments[0].stops[0]?.locations?.state
+			delete responseMessage.order.fulfillments[0].stops[0]?.locations?.country
+		}
+
+		console.log("responseMessage",JSON.stringify(responseMessage))
 
 		return responseBuilder(
 			res,

@@ -1599,6 +1599,384 @@ export const quoteCreatorHealthCareService = (
 	}
 };
 
+export const quoteCreatorAstroService = (
+	items: Item[],
+	providersItems?: any,
+	offers?: any,
+	fulfillment_type?: string,
+	service_name?: string,
+	scenario?: string
+) => {
+	try {
+		console.log("items",items,"proovidersITems",providersItems)
+		//GET PACKAGE ITEMS
+		//get price from on_search
+		items.forEach((item) => {
+			if (
+				item &&
+				item?.tags &&
+				item?.tags[0] &&
+				item?.tags[0]?.list[0]?.value === "PACKAGE"
+			) {
+				const getItems = item.tags[0].list[1].value.split(",");
+				getItems.forEach((pItem) => {
+					// Find the corresponding item in the second array
+					if (providersItems) {
+						const matchingItem = providersItems?.find(
+							(secondItem: { id: string }) => secondItem.id === pItem
+						);
+						// If a matching item is found, update the price in the items array
+
+						if (matchingItem) {
+							items.push({ ...matchingItem, quantity: item?.quantity });
+						}
+					}
+				});
+			}
+		});
+
+		items.forEach((item) => {
+			// Find the corresponding item in the second array
+			if (providersItems) {
+				const matchingItem = providersItems?.find(
+					(secondItem: { id: string }) => secondItem.id === item.id
+				);
+				// If a matching item is found, update the price in the items array
+				if (matchingItem) {
+					item.title = matchingItem?.descriptor?.name;
+					item.price = matchingItem?.price;
+					item.tags = matchingItem?.tags;
+				}
+			}
+		});
+
+		let breakup: any[] = [];
+
+		items.forEach((item: any) => {
+			const quantity = item?.quantity?.selected?.count
+				? item?.quantity?.selected?.count
+				: Number(item?.quantity?.unitized?.measure?.value);
+			breakup.push({
+				title: item.title,
+				price: {
+					currency: "INR",
+					value: (Number(item?.price?.value) * quantity).toString(),
+				},
+				tags:[
+					{
+						"descriptor": {
+							"code": "title"
+						},
+						"list": [
+							{
+								"descriptor": {
+									"code": "type"
+								},
+								"value": "ITEM"
+							}
+						]
+					}
+				],
+				item:
+					item.title === "tax"
+						? {
+								id: item?.id,
+						  }
+						: {
+								id: item?.id,
+								price: item?.price,
+								quantity: item?.quantity ? item?.quantity : undefined,
+						  },
+			});
+		});
+
+		//MAKE DYNAMIC BREACKUP USING THE DYANMIC ITEMS
+
+		//ADD STATIC TAX AND DISCOUNT FOR ITEM ONE
+		breakup?.push(
+			{
+				"title": "Pujari Name",
+				"price": {
+				  "currency": "INR",
+				  "value": "0"
+				},
+				"item": {
+				  "id": "I1",
+				  "quantity": {
+					"selected": {
+					  "count": 1
+					}
+				  },
+				  "price": {
+					"currency": "INR",
+					"value": "0"
+				  }
+				},
+				"tags": [
+				  {
+					"descriptor": {
+					  "code": "title"
+					},
+					"list": [
+					  {
+						"descriptor": {
+						  "code": "type"
+						},
+						"value": "ITEM"
+					  }
+					]
+				  }
+				]
+			  },
+			{
+				title: "TAX",
+				price: {
+					currency: "INR",
+					value: "10",
+				},
+				item: {
+					id:"I1"
+				},
+				tags: [
+					{
+						descriptor: {
+							code: "title",
+						},
+						list: [
+							{
+								descriptor: {
+									code: "type",
+								},
+								value: "TAX",
+							},
+						],
+					},
+				],
+			},
+			{
+				title: "discount",
+				price: {
+					currency: "INR",
+					value: "10",
+				},
+				item: {
+					id:"I1"
+				},
+				tags: [
+					{
+						descriptor: {
+							code: "title",
+						},
+						list: [
+							{
+								descriptor: {
+									code: "type",
+								},
+								value: "discount",
+							},
+						],
+					},
+				],
+			},
+			  {
+				title: "Potli",
+				price: {
+				  currency: "INR",
+				  value: "50"
+				},
+				item: {
+				  id: "I1",
+				  "add-ons": [
+					{
+					  id: "ADDON01"
+					}
+				  ]
+				},
+				tags: [
+				  {
+					descriptor: {
+					  code: "title"
+					},
+					list: [
+					  {
+						descriptor: {
+						  code: "type"
+						},
+						value: "ADD_ON"
+					  }
+					]
+				  }
+				]
+			  },
+				{
+					"title": "Convenience Fee",
+					"price": {
+						"currency": "INR",
+						"value": "0"
+					},
+					"item": {
+						"id": "I1"
+					},
+					"tags": [
+						{
+							"descriptor": {
+								"code": "title"
+							},
+							"list": [
+								{
+									"descriptor": {
+										"code": "type"
+									},
+									"value": "MISC"
+								}
+							]
+						}
+					]
+				}
+		);
+
+		// if (
+		// 	(fulfillment_type && fulfillment_type === "Seller-Fulfilled") ||
+		// 	service_name === "agri-equipment-hiring" ||
+		// 	service_name !== "bid_auction_service"
+		// ) {
+		// 	breakup?.push({
+		// 		title: "pickup_charge",
+		// 		price: {
+		// 			currency: "INR",
+		// 			value: "149",
+		// 		},
+		// 		item: items[0],
+		// 		tags: [
+		// 			{
+		// 				descriptor: {
+		// 					code: "title",
+		// 				},
+		// 				list: [
+		// 					{
+		// 						descriptor: {
+		// 							code: "type",
+		// 						},
+		// 						value: "misc",
+		// 					},
+		// 				],
+		// 			},
+		// 		],
+		// 	});
+		// }
+
+		// if (service_name === "agri-equipment-hiring") {
+		// 	breakup?.push({
+		// 		title: "refundable_security",
+		// 		price: {
+		// 			currency: "INR",
+		// 			value: "5000",
+		// 		},
+		// 		item: items[0],
+		// 		tags: [
+		// 			{
+		// 				descriptor: {
+		// 					code: "title",
+		// 				},
+		// 				list: [
+		// 					{
+		// 						descriptor: {
+		// 							code: "type",
+		// 						},
+		// 						value: "refundable_security",
+		// 					},
+		// 				],
+		// 			},
+		// 		],
+		// 	});
+		// }
+
+		// if (
+		// 	service_name === "bid_auction_service" &&
+		// 	scenario === "participation_fee"
+		// ) {
+		// 	breakup = [
+		// 		{
+		// 			title: "earnest_money_deposit",
+		// 			price: {
+		// 				currency: "INR",
+		// 				value: "5000.00",
+		// 			},
+		// 			item: items[0],
+		// 			tags: [
+		// 				{
+		// 					descriptor: {
+		// 						code: "TITLE",
+		// 					},
+		// 					list: [
+		// 						{
+		// 							descriptor: {
+		// 								code: "type",
+		// 							},
+		// 							value: "earnest_money_deposit",
+		// 						},
+		// 					],
+		// 				},
+		// 			],
+		// 		},
+		// 	];
+		// } else if (
+		// 	service_name === "bid_auction_service" &&
+		// 	scenario === "bid_placement"
+		// ) {
+		// 	breakup?.push({
+		// 		title: "earnest_money_deposit",
+		// 		price: {
+		// 			currency: "INR",
+		// 			value: "5000.00",
+		// 		},
+		// 		item: items[0],
+		// 		tags: [
+		// 			{
+		// 				descriptor: {
+		// 					code: "TITLE",
+		// 				},
+		// 				list: [
+		// 					{
+		// 						descriptor: {
+		// 							code: "type",
+		// 						},
+		// 						value: "earnest_money_deposit",
+		// 					},
+		// 				],
+		// 			},
+		// 		],
+		// 	});
+		// }
+
+		let totalPrice = 0;
+		breakup.forEach((entry) => {
+			const priceValue = parseFloat(entry?.price?.value);
+
+			if (!isNaN(priceValue)) {
+				if (entry?.title === "discount") {
+					totalPrice -= priceValue;
+				} else {
+					totalPrice += priceValue;
+				}
+			}
+		});
+
+		const result = {
+			breakup,
+			price: {
+				currency: "INR",
+				value: totalPrice.toFixed(2),
+			},
+			ttl: "P1D",
+		};
+
+		return result;
+	} catch (error: any) {
+		return error;
+	}
+};
+
 //QUOTE FOR SUBSCRIPTION PROCESS
 export const quoteSubscription = (
 	items: Item[],
@@ -2044,8 +2422,14 @@ export const updateFulfillments = (
 ) => {
 	try {
 		// Update fulfillments according to actions
-		const rangeStart = new Date().setHours(new Date().getHours() + 2).toString();
-		const rangeEnd = new Date().setHours(new Date().getHours() + 3).toString();
+		// const rangeStart = new Date().setHours(new Date().getHours() + 2).toString();
+		// const rangeEnd = new Date().setHours(new Date().getHours() + 3).toString();
+
+		const rangeStart = new Date();
+rangeStart.setHours(rangeStart.getHours() + 2);
+
+const rangeEnd = new Date();
+rangeEnd.setHours(rangeEnd.getHours() + 3);
 
 		let updatedFulfillments: any = [];
 		// logger.info(`daomain ${JSON.stringify(fulfillments)}`)
@@ -2142,6 +2526,31 @@ export const updateFulfillments = (
           ]
 			}
 		}
+		if(domain==="astroService"){
+			console.log("herrrr")
+			fulfillmentObj={
+				id:fulfillments[0].id || "FY1",
+				type:"Seller-Fulfilled",
+				stops: [
+            {
+              "type": "end",
+              "location": {
+                "gps": "12.974002,77.613458",
+                "area_code": "560001"
+              },
+              "time": {
+                "label": "confirmed",
+                "range": {
+                  "start": "2024-06-09T22:00:00.000Z",
+                  "end": "2024-06-10T02:00:00.000Z"
+                },
+								"days":"4"
+              }
+            }
+          ]
+			}
+		}
+	
 		switch (action) {
 			case ON_ACTION_KEY.ON_SELECT:
 				// Always push the initial fulfillmentObj
@@ -2154,6 +2563,54 @@ export const updateFulfillments = (
 				}
 				break;
 			case ON_ACTION_KEY.ON_CONFIRM:
+				if(domain==="astroService"){
+					updatedFulfillments.push(fulfillmentObj)
+					
+					updatedFulfillments = updatedFulfillments.map((fulfill: any) => {
+						(fulfill.state = {
+							descriptor: {
+								code: FULFILLMENT_STATES.PENDING,
+							},
+						}),
+							fulfill.stops.push({
+								type: "start",
+								...FULFILLMENT_START,
+								time: {
+									// range: {
+									// 	start: new Date(rangeStart).toISOString(),
+									// 	end: new Date(rangeEnd).toISOString(),
+									// },
+									range:{
+										start: rangeStart.toISOString(),
+										end: rangeEnd.toISOString(),
+									}
+								},
+							}),
+							(fulfill.stops = fulfill?.stops?.map((ele: any) => {
+								if (ele?.type === "end") {
+									ele = {
+										...ele,
+										...FULFILLMENT_END,
+										time: {
+											...ele.time,
+											label: FULFILLMENT_LABELS.CONFIRMED,
+										},
+										instructions:{
+											 "name": "Special Instructions",
+                      "short_desc": "Customer Special Instructions"
+										},
+										person:{
+											name:"Rahul" }
+									};
+								}
+								return ele;
+							})),
+							(fulfill.rateable = true);
+						return fulfill;
+				})
+
+				}
+				else{
 				updatedFulfillments = fulfillments;
 				// Add your logic for ON_CONFIRM
 				updatedFulfillments = updatedFulfillments.map((fulfill: any) => {
@@ -2166,10 +2623,14 @@ export const updateFulfillments = (
 							type: "start",
 							...FULFILLMENT_START,
 							time: {
-								range: {
-									start: new Date(rangeStart).toISOString(),
-									end: new Date(rangeEnd).toISOString(),
-								},
+								// range: {
+								// 	start: new Date(rangeStart).toISOString(),
+								// 	end: new Date(rangeEnd).toISOString(),
+								// },
+								range:{
+									start: rangeStart.toISOString(),
+									end: rangeEnd.toISOString(),
+								}
 							},
 						}),
 						(fulfill.stops = fulfill?.stops?.map((ele: any) => {
@@ -2192,6 +2653,7 @@ export const updateFulfillments = (
 						(fulfill.rateable = true);
 					return fulfill;
 				});
+			}
 				break;
 			case ON_ACTION_KEY.ON_CANCEL:
 				updatedFulfillments = fulfillments;
@@ -2347,6 +2809,9 @@ export const updateFulfillments = (
 					},
 					rateable: true,
 				}));
+				break;
+			case ON_ACTION_KEY.ON_INIT:
+				updatedFulfillments.push(fulfillmentObj)
 				break;
 			default:
 				// Add your default logic if any

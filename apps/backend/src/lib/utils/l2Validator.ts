@@ -26,7 +26,7 @@ export const l2Validator = (domain: string) => async (req: Request, res: Respons
     } | unknown>,
     isValid: boolean;
   console.log("ACTION and REQ DOMAIN", action, reqDomain)
-
+    // console.log("SPECSTRING",`${domain}_${(reqDomain as string).toLowerCase().replace(":", "_")}_l2_validation`)
   const specString = await redis.get(`${domain}_${(reqDomain as string).toLowerCase().replace(":", "_")}_l2_validation`);
   console.log("ACTION SCHEMA", specString)
 

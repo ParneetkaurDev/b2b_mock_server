@@ -12,7 +12,7 @@ import {
 	ON_ACTION_KEY,
 } from "../../../lib/utils/actionOnActionKeys";
 import { ERROR_MESSAGES } from "../../../lib/utils/responseMessages";
-import { ORDER_STATUS, PAYMENT_STATUS } from "../../../lib/utils/apiConstants";
+import { ORDER_STATUS, PAYMENT_STATUS, SERVICES_DOMAINS } from "../../../lib/utils/apiConstants";
 
 export const initiateConfirmController = async (
 	req: Request,
@@ -74,11 +74,14 @@ const intializeRequest = async (
 					status: ORDER_STATUS.CREATED.toUpperCase(),
 					provider: {
 						...provider,
-						locations,
+						locations:[{
+							id:"L1"
+						}],
 					},
 					fulfillments: [
 						{
 							...remainingfulfillments,
+							type:"Seller-Fulfilled",
 							stops: stops.map((stop: any) => {
 								return {
 									...stop,
@@ -129,6 +132,18 @@ const intializeRequest = async (
 				},
 			},
 		};
+
+		if(context.domain===SERVICES_DOMAINS.ASTRO_SERVICE){
+			confirm.message.order.payments.splice(1,1)
+			delete confirm.message.order.xinput
+			confirm.message.order.fulfillments[0].customer={
+					"person": {
+							"name": "Ramu"
+					}
+			}
+		}
+
+		console.log("confirm Response",JSON.stringify(confirm))
 		await send_response(
 			res,
 			next,

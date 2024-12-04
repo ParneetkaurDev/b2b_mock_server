@@ -62,10 +62,10 @@ export const jsonSchemaValidator = <T extends Domain>({
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const l2 = await redis.get("l2_validations");
-      // console.log("domain at jsonSchema",domain)
-      if (l2 != null && JSON.parse(l2).includes(domain)) {
-        return l2Validator(domain)(req, res, next);
-      }
+       console.log("l2 at jsonSchema",l2)
+      // if (l2 != null && JSON.parse(l2).includes(domain)) {
+      //   return l2Validator(domain)(req, res, next);
+      // }
       
       switch (domain) {
         case "services":

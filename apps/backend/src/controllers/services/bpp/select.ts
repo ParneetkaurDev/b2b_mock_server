@@ -11,6 +11,7 @@ import {
 	Time,
 	redis,
 	quoteCreatorService,
+	quoteCreatorAstroService,
 } from "../../../lib/utils";
 import { v4 as uuidv4 } from "uuid";
 import { ERROR_MESSAGES } from "../../../lib/utils/responseMessages";
@@ -75,7 +76,7 @@ const selectConsultationConfirmController = (
 		const { context, message, providersItems } = req.body;
 		const { locations, ...provider } = message.order.provider;
 		const domain = context?.domain;
-
+		console.log("provider",provider)
 		const updatedFulfillments =
 			domain === SERVICES_DOMAINS.BID_ACTION_SERVICES
 				? updateFulfillments(
@@ -86,7 +87,9 @@ const selectConsultationConfirmController = (
 				  )
 				: updateFulfillments(
 						message?.order?.fulfillments,
-						ON_ACTION_KEY?.ON_SELECT
+						ON_ACTION_KEY?.ON_SELECT,
+						"",
+						"astroService"
 				  );
 
 		console.log("providersItemsssssssssssssss",providersItems,)
@@ -117,7 +120,15 @@ const selectConsultationConfirmController = (
 								message?.order?.fulfillments[0]?.type,
 								"bid_auction_service"
 						  )
-						: domain === SERVICES_DOMAINS.AGRI_EQUIPMENT
+						: domain===SERVICES_DOMAINS.ASTRO_SERVICE ?
+						quoteCreatorAstroService(
+							message?.order?.items,
+								providersItems?.items,
+								"",
+								message?.order?.fulfillments[0]?.type,
+								"astro_service"
+						): 
+						domain === SERVICES_DOMAINS.AGRI_EQUIPMENT
 						? quoteCreatorHealthCareService(
 								message?.order?.items,
 								providersItems?.items,
@@ -131,11 +142,25 @@ const selectConsultationConfirmController = (
 								"",
 								message?.order?.fulfillments[0]?.type
 						  ),
+						
 			},
 		};
 		responseMessage.order.items[0].fulfillment_ids = [
 			"F1"
 		]
+		
+		if(domain===SERVICES_DOMAINS.ASTRO_SERVICE){
+			responseMessage.order.provider={
+				...provider,
+				locations:[
+					{
+						id:"L1"
+					}
+				]
+			}
+		}
+
+		console.log("response Message onSelect",JSON.stringify(responseMessage))
 
 		return responseBuilder(
 			res,
