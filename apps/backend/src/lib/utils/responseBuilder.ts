@@ -2811,7 +2811,12 @@ rangeEnd.setHours(rangeEnd.getHours() + 3);
 				}));
 				break;
 			case ON_ACTION_KEY.ON_INIT:
+				if(domain==="astroService"){
 				updatedFulfillments.push(fulfillmentObj)
+			}
+			else{
+				updatedFulfillments = fulfillments;
+			}
 				break;
 			default:
 				// Add your default logic if any
