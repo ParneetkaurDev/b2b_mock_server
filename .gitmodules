@@ -99,3 +99,7 @@
 	path = apps/backend/domain-repos/@services/draft-astro
 	url = https://github.com/ONDC-Official/ONDC-SRV-Specifications
 	branch = draft-astro
+[submodule "apps/backend/domain-repos/@logistics/draft-2.x"]
+	path = apps/backend/domain-repos/@logistics/draft-2.x
+	url = https://github.com/ONDC-Official/ONDC-LOG-Specifications
+	branch = draft-2.x
