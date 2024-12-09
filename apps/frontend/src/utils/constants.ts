@@ -534,6 +534,7 @@ export const INITIATE_FIELDS = {
 				b2b: ["payments", "fulfillments", "items"],
 				b2c: ["payments", "fulfillments", "items"],
 				logistics: ["fulfillments"],
+				retail:["payments"],
 				agri: AGRI_SCENARIOS["update"].map((each) => each.scenario),
 				// agrioutput:AGRI_OUTPUT_SCENARIOS["update"].map((each)=>each.scenario)
 			},

@@ -66,7 +66,6 @@ const cancelRequest = async (
 			transaction.message.order.fulfillments,
 			ON_ACTION_KEY?.ON_CANCEL,'',"agri_input"
 		);
-		console.log("transaction",JSON.stringify(updatedFulfillments))
 		const responseMessage = {
 			order: {
 				id: req.body.message.order_id,

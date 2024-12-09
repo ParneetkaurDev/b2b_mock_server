@@ -497,7 +497,7 @@ export const initSchema = {
 								},
 								required: ["descriptor", "list"],
 							},
-						},
+						}
 					},
 					additionalProperties: false,
 					required: [

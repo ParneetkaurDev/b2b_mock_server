@@ -71,7 +71,7 @@ const intializeRequest = async (
 			},
 		};
 		const domain = context?.domain;
-		console.log("domainnnatStatus",domain)
+	
 		switch (domain) {
 			case SERVICES_DOMAINS.SERVICES:
 				senarios = EQUIPMENT_HIRING_STATUS;

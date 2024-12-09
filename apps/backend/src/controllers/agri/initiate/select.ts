@@ -13,7 +13,6 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { set, eq } from "lodash";
 import _ from "lodash";
-import { count } from "console";
 
 export const initiateSelectController = async (
 	req: Request,
@@ -57,7 +56,7 @@ const intializeRequest = async (
 					location_id: string[];
 				}) => ( {id, location_id })
 			)
-			console.log("items",items)
+			// console.log("items",items)
 		let select = {
 			context: {
 				...context,
@@ -136,7 +135,7 @@ const intializeRequest = async (
 		}
 
 
-		console.log("items",JSON.stringify(select.message.order.items))
+		// console.log("items",JSON.stringify(select.message.order.items))
 		await send_response(res, next, select, transaction_id, "select");
 	} catch (error) {
 		return next(error);

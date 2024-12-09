@@ -83,7 +83,6 @@ const statusRequest = async (
 
 			//FIND NEXT STATUS
 			let lastStatusIndex: any = 0;
-			console.log("domainatstatusbpp", domain)
 			switch (domain) {
 				case SERVICES_DOMAINS.SERVICES || SERVICES_DOMAINS.AGRI_EQUIPMENT:
 					lastStatusIndex = EQUIPMENT_HIRING_STATUS.indexOf(lastStatus);
@@ -625,7 +624,7 @@ export const childOrderResponseBuilder = async (
 		var log: TransactionType = {
 			request: async,
 		};
-		console.log("urI sent at on_status", uri)
+		// console.log("urI sent at on_status", uri)
 		try {
 			const response = await axios.post(uri + "?mode=mock", async,
 				// 	{

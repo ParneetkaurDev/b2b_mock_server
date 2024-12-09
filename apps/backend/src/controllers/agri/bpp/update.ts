@@ -56,7 +56,7 @@ export const updateController = async (
 		);
 		req.body.message.order.fulfillments = updatedFulfillments;
 		req.body.on_confirm = on_confirm;
-		console.log("scenario",scenario)
+		// console.log("scenario",scenario)
 		switch (scenario) {
 			case "liquidate":
 				updateliquidateController(req, res, next);
@@ -95,7 +95,7 @@ export const updateRequoteController = (
 				...response.value.message.order			
 			},
 		};
-		console.log("responseatUpdateBpp",JSON.stringify(responseMessages))
+		// console.log("responseatUpdateBpp",JSON.stringify(responseMessages))
 		return responseBuilder(
 			res,
 			next,
@@ -130,13 +130,13 @@ export const updateRejectController = (
 			)
 		);
 		const response = YAML.parse(file.toString());
-		console.log("on_confirmmm",on_confirm)
+		// console.log("on_confirmmm",on_confirm)
 		const responseMessages = {
 			order: {
 				...response.value.message.order,	
 			},
 		};
-		console.log("responseatUpdateBpp",JSON.stringify(responseMessages))
+		// console.log("responseatUpdateBpp",JSON.stringify(responseMessages))
 		return responseBuilder(
 			res,
 			next,
@@ -176,7 +176,7 @@ export const updateliquidateController = (
 				...response.value.message.order			
 			},
 		};
-		console.log("responseatUpdateBpp",JSON.stringify(responseMessages))
+		// console.log("responseatUpdateBpp",JSON.stringify(responseMessages))
 		return responseBuilder(
 			res,
 			next,

@@ -81,6 +81,11 @@ paths:
                             - bap_uri
                             - ttl
                             - version
+                        message:
+                          type: object
+                      required:
+                        - context
+                        - message
                     - properties:
                         message:
                           properties:
@@ -100,6 +105,8 @@ paths:
                                       type: string
                                   required:
                                     - id
+                          required:
+                            - intent
                     - properties:
                         message:
                           properties:
@@ -464,6 +471,7 @@ paths:
                                           - id
                                   required:
                                     - id
+                                    - locations
                               required:
                                 - provider
                           required:
@@ -2129,29 +2137,40 @@ paths:
                                               required:
                                                 - label
                                                 - schedule
+                                 
                                           allOf:
                                             - if:
                                                 properties:
-                                                  parent_item_id:
-                                                    const: ""
+                                                  tags:
+                                                    contains:
+                                                      properties:
+                                                        descriptor:
+                                                          properties:
+                                                            code:
+                                                              const: attribute
+                                                        list:
+                                                          contains:
+                                                            properties:
+                                                              descriptor:
+                                                                properties:
+                                                                  code:
+                                                                    const: type
+                                                              value:
+                                                                const: customization
+                                                            required:
+                                                              - descriptor
+                                                              - value
+                                                      required:
+                                                        - descriptor
+                                                        - list
                                               then:
                                                 required:
-                                                  - id
+                                                  - category_ids
+                                                  - parent_item_id
                                                   - descriptor
                                                   - price
-                                                  - category_ids
+                                                  - quantity
                                                   - tags
-                                              else:
-                                                required:
-                                                  - id
-                                                  - descriptor
-                                                  - price
-                                                  - fulfillment_ids
-                                                  - category_ids
-                                                  - payment_ids
-                                                  - cancellation_terms
-                                                  - tags
-
                     - properties:
                         message:
                           properties:
@@ -2171,8 +2190,60 @@ paths:
                                                 - email
                                           required:
                                             - contact
+                                      locations:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            id:
+                                              type: string
+                                            gps:
+                                              type: string
+                                            address:
+                                              type: string
+                                            city:
+                                              type: object
+                                              properties:
+                                                code:
+                                                  type: string
+                                                name:
+                                                  type: string
+                                              required:
+                                              - code
+                                              - name
+                                            state:
+                                              type: object
+                                              properties:
+                                                code:
+                                                  type: string
+                                              required:
+                                              - code
+                                            country:
+                                              type: object
+                                              properties:
+                                                code:
+                                                  type: string
+                                              required:
+                                              - code
+                                            area_code:
+                                              type: string
+                                          required:
+                                          - id
+                                          - gps
+                                          - address
+                                          - city
+                                          - state
+                                          - country
+                                          - area_code
+                                      creds:
+                                        type: array
+                                        items:
+                                          type: object
+                                          required:
+                                            - url
                                     required:
                                       - fulfillments
+                                      - locations
       responses:
         default:
           $ref: '#/paths/~1init/post/responses/default'

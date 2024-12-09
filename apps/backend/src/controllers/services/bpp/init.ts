@@ -89,13 +89,12 @@ const initConsultationController = (
 			},
 		} = req.body;
 
-		console.log("ITEMS before :::::::", items)
+		// console.log("ITEMS before :::::::", items)
 
 		let file: any = fs.readFileSync(
 			path.join(SERVICES_EXAMPLES_PATH, "on_init/on_init_consultation.yaml")
 		);
 		const domain = context?.domain;
-		const { locations, ...remainingProvider } = provider;
 
 		const updatedFulfillments = updateFulfillments(
 			fulfillments,
@@ -163,11 +162,13 @@ const initConsultationController = (
 						"",
 						fulfillments[0]?.type
 				  );
-		console.log("ITEMS :::::::::::::::", items)
+		console.log("ITEMS :::::::::::::::", items);
 		const responseMessage = {
 			order: {
-				provider: remainingProvider,
-				locations,
+				provider,
+				locations:[{
+					id:"L1"
+				}],
 				items,
 				billing,
 				fulfillments: updatedFulfillments,
@@ -245,7 +246,6 @@ const initItemNotAvaliableController = (
 				order: { provider, items, billing, fulfillments, payments },
 			},
 		} = req.body;
-		const { locations, ...remainingProvider } = provider;
 
 		items.forEach((item: any) => {
 			// Find the corresponding item in the second array
@@ -279,8 +279,7 @@ const initItemNotAvaliableController = (
 
 		const responseMessage = {
 			order: {
-				provider: remainingProvider,
-				locations,
+				provider,
 				items: items.map(
 					({ ...remaining }: { location_ids: any; remaining: any }) => ({
 						...remaining,
@@ -347,7 +346,6 @@ const initBidPlacementController = (
 				order: { provider, items, billing, fulfillments, payments },
 			},
 		} = req.body;
-		const { locations, ...remainingProvider } = provider;
 
 		items.forEach((item: any) => {
 			// Find the corresponding item in the second array
@@ -387,8 +385,7 @@ const initBidPlacementController = (
 
 		const responseMessage = {
 			order: {
-				provider: remainingProvider,
-				locations,
+				provider,
 				items: items.map(
 					({ ...remaining }: { location_ids: any; remaining: any }) => ({
 						...remaining,
@@ -450,7 +447,6 @@ const initParticipationFeeController = (
 				order: { provider, items, billing, fulfillments, payments },
 			},
 		} = req.body;
-		const { locations, ...remainingProvider } = provider;
 
 		items.forEach((item: any) => {
 			// Find the corresponding item in the second array
@@ -489,8 +485,7 @@ const initParticipationFeeController = (
 		);
 		const responseMessage = {
 			order: {
-				provider: remainingProvider,
-				locations,
+				provider,
 				items: items.map(
 					({ ...remaining }: { location_ids: any; remaining: any }) => ({
 						...remaining,

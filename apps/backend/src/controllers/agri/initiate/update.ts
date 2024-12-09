@@ -47,7 +47,7 @@ export const initiateUpdateController = async (
 		// Need to reconstruct this logic
 
 		scenario = update_target ? update_target : "reject";
-		console.log("scenario", scenario);
+		
 
 		switch (scenario) {
 			case "liquidate":

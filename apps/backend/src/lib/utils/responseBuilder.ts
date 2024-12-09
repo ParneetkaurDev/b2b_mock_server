@@ -186,8 +186,7 @@ export const responseBuilder = async (
 			}
 
 			try {
-				console.log("URI BEING SENT :::", uri);
-				const response = await axios.post(`${uri}?mode=mock`, async, {
+				const response = await axios.post(uri, async, {
 					headers: {
 						authorization: header,
 					},
@@ -266,7 +265,7 @@ export const responseBuilder = async (
 				},
 			},
 			error,
-			// async,
+			async,
 		});
 	}
 };
@@ -1569,8 +1568,10 @@ export const updateFulfillments = (
 ) => {
 	try {
 		// Update fulfillments according to actions
-		const rangeStart = new Date().setHours(new Date().getHours() + 2).toString();
-		const rangeEnd = new Date().setHours(new Date().getHours() + 3).toString();
+	
+		const rangeStart = new Date(new Date().setHours(new Date().getHours() + 2));
+const rangeEnd = new Date(new Date().setHours(new Date().getHours() + 3));
+
 
 		let updatedFulfillments: any = [];
 
@@ -1591,10 +1592,10 @@ export const updateFulfillments = (
 		} else {
 			fulfillmentObj = {
 				id: fulfillments[0]?.id ? fulfillments[0].id : "F1",
-				// stops: fulfillments[0]?.stops.map((ele: any) => {
-				// 	ele.time.label = FULFILLMENT_LABELS.CONFIRMED;
-				// 	return ele;
-				// }),
+				stops: fulfillments[0]?.stops.map((ele: any) => {
+					ele.time.label = FULFILLMENT_LABELS.CONFIRMED;
+					return ele;
+				}),
 				tags: {
 					descriptor: {
 						code: "schedule",
@@ -1650,6 +1651,7 @@ export const updateFulfillments = (
 		switch (action) {
 			case ON_ACTION_KEY.ON_SELECT:
 				// Always push the initial fulfillmentObj
+				console.log("fulfillmentObj")
 				updatedFulfillments.push(fulfillmentObj);
 				if (scenario === SCENARIO.MULTI_COLLECTION) {
 					updatedFulfillments.push({
