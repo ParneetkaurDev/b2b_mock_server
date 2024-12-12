@@ -608,7 +608,7 @@ export const quoteCreatorB2c = (items: Item[], providersItems?: any) => {
 
 //AGRI DOMAIN QUOTE CREATORS
 export const quoteCreatorAgri = (items: Item[], providersItems?: any) => {
-	 console.log("itemssssssssssss", providersItems);
+	 console.log("itemssssssssssss",items,"provideritems",JSON.stringify(providersItems));
 	//get price from on_search
 	let breakup: any[] = [];
 	const chargesOnFulfillment = [
@@ -747,7 +747,7 @@ function ensureArray(item:any) {
 }
 
 export const quoteCreatorAgriOutput = (items: Item[], providersItems?: any) => {
-	 console.log("itemssssssssssss", items, JSON.stringify(providersItems));
+	 console.log("itemssssssssssssOutput", items, JSON.stringify(providersItems));
 	 if(!Array.isArray(items)){
 		items=ensureArray(items)
 	 }
@@ -807,20 +807,22 @@ export const quoteCreatorAgriOutput = (items: Item[], providersItems?: any) => {
 			}
 		}
 	});
+	console.log("itemsssss-->",JSON.stringify(items))
 	items.forEach((item) => {
-		// console.log("itemsbreakup",item)
+		// console.log("itemsbreakup",JSON.stringify(item))
 		// console.log("itemmsmsss",item)
 		breakup = [
 			{
 				title:item.title,
-				price:item.price,
+				price:{
+					currency: "INR",
+					value: (
+						Number(item?.price?.value) * item?.quantity?.selected?.count
+					).toString(),
+				},
 				item:{
 					id:item.id,
-					quantity:{
-						selected:{
-							count:100
-						}
-					}
+					quantity:item.quantity
 				},
 				tags: [
               {
@@ -945,11 +947,18 @@ export const quoteCreatorAgriOutput = (items: Item[], providersItems?: any) => {
 	//MAKE DYNAMIC BREACKUP USING THE DYANMIC ITEMS
 	let totalPrice = 0;
 	breakup.forEach((entry) => {
-		console.log("entryyy",entry)
+		if(entry.title==="discount"){
+			const priceValue = parseFloat(entry.price.value);
+			if (!isNaN(priceValue)) {
+				totalPrice -= priceValue;
+			}
+		 }
+		 else{
 		const priceValue = parseFloat(entry.price.value);
 		if (!isNaN(priceValue)) {
 			totalPrice += priceValue;
 		}
+	}
 	});
 	// chargesOnFulfillment.forEach((entry) => {
 	// 	const priceValue = parseFloat(entry.price.value);

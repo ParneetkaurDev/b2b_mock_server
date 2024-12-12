@@ -185,7 +185,7 @@ const initAgriOutputController=(
 		);
 
 		const response = YAML.parse(file.toString());
-
+		
 		let  quoteData = quoteCreatorAgriOutput(items, providersItems);
 		let responseMessage = {
 			order: {

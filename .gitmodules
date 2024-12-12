@@ -99,3 +99,7 @@
 	path = packages/openapi/domain-repos/@agri/draft-agri_output
 	url = https://github.com/ONDC-Official/ONDC-AGR-Specifications
 	branch = draft-agri_output
+[submodule "apps/backend/domain-repos/@agri/draft-agri_output"]
+	path = apps/backend/domain-repos/@agri/draft-agri_output
+	url = https://github.com/ONDC-Official/ONDC-AGR-Specifications
+	branch = draft-agri_output

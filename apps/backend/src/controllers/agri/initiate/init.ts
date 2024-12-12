@@ -152,7 +152,12 @@ const intializeRequest = async (
 								category_ids:items[0].category_ids,
 								location_ids: [
             "L1"
-          ]
+          ]	,
+					quantity: {
+						selected: {
+							count: 100
+						}
+					}				
 							}
 						],
 						billing: {
