@@ -19,5 +19,8 @@ export default defineConfig({
 		// strictPort: true,
 		port: 5173,
     open: false
-  }
+  },
+	optimizeDeps: {
+    exclude: ["chunk-G332SCLE", "chunk-FUE5BVK4"], // Exclude problematic chunks
+  },
 });

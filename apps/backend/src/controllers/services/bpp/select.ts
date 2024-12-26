@@ -80,19 +80,26 @@ const selectConsultationConfirmController = (
 		const updatedFulfillments =
 			domain === SERVICES_DOMAINS.BID_ACTION_SERVICES
 				? updateFulfillments(
-						message?.order?.fulfillments,
-						ON_ACTION_KEY?.ON_SELECT,
-						"",
-						"bid_auction_service"
-				  )
-				: updateFulfillments(
+					message?.order?.fulfillments,
+					ON_ACTION_KEY?.ON_SELECT,
+					"",
+					"bid_auction_service"
+				)
+				: domain === SERVICES_DOMAINS.ASTRO_SERVICE
+					? updateFulfillments(
 						message?.order?.fulfillments,
 						ON_ACTION_KEY?.ON_SELECT,
 						"",
 						"astroService"
-				  );
+					)
+					: updateFulfillments(
+						message?.order?.fulfillments,
+						ON_ACTION_KEY?.ON_SELECT,
+						""
+					);
 
-		console.log("providersItemsssssssssssssss",providersItems,)
+
+		console.log("updatefulfillment", updatedFulfillments)
 		const responseMessage = {
 			order: {
 				provider,
@@ -113,48 +120,48 @@ const selectConsultationConfirmController = (
 					domain === SERVICES_DOMAINS.SERVICES
 						? quoteCreatorService(message?.order?.items, providersItems?.items)
 						: domain === SERVICES_DOMAINS.BID_ACTION_SERVICES
-						? quoteCreatorHealthCareService(
+							? quoteCreatorHealthCareService(
 								message?.order?.items,
 								providersItems?.items,
 								"",
 								message?.order?.fulfillments[0]?.type,
 								"bid_auction_service"
-						  )
-						: domain===SERVICES_DOMAINS.ASTRO_SERVICE ?
-						quoteCreatorAstroService(
-							message?.order?.items,
-								providersItems?.items,
-								"",
-								message?.order?.fulfillments[0]?.type,
-								"astro_service"
-						): 
-						domain === SERVICES_DOMAINS.AGRI_EQUIPMENT
-						? quoteCreatorHealthCareService(
-								message?.order?.items,
-								providersItems?.items,
-								"",
-								message?.order?.fulfillments[0]?.type,
-								"agri-equipment-hiring"
-						  )
-						: quoteCreatorHealthCareService(
-								message?.order?.items,
-								providersItems?.items,
-								"",
-								message?.order?.fulfillments[0]?.type
-						  ),
-						
+							)
+							: domain === SERVICES_DOMAINS.ASTRO_SERVICE ?
+								quoteCreatorAstroService(
+									message?.order?.items,
+									providersItems?.items,
+									"",
+									message?.order?.fulfillments[0]?.type,
+									"astro_service"
+								) :
+								domain === SERVICES_DOMAINS.AGRI_EQUIPMENT
+									? quoteCreatorHealthCareService(
+										message?.order?.items,
+										providersItems?.items,
+										"",
+										message?.order?.fulfillments[0]?.type,
+										"agri-equipment-hiring"
+									)
+									: quoteCreatorHealthCareService(
+										message?.order?.items,
+										providersItems?.items,
+										"",
+										message?.order?.fulfillments[0]?.type
+									),
+
 			},
 		};
 		responseMessage.order.items[0].fulfillment_ids = [
 			"F1"
 		]
-		
-		if(domain===SERVICES_DOMAINS.ASTRO_SERVICE){
-			responseMessage.order.provider={
+
+		if (domain === SERVICES_DOMAINS.ASTRO_SERVICE) {
+			responseMessage.order.provider = {
 				...provider,
-				locations:[
+				locations: [
 					{
-						id:"L1"
+						id: "L1"
 					}
 				]
 			}
@@ -167,10 +174,9 @@ const selectConsultationConfirmController = (
 			next,
 			context,
 			responseMessage,
-			`${req.body.context.bap_uri}${
-				req.body.context.bap_uri.endsWith("/")
-					? ON_ACTION_KEY.ON_SELECT
-					: `/${ON_ACTION_KEY.ON_SELECT}`
+			`${req.body.context.bap_uri}${req.body.context.bap_uri.endsWith("/")
+				? ON_ACTION_KEY.ON_SELECT
+				: `/${ON_ACTION_KEY.ON_SELECT}`
 			}`,
 			`${ON_ACTION_KEY.ON_SELECT}`,
 			"services"
@@ -363,11 +369,11 @@ const selectConsultationRejectController = (
 					domain === SERVICES_DOMAINS.SERVICES
 						? quoteCreatorService(message?.order?.items, providersItems?.items)
 						: quoteCreatorHealthCareService(
-								message?.order?.items,
-								providersItems?.items,
-								"",
-								message?.order?.fulfillments[0]?.type
-						  ),
+							message?.order?.items,
+							providersItems?.items,
+							"",
+							message?.order?.fulfillments[0]?.type
+						),
 				error: {
 					code: 90001,
 					message: "Schedule not available",

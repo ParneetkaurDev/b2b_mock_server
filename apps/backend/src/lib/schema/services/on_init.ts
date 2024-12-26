@@ -237,7 +237,7 @@ export const onInitSchema = {
                         },
                         if:{
                           properties:{
-                            doamin:{
+                            domain:{
                               enum:["SRV16"]
                             }
                           }

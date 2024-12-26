@@ -2450,10 +2450,10 @@ rangeEnd.setHours(rangeEnd.getHours() + 3);
 		} else {
 			fulfillmentObj = {
 				id: fulfillments[0]?.id ? fulfillments[0].id : "F1",
-				// stops: fulfillments[0]?.stops.map((ele: any) => {
-				// 	ele.time.label = FULFILLMENT_LABELS.CONFIRMED;
-				// 	return ele;
-				// }),
+				stops: fulfillments[0]?.stops.map((ele: any) => {
+					ele.time.label = FULFILLMENT_LABELS.CONFIRMED;
+					return ele;
+				}),
 				tags: {
 					descriptor: {
 						code: "schedule",
@@ -2553,6 +2553,7 @@ rangeEnd.setHours(rangeEnd.getHours() + 3);
 	
 		switch (action) {
 			case ON_ACTION_KEY.ON_SELECT:
+				console.log("fulllfilmentssss",fulfillmentObj)
 				// Always push the initial fulfillmentObj
 				updatedFulfillments.push(fulfillmentObj);
 				if (scenario === SCENARIO.MULTI_COLLECTION) {

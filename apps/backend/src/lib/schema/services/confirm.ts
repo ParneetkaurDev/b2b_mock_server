@@ -242,15 +242,15 @@ export const confirmSchema = {
                         type: {
                           type: "string",
                         },
-                        if:{
-                          properties:{
-                            doamin:{
-                              enum:["SRV16"]
+                        if: {
+                          properties: {
+                            doamin: {
+                              enum: ["SRV16"]
                             }
                           }
                         },
-                        then:{
-                          properties:{
+                        then: {
+                          properties: {
                             location: {
                               type: "object",
                               properties: {
@@ -302,8 +302,8 @@ export const confirmSchema = {
                             },
                           }
                         },
-                        else:{
-                          properties:{
+                        else: {
+                          properties: {
                             location: {
                               type: "object",
                               properties: {
@@ -487,7 +487,7 @@ export const confirmSchema = {
                           },
                         },
                         // required: ["id", "quantity", "price"],
-                        required:["id"]
+                        required: ["id"]
                       },
                     },
                     required: ["title", "price", "item"],
@@ -533,10 +533,35 @@ export const confirmSchema = {
                     required: [
                       "amount",
                       "currency",
-                      "transaction_id",
+                      // "transaction_id",
                       "bank_account_number",
                       "virtual_payment_address",
                     ],
+                    allOf: [
+                      {
+                        if: {
+                          properties: {
+                            domain: {
+                              enum: ["SRV18"]
+                            }
+                          }
+                        },
+                        then: {
+                          required: ["amount",
+                            "currency",
+                            // "transaction_id",
+                            "bank_account_number",
+                            "virtual_payment_address"]
+                        },
+                        else: {
+                          required: ["amount",
+                            "currency",
+                            "transaction_id",
+                            "bank_account_number",
+                            "virtual_payment_address"]
+                        }
+                      }
+                    ]
                   },
                   status: {
                     type: "string",
@@ -600,20 +625,20 @@ export const confirmSchema = {
             updated_at: {
               type: "string",
             },
-            if:{
-              properties:{
-                domain:{
-                  enum:["SRV16"]
+            if: {
+              properties: {
+                domain: {
+                  enum: ["SRV16"]
                 }
               }
             },
-            then:{
-              properties:{
+            then: {
+              properties: {
 
               }
             },
-            else:{
-              properties:{
+            else: {
+              properties: {
                 xinput: {
                   type: "object",
                   properties: {
@@ -652,7 +677,7 @@ export const confirmSchema = {
             "payments",
             "created_at",
             "updated_at",
-            
+
           ],
         },
       },

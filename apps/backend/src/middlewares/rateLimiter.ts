@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { SubscriberDetail } from "../interfaces";
-import { prisma, split_auth_header } from "../lib/utils";
+import {  split_auth_header } from "../lib/utils";
 export const rateLimiter = async (
 	req: Request,
 	res: Response,
@@ -16,28 +16,28 @@ export const rateLimiter = async (
 
 		const subscriber_id = parts["keyId"].split("|")[0] as string;
 		// const unique_key_id = parts["keyId"].split("|")[1] as string;
-		const subscriber = await prisma.user.findFirst({
-			where: {
-				subscriber_id,
-			},
-		});
-		if (
-			new Date().getTime() - subscriber?.lastAccessed?.getTime()! <
-			24 * 60 * 60 * 1000
-		) {
-			if (subscriber?.accessCount! > parseInt(process.env.RATE_LIMIT_24HR!)) {
-				res.status(401).json({
-					message: {
-						ack: {
-							status: "NACK",
-						},
-					},
-					error: {
-						message: "Rate Limit Exceeded",
-					},
-				});
-			}
-		}
+		// const subscriber = await prisma.user.findFirst({
+		// 	where: {
+		// 		subscriber_id,
+		// 	},
+		// });
+		// if (
+		// 	new Date().getTime() - subscriber?.lastAccessed?.getTime()! <
+		// 	24 * 60 * 60 * 1000
+		// ) {
+		// 	if (subscriber?.accessCount! > parseInt(process.env.RATE_LIMIT_24HR!)) {
+		// 		res.status(401).json({
+		// 			message: {
+		// 				ack: {
+		// 					status: "NACK",
+		// 				},
+		// 			},
+		// 			error: {
+		// 				message: "Rate Limit Exceeded",
+		// 			},
+		// 		});
+		// 	}
+		// }
 	}
 	next();
 };
